@@ -57,11 +57,6 @@ int main()
         }
 
     }while(opcion != 4);
-
-    insertar(lstDoble,3);
-    insertar(lstDoble,1);
-    insertar(lstDoble,2);
-    mostrar(lstDoble);
      return 0;
 }
 
