@@ -12,4 +12,8 @@ void insertar(Lista *lista, int valor)
 {
     Nodo *nuevo = (Nodo*)malloc(sizeof(Nodo));
     nuevo->valor = valor;
+    nuevo->siguiente = NULL;
+    nuevo->anterior = NULL;
 }
+
+
