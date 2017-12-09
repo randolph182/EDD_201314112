@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1512829411 source:/home/randolph/CodeBlocksProject/ListaDoble/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Biblioteca.h"
+
+1512780051 source:/home/randolph/CodeBlocksProject/ListaDoble/src/Biblioteca.cpp
+	"Biblioteca.h"
+
+1512829411 /home/randolph/CodeBlocksProject/ListaDoble/include/Biblioteca.h
+	<stdio.h>
+
