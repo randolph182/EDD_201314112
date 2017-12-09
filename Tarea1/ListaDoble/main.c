@@ -51,6 +51,10 @@ int main()
                 mostrar(lstDoble);
             break;
 
+            case 4:
+                opcion = 4;
+            break;
+
             default:
                 printf("La Seleccion no es valida.\n");
             break;
