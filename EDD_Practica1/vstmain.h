@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "avion.h"
+#include "pasajero.h"
+using namespace std;
 namespace Ui {
 class vstMain;
 }
@@ -18,6 +20,7 @@ public:
     int NoEscritorios;
     int NoMantenimiento;
     ListaAvion *colaAvion;
+    ListaPasajero *colaPasajero;
     ~vstMain();
 
 private slots:

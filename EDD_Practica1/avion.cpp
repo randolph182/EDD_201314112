@@ -76,6 +76,7 @@ void ListaAvion::encolarDoble(Avion *avion)
         ultimo = nuevo;
         size++;
         nuevo->idNodo = size;
+        avion->idAvion = size;
     }
     else //como es una cola el objetivo es ir agregando al inicio e ir sacando deade el ultimo
     {
@@ -84,10 +85,11 @@ void ListaAvion::encolarDoble(Avion *avion)
         primero = nuevo;
         size++;
         nuevo->idNodo = size;
+        avion->idAvion = size;
     }
 }
 
-void ListaAvion::desencolarDoble()
+bool ListaAvion::desencolarDoble()
 {
     if(ultimo !=NULL)
     {
@@ -96,16 +98,19 @@ void ListaAvion::desencolarDoble()
             ultimo = ultimo->anterior;
             ultimo->siguiente = NULL;
             size--;
+            return true;
         }
         else
         {
             ultimo = NULL;
             size--;
+            return true;
         }
     }
     else
     {
-        QMessageBox::information(NULL,"Error","No quedan mas elementos en la Cola doble del avion");
+        //QMessageBox::information(NULL,"Error","No quedan mas elementos en la Cola doble del avion");
+        return false;
     }
 }
 

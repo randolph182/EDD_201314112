@@ -27,13 +27,13 @@ void vstMain::on_btnSiguiente_clicked()
     {
         Avion *nuevoAvion = new Avion();
         nuevoAvion = nuevoAvion->generarAvion();
-        int i =0;
-
-       // cout << 1+rand()%(4-1) <<endl;
-
+        colaAvion->encolarDoble(nuevoAvion);
     }
     else
     {
+        Avion *nuevoAvion = new Avion();
+        nuevoAvion = nuevoAvion->generarAvion();
+        colaAvion->encolarDoble(nuevoAvion);
 
     }
 }

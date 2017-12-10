@@ -33,7 +33,7 @@ public:
     int size;
     ListaAvion();
     void encolarDoble(Avion *avion); //el avion utiliza una cola doble
-    void desencolarDoble();
+    bool desencolarDoble();
 };
 
 struct Avion
