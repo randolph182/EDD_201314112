@@ -9,5 +9,12 @@ Lista::Lista()
 void LstAvion::addColaDoble(Avion *nuevoAvion)
 {
     Nodo *nuevo = new Nodo();
+    if(primero ==NULL)
+    {
 
+    }
+    else
+    {
+
+    }
 }
