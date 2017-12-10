@@ -1,18 +1,26 @@
 #ifndef AVION_H
 #define AVION_H
 #include <QString>
+#include <QMessageBox>
+//librerias para la generacion de numeros aleatorios
+#include <stdlib.h>
+#include <time.h>
+#include <cstdlib>
+
+
 typedef struct NodoAvion NodoAvion;
 typedef struct ListaAvion ListaAvion;
 typedef struct Avion Avion;
 
+using namespace std;
 
 struct NodoAvion
 {
 public:
     NodoAvion *siguiente;
     NodoAvion *anterior;
-    Avion *valor;
     int idNodo;
+    Avion *valor;
     NodoAvion();
     NodoAvion(Avion *valor);
 };
@@ -24,17 +32,21 @@ public:
     NodoAvion *ultimo;
     int size;
     ListaAvion();
-    void addColaDoble(Avion *avion);
+    void encolarDoble(Avion *avion); //el avion utiliza una cola doble
+    void desencolarDoble();
 };
 
 struct Avion
 {
 public:
     Avion();
-    QString tipo;
+    Avion(int idAvion,int tipoAvion,int nPasajros, int nTurnos, int nMantenimiento);
+    int idAvion;
+    int tipoAvion;
     int NoPasajeros;
     int NoTurnos;
     int NoTurnosMantenimiento;
+    Avion *generarAvion();
 };
 
 #endif // AVION_H
