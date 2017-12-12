@@ -1,0 +1,19 @@
+#include "documento.h"
+
+NodoDocumento::NodoDocumento(Documento *valor_)
+{
+    siguiente = NULL;
+    valor = valor_;
+}
+
+Documento::Documento()
+{
+
+}
+
+void ListaDocumento::addPila(Documento *valor)
+{
+    
+}
+
+

@@ -4,6 +4,7 @@
 #include <QMessageBox>
 #include <QString>
 
+
 using namespace std;
 
 typedef struct Pasajero Pasajero;
@@ -15,6 +16,7 @@ struct NodoPasajero
     NodoPasajero *siguiente;
     Pasajero *valor;
     int idNodo;
+
     NodoPasajero();
     NodoPasajero(Pasajero *valor_);
 };

@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     pasajero.cpp \
     escritorio.cpp \
     equipaje.cpp \
-    mantenimiento.cpp
+    mantenimiento.cpp \
+    documento.cpp
 
 HEADERS  += vstmain.h \
     nodo.h \
@@ -29,6 +30,7 @@ HEADERS  += vstmain.h \
     pasajero.h \
     escritorio.h \
     equipaje.h \
-    mantenimiento.h
+    mantenimiento.h \
+    documento.h
 
 FORMS    += vstmain.ui
