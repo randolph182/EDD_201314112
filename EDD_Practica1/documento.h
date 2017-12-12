@@ -1,5 +1,9 @@
 #ifndef DOCUMENTO_H
 #define DOCUMENTO_H
+#include <QString>
+#include <iostream>
+#include <string>
+using namespace std;
 
 typedef struct NodoDocumento NodoDocumento;
 typedef struct ListaDocumento ListaDocumento;
@@ -9,19 +13,25 @@ struct NodoDocumento
 {
 public:
     NodoDocumento *siguiente;
-
     Documento *valor;
+    int idNodo;
+    NodoDocumento(Documento *valor_);
 };
 
 struct ListaDocumento
 {
 public:
-
+    NodoDocumento *primero;
+    int size;
+    void addPila(Documento *valor);
+    bool desapilarTodo();
 };
 
 struct Documento
 {
 public:
+    string idPasajero;
+
     Documento();
 };
 
