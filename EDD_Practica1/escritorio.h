@@ -1,6 +1,7 @@
 #ifndef ESCRITORIO_H
 #define ESCRITORIO_H
 #include "pasajero.h"
+#include "documento.h"
 
 typedef struct NodoEscritorio NodoEscritorio;
 typedef struct ListaEscritorio ListaEscritorio;
@@ -13,7 +14,9 @@ public:
     NodoEscritorio *anterior;
     Escritorio *valor;
     ListaPasajero *lstPasajeros;
+    ListaDocumento *lstDocumento;
     int idNodo;
+    int contPasajero;
     NodoEscritorio();
     NodoEscritorio(Escritorio *valor_);
 };
@@ -25,14 +28,16 @@ public:
     NodoEscritorio *ultimo;
     int size;
     ListaEscritorio();
-    void addDoble(Escritorio *nuevo);
+    void addDoble(Escritorio *nuevo_);
+    int comparacion(NodoEscritorio *nuevo, NodoEscritorio *actual);
+    void imprimir();
 };
 
 struct Escritorio
 {
 public:
-
     string letra;
+    Escritorio(string letra_);
     Escritorio();
 };
 
