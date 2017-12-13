@@ -75,8 +75,8 @@ void ListaAvion::encolarDoble(Avion *avion)
         primero = nuevo;
         ultimo = nuevo;
         size++;
-        nuevo->idNodo = size;
-        avion->idAvion = size;
+        nuevo->idNodo++;
+        avion->idAvion++;
     }
     else //como es una cola el objetivo es ir agregando al inicio e ir sacando deade el ultimo
     {
@@ -87,6 +87,47 @@ void ListaAvion::encolarDoble(Avion *avion)
         nuevo->idNodo = size;
         avion->idAvion = size;
     }
+}
+
+void ListaAvion::encolarSimple(Avion *avion)
+{
+    NodoAvion *nuevo = new NodoAvion(avion);
+    if(primero ==NULL)
+    {
+        primero = nuevo;
+        ultimo = nuevo;
+        size++;
+        nuevo->idNodo++;
+        avion->idAvion++;
+    }
+    else
+    {
+        ultimo->siguiente = nuevo;
+        ultimo = nuevo;
+        size++;
+        nuevo->idNodo++;
+        avion->idAvion++;
+    }
+}
+
+bool ListaAvion::desencolarSimple()
+{
+    if(primero !=NULL)
+    {
+        if(primero->siguiente !=NULL)
+        {
+            primero = primero->siguiente;
+            size--;
+            return true;
+        }
+        else
+        {
+            primero = NULL;
+            size--;
+            return true;
+        }
+    }
+    return false;
 }
 
 bool ListaAvion::desencolarDoble()

@@ -1,6 +1,6 @@
 #include "escritorio.h"
 
-Escritorio::Escritorio(string letra_)
+Escritorio::Escritorio(char letra_)
 {
     letra = letra_;
 }
@@ -116,9 +116,21 @@ void ListaEscritorio::addDoble(Escritorio *nuevo_)
 
 int ListaEscritorio::comparacion(NodoEscritorio *nuevo, NodoEscritorio *actual)
 {
-    string act = nuevo->valor->letra;
+    char act = nuevo->valor->letra;
 
-    return act.compare(actual->valor->letra);
+    if(nuevo->valor->letra > actual->valor->letra)
+    {
+        return 1;
+    }
+    else if(nuevo->valor->letra == actual->valor->letra)
+    {
+        return 0;
+    }
+    else
+    {
+        return -1;
+    }
+   // return act.(actual->valor->letra);
 }
 
 void ListaEscritorio::imprimir()

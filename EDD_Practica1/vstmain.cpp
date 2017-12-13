@@ -40,19 +40,12 @@ void vstMain::on_btnSiguiente_clicked()
 //    }
 
 
-    Escritorio *e1 = new Escritorio("A");
-    string letra = e1->letra;
-    char *le = new char[1];
-    strcpy(le,letra.c_str());
-  //  letra = letra + 1;
-    //cout << letra <<endl;
-    char p = le;
-    cout << ++[p] <<endl;
-//    Escritorio *e2 = new Escritorio(le++);
-//    Escritorio *e3 = new Escritorio("C");
-//    Escritorio *e4 = new Escritorio("D");
-//    Escritorio *e5 = new Escritorio("E");
-//    Escritorio *e6 = new Escritorio("F");
+//    Escritorio *e1 = new Escritorio('A');
+//    Escritorio *e2 = new Escritorio(e1->letra++);
+//    Escritorio *e3 = new Escritorio('C');
+//    Escritorio *e4 = new Escritorio('D');
+//    Escritorio *e5 = new Escritorio('Z');
+//    Escritorio *e6 = new Escritorio('F');
 
 //    ListaEscritorio *lstE = new ListaEscritorio();
 //    lstE->addDoble(e1);

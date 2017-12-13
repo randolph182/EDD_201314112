@@ -17,6 +17,7 @@ public:
     ListaDocumento *lstDocumento;
     int idNodo;
     int contPasajero;
+    int maximoPasajero =10;
     NodoEscritorio();
     NodoEscritorio(Escritorio *valor_);
 };
@@ -36,8 +37,8 @@ public:
 struct Escritorio
 {
 public:
-    string letra;
-    Escritorio(string letra_);
+    char letra;
+    Escritorio(char letra_);
     Escritorio();
 };
 
