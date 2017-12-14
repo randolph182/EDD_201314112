@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include "avion.h"
 #include "pasajero.h"
+#include "equipaje.h"
+#include "grafo.h"
+
 using namespace std;
 namespace Ui {
 class vstMain;
@@ -21,6 +24,7 @@ public:
     int NoMantenimiento;
     ListaAvion *colaAvion;
     ListaPasajero *colaPasajero;
+    ListaEquipaje *circularEquipaje;
     ~vstMain();
 
 private slots:

@@ -32,6 +32,7 @@ struct Equipaje
 public:
     int idCliente;
     Equipaje();
+    Equipaje(int idCliente_);
 };
 
 #endif // EQUIPAJE_H

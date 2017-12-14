@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     escritorio.cpp \
     equipaje.cpp \
     mantenimiento.cpp \
-    documento.cpp
+    documento.cpp \
+    grafo.cpp
 
 HEADERS  += vstmain.h \
     nodo.h \
@@ -31,6 +32,7 @@ HEADERS  += vstmain.h \
     escritorio.h \
     equipaje.h \
     mantenimiento.h \
-    documento.h
+    documento.h \
+    grafo.h
 
 FORMS    += vstmain.ui

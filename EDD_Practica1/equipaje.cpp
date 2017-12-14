@@ -5,6 +5,11 @@ Equipaje::Equipaje()
 
 }
 
+Equipaje::Equipaje(int idCliente_)
+{
+    idCliente = idCliente_;
+}
+
 NodoEquipaje::NodoEquipaje(Equipaje *valor_)
 {
     siguiente = NULL;
@@ -21,10 +26,24 @@ NodoEquipaje::NodoEquipaje()
 void ListaEquipaje::addCircularDoble(Equipaje *valor_)
 {
     NodoEquipaje *nuevo = new NodoEquipaje(valor_);
-    if(primero ==NULL)
+    if(primero ==NULL && ultimo ==NULL)
     {
         primero = nuevo;
         ultimo = nuevo;
+        primero->siguiente = ultimo;
+        ultimo->anterior = primero;
+        ultimo->siguiente= primero;
+        primero->anterior = ultimo;
+        size++;
+        nuevo->idNodo++;
+    }
+    else if(primero !=NULL && ultimo ==NULL)
+    {
+        ultimo = nuevo;
+        primero->siguiente = ultimo;
+        ultimo->anterior = primero;
+        ultimo->siguiente= primero;
+        primero->anterior = ultimo;
         size++;
         nuevo->idNodo++;
     }
@@ -42,12 +61,28 @@ void ListaEquipaje::addCircularDoble(Equipaje *valor_)
 
 void ListaEquipaje::quitarCircDoble(int cant)
 {
-    if(cant <=size)
+    if(cant >0)
     {
+        if(primero->siguiente !=ultimo && primero->siguiente !=NULL)
+        {
+            ultimo = ultimo->anterior;
+            ultimo->siguiente = primero;
+            primero->anterior = ultimo;
+            size--;
+            quitarCircDoble(cant-1);
+        }
+        else if(primero->siguiente == NULL)
+        {
+            primero = NULL;
+            size--;
+        }
+        else if(primero->siguiente = ultimo)
+        {
+            ultimo = NULL;
+            primero->siguiente = NULL;
+            size--;
+            quitarCircDoble(cant-1);
+        }
+    }
 
-    }
-    else
-    {
-        cout << "La cantidad de maletas es inferior a la actual por tanto ha de haber algo mal " <<endl;
-    }
 }
