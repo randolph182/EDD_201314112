@@ -157,7 +157,7 @@ string ListaEscritorio::acumDobleEscritorio()
 
         if(tmp->lstPasajeros->primero!=NULL)
         {
-            acumSubGraph = tmp->lstPasajeros->acumLstSimplePasajero("Psjro"+tmp->valor->letra);
+            acumSubGraph += tmp->lstPasajeros->acumLstSimplePasajero("Psjro"+tmp->valor->letra);
             acumEnlaceSubG += tmp->idNodo +"->"+tmp->lstPasajeros->primero->idNodo + ";\n";
         }
 
@@ -168,17 +168,17 @@ string ListaEscritorio::acumDobleEscritorio()
     {
         if(tmp->lstPasajeros->primero!=NULL)
         {
-            acumSubGraph = tmp->lstPasajeros->acumLstSimplePasajero("Psjro"+tmp->valor->letra);
+            acumSubGraph += tmp->lstPasajeros->acumLstSimplePasajero("Psjro"+tmp->valor->letra);
             acumEnlaceSubG += tmp->idNodo +"->"+tmp->lstPasajeros->primero->idNodo + ";\n";
         }
     }
 
-    NodoEscritorio *tmp2 = ultimo;
-    while(tmp2->anterior !=NULL)
-    {
-        acumEnlace += tmp2->idNodo + "->" + tmp2->anterior->idNodo + ";\n";
-        tmp2 = tmp2->anterior;
-    }
+//    NodoEscritorio *tmp2 = ultimo;
+//    while(tmp2->anterior !=NULL)
+//    {
+//        acumEnlace += tmp2->idNodo + "->" + tmp2->anterior->idNodo + ";\n";
+//        tmp2 = tmp2->anterior;
+//    }
 
     acumEnlace +="\n}\n";
 

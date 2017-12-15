@@ -122,35 +122,40 @@ void ListaAvion::encolarSimple(Avion *avion,string id)
 string ListaAvion::acumLstDoble()
 {
     string acum = "";
-    string nodos = "";
-    string enlaces = "";
-    //sacando enlaces desde la primera posicion a la ultima
-    NodoAvion *tmp = primero;
-    while(tmp->siguiente != NULL)
+
+    if(primero!=NULL)
     {
+        string nodos = "";
+        string enlaces = "";
+        //sacando enlaces desde la primera posicion a la ultima
+        NodoAvion *tmp = primero;
+        while(tmp->siguiente != NULL)
+        {
+            nodos += tmp->idNodo+"[label=\"Avion: "+ to_string(tmp->valor->idAvion)+ "\n";  //+"\"];\n";
+            nodos += "tipo: "+tmp->valor->tipoAvionStr+"\n";
+            nodos += "No.Pasajeros: "+to_string(tmp->valor->NoPasajeros)+"\n";
+            nodos += "No.Turnos: "+to_string(tmp->valor->NoTurnos)+"\n";
+            nodos += "No.Mantmto: "+to_string(tmp->valor->NoTurnosMantenimiento)+"\"];\n";
+
+            enlaces += tmp->idNodo + "->" + tmp->siguiente->idNodo + ";\n";
+            tmp = tmp->siguiente;
+        }
         nodos += tmp->idNodo+"[label=\"Avion: "+ to_string(tmp->valor->idAvion)+ "\n";  //+"\"];\n";
         nodos += "tipo: "+tmp->valor->tipoAvionStr+"\n";
         nodos += "No.Pasajeros: "+to_string(tmp->valor->NoPasajeros)+"\n";
         nodos += "No.Turnos: "+to_string(tmp->valor->NoTurnos)+"\n";
         nodos += "No.Mantmto: "+to_string(tmp->valor->NoTurnosMantenimiento)+"\"];\n";
 
-        enlaces += tmp->idNodo + "->" + tmp->siguiente->idNodo + ";\n";
-        tmp = tmp->siguiente;
+    //    /sacando enlaces desde la primera posicion a la ultima
+        NodoAvion *tmp2 = ultimo;
+        while(tmp2->anterior !=NULL)
+        {
+            enlaces += tmp2->idNodo+ "->"+tmp2->anterior->idNodo+ ";\n";
+            tmp2 = tmp2->anterior;
+        }
+        acum += nodos + enlaces;
     }
-    nodos += tmp->idNodo+"[label=\"Avion: "+ to_string(tmp->valor->idAvion)+ "\n";  //+"\"];\n";
-    nodos += "tipo: "+tmp->valor->tipoAvionStr+"\n";
-    nodos += "No.Pasajeros: "+to_string(tmp->valor->NoPasajeros)+"\n";
-    nodos += "No.Turnos: "+to_string(tmp->valor->NoTurnos)+"\n";
-    nodos += "No.Mantmto: "+to_string(tmp->valor->NoTurnosMantenimiento)+"\"];\n";
 
-//    /sacando enlaces desde la primera posicion a la ultima
-    NodoAvion *tmp2 = ultimo;
-    while(tmp2->anterior !=NULL)
-    {
-        enlaces += tmp2->idNodo+ "->"+tmp2->anterior->idNodo+ ";\n";
-        tmp2 = tmp2->anterior;
-    }
-    acum += nodos + enlaces;
     return acum;
 }
 

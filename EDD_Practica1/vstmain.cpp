@@ -12,10 +12,10 @@ vstMain::vstMain(QWidget *parent) :
     ui(new Ui::vstMain)
 {
     ui->setupUi(this);
-    NoAviones =0;
+    NoAviones =3;
     NoTurnos = 20;
-    NoEscritorios =3;
-    NoMantenimiento =1;
+    NoEscritorios =4;
+    NoMantenimiento =2;
     colaAvion = new ListaAvion();
     colaPasajero = new ListaPasajero();
     circularEquipaje = new ListaEquipaje();
@@ -36,6 +36,7 @@ void vstMain::generarGrafo()
    // escritorios += "\n}\n";
     string mante= lstSmpMantenimiento->acumLstSmple();
      acum += colaAvion->acumLstDoble();
+     acum += colaPasajero->acumLstSimplePasajero("EsperaPajaero");
    // mante += "\n}\n";
     acum += escritorios + mante ;
     acum += "\n}\n";
@@ -60,7 +61,7 @@ void vstMain::creacionEstruct()
 
     Mantenimiento *mant = new Mantenimiento();
     lstSmpMantenimiento->addSimple(mant,"estacion"+to_string(0));
-    for (int mante = 1; mante <= NoMantenimiento; ++mante) {
+    for (int mante = 1; mante < NoMantenimiento; ++mante) {
         Mantenimiento *mant2 = new Mantenimiento();
         lstSmpMantenimiento->addSimple(mant2,"estacion"+to_string(mante));
     }
@@ -71,7 +72,9 @@ void vstMain::logica()
 {
     logicaAvion();
     verificarColaAvion();
-   // verificarColaMant();
+    insertPasajeroEscritorio();
+    verificarColaEsperaEscritorio();
+    verificarColaMant();
     NoTurnos--;
 }
 
@@ -79,9 +82,18 @@ void vstMain::logicaAvion()
 {
     if(NoTurnos != 0)
     {
-         Avion *nuevoAvion = new Avion();
-         nuevoAvion = nuevoAvion->generarAvion();
-         colaAvion->encolarDoble(nuevoAvion,"ColaAvion");
+        if( NoAviones !=0 )
+        {
+            Avion *nuevoAvion = new Avion();
+            nuevoAvion = nuevoAvion->generarAvion();
+            colaAvion->encolarDoble(nuevoAvion,"ColaAvion");
+            NoAviones--;
+        }
+        else
+        {
+
+        }
+
     }
     else
     {
@@ -103,23 +115,9 @@ void vstMain::verificarColaAvion()
 
                 if(bandera !=NULL)
                 {
-                    NodoMantenimiento *mantTmp = lstSmpMantenimiento->primero;
+                    insertAvionMantenimiento(avMant);
+                    insertColaEsperaPasaje(avMant);
 
-                    for (int i = 1; i <= lstSmpMantenimiento->size; ++i) {
-                        if(mantTmp->lstAvion->primero ==NULL){
-                            mantTmp->lstAvion->encolarSimple(avMant,"avMant"+to_string(NoTurnos));
-                            break;
-                        }
-                        if(lstSmpMantenimiento->size == i )
-                        {
-                            mantTmp = lstSmpMantenimiento->primero;
-                            for (int j = 1; j <= lstSmpMantenimiento->size; ++j) {
-                                mantTmp->lstAvion->encolarSimple(avMant,"avMant"+to_string(NoTurnos));
-                                break;
-                            }
-                        }
-                        mantTmp = mantTmp->siguiente;
-                    }
                 }
               //  lstSmpMantenimiento->primero->lstAvion->encolarSimple(avMant,"avMant"+to_string(NoTurnos));
 
@@ -142,22 +140,106 @@ void vstMain::verificarColaMant()
     {
         if(lstSmpMantenimiento->primero !=NULL)
         {
-            if(lstSmpMantenimiento->primero->lstAvion->primero!=NULL)
-            {
-                if(lstSmpMantenimiento->primero->lstAvion->primero->valor->NoTurnosMantenimiento ==0)
+            NodoMantenimiento *tmpMant = lstSmpMantenimiento->primero;
+
+            for (int i = 0; i < NoMantenimiento; ++i) {
+                if(tmpMant->lstAvion->primero !=NULL)
                 {
-                    lstSmpMantenimiento->primero->lstAvion->desencolarSimple();
+                    if(tmpMant->lstAvion->primero->valor->NoTurnosMantenimiento ==0)
+                    {
+                       tmpMant->lstAvion->desencolarSimple();
+                    }
+                    else
+                    {
+                        tmpMant->lstAvion->primero->valor->NoTurnosMantenimiento--;
+                    }
                 }
-                else
-                {
-                    lstSmpMantenimiento->primero->lstAvion->primero->valor->NoTurnosMantenimiento--;
-                }
+                tmpMant = tmpMant->siguiente;
             }
         }
     }
     else
     {
         cout<<"se acabaron los turnos" <<endl;
+    }
+}
+
+void vstMain::insertAvionMantenimiento(Avion *nuevo)
+{
+    NodoMantenimiento *mantTmp = lstSmpMantenimiento->primero;
+
+    for (int i = 1; i <= lstSmpMantenimiento->size; ++i) {
+
+        if(mantTmp->lstAvion->primero ==NULL){
+            mantTmp->lstAvion->encolarSimple(nuevo,"avMant"+to_string(NoTurnos));
+            break;
+        }
+        if(lstSmpMantenimiento->size == i )
+        {
+            mantTmp = lstSmpMantenimiento->primero;
+            for (int j = 1; j <= lstSmpMantenimiento->size; ++j) {
+                mantTmp->lstAvion->encolarSimple(nuevo,"avMant"+to_string(NoTurnos));
+                break;
+            }
+        }
+        mantTmp = mantTmp->siguiente;
+    }
+}
+
+void vstMain::insertColaEsperaPasaje(Avion *avion)
+{
+    for (int i = 1; i <= avion->NoPasajeros; ++i) {
+        Pasajero *nuevoPasajero = new Pasajero();
+        nuevoPasajero = nuevoPasajero->generarPasajero();
+        colaPasajero->encolarSimple(nuevoPasajero,"colaEspera"+to_string(i));
+    }
+}
+
+void vstMain::insertPasajeroEscritorio()
+{
+    if(colaPasajero->primero!=NULL)
+    {
+        NodoPasajero *pasjero = colaPasajero->primero;
+        NodoEscritorio *escritorio = lstDbleEscritorio->primero;
+
+            while(colaPasajero->primero!=NULL)
+            {
+                pasjero = colaPasajero->primero;
+                if(escritorio == NULL)
+                {
+                    break;
+                }
+               if(escritorio->lstPasajeros->size != 10 )
+               {
+                   escritorio->lstPasajeros->encolarSimple(pasjero->valor,to_string(escritorio->valor->letra).c_str());
+               }
+               else
+               {
+                        escritorio = escritorio->siguiente;
+                        continue;
+               }
+               colaPasajero->desencolarSimple();
+            }
+    }
+}
+
+void vstMain::verificarColaEsperaEscritorio()
+{
+    NodoEscritorio  *tmpEscritorio = lstDbleEscritorio->primero;
+    while(tmpEscritorio!=NULL)
+    {
+        if(tmpEscritorio->lstPasajeros->primero !=NULL)
+        {
+            if(tmpEscritorio->lstPasajeros->primero->valor->NoTurnosRegistro == 0)
+            {
+                tmpEscritorio->lstPasajeros->desencolarSimple();
+            }
+            else
+            {
+                tmpEscritorio->lstPasajeros->primero->valor->NoTurnosRegistro--;
+            }
+        }
+        tmpEscritorio = tmpEscritorio->siguiente;
     }
 }
 
