@@ -20,7 +20,7 @@ struct NodoAvion
 public:
     NodoAvion *siguiente;
     NodoAvion *anterior;
-    int idNodo;
+    string idNodo;
     Avion *valor;
     NodoAvion();
     NodoAvion(Avion *valor);
@@ -32,11 +32,12 @@ public:
     NodoAvion *primero;
     NodoAvion *ultimo;
     int size;
-    int contNodo;
+    int contNodo =0;
     ListaAvion();
-    void encolarDoble(Avion *avion); //el avion utiliza una cola doble
-    void encolarSimple(Avion *avion);
+    void encolarDoble(Avion *avion, string id); //el avion utiliza una cola doble
+    void encolarSimple(Avion *avion, string id);
     string acumLstDoble();
+    string acumLstSmple(string idCluster);
     bool desencolarSimple();
     bool desencolarDoble();
 };

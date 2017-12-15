@@ -33,6 +33,7 @@ ListaEscritorio::ListaEscritorio()
     primero = NULL;
     ultimo = NULL;
     size = 0;
+    contNodo = 0;
 }
 
 void ListaEscritorio::addDoble(Escritorio *nuevo_)
@@ -44,7 +45,8 @@ void ListaEscritorio::addDoble(Escritorio *nuevo_)
         primero = nuevo;
         ultimo = nuevo;
         size++;
-        nuevo->idNodo = size;
+        contNodo++;
+        nuevo->idNodo = nuevo->valor->letra + to_string(contNodo);
     }
     else // en esta parte se aplicaran los metodos de ordenacion
     {
@@ -57,7 +59,8 @@ void ListaEscritorio::addDoble(Escritorio *nuevo_)
                 nuevo->anterior = primero;
                 ultimo = nuevo;
                 size++;
-                nuevo->idNodo++;
+                contNodo++;
+                nuevo->idNodo = nuevo->valor->letra + to_string(contNodo);
             }
             else
             {
@@ -69,7 +72,8 @@ void ListaEscritorio::addDoble(Escritorio *nuevo_)
                         nuevo->anterior = ultimo;
                         ultimo = nuevo;
                         size++;
-                         nuevo->idNodo++;
+                        contNodo++;
+                        nuevo->idNodo = nuevo->valor->letra + to_string(contNodo);
                          return;
                     }
                 }
@@ -87,7 +91,8 @@ void ListaEscritorio::addDoble(Escritorio *nuevo_)
                                 tmp->siguiente->anterior = nuevo;
                                 tmp->siguiente = nuevo;
                                 size++;
-                                nuevo->idNodo++;
+                                contNodo++;
+                                nuevo->idNodo = nuevo->valor->letra + to_string(contNodo);
                                 break;
                             }
                         }
@@ -104,7 +109,8 @@ void ListaEscritorio::addDoble(Escritorio *nuevo_)
             primero->anterior = nuevo;
             primero = nuevo;
             size++;
-            nuevo->idNodo++;
+            contNodo++;
+            nuevo->idNodo = nuevo->valor->letra + to_string(contNodo);
         }
         else //las letras son iguales
         {
@@ -130,7 +136,54 @@ int ListaEscritorio::comparacion(NodoEscritorio *nuevo, NodoEscritorio *actual)
     {
         return -1;
     }
-   // return act.(actual->valor->letra);
+    // return act.(actual->valor->letra);
+}
+
+string ListaEscritorio::acumDobleEscritorio()
+{
+    string acum = "subgraph clusterEscritoriosReg{\nrankdir = LR;\n";
+    string acumSubGraph = "";
+    string acumEnlaceSubG = "";
+    string acumNodo = "";
+    string acumEnlace  = "{rank = same;\n";
+//string acumEnlace = "";
+
+    NodoEscritorio *tmp = primero;
+
+    while(tmp->siguiente !=NULL)
+    {
+        acumNodo += tmp->idNodo+"[label=\"Escritorio: " + tmp->valor->letra + "\"];\n";
+        acumEnlace += tmp->idNodo + "->" + tmp->siguiente->idNodo + ";\n";
+
+        if(tmp->lstPasajeros->primero!=NULL)
+        {
+            acumSubGraph = tmp->lstPasajeros->acumLstSimplePasajero("Psjro"+tmp->valor->letra);
+            acumEnlaceSubG += tmp->idNodo +"->"+tmp->lstPasajeros->primero->idNodo + ";\n";
+        }
+
+        tmp = tmp->siguiente;
+    }
+    acumNodo += tmp->idNodo+"[label=\"Escritorio: " + tmp->valor->letra + "\"];\n";
+    if(tmp->siguiente == NULL)
+    {
+        if(tmp->lstPasajeros->primero!=NULL)
+        {
+            acumSubGraph = tmp->lstPasajeros->acumLstSimplePasajero("Psjro"+tmp->valor->letra);
+            acumEnlaceSubG += tmp->idNodo +"->"+tmp->lstPasajeros->primero->idNodo + ";\n";
+        }
+    }
+
+    NodoEscritorio *tmp2 = ultimo;
+    while(tmp2->anterior !=NULL)
+    {
+        acumEnlace += tmp2->idNodo + "->" + tmp2->anterior->idNodo + ";\n";
+        tmp2 = tmp2->anterior;
+    }
+
+    acumEnlace +="\n}\n";
+
+    acum += acumNodo  + acumEnlace +  "}\n" + acumSubGraph +"\n" + acumEnlaceSubG;
+    return acum;
 }
 
 void ListaEscritorio::imprimir()

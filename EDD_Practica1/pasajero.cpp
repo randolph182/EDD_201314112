@@ -41,7 +41,7 @@ ListaPasajero::ListaPasajero()
     size =0;
 }
 
-void ListaPasajero::encolarSimple(Pasajero *pasajero)
+void ListaPasajero::encolarSimple(Pasajero *pasajero,string id)
 {
     NodoPasajero *nuevo = new NodoPasajero(pasajero);
 
@@ -50,8 +50,9 @@ void ListaPasajero::encolarSimple(Pasajero *pasajero)
         primero = nuevo;
         ultimo = nuevo;
         size++;
-        nuevo->idNodo = size;
-        pasajero->idPasajero = size;
+        contNodo++;
+        nuevo->idNodo = id + to_string(contNodo);
+        pasajero->idPasajero  = contNodo;
     }
     else
     {
@@ -60,9 +61,39 @@ void ListaPasajero::encolarSimple(Pasajero *pasajero)
         ultimo->siguiente = nuevo;
         ultimo = nuevo;
         size++;
-        nuevo->idNodo = size;
-        pasajero->idPasajero = size;
+        contNodo++;
+        nuevo->idNodo = id +to_string(contNodo);
+        pasajero->idPasajero = contNodo;
     }
+}
+
+string ListaPasajero::acumLstSimplePasajero(string idCluster)
+{
+
+    string acum = "subgraph cluster"+idCluster+"{\n";
+    string acumNodo = "";
+    string acumEnlace = "";
+
+    NodoPasajero *tmp = primero;
+    while(tmp->siguiente !=NULL)
+    {
+        acumNodo += tmp->idNodo + "[label=\" idPasajero: "+ to_string(tmp->valor->idPasajero)+"\n";
+        acumNodo += "No.Maletas: " + to_string(tmp->valor->NoMaletas) + "\n";
+        acumNodo += "No.Docum: " + to_string(tmp->valor->NoDocumetos) + "\n";
+        acumNodo += "No.TurnosReg: " + to_string(tmp->valor->NoTurnosRegistro) + "\"];\n";
+
+        acumEnlace += tmp->idNodo+"->"+ tmp->siguiente->idNodo + ";\n";
+        tmp = tmp->siguiente;
+    }
+    acumNodo += tmp->idNodo + "[label=\" idPasajero: "+ to_string(tmp->valor->idPasajero)+"\n";
+    acumNodo += "No.Maletas: " + to_string(tmp->valor->NoMaletas) + "\n";
+    acumNodo += "No.Docum: " + to_string(tmp->valor->NoDocumetos) + "\n";
+    acumNodo += "No.TurnosReg: " + to_string(tmp->valor->NoTurnosRegistro) + "\"];\n";
+
+    acum += acumNodo + acumEnlace  + "\n}\n";
+
+    return acum;
+
 }
 
 bool ListaPasajero::desencolarSimple() //la ventaja de tener los datos al inicio es que solo se corre el puntero de Primero

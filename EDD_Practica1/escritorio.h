@@ -15,7 +15,7 @@ public:
     Escritorio *valor;
     ListaPasajero *lstPasajeros;
     ListaDocumento *lstDocumento;
-    int idNodo;
+    string idNodo;
     int contPasajero;
     int maximoPasajero =10;
     NodoEscritorio();
@@ -28,9 +28,11 @@ public:
     NodoEscritorio *primero;
     NodoEscritorio *ultimo;
     int size;
+    int contNodo;
     ListaEscritorio();
     void addDoble(Escritorio *nuevo_);
     int comparacion(NodoEscritorio *nuevo, NodoEscritorio *actual);
+    string acumDobleEscritorio();
     void imprimir();
 };
 

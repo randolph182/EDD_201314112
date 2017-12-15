@@ -12,7 +12,7 @@ struct NodoMantenimiento
     NodoMantenimiento *siguiente;
     Mantenimiento * valor;
     ListaAvion *lstAvion;
-    int idNnodo;
+    string idNodo;
     NodoMantenimiento();
     NodoMantenimiento(Mantenimiento *valor_);
 };
@@ -22,13 +22,16 @@ struct ListaMantenimiento
     NodoMantenimiento *primero;
     NodoMantenimiento *ultimo;
     int size;
-    void addSimple(Mantenimiento *valor_);
+    int contNodo= 0;
+    void addSimple(Mantenimiento *valor_,string id);
+    string acumLstSmple();
 
 };
 
 struct Mantenimiento
 {
 public:
+    int idMantenimiento;
     Mantenimiento();
 };
 

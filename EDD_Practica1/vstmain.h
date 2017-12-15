@@ -6,6 +6,8 @@
 #include "pasajero.h"
 #include "equipaje.h"
 #include "grafo.h"
+#include "escritorio.h"
+#include "mantenimiento.h"
 
 using namespace std;
 namespace Ui {
@@ -25,6 +27,8 @@ public:
     ListaAvion *colaAvion;
     ListaPasajero *colaPasajero;
     ListaEquipaje *circularEquipaje;
+    ListaEscritorio *lstDbleEscritorio;
+    ListaMantenimiento *lstSmpMantenimiento;
     ~vstMain();
 
 private slots:

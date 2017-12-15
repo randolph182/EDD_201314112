@@ -15,8 +15,7 @@ struct NodoPasajero
 {
     NodoPasajero *siguiente;
     Pasajero *valor;
-    int idNodo;
-
+    string idNodo;
     NodoPasajero();
     NodoPasajero(Pasajero *valor_);
 };
@@ -26,8 +25,10 @@ struct ListaPasajero
     NodoPasajero *primero;
     NodoPasajero *ultimo;
     int size;
+    int contNodo =0;
     ListaPasajero();
-    void encolarSimple(Pasajero *pasajero);
+    void encolarSimple(Pasajero *pasajero, string id);
+    string acumLstSimplePasajero(string idCluster);
     bool desencolarSimple();
 };
 

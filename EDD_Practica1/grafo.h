@@ -4,6 +4,9 @@
 #include <fstream>
 #include <iostream>
 #include "avion.h"
+#include "pasajero.h"
+#include "escritorio.h"
+#include "mantenimiento.h"
 
 using namespace std;
 
@@ -13,7 +16,10 @@ struct Grafo
 {
 public:
     void generarGrafoDobleAvion(ListaAvion *lstAvion);
+    void generarGrafoColaPasajero(ListaPasajero *lstPasajero);
+    void generarGrafoEscritorios(ListaEscritorio *lstEscritorios);
     void generarGrafo(string nombre,string info);
+    void generarGrafoMantenimiento(ListaMantenimiento *lstMantenimiento);
     Grafo();
 };
 
