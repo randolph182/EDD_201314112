@@ -7,6 +7,7 @@
 #include "pasajero.h"
 #include "escritorio.h"
 #include "mantenimiento.h"
+#include "equipaje.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ public:
     void generarGrafoEscritorios(ListaEscritorio *lstEscritorios);
     void generarGrafo(string nombre,string info);
     void generarGrafoMantenimiento(ListaMantenimiento *lstMantenimiento);
+    void generarGrafoEquipaje(ListaEquipaje * lstEquipaje);
     Grafo();
 };
 

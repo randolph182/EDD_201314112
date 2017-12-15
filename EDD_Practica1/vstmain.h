@@ -8,6 +8,8 @@
 #include "grafo.h"
 #include "escritorio.h"
 #include "mantenimiento.h"
+#include "equipaje.h"
+#include "documento.h"
 
 using namespace std;
 namespace Ui {
@@ -29,6 +31,14 @@ public:
     ListaEquipaje *circularEquipaje;
     ListaEscritorio *lstDbleEscritorio;
     ListaMantenimiento *lstSmpMantenimiento;
+    ListaEquipaje *lstCircDobEquipaje;
+    ListaDocumento *lstPilaDoc;
+    void generarGrafo();
+    void creacionEstruct();
+    void logica();
+    void logicaAvion();
+    void verificarColaAvion();
+    void verificarColaMant();
     ~vstMain();
 
 private slots:

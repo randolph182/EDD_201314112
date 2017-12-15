@@ -23,7 +23,7 @@ NodoEquipaje::NodoEquipaje()
     anterior = NULL;
 }
 
-void ListaEquipaje::addCircularDoble(Equipaje *valor_)
+void ListaEquipaje::addCircularDoble(Equipaje *valor_, int idCliente)
 {
     NodoEquipaje *nuevo = new NodoEquipaje(valor_);
     if(primero ==NULL && ultimo ==NULL)
@@ -35,7 +35,8 @@ void ListaEquipaje::addCircularDoble(Equipaje *valor_)
         ultimo->siguiente= primero;
         primero->anterior = ultimo;
         size++;
-        nuevo->idNodo++;
+        nuevo->idNodo = "idMaleta"+to_string(idCliente);
+        valor_->idCliente = idCliente;
     }
     else if(primero !=NULL && ultimo ==NULL)
     {
@@ -45,7 +46,8 @@ void ListaEquipaje::addCircularDoble(Equipaje *valor_)
         ultimo->siguiente= primero;
         primero->anterior = ultimo;
         size++;
-        nuevo->idNodo++;
+        nuevo->idNodo = "idMaleta"+to_string(idCliente);
+        valor_->idCliente = idCliente;
     }
     else
     {
@@ -55,7 +57,8 @@ void ListaEquipaje::addCircularDoble(Equipaje *valor_)
         primero->anterior = nuevo;
         ultimo = nuevo;
         size++;
-        nuevo->idNodo++;
+        nuevo->idNodo = "idMaleta"+to_string(idCliente);
+        valor_->idCliente = idCliente;
     }
 }
 
@@ -85,4 +88,34 @@ void ListaEquipaje::quitarCircDoble(int cant)
         }
     }
 
+}
+
+string ListaEquipaje::acumCircularDob()
+{
+    string acum = "subgraph clusterMaletaPasajero{\nrankdir = LR;\n";
+    string acumNodo = "";
+    string acumEnlace  = "{rank = same;\n";
+
+    NodoEquipaje *tmp = primero;
+    do
+    {
+        acumNodo += tmp->idNodo+"[label=\"Maleta: " + to_string(tmp->valor->idCliente) + "\"];\n";
+        acumEnlace += tmp->idNodo +"->"+tmp->siguiente->idNodo + ";\n";
+        tmp = tmp->siguiente;
+    }while(tmp->siguiente != primero);
+
+    acumNodo += tmp->idNodo+"[label=\"Maleta: " + to_string(tmp->valor->idCliente) + "\"];\n";
+    acumEnlace += tmp->idNodo +"->"+tmp->siguiente->idNodo + ";\n";
+
+    NodoEquipaje *tmp2 = ultimo;
+    do
+    {
+        acumEnlace += tmp2->idNodo +"->"+tmp2->anterior->idNodo + ";\n";
+        tmp2 = tmp2->anterior;
+    }while(tmp2->anterior != ultimo);
+    acumEnlace += tmp2->idNodo +"->"+tmp2->anterior->idNodo + ";\n";
+    acumEnlace +="\n}\n";
+
+    acum += acumNodo  + acumEnlace +  "}\n" ;
+    return acum;
 }

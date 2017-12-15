@@ -44,6 +44,14 @@ void Grafo::generarGrafoMantenimiento(ListaMantenimiento *lstMantenimiento)
     generarGrafo("lstMantenimiento",acum);
 }
 
+void Grafo::generarGrafoEquipaje(ListaEquipaje *lstEquipaje)
+{
+    string acum  = "digraph G{\nnode [shape=box];\n";
+    acum += lstEquipaje->acumCircularDob();
+    acum += "\n}\n";
+    generarGrafo("lstEquipaje",acum);
+}
+
 Grafo::Grafo()
 {
 

@@ -43,7 +43,7 @@ void ListaMantenimiento::addSimple(Mantenimiento *valor_, string id)
 
 string ListaMantenimiento::acumLstSmple()
 {
-     string acum = "subgraph clusterEscritoriosReg{\nrankdir = LR;\n";
+     string acum = "subgraph clusterManteAvion{\nrankdir = LR;\n";
      string acumSubGraph = "";
      string acumEnlaceSubG = "";
      string acumNodo = "";
@@ -58,7 +58,7 @@ string ListaMantenimiento::acumLstSmple()
 
          if(tmp->lstAvion->primero!=NULL)
          {
-             acumSubGraph = tmp->lstAvion->acumLstSmple("mantenimiento"+tmp->idNodo);//acumLstSimplePasajero("Psjro"+tmp->valor->letra);
+             acumSubGraph += tmp->lstAvion->acumLstSmple("mantenimiento"+tmp->idNodo);//acumLstSimplePasajero("Psjro"+tmp->valor->letra);
              acumEnlaceSubG += tmp->idNodo +"->"+tmp->lstAvion->primero->idNodo + ";\n";
          }
 
@@ -70,7 +70,7 @@ string ListaMantenimiento::acumLstSmple()
      {
          if(tmp->lstAvion->primero!=NULL)
          {
-             acumSubGraph = tmp->lstAvion->acumLstSmple("mantenimiento"+tmp->idNodo);//acumLstSimplePasajero("Psjro"+tmp->valor->letra);
+             acumSubGraph += tmp->lstAvion->acumLstSmple("mantenimiento"+tmp->idNodo);//acumLstSimplePasajero("Psjro"+tmp->valor->letra);
              acumEnlaceSubG += tmp->idNodo +"->"+tmp->lstAvion->primero->idNodo + ";\n";
          }
      }

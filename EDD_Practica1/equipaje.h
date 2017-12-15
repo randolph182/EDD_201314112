@@ -14,7 +14,7 @@ struct NodoEquipaje
     Equipaje *valor;
     NodoEquipaje(Equipaje *valor_);
     NodoEquipaje();
-    int idNodo;
+    string idNodo;
 };
 
 struct ListaEquipaje
@@ -22,8 +22,9 @@ struct ListaEquipaje
     NodoEquipaje *primero;
     NodoEquipaje *ultimo;
     int size;
-    void addCircularDoble(Equipaje *valor_);
+    void addCircularDoble(Equipaje *valor_, int idCliente);
     void quitarCircDoble(int cant);
+    string acumCircularDob();
 
 };
 

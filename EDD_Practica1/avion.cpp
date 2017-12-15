@@ -207,18 +207,18 @@ bool ListaAvion::desencolarSimple()
 
 bool ListaAvion::desencolarDoble()
 {
-    if(ultimo !=NULL)
+    if(primero !=NULL)
     {
-        if(ultimo->anterior !=NULL)
+        if(primero->siguiente !=NULL)
         {
-            ultimo = ultimo->anterior;
-            ultimo->siguiente = NULL;
+            primero = primero->siguiente;
+            primero->anterior = NULL;
             size--;
             return true;
         }
         else
         {
-            ultimo = NULL;
+            primero = NULL;
             size--;
             return true;
         }

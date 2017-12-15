@@ -14,7 +14,7 @@ struct NodoDocumento
 public:
     NodoDocumento *siguiente;
     Documento *valor;
-    int idNodo;
+    string idNodo;
     NodoDocumento(Documento *valor_);
 };
 
@@ -23,7 +23,8 @@ struct ListaDocumento
 public:
     NodoDocumento *primero;
     int size;
-    void addPila(Documento *valor);
+    void addPila(Documento *valor,string id);
+    string acumPila(string idCluster);
     bool desapilarTodo();
 };
 
