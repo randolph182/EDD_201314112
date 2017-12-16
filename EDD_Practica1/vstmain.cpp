@@ -18,6 +18,7 @@ vstMain::vstMain(QWidget *parent) :
 {
     ui->setupUi(this);
     srand(time(0));
+
 }
 
 void vstMain::configuracionInicial(int noAviones, int noTurnos, int noEscritorios, int noMantenimiento)
@@ -33,6 +34,7 @@ void vstMain::configuracionInicial(int noAviones, int noTurnos, int noEscritorio
     lstSmpMantenimiento = new ListaMantenimiento();
     lstCircDobEquipaje = new ListaEquipaje();
     lstPilaDoc = new ListaDocumento();
+     ui->lblLimiteTurno->setText(to_string(NoTurnos).c_str());
     creacionEstruct();
 }
 
@@ -98,8 +100,6 @@ void vstMain::logica()
 
 void vstMain::logicaAvion()
 {
-    if(NoTurnos != 0)
-    {
         if( NoAviones !=0 )
         {
             Avion *nuevoAvion = new Avion();
@@ -108,17 +108,10 @@ void vstMain::logicaAvion()
             infoAvion  = "arribo Avion: "+to_string(nuevoAvion->idAvion) + "\n\n";
             NoAviones--;
         }
-    }
-    else
-    {
-        cout<<"se acabaron los turnos" <<endl;
-    }
 }
 
 void vstMain::verificarColaAvion()
 {
-    if(NoTurnos !=0)
-    {
         if(colaAvion->primero !=NULL)
         {
             if(colaAvion->primero->valor->NoTurnos==0)
@@ -131,9 +124,7 @@ void vstMain::verificarColaAvion()
                 {
                     insertAvionMantenimiento(avMant);
                     insertColaEsperaPasaje(avMant);
-
                 }
-              //  lstSmpMantenimiento->primero->lstAvion->encolarSimple(avMant,"avMant"+to_string(NoTurnos));
 
             }
             else
@@ -141,11 +132,6 @@ void vstMain::verificarColaAvion()
                 colaAvion->primero->valor->NoTurnos--;
             }
         }
-    }
-    else
-    {
-        cout<<"se acabaron los turnos" <<endl;
-    }
 }
 
 void vstMain::verificarColaMant()
@@ -293,10 +279,6 @@ void vstMain::verificarDocumento(NodoEscritorio *actual)
     {
         actual->lstDocumento->desapilarTodo();
     }
-//    if(actual->lstDocumento->primero !=NULL && actual->lstPasajeros->primero !=NULL)
-//    {
-//        actual->lstDocumento->desapilarTodo();
-//    }
 }
 
 void vstMain::actualizarConsola()
@@ -313,6 +295,7 @@ void vstMain::actualizarConsola()
     infoColaPasajeros = "";
     infoMaletas = "";
     infoMantenimiento = "";
+    ui->lblTurnoActual->setText(to_string(contTurno).c_str());
 }
 
 void vstMain::verificarColaEsperaEscritorio()
