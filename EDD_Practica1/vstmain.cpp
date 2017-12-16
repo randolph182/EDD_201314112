@@ -12,7 +12,7 @@ vstMain::vstMain(QWidget *parent) :
     ui(new Ui::vstMain)
 {
     ui->setupUi(this);
-    NoAviones =3;
+    NoAviones =1;
     NoTurnos = 20;
     NoEscritorios =4;
     NoMantenimiento =2;
@@ -32,13 +32,11 @@ void vstMain::generarGrafo()
     Grafo *g  = new Grafo();
 
     string acum  = "digraph G{\nnode [shape=box];\n";
-    string escritorios = lstDbleEscritorio->acumDobleEscritorio();
-   // escritorios += "\n}\n";
-    string mante= lstSmpMantenimiento->acumLstSmple();
-     acum += colaAvion->acumLstDoble();
+    acum += colaAvion->acumLstDoble();
      acum += colaPasajero->acumLstSimplePasajero("EsperaPajaero");
-   // mante += "\n}\n";
-    acum += escritorios + mante ;
+     acum += circularEquipaje->acumCircularDob();
+    acum += lstDbleEscritorio->acumDobleEscritorio();
+     acum += lstSmpMantenimiento->acumLstSmple();
     acum += "\n}\n";
     g->generarGrafo("estructuras",acum);
 }
@@ -70,12 +68,21 @@ void vstMain::creacionEstruct()
 
 void vstMain::logica()
 {
-    logicaAvion();
-    verificarColaAvion();
-    insertPasajeroEscritorio();
-    verificarColaEsperaEscritorio();
-    verificarColaMant();
-    NoTurnos--;
+    if(NoTurnos !=0)
+    {
+        logicaAvion();
+        verificarColaAvion();
+        insertPasajeroEscritorio();
+        verificarColaEsperaEscritorio();
+        verificarColaMant();
+        NoTurnos--;
+    }
+    else
+    {
+        QMessageBox::information(NULL,"Advertencia","Se acabaron los Turnos");
+    }
+
+
 }
 
 void vstMain::logicaAvion()
@@ -89,11 +96,6 @@ void vstMain::logicaAvion()
             colaAvion->encolarDoble(nuevoAvion,"ColaAvion");
             NoAviones--;
         }
-        else
-        {
-
-        }
-
     }
     else
     {
@@ -192,6 +194,7 @@ void vstMain::insertColaEsperaPasaje(Avion *avion)
         Pasajero *nuevoPasajero = new Pasajero();
         nuevoPasajero = nuevoPasajero->generarPasajero();
         colaPasajero->encolarSimple(nuevoPasajero,"colaEspera"+to_string(i));
+        insertMaletas(nuevoPasajero);
     }
 }
 
@@ -223,6 +226,14 @@ void vstMain::insertPasajeroEscritorio()
     }
 }
 
+void vstMain::insertMaletas(Pasajero *maletaPasajero)
+{
+    for (int i = 1; i <= maletaPasajero->NoMaletas; ++i) {
+        Equipaje *equip = new Equipaje();
+        circularEquipaje->addCircularDoble(equip,to_string(i)+to_string(NoTurnos)+to_string(maletaPasajero->idPasajero));
+    }
+}
+
 void vstMain::verificarColaEsperaEscritorio()
 {
     NodoEscritorio  *tmpEscritorio = lstDbleEscritorio->primero;
@@ -232,7 +243,9 @@ void vstMain::verificarColaEsperaEscritorio()
         {
             if(tmpEscritorio->lstPasajeros->primero->valor->NoTurnosRegistro == 0)
             {
+                verificarMaletas(tmpEscritorio->lstPasajeros->primero->valor->NoMaletas);
                 tmpEscritorio->lstPasajeros->desencolarSimple();
+
             }
             else
             {
@@ -241,6 +254,11 @@ void vstMain::verificarColaEsperaEscritorio()
         }
         tmpEscritorio = tmpEscritorio->siguiente;
     }
+}
+
+void vstMain::verificarMaletas(int cant)
+{
+    circularEquipaje->quitarCircDoble(cant);
 }
 
 

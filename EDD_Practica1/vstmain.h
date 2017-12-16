@@ -39,11 +39,14 @@ public:
     void logicaAvion();
     void verificarColaAvion();
     void verificarColaMant();
+    void verificarColaEsperaEscritorio();
+    void verificarMaletas(int cant);
 
     void insertAvionMantenimiento(Avion *nuevo);
     void insertColaEsperaPasaje(Avion *avion);
     void insertPasajeroEscritorio();
-    void verificarColaEsperaEscritorio();
+    void insertMaletas(Pasajero *maletaPasajero);
+
     ~vstMain();
 
 private slots:

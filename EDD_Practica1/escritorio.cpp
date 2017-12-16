@@ -173,12 +173,12 @@ string ListaEscritorio::acumDobleEscritorio()
         }
     }
 
-//    NodoEscritorio *tmp2 = ultimo;
-//    while(tmp2->anterior !=NULL)
-//    {
-//        acumEnlace += tmp2->idNodo + "->" + tmp2->anterior->idNodo + ";\n";
-//        tmp2 = tmp2->anterior;
-//    }
+    NodoEscritorio *tmp2 = ultimo;
+    while(tmp2->anterior !=NULL)
+    {
+        acumEnlace += tmp2->idNodo + "->" + tmp2->anterior->idNodo + ";\n";
+        tmp2 = tmp2->anterior;
+    }
 
     acumEnlace +="\n}\n";
 
