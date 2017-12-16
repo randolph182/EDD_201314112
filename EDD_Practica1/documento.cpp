@@ -33,25 +33,32 @@ void ListaDocumento::addPila(Documento *valor, string id)
 
 string ListaDocumento::acumPila(string idCluster)
 {
-    string acum = "subgraph cluster"+idCluster+"{\n";
-    string acumNodo = "";
-    string acumEnlace = "";
+//    string acum = "subgraph cluster"+idCluster+"{\n";
+//    string acumNodo = "";
+//    string acumEnlace = "";
 
-    NodoDocumento *tmp = primero;
-    while(tmp->siguiente !=NULL)
+//    NodoDocumento *tmp = primero;
+//    while(tmp->siguiente !=NULL)
+//    {
+//        acumNodo += tmp->idNodo + "[label=\" idPasajero: "+ tmp->valor->idPasajero+"\n";
+
+//        acumNodo +=  "\"];\n";
+
+//        acumEnlace += tmp->idNodo+"->"+ tmp->siguiente->idNodo + ";\n";
+//        tmp = tmp->siguiente;
+//    }
+//    acumNodo += tmp->idNodo + "[label=\" idPasajero: "+ tmp->valor->idPasajero+"\n";
+
+//    acumNodo +=  "\"];\n";
+
+//    acum += acumNodo + acumEnlace  + "\n}\n";
+
+    string acum = "";
+
+    if(primero!=NULL)
     {
-        acumNodo += tmp->idNodo + "[label=\" idPasajero: "+ tmp->valor->idPasajero+"\n";
-
-        acumNodo +=  "\"];\n";
-
-        acumEnlace += tmp->idNodo+"->"+ tmp->siguiente->idNodo + ";\n";
-        tmp = tmp->siguiente;
+        acum += primero->idNodo + "[label=\" No. Doc: "+ to_string(size)+"\"];\n";
     }
-    acumNodo += tmp->idNodo + "[label=\" idPasajero: "+ tmp->valor->idPasajero+"\n";
-
-    acumNodo +=  "\"];\n";
-
-    acum += acumNodo + acumEnlace  + "\n}\n";
 
     return acum;
 }

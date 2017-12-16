@@ -160,16 +160,27 @@ string ListaEscritorio::acumDobleEscritorio()
             acumSubGraph += tmp->lstPasajeros->acumLstSimplePasajero("Psjro"+tmp->valor->letra);
             acumEnlaceSubG += tmp->idNodo +"->"+tmp->lstPasajeros->primero->idNodo + ";\n";
         }
+        if(tmp->lstDocumento->primero!=NULL)
+        {
+            acumSubGraph += tmp->lstDocumento->acumPila("documento"+tmp->valor->letra);
+            acumEnlaceSubG += tmp->idNodo + "->"+ tmp->lstDocumento->primero->idNodo + ";\n";
+        }
 
         tmp = tmp->siguiente;
     }
     acumNodo += tmp->idNodo+"[label=\"Escritorio: " + tmp->valor->letra + "\"];\n";
+
     if(tmp->siguiente == NULL)
     {
         if(tmp->lstPasajeros->primero!=NULL)
         {
             acumSubGraph += tmp->lstPasajeros->acumLstSimplePasajero("Psjro"+tmp->valor->letra);
             acumEnlaceSubG += tmp->idNodo +"->"+tmp->lstPasajeros->primero->idNodo + ";\n";
+        }
+        if(tmp->lstDocumento->primero!=NULL)
+        {
+            acumSubGraph += tmp->lstDocumento->acumPila("documento"+tmp->valor->letra);
+            acumEnlaceSubG += tmp->idNodo + "->"+ tmp->lstDocumento->primero->idNodo + ";\n";
         }
     }
 

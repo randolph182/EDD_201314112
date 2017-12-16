@@ -26,6 +26,14 @@ public:
     int NoTurnos;
     int NoEscritorios;
     int NoMantenimiento;
+    string acumTerminal = "";
+    string infoAvion = "";
+    string infoEscritorios = "";
+    string infoMantenimiento = "";
+    string infoMaletas = "";
+    string infoColaPasajeros = "";
+
+    int contTurno =0;
     ListaAvion *colaAvion;
     ListaPasajero *colaPasajero;
     ListaEquipaje *circularEquipaje;
@@ -33,6 +41,8 @@ public:
     ListaMantenimiento *lstSmpMantenimiento;
     ListaEquipaje *lstCircDobEquipaje;
     ListaDocumento *lstPilaDoc;
+
+    void configuracionInicial(int noAviones,int noTurnos, int noEscritorios, int noMantenimiento);
     void generarGrafo();
     void creacionEstruct();
     void logica();
@@ -46,6 +56,10 @@ public:
     void insertColaEsperaPasaje(Avion *avion);
     void insertPasajeroEscritorio();
     void insertMaletas(Pasajero *maletaPasajero);
+    void insertDocumento();
+    void verificarDocumento(NodoEscritorio *actual);
+
+    void actualizarConsola();
 
     ~vstMain();
 

@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     equipaje.cpp \
     mantenimiento.cpp \
     documento.cpp \
-    grafo.cpp
+    grafo.cpp \
+    vstconfiguracion.cpp
 
 HEADERS  += vstmain.h \
     nodo.h \
@@ -33,6 +34,8 @@ HEADERS  += vstmain.h \
     equipaje.h \
     mantenimiento.h \
     documento.h \
-    grafo.h
+    grafo.h \
+    vstconfiguracion.h
 
-FORMS    += vstmain.ui
+FORMS    += vstmain.ui \
+    vstconfiguracion.ui
