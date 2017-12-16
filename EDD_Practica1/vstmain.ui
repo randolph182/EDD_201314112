@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>652</width>
-    <height>593</height>
+    <width>991</width>
+    <height>793</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="btnSiguiente">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>80</y>
+      <x>890</x>
+      <y>580</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -30,10 +30,10 @@
    <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>120</y>
-      <width>591</width>
-      <height>371</height>
+      <x>120</x>
+      <y>470</y>
+      <width>691</width>
+      <height>251</height>
      </rect>
     </property>
     <property name="font">
@@ -51,13 +51,36 @@ font: 10pt &quot;Sans Serif&quot;;
 color: rgb(255, 255, 255);</string>
     </property>
    </widget>
+   <widget class="QGraphicsView" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>951</width>
+      <height>441</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>450</y>
+      <width>991</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>652</width>
+     <width>991</width>
      <height>20</height>
     </rect>
    </property>

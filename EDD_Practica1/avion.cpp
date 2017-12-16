@@ -161,31 +161,36 @@ string ListaAvion::acumLstDoble()
 
 string ListaAvion::acumLstSmple(string idCluster)
 {
-
-    string acum = "subgraph cluster"+idCluster+"{\n";
-    string acumNodo = "";
-//    string acumEnlace = " {rank = same;\n";
-    string acumEnlace = "";
-
-    NodoAvion *tmp = primero;
-    while(tmp->siguiente !=NULL)
+    string acum = "";
+    if(primero !=NULL)
     {
+         acum += "subgraph cluster"+idCluster+"{\n";
+        string acumNodo = "";
+    //    string acumEnlace = " {rank = same;\n";
+        string acumEnlace = "";
+
+        NodoAvion *tmp = primero;
+        while(tmp->siguiente !=NULL)
+        {
+            acumNodo +=  tmp->idNodo+"[label=\"Avion: "+ to_string(tmp->valor->idAvion)+ "\n";
+            acumNodo += "tipo: "+tmp->valor->tipoAvionStr+"\n";
+            acumNodo += "No.Pasajeros: "+to_string(tmp->valor->NoPasajeros)+"\n";
+            acumNodo += "No.Turnos: "+to_string(tmp->valor->NoTurnos)+"\n";
+            acumNodo += "No.MantmtoReg: "+to_string(tmp->valor->NoTurnosMantenimiento)+"\"];\n";
+            acumEnlace += tmp->idNodo+"->"+ tmp->siguiente->idNodo + ";\n";
+            tmp = tmp->siguiente;
+        }
         acumNodo +=  tmp->idNodo+"[label=\"Avion: "+ to_string(tmp->valor->idAvion)+ "\n";
         acumNodo += "tipo: "+tmp->valor->tipoAvionStr+"\n";
         acumNodo += "No.Pasajeros: "+to_string(tmp->valor->NoPasajeros)+"\n";
         acumNodo += "No.Turnos: "+to_string(tmp->valor->NoTurnos)+"\n";
         acumNodo += "No.MantmtoReg: "+to_string(tmp->valor->NoTurnosMantenimiento)+"\"];\n";
-        acumEnlace += tmp->idNodo+"->"+ tmp->siguiente->idNodo + ";\n";
-        tmp = tmp->siguiente;
-    }
-    acumNodo +=  tmp->idNodo+"[label=\"Avion: "+ to_string(tmp->valor->idAvion)+ "\n";
-    acumNodo += "tipo: "+tmp->valor->tipoAvionStr+"\n";
-    acumNodo += "No.Pasajeros: "+to_string(tmp->valor->NoPasajeros)+"\n";
-    acumNodo += "No.Turnos: "+to_string(tmp->valor->NoTurnos)+"\n";
-    acumNodo += "No.MantmtoReg: "+to_string(tmp->valor->NoTurnosMantenimiento)+"\"];\n";
 
-  //  acumEnlace += "}\n";
-    acum += acumNodo + acumEnlace  + "\n}\n";
+      //  acumEnlace += "}\n";
+        acum += acumNodo + acumEnlace  + "\n}\n";
+    }
+
+
 
     return acum;
 }

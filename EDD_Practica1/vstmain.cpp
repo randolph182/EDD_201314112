@@ -6,6 +6,10 @@
 #include <string>
 #include <QString>
 #include <sstream>
+#include <QPixmap>
+#include <QGraphicsPixmapItem>
+#include <QRectF>
+//#include
 
 
 vstMain::vstMain(QWidget *parent) :
@@ -13,19 +17,6 @@ vstMain::vstMain(QWidget *parent) :
     ui(new Ui::vstMain)
 {
     ui->setupUi(this);
-//    NoAviones =1;
-//    NoTurnos = 200;
-//    NoEscritorios =4;
-//    NoMantenimiento =2;
-//    colaAvion = new ListaAvion();
-//    colaPasajero = new ListaPasajero();
-//    circularEquipaje = new ListaEquipaje();
-//    lstDbleEscritorio = new ListaEscritorio();
-//    lstSmpMantenimiento = new ListaMantenimiento();
-//    lstCircDobEquipaje = new ListaEquipaje();
-//    lstPilaDoc = new ListaDocumento();
-//    creacionEstruct();
-
     srand(time(0));
 }
 
@@ -298,10 +289,14 @@ void vstMain::insertDocumento()
 
 void vstMain::verificarDocumento(NodoEscritorio *actual)
 {
-    if(actual->lstDocumento->primero !=NULL && actual->lstPasajeros->primero !=NULL)
+    if(actual->lstDocumento->primero !=NULL)
     {
         actual->lstDocumento->desapilarTodo();
     }
+//    if(actual->lstDocumento->primero !=NULL && actual->lstPasajeros->primero !=NULL)
+//    {
+//        actual->lstDocumento->desapilarTodo();
+//    }
 }
 
 void vstMain::actualizarConsola()
@@ -330,19 +325,21 @@ void vstMain::verificarColaEsperaEscritorio()
         {
             if(tmpEscritorio->lstPasajeros->primero->valor->NoTurnosRegistro == 0)
             {
-                verificarMaletas(tmpEscritorio->lstPasajeros->primero->valor->NoMaletas);
-                verificarDocumento(tmpEscritorio);
+
+
                 if(tmpEscritorio->lstPasajeros->primero!=NULL)
                 {
                     string letra;
-                    letra += tmpEscritorio->valor->letra;
-                    tmpEscritorio->lstPasajeros->desencolarSimple();
+                    letra += tmpEscritorio->valor->letra;                   
                     infoEscritorios += "Escritorio de Registro " + letra + ": \n";
                     infoEscritorios += "Pasajero Atendido: "+to_string(tmpEscritorio->lstPasajeros->primero->valor->idPasajero)+"\n";
                     infoEscritorios += "Turnos Rerstantes: "+to_string(tmpEscritorio->lstPasajeros->primero->valor->NoTurnosRegistro)+"\n";
                     infoEscritorios += "CantidadDocumentos:"+to_string(tmpEscritorio->lstPasajeros->primero->valor->NoDocumetos)+"\n\n";
 
                 }
+                verificarDocumento(tmpEscritorio);
+                verificarMaletas(tmpEscritorio->lstPasajeros->primero->valor->NoMaletas);
+                tmpEscritorio->lstPasajeros->desencolarSimple();
 
             }
             else
@@ -380,9 +377,14 @@ vstMain::~vstMain()
 void vstMain::on_btnSiguiente_clicked()
 {
 
+
     logica();
     generarGrafo();
     actualizarConsola();
-
+    QGraphicsScene *scene  = new QGraphicsScene();
+    QImage image("estructuras.png");
+    QGraphicsPixmapItem *img = new QGraphicsPixmapItem(QPixmap::fromImage(image));
+    scene->addItem(img);
+    ui->graphicsView->setScene(scene);
 
 }

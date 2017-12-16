@@ -141,59 +141,59 @@ int ListaEscritorio::comparacion(NodoEscritorio *nuevo, NodoEscritorio *actual)
 
 string ListaEscritorio::acumDobleEscritorio()
 {
-    string acum = "subgraph clusterEscritoriosReg{\nrankdir = LR;\n";
-    string acumSubGraph = "";
-    string acumEnlaceSubG = "";
-    string acumNodo = "";
-    string acumEnlace  = "{rank = same;\n";
-//string acumEnlace = "";
 
-    NodoEscritorio *tmp = primero;
+        string acum = "subgraph clusterEscritoriosReg{\nrankdir = LR;\n";
+        string acumSubGraph = "";
+        string acumEnlaceSubG = "";
+        string acumNodo = "";
+        string acumEnlace  = "{rank = same;\n";
 
-    while(tmp->siguiente !=NULL)
-    {
+        NodoEscritorio *tmp = primero;
+
+        while(tmp->siguiente !=NULL)
+        {
+            acumNodo += tmp->idNodo+"[label=\"Escritorio: " + tmp->valor->letra + "\"];\n";
+            acumEnlace += tmp->idNodo + "->" + tmp->siguiente->idNodo + ";\n";
+
+            if(tmp->lstPasajeros->primero!=NULL)
+            {
+                acumSubGraph += tmp->lstPasajeros->acumLstSimplePasajero(to_string(tmp->valor->letra));
+                acumEnlaceSubG += tmp->idNodo +"->"+tmp->lstPasajeros->primero->idNodo + ";\n";
+            }
+            if(tmp->lstDocumento->primero!=NULL)
+            {
+                acumSubGraph += tmp->lstDocumento->acumPila("documento"+tmp->valor->letra);
+                acumEnlaceSubG += tmp->idNodo + "->"+ tmp->lstDocumento->primero->idNodo + ";\n";
+            }
+
+            tmp = tmp->siguiente;
+        }
         acumNodo += tmp->idNodo+"[label=\"Escritorio: " + tmp->valor->letra + "\"];\n";
-        acumEnlace += tmp->idNodo + "->" + tmp->siguiente->idNodo + ";\n";
 
-        if(tmp->lstPasajeros->primero!=NULL)
+        if(tmp->siguiente == NULL)
         {
-            acumSubGraph += tmp->lstPasajeros->acumLstSimplePasajero("Psjro"+tmp->valor->letra);
-            acumEnlaceSubG += tmp->idNodo +"->"+tmp->lstPasajeros->primero->idNodo + ";\n";
+            if(tmp->lstPasajeros->primero!=NULL)
+            {
+                acumSubGraph += tmp->lstPasajeros->acumLstSimplePasajero(to_string(tmp->valor->letra));
+                acumEnlaceSubG += tmp->idNodo +"->"+tmp->lstPasajeros->primero->idNodo + ";\n";
+            }
+            if(tmp->lstDocumento->primero!=NULL)
+            {
+                acumSubGraph += tmp->lstDocumento->acumPila("documento"+tmp->valor->letra);
+                acumEnlaceSubG += tmp->idNodo + "->"+ tmp->lstDocumento->primero->idNodo + ";\n";
+            }
         }
-        if(tmp->lstDocumento->primero!=NULL)
+
+        NodoEscritorio *tmp2 = ultimo;
+        while(tmp2->anterior !=NULL)
         {
-            acumSubGraph += tmp->lstDocumento->acumPila("documento"+tmp->valor->letra);
-            acumEnlaceSubG += tmp->idNodo + "->"+ tmp->lstDocumento->primero->idNodo + ";\n";
+            acumEnlace += tmp2->idNodo + "->" + tmp2->anterior->idNodo + ";\n";
+            tmp2 = tmp2->anterior;
         }
 
-        tmp = tmp->siguiente;
-    }
-    acumNodo += tmp->idNodo+"[label=\"Escritorio: " + tmp->valor->letra + "\"];\n";
+        acumEnlace +="\n}\n";
 
-    if(tmp->siguiente == NULL)
-    {
-        if(tmp->lstPasajeros->primero!=NULL)
-        {
-            acumSubGraph += tmp->lstPasajeros->acumLstSimplePasajero("Psjro"+tmp->valor->letra);
-            acumEnlaceSubG += tmp->idNodo +"->"+tmp->lstPasajeros->primero->idNodo + ";\n";
-        }
-        if(tmp->lstDocumento->primero!=NULL)
-        {
-            acumSubGraph += tmp->lstDocumento->acumPila("documento"+tmp->valor->letra);
-            acumEnlaceSubG += tmp->idNodo + "->"+ tmp->lstDocumento->primero->idNodo + ";\n";
-        }
-    }
-
-    NodoEscritorio *tmp2 = ultimo;
-    while(tmp2->anterior !=NULL)
-    {
-        acumEnlace += tmp2->idNodo + "->" + tmp2->anterior->idNodo + ";\n";
-        tmp2 = tmp2->anterior;
-    }
-
-    acumEnlace +="\n}\n";
-
-    acum += acumNodo  + acumEnlace +  "}\n" + acumSubGraph +"\n" + acumEnlaceSubG;
+        acum += acumNodo  + acumEnlace +  "}\n" + acumSubGraph +"\n" + acumEnlaceSubG;
     return acum;
 }
 
