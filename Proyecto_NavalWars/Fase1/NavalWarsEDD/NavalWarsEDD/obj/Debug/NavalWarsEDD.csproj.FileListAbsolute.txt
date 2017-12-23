@@ -1,0 +1,6 @@
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsEDD\NavalWarsEDD\bin\NavalWarsEDD.dll.config
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsEDD\NavalWarsEDD\bin\NavalWarsEDD.dll
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsEDD\NavalWarsEDD\bin\NavalWarsEDD.pdb
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsEDD\NavalWarsEDD\obj\Debug\NavalWarsEDD.csprojResolveAssemblyReference.cache
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsEDD\NavalWarsEDD\obj\Debug\NavalWarsEDD.dll
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsEDD\NavalWarsEDD\obj\Debug\NavalWarsEDD.pdb

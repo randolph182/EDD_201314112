@@ -1,0 +1,6 @@
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsCliente\NavalWarsCliente\bin\NavalWarsCliente.dll.config
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsCliente\NavalWarsCliente\bin\NavalWarsCliente.dll
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsCliente\NavalWarsCliente\bin\NavalWarsCliente.pdb
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsCliente\NavalWarsCliente\obj\Debug\NavalWarsCliente.csprojResolveAssemblyReference.cache
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsCliente\NavalWarsCliente\obj\Debug\NavalWarsCliente.dll
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsCliente\NavalWarsCliente\obj\Debug\NavalWarsCliente.pdb
