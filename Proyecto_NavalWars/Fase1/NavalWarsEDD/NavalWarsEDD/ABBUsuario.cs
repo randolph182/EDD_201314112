@@ -149,7 +149,7 @@ namespace NavalWarsEDD
                     while(tmp2.derecha != null)
                     {
                         tmp = tmp2;
-                        tmp2 = tmp2.izquierda;
+                        tmp2 = tmp2.derecha;
                     }
                     actual.informacion = tmp2.informacion;
                     if (tmp == actual)
