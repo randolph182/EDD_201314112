@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="ABBUsuario.cs" />
     <Compile Include="Grafo.cs" />
+    <Compile Include="Juegos.cs" />
     <Compile Include="Service1.asmx.cs">
       <DependentUpon>Service1.asmx</DependentUpon>
       <SubType>Component</SubType>

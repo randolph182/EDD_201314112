@@ -17,7 +17,10 @@
                 <asp:Label ID="Label1" runat="server" Text="Administrador" Font-Size="30pt"></asp:Label>
                 <br />
                 <br />
-                <asp:Button ID="btnAdminUsuarios" runat="server" Text="Administrar Usuarios" OnClick="btnAdminUsuarios_Click" />
+                <asp:Button ID="btnAdminUsuarios" runat="server" Text="Administrar Usuarios" OnClick="btnAdminUsuarios_Click" Width="240px" />
+                <br />
+                <br />
+                <asp:Button ID="btnJuegos" runat="server" Text="Administrar Lista de Juegos" OnClick="btnJuegos_Click" />
                 <br />
                 <br />
                 <br />

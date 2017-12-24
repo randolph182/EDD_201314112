@@ -103,6 +103,74 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="buscarUsuarioNick">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscarUsuarioNickResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="buscarUsuarioNickResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addjuegosUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickUsuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nickOp" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="uniDespl" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="uniSobrev" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="uniDestru" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="gano" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addjuegosUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="addjuegosUsuarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminarJuegosUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickUsuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idJuego" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminarJuegosUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eliminarJuegosUsuarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarJuegosUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickUsuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idJuego" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nickOp" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="uniDespla" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="uniSobrev" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="uniDestru" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="gano" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarJuegosUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ModificarJuegosUsuarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -147,6 +215,30 @@
   <wsdl:message name="modificarUsuarioSoapOut">
     <wsdl:part name="parameters" element="tns:modificarUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="buscarUsuarioNickSoapIn">
+    <wsdl:part name="parameters" element="tns:buscarUsuarioNick" />
+  </wsdl:message>
+  <wsdl:message name="buscarUsuarioNickSoapOut">
+    <wsdl:part name="parameters" element="tns:buscarUsuarioNickResponse" />
+  </wsdl:message>
+  <wsdl:message name="addjuegosUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:addjuegosUsuario" />
+  </wsdl:message>
+  <wsdl:message name="addjuegosUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:addjuegosUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminarJuegosUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminarJuegosUsuario" />
+  </wsdl:message>
+  <wsdl:message name="eliminarJuegosUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminarJuegosUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarJuegosUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarJuegosUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ModificarJuegosUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarJuegosUsuarioResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -175,6 +267,22 @@
     <wsdl:operation name="modificarUsuario">
       <wsdl:input message="tns:modificarUsuarioSoapIn" />
       <wsdl:output message="tns:modificarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarUsuarioNick">
+      <wsdl:input message="tns:buscarUsuarioNickSoapIn" />
+      <wsdl:output message="tns:buscarUsuarioNickSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addjuegosUsuario">
+      <wsdl:input message="tns:addjuegosUsuarioSoapIn" />
+      <wsdl:output message="tns:addjuegosUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarJuegosUsuario">
+      <wsdl:input message="tns:eliminarJuegosUsuarioSoapIn" />
+      <wsdl:output message="tns:eliminarJuegosUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarJuegosUsuario">
+      <wsdl:input message="tns:ModificarJuegosUsuarioSoapIn" />
+      <wsdl:output message="tns:ModificarJuegosUsuarioSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -242,6 +350,42 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="buscarUsuarioNick">
+      <soap:operation soapAction="http://tempuri.org/buscarUsuarioNick" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addjuegosUsuario">
+      <soap:operation soapAction="http://tempuri.org/addjuegosUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarJuegosUsuario">
+      <soap:operation soapAction="http://tempuri.org/eliminarJuegosUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarJuegosUsuario">
+      <soap:operation soapAction="http://tempuri.org/ModificarJuegosUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -301,6 +445,42 @@
     </wsdl:operation>
     <wsdl:operation name="modificarUsuario">
       <soap12:operation soapAction="http://tempuri.org/modificarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarUsuarioNick">
+      <soap12:operation soapAction="http://tempuri.org/buscarUsuarioNick" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addjuegosUsuario">
+      <soap12:operation soapAction="http://tempuri.org/addjuegosUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarJuegosUsuario">
+      <soap12:operation soapAction="http://tempuri.org/eliminarJuegosUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarJuegosUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ModificarJuegosUsuario" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

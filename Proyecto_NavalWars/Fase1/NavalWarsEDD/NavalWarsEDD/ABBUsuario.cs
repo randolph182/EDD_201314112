@@ -10,13 +10,16 @@ namespace NavalWarsEDD
         public Usuario informacion;
         public NodoUsuario izquierda;
         public NodoUsuario derecha;
+        public Juegos lstJuegos;
         public NodoUsuario()
         {
+            lstJuegos = new Juegos();
             izquierda = null;
             derecha = null;
         }
         public NodoUsuario(ref Usuario info)
         {
+            lstJuegos = new Juegos();
             this.informacion = info;
             izquierda = null;
             derecha = null;

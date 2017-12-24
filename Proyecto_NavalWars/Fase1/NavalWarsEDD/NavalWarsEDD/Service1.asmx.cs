@@ -17,6 +17,7 @@ namespace NavalWarsEDD
     public class Service1 : System.Web.Services.WebService
     {
         public static ABBUsuario usuarioABB = new ABBUsuario();
+
         Grafo g = new Grafo();
 
         [WebMethod]
@@ -80,6 +81,70 @@ namespace NavalWarsEDD
         public bool modificarUsuario(string nickname,string nuevoNick,string nombre,string password,string email,int conectado)
         {
             return usuarioABB.modificar(nickname, nuevoNick, nombre, password, email, conectado);
+        }
+
+        [WebMethod]
+        public bool buscarUsuarioNick(string nickname)
+        {
+            NodoUsuario buscado = usuarioABB.buscar(nickname);
+
+            if (buscado != null)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
+        /* -------------------------- Metodos para agregar Juegos a los usuarios --------------------------*/
+
+
+        [WebMethod]
+        public bool addjuegosUsuario(string nickUsuario,string nickOp,int uniDespl, int uniSobrev,int uniDestru,int gano)
+        {
+            NodoUsuario usuario = usuarioABB.buscar(nickUsuario);
+            if (usuario != null)
+            {
+                Juego nuevoJuego = new Juego(nickOp, uniDespl, uniSobrev, uniDestru, gano);
+                usuario.lstJuegos.add(nuevoJuego);
+                return true;
+            }
+            else
+                return false;
+        }
+
+        [WebMethod]
+        public bool eliminarJuegosUsuario(string nickUsuario,string idJuego)
+        {
+            NodoUsuario usuario = usuarioABB.buscar(nickUsuario);
+            
+            if (usuario != null)
+            {
+                bool eliminado = usuario.lstJuegos.eliminar(idJuego);
+                if (eliminado)
+                    return true;
+                else
+                    return false;
+            }
+            else
+                return false;
+               
+        }
+
+        [WebMethod]
+        public bool ModificarJuegosUsuario(string nickUsuario,string idJuego,string nickOp,int uniDespla,int uniSobrev,int uniDestru,int gano)
+        {
+            NodoUsuario usuario = usuarioABB.buscar(nickUsuario);
+            if (usuario != null)
+            {
+                bool modificado = usuario.lstJuegos.modificar(idJuego, nickOp, uniDespla, uniSobrev, uniDestru, gano);
+                if (modificado)
+                    return true;
+                else
+                    return false;
+            }
+            else
+                return false;
         }
     }
 }

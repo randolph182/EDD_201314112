@@ -18,5 +18,10 @@ namespace NavalWarsCliente
         {
             Response.Redirect("AdminUsuarios.aspx");
         }
+
+        protected void btnJuegos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminLstJuegos.aspx");
+        }
     }
 }

@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Administrador.aspx" />
+    <Content Include="AdminLstJuegos.aspx" />
     <Content Include="AdminUsuarios.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Login.aspx" />
@@ -82,6 +83,13 @@
     </Compile>
     <Compile Include="Administrador.aspx.designer.cs">
       <DependentUpon>Administrador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminLstJuegos.aspx.cs">
+      <DependentUpon>AdminLstJuegos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminLstJuegos.aspx.designer.cs">
+      <DependentUpon>AdminLstJuegos.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminUsuarios.aspx.cs">
       <DependentUpon>AdminUsuarios.aspx</DependentUpon>
