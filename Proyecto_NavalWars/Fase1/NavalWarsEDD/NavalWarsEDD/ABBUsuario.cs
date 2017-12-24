@@ -72,8 +72,6 @@ namespace NavalWarsEDD
         public NodoUsuario buscar(string nick)
         {
                 return buscar(ref raiz, nick);
-
-            
         }
 
         public  NodoUsuario buscar(ref NodoUsuario actual,string  dato)
@@ -158,12 +156,41 @@ namespace NavalWarsEDD
                         tmp.derecha = tmp2.izquierda;
 
                     return true;
-
                 }
-
-
             }
         }
+
+        public bool modificar(string nickName,string nickNuevo, string nombre, string password, string email, int conectado)
+        {
+            NodoUsuario encontrado = buscar(nickName);
+            if(nickNuevo != "")
+            {
+                if (encontrado != null)
+                {
+                    bool eliminado = eliminar(nickName);
+                    if (eliminado)
+                    {
+                        Usuario act = new Usuario(nombre, nickNuevo, password, email, conectado);
+                        insertar(ref act);
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                else
+                    return false;
+
+            }
+            else
+            {
+                encontrado.informacion.nombre = nombre;
+                encontrado.informacion.password = password;
+                encontrado.informacion.email = email;
+                encontrado.informacion.conectado = conectado;
+                return true;
+            }
+        }
+
 
     }
 }

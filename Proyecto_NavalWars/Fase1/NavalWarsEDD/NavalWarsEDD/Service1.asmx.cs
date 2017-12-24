@@ -57,5 +57,29 @@ namespace NavalWarsEDD
         {
             return usuarioABB.eliminar(nickname);
         }
+
+        [WebMethod]
+        public List<string> obtenerInfoUsuario(string nickname)
+        {
+            List<string> listaInfo = new List<string>();
+
+            NodoUsuario encontrado = usuarioABB.buscar(nickname);
+            if(encontrado !=null)
+            {
+                listaInfo.Add(encontrado.informacion.nickName);
+                listaInfo.Add(encontrado.informacion.nombre);
+                listaInfo.Add(encontrado.informacion.password);
+                listaInfo.Add(encontrado.informacion.email);
+                listaInfo.Add(encontrado.informacion.conectado.ToString());
+            }
+
+            return listaInfo;
+        }
+
+        [WebMethod]
+        public bool modificarUsuario(string nickname,string nuevoNick,string nombre,string password,string email,int conectado)
+        {
+            return usuarioABB.modificar(nickname, nuevoNick, nombre, password, email, conectado);
+        }
     }
 }

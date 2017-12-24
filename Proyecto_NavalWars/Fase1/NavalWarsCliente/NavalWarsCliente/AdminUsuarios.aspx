@@ -15,6 +15,24 @@
         .auto-style5 {
             width: 421px;
         }
+        .auto-style7 {
+            width: 85px;
+        }
+        .auto-style12 {
+            width: 271px;
+        }
+        .auto-style13 {
+            width: 126px;
+        }
+        .auto-style14 {
+            width: 173px;
+        }
+        .auto-style15 {
+            width: 171px;
+        }
+        .auto-style16 {
+            width: 152px;
+        }
     </style>
 </head>
 <body>
@@ -32,7 +50,7 @@
                 <asp:Button ID="btnAgregarUsuario" runat="server" Text="Agregar Usuario" OnClick="btnAgregarUsuario_Click" Width="149px" />
                 <br />
                 <br />
-                <asp:Button ID="btnModificarUsuario" runat="server" Text="Modificar Usuario" />
+                <asp:Button ID="btnModificarUsuario" runat="server" Text="Modificar Usuario" OnClick="btnModificarUsuario_Click" />
                 <br />
                 <br />
                 <asp:Button ID="btnEliminarUsuario" runat="server" Text="Eliminar Usuario" Width="146px" OnClick="btnEliminarUsuario_Click" />
@@ -111,6 +129,121 @@
             </asp:View>
             <br />
             <asp:View ID="View3" runat="server">
+                <asp:Label ID="Label4" runat="server" Font-Size="25pt" Text="Modificacion de Usuarios"></asp:Label>
+                <br />
+                <br />
+                <table style="width:100%;">
+                    <tr>
+                        <td class="auto-style15">&nbsp;</td>
+                        <td class="auto-style16">&nbsp;</td>
+                        <td class="auto-style14">&nbsp;</td>
+                        <td class="auto-style7">Nickname:</td>
+                        <td class="auto-style13">
+                            <asp:TextBox ID="txtNickNameNuevoUMod" runat="server"></asp:TextBox>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style15">&nbsp;</td>
+                        <td class="auto-style16">&nbsp;</td>
+                        <td class="auto-style14">&nbsp;</td>
+                        <td class="auto-style7">Nombre:</td>
+                        <td class="auto-style13">
+                            <asp:TextBox ID="txtNombreUMod" runat="server"></asp:TextBox>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style15">&nbsp;</td>
+                        <td class="auto-style16">Nickname del Usuario:</td>
+                        <td class="auto-style14">
+                            <asp:TextBox ID="txtNickNameUMod" runat="server" Width="134px"></asp:TextBox>
+                        </td>
+                        <td class="auto-style7">Password:</td>
+                        <td class="auto-style13">
+                            <asp:TextBox ID="txtPasswordUMod" runat="server"></asp:TextBox>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style15">&nbsp;</td>
+                        <td class="auto-style16">
+                            <br />
+                        </td>
+                        <td class="auto-style14">
+                            <asp:Button ID="btnBuscarNickUMod" runat="server" Text="Buscar" OnClick="btnBuscarNickUMod_Click" />
+                        </td>
+                        <td class="auto-style7">Email:</td>
+                        <td class="auto-style13">
+                            <asp:TextBox ID="txtEmailUMod" runat="server"></asp:TextBox>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                   <tr>
+                        <td class="auto-style15">&nbsp;</td>
+                        <td class="auto-style16">&nbsp;</td>
+                        <td class="auto-style14">&nbsp;</td>
+                        <td class="auto-style7">Conectado</td>
+                        <td class="auto-style13">
+                            <asp:TextBox ID="txtConectadoUMod" runat="server"></asp:TextBox>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                     <tr>
+                        <td class="auto-style15">&nbsp;</td>
+                        <td class="auto-style16">&nbsp;</td>
+                        <td class="auto-style14">&nbsp;</td>
+                        <td class="auto-style7">
+                            <br />
+                            <br />
+                         </td>
+                        <td class="auto-style13">
+                            <asp:Button ID="btnModificarUMod" runat="server" Text="Modificar" OnClick="btnModificarUM_Click" />
+                         </td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                                        <tr>
+                        <td class="auto-style15">&nbsp;</td>
+                        <td class="auto-style16">&nbsp;</td>
+                        <td class="auto-style14">&nbsp;</td>
+                        <td class="auto-style7">&nbsp;</td>
+                        <td class="auto-style13">
+                            <asp:Label ID="lblMensajeUModificado" runat="server" Text="[ ]"></asp:Label>
+                                            </td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style15">&nbsp;</td>
+                        <td class="auto-style16">&nbsp;</td>
+                        <td class="auto-style14">
+                            <asp:Button ID="btnRegresarUMod" runat="server" Text="Regresar" OnClick="btnRegresarUMod_Click" />
+                        </td>
+                        <td class="auto-style7">&nbsp;</td>
+                        <td class="auto-style13">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style15">&nbsp;</td>
+                        <td class="auto-style16">&nbsp;</td>
+                        <td class="auto-style14">&nbsp;</td>
+                        <td class="auto-style7">&nbsp;</td>
+                        <td class="auto-style13">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+
+                </table>
+                <br />
+                <br />
+                <br />
             </asp:View>
             <br />
             <asp:View ID="View4" runat="server">

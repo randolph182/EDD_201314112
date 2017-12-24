@@ -9,7 +9,16 @@
 //------------------------------------------------------------------------------
 
 namespace NavalWarsCliente.ServiceReference1 {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfString", Namespace="http://tempuri.org/", ItemName="string")]
+    [System.SerializableAttribute()]
+    public class ArrayOfString : System.Collections.Generic.List<string> {
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.Service1Soap")]
@@ -33,6 +42,14 @@ namespace NavalWarsCliente.ServiceReference1 {
         // CODEGEN: Generating message contract since element name nickname from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/eliminarUsuario", ReplyAction="*")]
         NavalWarsCliente.ServiceReference1.eliminarUsuarioResponse eliminarUsuario(NavalWarsCliente.ServiceReference1.eliminarUsuarioRequest request);
+        
+        // CODEGEN: Generating message contract since element name nickname from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerInfoUsuario", ReplyAction="*")]
+        NavalWarsCliente.ServiceReference1.obtenerInfoUsuarioResponse obtenerInfoUsuario(NavalWarsCliente.ServiceReference1.obtenerInfoUsuarioRequest request);
+        
+        // CODEGEN: Generating message contract since element name nickname from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/modificarUsuario", ReplyAction="*")]
+        NavalWarsCliente.ServiceReference1.modificarUsuarioResponse modificarUsuario(NavalWarsCliente.ServiceReference1.modificarUsuarioRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -320,6 +337,162 @@ namespace NavalWarsCliente.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class obtenerInfoUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="obtenerInfoUsuario", Namespace="http://tempuri.org/", Order=0)]
+        public NavalWarsCliente.ServiceReference1.obtenerInfoUsuarioRequestBody Body;
+        
+        public obtenerInfoUsuarioRequest() {
+        }
+        
+        public obtenerInfoUsuarioRequest(NavalWarsCliente.ServiceReference1.obtenerInfoUsuarioRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class obtenerInfoUsuarioRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string nickname;
+        
+        public obtenerInfoUsuarioRequestBody() {
+        }
+        
+        public obtenerInfoUsuarioRequestBody(string nickname) {
+            this.nickname = nickname;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class obtenerInfoUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="obtenerInfoUsuarioResponse", Namespace="http://tempuri.org/", Order=0)]
+        public NavalWarsCliente.ServiceReference1.obtenerInfoUsuarioResponseBody Body;
+        
+        public obtenerInfoUsuarioResponse() {
+        }
+        
+        public obtenerInfoUsuarioResponse(NavalWarsCliente.ServiceReference1.obtenerInfoUsuarioResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class obtenerInfoUsuarioResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public NavalWarsCliente.ServiceReference1.ArrayOfString obtenerInfoUsuarioResult;
+        
+        public obtenerInfoUsuarioResponseBody() {
+        }
+        
+        public obtenerInfoUsuarioResponseBody(NavalWarsCliente.ServiceReference1.ArrayOfString obtenerInfoUsuarioResult) {
+            this.obtenerInfoUsuarioResult = obtenerInfoUsuarioResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class modificarUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="modificarUsuario", Namespace="http://tempuri.org/", Order=0)]
+        public NavalWarsCliente.ServiceReference1.modificarUsuarioRequestBody Body;
+        
+        public modificarUsuarioRequest() {
+        }
+        
+        public modificarUsuarioRequest(NavalWarsCliente.ServiceReference1.modificarUsuarioRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class modificarUsuarioRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string nickname;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string nuevoNick;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string nombre;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string email;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+        public int conectado;
+        
+        public modificarUsuarioRequestBody() {
+        }
+        
+        public modificarUsuarioRequestBody(string nickname, string nuevoNick, string nombre, string password, string email, int conectado) {
+            this.nickname = nickname;
+            this.nuevoNick = nuevoNick;
+            this.nombre = nombre;
+            this.password = password;
+            this.email = email;
+            this.conectado = conectado;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class modificarUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="modificarUsuarioResponse", Namespace="http://tempuri.org/", Order=0)]
+        public NavalWarsCliente.ServiceReference1.modificarUsuarioResponseBody Body;
+        
+        public modificarUsuarioResponse() {
+        }
+        
+        public modificarUsuarioResponse(NavalWarsCliente.ServiceReference1.modificarUsuarioResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class modificarUsuarioResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool modificarUsuarioResult;
+        
+        public modificarUsuarioResponseBody() {
+        }
+        
+        public modificarUsuarioResponseBody(bool modificarUsuarioResult) {
+            this.modificarUsuarioResult = modificarUsuarioResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface Service1SoapChannel : NavalWarsCliente.ServiceReference1.Service1Soap, System.ServiceModel.IClientChannel {
     }
@@ -405,6 +578,37 @@ namespace NavalWarsCliente.ServiceReference1 {
             inValue.Body.nickname = nickname;
             NavalWarsCliente.ServiceReference1.eliminarUsuarioResponse retVal = ((NavalWarsCliente.ServiceReference1.Service1Soap)(this)).eliminarUsuario(inValue);
             return retVal.Body.eliminarUsuarioResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NavalWarsCliente.ServiceReference1.obtenerInfoUsuarioResponse NavalWarsCliente.ServiceReference1.Service1Soap.obtenerInfoUsuario(NavalWarsCliente.ServiceReference1.obtenerInfoUsuarioRequest request) {
+            return base.Channel.obtenerInfoUsuario(request);
+        }
+        
+        public NavalWarsCliente.ServiceReference1.ArrayOfString obtenerInfoUsuario(string nickname) {
+            NavalWarsCliente.ServiceReference1.obtenerInfoUsuarioRequest inValue = new NavalWarsCliente.ServiceReference1.obtenerInfoUsuarioRequest();
+            inValue.Body = new NavalWarsCliente.ServiceReference1.obtenerInfoUsuarioRequestBody();
+            inValue.Body.nickname = nickname;
+            NavalWarsCliente.ServiceReference1.obtenerInfoUsuarioResponse retVal = ((NavalWarsCliente.ServiceReference1.Service1Soap)(this)).obtenerInfoUsuario(inValue);
+            return retVal.Body.obtenerInfoUsuarioResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NavalWarsCliente.ServiceReference1.modificarUsuarioResponse NavalWarsCliente.ServiceReference1.Service1Soap.modificarUsuario(NavalWarsCliente.ServiceReference1.modificarUsuarioRequest request) {
+            return base.Channel.modificarUsuario(request);
+        }
+        
+        public bool modificarUsuario(string nickname, string nuevoNick, string nombre, string password, string email, int conectado) {
+            NavalWarsCliente.ServiceReference1.modificarUsuarioRequest inValue = new NavalWarsCliente.ServiceReference1.modificarUsuarioRequest();
+            inValue.Body = new NavalWarsCliente.ServiceReference1.modificarUsuarioRequestBody();
+            inValue.Body.nickname = nickname;
+            inValue.Body.nuevoNick = nuevoNick;
+            inValue.Body.nombre = nombre;
+            inValue.Body.password = password;
+            inValue.Body.email = email;
+            inValue.Body.conectado = conectado;
+            NavalWarsCliente.ServiceReference1.modificarUsuarioResponse retVal = ((NavalWarsCliente.ServiceReference1.Service1Soap)(this)).modificarUsuario(inValue);
+            return retVal.Body.modificarUsuarioResult;
         }
     }
 }

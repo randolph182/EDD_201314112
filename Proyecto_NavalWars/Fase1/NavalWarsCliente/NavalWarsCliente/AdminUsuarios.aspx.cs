@@ -74,9 +74,51 @@ namespace NavalWarsCliente
             ClaseGlobal.servidorPrincipal.generarArbol();
         }
 
+        protected void btnModificarUsuario_Click(object sender, EventArgs e)
+        {
+            MultiView1.ActiveViewIndex = 2; //view3
+        }
 
+        protected void btnModificarUM_Click(object sender, EventArgs e)
+        {
+            if(txtNickNameUMod.Text == txtNickNameNuevoUMod.Text)
+            {
+                bool modificado = ClaseGlobal.servidorPrincipal.modificarUsuario(txtNickNameUMod.Text, "", txtNombreUMod.Text, txtPasswordUMod.Text, txtEmailUMod.Text, Convert.ToInt16(txtConectadoUMod.Text));
+                if(modificado)
+                {
+                    lblMensajeUModificado.Text = "Se modifico Correctamente";
+                }
+            }
+            else
+            {
+                bool modificado = ClaseGlobal.servidorPrincipal.modificarUsuario(txtNickNameUMod.Text, txtNickNameNuevoUMod.Text, txtNombreUMod.Text, txtPasswordUMod.Text, txtEmailUMod.Text, Convert.ToInt16(txtConectadoUMod.Text));
+                lblMensajeUModificado.Text = "Se modifico Correctamente";
+            }
+            MultiView1.ActiveViewIndex = 2;
+        }
 
+        protected void btnBuscarNickUMod_Click(object sender, EventArgs e)
+        {
+             List<string> info = ClaseGlobal.servidorPrincipal.obtenerInfoUsuario(txtNickNameUMod.Text);
 
+            if(info.Count != 0) //signifia que si contiene informacioin 
+            {
+                txtNickNameNuevoUMod.Text = info[0];
+                txtNombreUMod.Text = info[1];
+                txtPasswordUMod.Text = info[2];
+                txtEmailUMod.Text = info[3];
+                txtConectadoUMod.Text = info[4];
+            }
+            else
+                lblMensajeUModificado.Text = "El usuario no exite o salio algo mal.";
+            MultiView1.ActiveViewIndex = 2;
+        }
+
+        protected void btnRegresarUMod_Click(object sender, EventArgs e)
+        {
+            MultiView1.ActiveViewIndex = 0;
+        }
+        
         
 
     }
