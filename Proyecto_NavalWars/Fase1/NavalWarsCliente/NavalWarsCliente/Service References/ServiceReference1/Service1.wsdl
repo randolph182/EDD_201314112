@@ -19,18 +19,51 @@
             <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="conectado" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="conectado" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="insertarUsuarioResponse">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="insertarUsuarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="generarArbol">
         <s:complexType />
       </s:element>
       <s:element name="generarArbolResponse">
         <s:complexType />
+      </s:element>
+      <s:element name="buscarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="buscarUsuarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eliminarUsuarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
     </s:schema>
   </wsdl:types>
@@ -52,6 +85,18 @@
   <wsdl:message name="generarArbolSoapOut">
     <wsdl:part name="parameters" element="tns:generarArbolResponse" />
   </wsdl:message>
+  <wsdl:message name="buscarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:buscarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="buscarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:buscarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="eliminarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminarUsuarioResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -64,6 +109,14 @@
     <wsdl:operation name="generarArbol">
       <wsdl:input message="tns:generarArbolSoapIn" />
       <wsdl:output message="tns:generarArbolSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarUsuario">
+      <wsdl:input message="tns:buscarUsuarioSoapIn" />
+      <wsdl:output message="tns:buscarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarUsuario">
+      <wsdl:input message="tns:eliminarUsuarioSoapIn" />
+      <wsdl:output message="tns:eliminarUsuarioSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -95,6 +148,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="buscarUsuario">
+      <soap:operation soapAction="http://tempuri.org/buscarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarUsuario">
+      <soap:operation soapAction="http://tempuri.org/eliminarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -118,6 +189,24 @@
     </wsdl:operation>
     <wsdl:operation name="generarArbol">
       <soap12:operation soapAction="http://tempuri.org/generarArbol" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/buscarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/eliminarUsuario" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

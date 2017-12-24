@@ -25,16 +25,37 @@ namespace NavalWarsEDD
             return "Hello World";
         }
         [WebMethod]
-        public void insertarUsuario(string nickname,string nombre,string password,string email,bool conectado)
+        public bool insertarUsuario(string nickname,string nombre,string password,string email,int conectado)
         {
             Usuario nuevoUsurio = new Usuario(nombre, nickname, password, email, conectado);
-            usuarioABB.insertar(ref nuevoUsurio);
+            return usuarioABB.insertar(ref nuevoUsurio);
         }
 
         [WebMethod]
         public void generarArbol()
         {
             g.generarABBUsuario(ref usuarioABB.raiz);
+        }
+
+        [WebMethod]
+        public bool buscarUsuario(string nickname,string password)
+        {
+            NodoUsuario buscado =  usuarioABB.buscar(nickname);
+
+            if(buscado !=null)
+            {
+                if(buscado.informacion.nickName == nickname && buscado.informacion.password == password)
+                {
+                    return true;
+                }
+                return false;
+            }else
+                return false;
+        }
+        [WebMethod]
+        public bool eliminarUsuario(string nickname)
+        {
+            return usuarioABB.eliminar(nickname);
         }
     }
 }

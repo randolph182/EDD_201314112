@@ -20,6 +20,8 @@
                 <asp:Button ID="btnAdminUsuarios" runat="server" Text="Administrar Usuarios" OnClick="btnAdminUsuarios_Click" />
                 <br />
                 <br />
+                <br />
+                <br />
             </asp:View>
             <br />
             <br />

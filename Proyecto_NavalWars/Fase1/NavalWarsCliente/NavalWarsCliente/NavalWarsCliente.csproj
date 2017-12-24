@@ -87,6 +87,7 @@
     <Compile Include="AdminUsuarios.aspx.designer.cs">
       <DependentUpon>AdminUsuarios.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ClaseGlobal.cs" />
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>

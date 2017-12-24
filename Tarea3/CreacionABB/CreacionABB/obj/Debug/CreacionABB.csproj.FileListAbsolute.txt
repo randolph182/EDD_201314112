@@ -1,0 +1,5 @@
+c:\users\rando\documents\visual studio 2013\Projects\CreacionABB\CreacionABB\bin\Debug\CreacionABB.exe
+c:\users\rando\documents\visual studio 2013\Projects\CreacionABB\CreacionABB\bin\Debug\CreacionABB.pdb
+c:\users\rando\documents\visual studio 2013\Projects\CreacionABB\CreacionABB\obj\Debug\CreacionABB.csprojResolveAssemblyReference.cache
+c:\users\rando\documents\visual studio 2013\Projects\CreacionABB\CreacionABB\obj\Debug\CreacionABB.exe
+c:\users\rando\documents\visual studio 2013\Projects\CreacionABB\CreacionABB\obj\Debug\CreacionABB.pdb

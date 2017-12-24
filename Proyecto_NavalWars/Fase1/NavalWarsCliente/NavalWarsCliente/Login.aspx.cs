@@ -21,10 +21,28 @@ namespace NavalWarsCliente
 
         protected void btnIngresarLogin_Click(object sender, EventArgs e)
         {
-            if(txtNicknameLogin.Text == "admin" && txtPasswordLogin.Text == "123")
+            if (txtNicknameLogin.Text != "" && txtPasswordLogin.Text != "")
             {
-                Response.Redirect("~/Administrador.aspx");
+                if (txtNicknameLogin.Text == "admin" && txtPasswordLogin.Text == "123")
+                {
+                    Response.Redirect("~/Administrador.aspx");
+                }
+                else
+                {
+                    bool encontrado = ClaseGlobal.servidorPrincipal.buscarUsuario(txtNicknameLogin.Text, txtPasswordLogin.Text);
+                        if(encontrado)
+                        {
+                            lblMensajeLogin.Text = "El usuario si esta";
+                        }
+                        else
+                            lblMensajeLogin.Text = "El usuario no se encontro";
+                }
             }
+            else
+                lblMensajeLogin.Text = "Debe llenar los campos de nickName y Password para poder ingresar";
+            
+
+
 
 
         }
