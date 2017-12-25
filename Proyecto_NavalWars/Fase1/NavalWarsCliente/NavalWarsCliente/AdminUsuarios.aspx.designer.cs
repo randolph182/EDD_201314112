@@ -85,6 +85,15 @@ namespace NavalWarsCliente {
         protected global::System.Web.UI.WebControls.Button btnMostrarArbolGeneral;
         
         /// <summary>
+        /// btnRergresarPrincipalAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRergresarPrincipalAdmin;
+        
+        /// <summary>
         /// View2 control.
         /// </summary>
         /// <remarks>

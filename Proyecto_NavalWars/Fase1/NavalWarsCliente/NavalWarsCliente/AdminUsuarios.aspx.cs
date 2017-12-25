@@ -118,6 +118,11 @@ namespace NavalWarsCliente
         {
             MultiView1.ActiveViewIndex = 0;
         }
+
+        protected void btnRergresarPrincipalAdmin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Administrador.aspx");
+        }
         
         
 

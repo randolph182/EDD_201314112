@@ -171,6 +171,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="obtenerInfoJuegosUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idJuego" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerInfoJuegosUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obtenerInfoJuegosUsuarioResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -239,6 +254,12 @@
   <wsdl:message name="ModificarJuegosUsuarioSoapOut">
     <wsdl:part name="parameters" element="tns:ModificarJuegosUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="obtenerInfoJuegosUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerInfoJuegosUsuario" />
+  </wsdl:message>
+  <wsdl:message name="obtenerInfoJuegosUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerInfoJuegosUsuarioResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -283,6 +304,10 @@
     <wsdl:operation name="ModificarJuegosUsuario">
       <wsdl:input message="tns:ModificarJuegosUsuarioSoapIn" />
       <wsdl:output message="tns:ModificarJuegosUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerInfoJuegosUsuario">
+      <wsdl:input message="tns:obtenerInfoJuegosUsuarioSoapIn" />
+      <wsdl:output message="tns:obtenerInfoJuegosUsuarioSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -386,6 +411,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="obtenerInfoJuegosUsuario">
+      <soap:operation soapAction="http://tempuri.org/obtenerInfoJuegosUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -481,6 +515,15 @@
     </wsdl:operation>
     <wsdl:operation name="ModificarJuegosUsuario">
       <soap12:operation soapAction="http://tempuri.org/ModificarJuegosUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerInfoJuegosUsuario">
+      <soap12:operation soapAction="http://tempuri.org/obtenerInfoJuegosUsuario" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -67,6 +67,15 @@ namespace NavalWarsCliente {
         protected global::System.Web.UI.WebControls.Button btnJuegos;
         
         /// <summary>
+        /// btnRegrsa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRegrsa;
+        
+        /// <summary>
         /// View2 control.
         /// </summary>
         /// <remarks>

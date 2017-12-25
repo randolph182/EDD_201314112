@@ -146,5 +146,25 @@ namespace NavalWarsEDD
             else
                 return false;
         }
+
+        [WebMethod]
+        public List<string> obtenerInfoJuegosUsuario(string nickname,string idJuego)
+        {
+            List<string> listaJuegos = new List<string>();
+                NodoUsuario usuario = usuarioABB.buscar(nickname);
+            if(usuario!=null)
+            {
+                NodoJuego juego = usuario.lstJuegos.buscar(idJuego);
+                if(juego != null)
+                {
+                    listaJuegos.Add(juego.valor.nicknameOponente);
+                    listaJuegos.Add(juego.valor.unidadesDesplegadas.ToString());
+                    listaJuegos.Add(juego.valor.unidadesSobrevivientes.ToString());
+                    listaJuegos.Add(juego.valor.unidadesDestruidas.ToString());
+                    listaJuegos.Add(juego.valor.gano.ToString());
+                }
+            }
+            return listaJuegos;
+        }
     }
 }

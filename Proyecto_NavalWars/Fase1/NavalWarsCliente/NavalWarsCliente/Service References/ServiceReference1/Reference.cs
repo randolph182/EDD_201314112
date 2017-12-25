@@ -66,6 +66,10 @@ namespace NavalWarsCliente.ServiceReference1 {
         // CODEGEN: Generating message contract since element name nickUsuario from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ModificarJuegosUsuario", ReplyAction="*")]
         NavalWarsCliente.ServiceReference1.ModificarJuegosUsuarioResponse ModificarJuegosUsuario(NavalWarsCliente.ServiceReference1.ModificarJuegosUsuarioRequest request);
+        
+        // CODEGEN: Generating message contract since element name nickname from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerInfoJuegosUsuario", ReplyAction="*")]
+        NavalWarsCliente.ServiceReference1.obtenerInfoJuegosUsuarioResponse obtenerInfoJuegosUsuario(NavalWarsCliente.ServiceReference1.obtenerInfoJuegosUsuarioRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -829,6 +833,78 @@ namespace NavalWarsCliente.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class obtenerInfoJuegosUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="obtenerInfoJuegosUsuario", Namespace="http://tempuri.org/", Order=0)]
+        public NavalWarsCliente.ServiceReference1.obtenerInfoJuegosUsuarioRequestBody Body;
+        
+        public obtenerInfoJuegosUsuarioRequest() {
+        }
+        
+        public obtenerInfoJuegosUsuarioRequest(NavalWarsCliente.ServiceReference1.obtenerInfoJuegosUsuarioRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class obtenerInfoJuegosUsuarioRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string nickname;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string idJuego;
+        
+        public obtenerInfoJuegosUsuarioRequestBody() {
+        }
+        
+        public obtenerInfoJuegosUsuarioRequestBody(string nickname, string idJuego) {
+            this.nickname = nickname;
+            this.idJuego = idJuego;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class obtenerInfoJuegosUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="obtenerInfoJuegosUsuarioResponse", Namespace="http://tempuri.org/", Order=0)]
+        public NavalWarsCliente.ServiceReference1.obtenerInfoJuegosUsuarioResponseBody Body;
+        
+        public obtenerInfoJuegosUsuarioResponse() {
+        }
+        
+        public obtenerInfoJuegosUsuarioResponse(NavalWarsCliente.ServiceReference1.obtenerInfoJuegosUsuarioResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class obtenerInfoJuegosUsuarioResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public NavalWarsCliente.ServiceReference1.ArrayOfString obtenerInfoJuegosUsuarioResult;
+        
+        public obtenerInfoJuegosUsuarioResponseBody() {
+        }
+        
+        public obtenerInfoJuegosUsuarioResponseBody(NavalWarsCliente.ServiceReference1.ArrayOfString obtenerInfoJuegosUsuarioResult) {
+            this.obtenerInfoJuegosUsuarioResult = obtenerInfoJuegosUsuarioResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface Service1SoapChannel : NavalWarsCliente.ServiceReference1.Service1Soap, System.ServiceModel.IClientChannel {
     }
@@ -1009,6 +1085,20 @@ namespace NavalWarsCliente.ServiceReference1 {
             inValue.Body.gano = gano;
             NavalWarsCliente.ServiceReference1.ModificarJuegosUsuarioResponse retVal = ((NavalWarsCliente.ServiceReference1.Service1Soap)(this)).ModificarJuegosUsuario(inValue);
             return retVal.Body.ModificarJuegosUsuarioResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NavalWarsCliente.ServiceReference1.obtenerInfoJuegosUsuarioResponse NavalWarsCliente.ServiceReference1.Service1Soap.obtenerInfoJuegosUsuario(NavalWarsCliente.ServiceReference1.obtenerInfoJuegosUsuarioRequest request) {
+            return base.Channel.obtenerInfoJuegosUsuario(request);
+        }
+        
+        public NavalWarsCliente.ServiceReference1.ArrayOfString obtenerInfoJuegosUsuario(string nickname, string idJuego) {
+            NavalWarsCliente.ServiceReference1.obtenerInfoJuegosUsuarioRequest inValue = new NavalWarsCliente.ServiceReference1.obtenerInfoJuegosUsuarioRequest();
+            inValue.Body = new NavalWarsCliente.ServiceReference1.obtenerInfoJuegosUsuarioRequestBody();
+            inValue.Body.nickname = nickname;
+            inValue.Body.idJuego = idJuego;
+            NavalWarsCliente.ServiceReference1.obtenerInfoJuegosUsuarioResponse retVal = ((NavalWarsCliente.ServiceReference1.Service1Soap)(this)).obtenerInfoJuegosUsuario(inValue);
+            return retVal.Body.obtenerInfoJuegosUsuarioResult;
         }
     }
 }

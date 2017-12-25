@@ -132,20 +132,6 @@ namespace NavalWarsEDD
                 /*-------------- termina la parte donde pregunta si era hoja o tenia 1 hijo, por lo tanto si tiene hijos*/ 
                 else
                 {
-                    //NodoUsuario tmp2,tmp3;
-                    //tmp2 = tmp;
-                    //tmp3 = tmp.izquierda;
-                    //while(tmp3.derecha !=null)
-                    //{
-                    //    tmp2 = tmp3;
-                    //    tmp3 = tmp3.derecha;
-                    //}
-                    //tmp.informacion = tmp3.informacion;
-                    //if (tmp2 == tmp)
-                    //    tmp2.izquierda = tmp3.izquierda;
-                    //else
-                    //    tmp2.derecha = tmp2.izquierda;
-                    //tmp = tmp3;
                     NodoUsuario tmp2 = tmp.izquierda;
                     while(tmp2.derecha != null)
                     {

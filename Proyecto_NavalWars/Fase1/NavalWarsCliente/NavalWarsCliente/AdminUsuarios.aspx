@@ -47,16 +47,19 @@
                 <asp:Label ID="Label1" runat="server" Text="Administracion de Usuarios" Font-Size ="20pt"></asp:Label>
                 <br />
                 <br />
-                <asp:Button ID="btnAgregarUsuario" runat="server" Text="Agregar Usuario" OnClick="btnAgregarUsuario_Click" Width="149px" />
+                <asp:Button ID="btnAgregarUsuario" runat="server" Text="Agregar Usuario" OnClick="btnAgregarUsuario_Click" Width="169px" />
                 <br />
                 <br />
-                <asp:Button ID="btnModificarUsuario" runat="server" Text="Modificar Usuario" OnClick="btnModificarUsuario_Click" />
+                <asp:Button ID="btnModificarUsuario" runat="server" Text="Modificar Usuario" OnClick="btnModificarUsuario_Click" Width="168px" />
                 <br />
                 <br />
-                <asp:Button ID="btnEliminarUsuario" runat="server" Text="Eliminar Usuario" Width="146px" OnClick="btnEliminarUsuario_Click" />
+                <asp:Button ID="btnEliminarUsuario" runat="server" Text="Eliminar Usuario" Width="162px" OnClick="btnEliminarUsuario_Click" />
                 <br />
                 <br />
-                <asp:Button ID="btnMostrarArbolGeneral" runat="server" Text="Mostrar Arbol" OnClick="btnMostrarArbolGeneral_Click" Width="143px" />
+                <asp:Button ID="btnMostrarArbolGeneral" runat="server" Text="Mostrar Arbol" OnClick="btnMostrarArbolGeneral_Click" Width="167px" />
+                <br />
+                <br />
+                <asp:Button ID="btnRergresarPrincipalAdmin" runat="server" Text="Rergresar Principal" OnClick="btnRergresarPrincipalAdmin_Click" />
                 <br />
             </asp:View>
             <br />

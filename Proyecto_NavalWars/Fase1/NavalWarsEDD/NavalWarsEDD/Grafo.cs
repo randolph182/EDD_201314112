@@ -35,15 +35,31 @@ namespace NavalWarsEDD
                                                     "password: "+actual.informacion.password+" \n"+
                                                     "email: "+ actual.informacion.email+" \n"+
                                                     "conectado: " + actual.informacion.conectado.ToString() + "  | <f2> \"];\n"; 
+                if(actual.lstJuegos.primero !=null)
+                {
+                    cabecera += "\n" + actual.lstJuegos.listaJuegos(actual.informacion.nickName);
+                    acum += "\"struct" + actual.informacion.nickName + "\":f1 -> " + actual.lstJuegos.primero.idNodo + ";\n";
+                }
                 if(actual.izquierda !=null)
                 {
 
                     acum += "\"struct" + actual.informacion.nickName + "\":f0 -> \"struct" + actual.izquierda.informacion.nickName + "\":f1;\n";
 
+                    //if (actual.izquierda.lstJuegos.primero != null)
+                    //{
+                    // //   cabecera += "\n" + actual.izquierda.lstJuegos.listaJuegos(actual.izquierda.informacion.nickName);
+                    //    acum += "\"struct" + actual.izquierda.informacion.nickName + "\":f1 -> " + actual.izquierda.lstJuegos.primero.idNodo + ";\n";
+                    //}
                 }
                 if(actual.derecha  != null)
                 {
                     acum += "\"struct" + actual.informacion.nickName + "\":f2 -> \"struct" + actual.derecha.informacion.nickName + "\":f1;\n";
+                    
+                    //if (actual.derecha.lstJuegos.primero != null)
+                    //{
+                    //  //  cabecera += "\n" + actual.derecha.lstJuegos.listaJuegos(actual.izquierda.informacion.nickName);
+                    //    acum += "\"struct" + actual.derecha.informacion.nickName + "\":f1 -> " + actual.derecha.lstJuegos.primero.idNodo + ";\n";
+                    //}
                 }
 
                 recorrerABB(ref actual.izquierda, ref acum,ref cabecera);

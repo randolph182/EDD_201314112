@@ -23,6 +23,7 @@
                 <asp:Button ID="btnJuegos" runat="server" Text="Administrar Lista de Juegos" OnClick="btnJuegos_Click" />
                 <br />
                 <br />
+                <asp:Button ID="btnRegrsa" runat="server" Text="Button" Width="235px" />
                 <br />
                 <br />
             </asp:View>
