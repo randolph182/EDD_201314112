@@ -31,6 +31,8 @@
                 <asp:Button ID="btnCargaMasiva" runat="server" Text="Carga Masiva" Width="235px" OnClick="btnCargaMasiva_Click" />
                 <br />
                 <br />
+                <br />
+                <br />
             </asp:View>
             <br />
             <br />
@@ -56,8 +58,12 @@
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style1">&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td class="auto-style1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:Button ID="subierArchivoJuegos" runat="server" Text="subirArchivoJuegos" OnClick="subierArchivoJuegos_Click" Width="181px" />
+                        </td>
+                        <td>
+                            <asp:FileUpload ID="FileUpload2" runat="server" />
+                        </td>
                         <td>&nbsp;</td>
                     </tr>
                                         <tr>
@@ -66,7 +72,9 @@
                         <td>&nbsp;</td>
                     </tr>
                                         <tr>
-                        <td class="auto-style1">&nbsp;</td>
+                        <td class="auto-style1">
+                            <asp:Button ID="Button1" runat="server" Text="Button" />
+                                            </td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                     </tr>

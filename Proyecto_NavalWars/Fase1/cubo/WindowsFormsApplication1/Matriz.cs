@@ -208,7 +208,9 @@ namespace WindowsFormsApplication1
                             verificarEnlaceIzqDerNiveles(ref encabezadoFila.acceso, ref nuevoNodo);
                         }
                     }
-                    else // el nivel del nuevo nodo ya existe por lo tanto con lo retornado hay que hubicarlos entre sus columnas
+                    // el nivel del nuevo nodo ya existe por lo tanto con lo retornado hay que hubicarlos entre sus columnas
+                    // preguntando siempre si el nuevo columna tiene distita columna que el nodo Encontrado ya que es el acceso
+                    else if(!existeNodoFila(ref NodoEncontrado,ref nuevoNodo))
                     {
                         
                         if(nuevoNodo.columna < NodoEncontrado.columna) // insercion al inicio
@@ -219,11 +221,13 @@ namespace WindowsFormsApplication1
 
                             if(ladoNivel == 1)
                             {
+                                encabezadoFila.acceso.adelante.atras = null; // borro el enlace que quedaba de por medio
                                 encabezadoFila.acceso.adelante = nuevoNodo;
                                 nuevoNodo.atras = encabezadoFila.acceso;
                             }
                             else if(ladoNivel == 0)
                             {
+                                encabezadoFila.acceso.atras.adelante = null; //borro elenlace que quedaba de por medio
                                 encabezadoFila.acceso.atras = nuevoNodo;
                                 nuevoNodo.adelante = encabezadoFila.acceso;
                             }
@@ -232,26 +236,30 @@ namespace WindowsFormsApplication1
                                 encabezadoFila.acceso = nuevoNodo;
                             }
                         }
-                        Nodo tmpNivel = NodoEncontrado;
-                        while(tmpNivel.derecha != null)
+                        else
                         {
-                            if(nuevoNodo.columna < tmpNivel.derecha.columna)//insercion al medio 
+                            Nodo tmpNivel = NodoEncontrado;
+                            while (tmpNivel.derecha != null)
                             {
-                                nuevoNodo.derecha = tmpNivel.derecha;
-                                tmpNivel.derecha.izquierda = nuevoNodo;
-                                nuevoNodo.izquierda = tmpNivel;
-                                tmpNivel.derecha = nuevoNodo;
-                                verificarEnlaceIzqDerNiveles(ref tmpNivel,ref nuevoNodo);
-                                break;
+                                if (nuevoNodo.columna < tmpNivel.derecha.columna )//insercion al medio 
+                                {
+                                    nuevoNodo.derecha = tmpNivel.derecha;
+                                    tmpNivel.derecha.izquierda = nuevoNodo;
+                                    nuevoNodo.izquierda = tmpNivel;
+                                    tmpNivel.derecha = nuevoNodo;
+                                    verificarEnlaceIzqDerNiveles(ref tmpNivel, ref nuevoNodo);
+                                    break;
+                                }
+                                tmpNivel = tmpNivel.derecha;
                             }
-                            tmpNivel = tmpNivel.derecha;
+                            if (tmpNivel.derecha == null )
+                            {
+                                tmpNivel.derecha = nuevoNodo;
+                                nuevoNodo.izquierda = tmpNivel;
+                                verificarEnlaceIzqDerNiveles(ref tmpNivel, ref nuevoNodo);
+                            }
                         }
-                        if(tmpNivel.derecha == null)
-                        {
-                            tmpNivel.derecha = nuevoNodo;
-                            nuevoNodo.izquierda = tmpNivel;
-                            verificarEnlaceIzqDerNiveles(ref tmpNivel, ref nuevoNodo);
-                        }
+
                     }
                 }
             }
@@ -266,13 +274,37 @@ namespace WindowsFormsApplication1
         }
 
 
+        public bool existeNodoFila(ref Nodo actual, ref Nodo nodoNuevo)
+        {
+            if(actual.izquierda != null)
+            {
+                Nodo tmpIzq = actual;
+                while(tmpIzq != null)
+                {
+                    if(tmpIzq.columna == nodoNuevo.columna && tmpIzq.unidad.nivel == nodoNuevo.unidad.nivel)
+                        return true;
+                    tmpIzq = tmpIzq.izquierda;
+                }
+            }
+            else if(actual.derecha != null)
+            {
+                Nodo tmpDer = actual;
+                while(tmpDer != null)
+                {
+                    if (tmpDer.columna == nodoNuevo.columna && tmpDer.unidad.nivel == nodoNuevo.unidad.nivel)
+                        return true;
+                    tmpDer = tmpDer.derecha;
+                }
+            }
+            return false;
+        }
         public void verificarEnlaceIzqDer(ref Nodo actual, ref Nodo nuevo )
         {
             //un cero recorro atras del cubo y un 1 recorro adelante del cubo  y un 2 estan en el mismo nivel
             int lado = verificarLadoNivel(ref actual, ref nuevo);
              if(actual.izquierda != null)
             {
-                Nodo tmpIzq = actual;
+                Nodo tmpIzq = actual.izquierda;
 				while (tmpIzq != null)
                 {
 	                if(lado == 1) //tengo que moverme hacia adelante
@@ -317,7 +349,7 @@ namespace WindowsFormsApplication1
 
             if(actual.derecha != null)
             {
-                Nodo tmpDer = actual;
+                Nodo tmpDer = actual.derecha;
                 while(tmpDer != null)
                 {
                     if(lado == 1) //tengo que movereme hacia adelante
@@ -425,7 +457,7 @@ namespace WindowsFormsApplication1
                     nuevo.atras = tmp;
                 }
             }
-            else if(ladoNivel == 2)
+            else if(ladoNivel == 0)
             {
                 while(tmp.atras != null)
                 {
@@ -453,96 +485,179 @@ namespace WindowsFormsApplication1
         {
             //un cero recorro atras del cubo y un 1 recorro adelante del cubo  y un 2 estan en el mismo nivel
             int lado = verificarLadoNivel(ref actual, ref nuevo);
-            if(actual.izquierda != null)
+            if(lado == 2) //significa que hay que verificar los adelante del actual
             {
-                Nodo tmpIzq = actual;
-                while(tmpIzq != null)
+                if(actual.adelante != null)
                 {
-                    if(lado == 1)
+                    verificarEnlaceIzqDerNiveles(ref actual.adelante,ref  nuevo); //metodo recursivo solo que cambia el nivel hacia adelante
+                }
+                if(actual.atras != null)
+                {
+                    verificarEnlaceIzqDerNiveles(ref actual.atras, ref nuevo); //metodo recursivo solo que cambia el nivel hacia atras
+                }
+            }
+            else
+            {
+                if (actual.izquierda != null)
+                {
+                    Nodo tmpIzq = actual;
+                    while (tmpIzq != null)
                     {
-                        if (tmpIzq.columna == nuevo.columna)
+                        if (lado == 1)
                         {
-                            Nodo tmpIzqAdelante = tmpIzq;
-                            while (tmpIzqAdelante != null)
+                            if (tmpIzq.columna == nuevo.columna && !verificarNiveles(ref tmpIzq,ref nuevo))
                             {
+                                Nodo tmpIzqAdelante = tmpIzq;
+                                while (tmpIzqAdelante.adelante != null)
+                                {
+
+                                    if(nuevo.unidad.nivel < tmpIzqAdelante.adelante.unidad.nivel)
+                                    {
+                                        nuevo.adelante = tmpIzqAdelante.adelante;
+                                        tmpIzqAdelante.adelante.atras = nuevo;
+                                        tmpIzqAdelante.adelante = nuevo;
+                                        nuevo.atras = tmpIzqAdelante;
+                                        break;
+                                    }
+                                    tmpIzqAdelante = tmpIzqAdelante.adelante;
+                                }
                                 if (tmpIzqAdelante.adelante == null)
                                 {
                                     tmpIzqAdelante.adelante = nuevo;
                                     nuevo.atras = tmpIzqAdelante;
-                                    break;
                                 }
-                                tmpIzqAdelante = tmpIzqAdelante.adelante;
-                            }
-                            break;
-                        }
-                    }
-                    else if(lado ==0)
-                    {
-                        if (tmpIzq.columna == nuevo.columna)
-                        {
-                            Nodo tmpIzqAtras = tmpIzq;
 
-                            while (tmpIzqAtras != null)
+                                break;
+                            }
+                        }
+                        else if (lado == 0)
+                        {
+                            if (tmpIzq.columna == nuevo.columna && !verificarNiveles(ref tmpIzq,ref nuevo))
                             {
+                                Nodo tmpIzqAtras = tmpIzq;
+
+                                while (tmpIzqAtras.atras != null)
+                                {
+                                    if(nuevo.unidad.nivel > tmpIzqAtras.atras.unidad.nivel)
+                                    {
+                                        nuevo.atras = tmpIzqAtras.atras;
+                                        tmpIzqAtras.atras.adelante = nuevo;
+                                        tmpIzqAtras.atras = nuevo;
+                                        nuevo.adelante = tmpIzqAtras;
+                                        break;
+                                    }
+
+                                    tmpIzqAtras = tmpIzqAtras.atras;
+                                }
                                 if (tmpIzqAtras.atras == null)
                                 {
                                     tmpIzqAtras.atras = nuevo;
                                     nuevo.adelante = tmpIzqAtras;
-                                    break;
                                 }
-                                tmpIzqAtras = tmpIzqAtras.atras;
+                                break;
                             }
-                            break;
                         }
+                        tmpIzq = tmpIzq.izquierda;
                     }
-                    tmpIzq = tmpIzq.izquierda;
                 }
-            }
 
-            if(actual.derecha != null)
-            {
-                Nodo tmpDer = actual;
-                while(tmpDer != null)
+                if (actual.derecha != null)
                 {
-                    if(lado == 1)
+                    Nodo tmpDer = actual;
+                    while (tmpDer != null)
                     {
-                        if(tmpDer.columna == nuevo.columna)
+                        if (lado == 1)
                         {
-                            Nodo tmpDerAdelante = tmpDer;
-                            while(tmpDerAdelante != null)
+                            if (tmpDer.columna == nuevo.columna && !verificarNiveles(ref tmpDer, ref nuevo))
                             {
-                                if(tmpDerAdelante.adelante == null)
+                                Nodo tmpDerAdelante = tmpDer;
+                                while (tmpDerAdelante.adelante != null)
+                                {
+
+                                    if(nuevo.unidad.nivel < tmpDerAdelante.adelante.unidad.nivel)
+                                    {
+                                        nuevo.adelante = tmpDerAdelante.adelante;
+                                        tmpDerAdelante.adelante.atras = nuevo;
+                                        tmpDerAdelante.adelante = nuevo;
+                                        nuevo.atras = tmpDerAdelante;
+                                        break;
+                                    }
+                                    tmpDerAdelante = tmpDerAdelante.adelante;
+                                }
+                                if (tmpDerAdelante.adelante == null)
                                 {
                                     tmpDerAdelante.adelante = nuevo;
                                     nuevo.atras = tmpDerAdelante;
                                     break;
                                 }
-                                tmpDerAdelante = tmpDerAdelante.adelante;
                             }
-                            break;
                         }
-                    }
-                    else if(lado ==0)
-                    {
-                        if(tmpDer.columna == nuevo.columna)
+                        else if (lado == 0)
                         {
-                            Nodo tmpDerAtras = tmpDer;
-                            while(tmpDerAtras != null)
+                            if (tmpDer.columna == nuevo.columna && !verificarNiveles(ref tmpDer, ref nuevo))
                             {
-                                if(tmpDerAtras.atras == null)
+                                Nodo tmpDerAtras = tmpDer;
+                                while (tmpDerAtras.atras != null)
+                                {
+                                    if(nuevo.unidad.nivel > tmpDerAtras.atras.unidad.nivel)
+                                    {
+                                        nuevo.atras = tmpDerAtras.atras;
+                                        tmpDerAtras.atras.adelante = nuevo;
+                                        nuevo.adelante = tmpDerAtras;
+                                        tmpDerAtras.atras = nuevo;
+                                        break;
+                                    }
+
+                                    tmpDerAtras = tmpDerAtras.atras;
+                                }
+
+                                if (tmpDerAtras.atras == null)
                                 {
                                     tmpDerAtras.atras = nuevo;
                                     nuevo.adelante = tmpDerAtras;
                                     break;
                                 }
-                                tmpDerAtras = tmpDerAtras.atras;
+                                
                             }
-                            break;
                         }
+                        tmpDer = tmpDer.derecha;
                     }
-                    tmpDer = tmpDer.derecha;
                 }
             }
+
+
+        }
+
+        public bool verificarNiveles(ref Nodo actual,ref Nodo nuevo)
+        {
+            int lado = verificarLadoNivel(ref actual,ref nuevo);
+
+            Nodo tmp = actual;
+
+            if(lado == 1)
+            {
+                while(tmp!=null)
+                {
+                    if(tmp.unidad.nivel == nuevo.unidad.nivel && tmp.columna == nuevo.columna)
+                    {
+                        return true;
+                    }
+                    tmp = tmp.adelante;
+                }
+            }
+            else if (lado == 0)
+            {
+                while (tmp != null)
+                {
+                    if (tmp.unidad.nivel == nuevo.unidad.nivel && tmp.columna == tmp.columna)
+                    {
+                        return true;
+                    }
+                    tmp = tmp.atras;
+                }
+            }
+
+            return false;
         }
         public void insertEntreNivel(ref Nodo actual,ref Nodo nuevo)
         {

@@ -85,6 +85,24 @@ namespace NavalWarsCliente {
         protected global::System.Web.UI.WebControls.Button btnMostrarArbolGeneral;
         
         /// <summary>
+        /// btnMostrarArbolEspejo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMostrarArbolEspejo;
+        
+        /// <summary>
+        /// btnMostrarTopJuegos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMostrarTopJuegos;
+        
+        /// <summary>
         /// btnRergresarPrincipalAdmin control.
         /// </summary>
         /// <remarks>
@@ -364,12 +382,12 @@ namespace NavalWarsCliente {
         protected global::System.Web.UI.WebControls.Image Image1;
         
         /// <summary>
-        /// btnRegresarImagen control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegresarImagen;
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

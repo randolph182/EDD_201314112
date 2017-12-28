@@ -55,8 +55,9 @@ namespace NavalWarsEDD
         {
             if(idNodo == primero.idNodo)
             {
-                primero.anterior = null;
+                
                 primero = primero.siguiente;
+                primero.anterior = null;
                 size--;
                 return true;
             }
@@ -165,23 +166,23 @@ namespace NavalWarsEDD
                 NodoJuego tmp = primero;
                 while(tmp.siguiente !=null)
                 {
-                    acumNodo += tmp.idNodo + "[label=\" idNodo: " + tmp.idNodo + " \n";
-                    acumNodo += "Nick Opnente: " + tmp.valor.nicknameOponente + " \n";
-                    acumNodo += "Undads Desplegadas: " + tmp.valor.unidadesDesplegadas.ToString() + " \n";
-                    acumNodo += "Undads Sobrevivientes: " + tmp.valor.unidadesSobrevivientes.ToString() + " \n";
-                    acumNodo += "Undads Destruidas " + tmp.valor.unidadesDestruidas.ToString() + " \n";
+                    acumNodo += tmp.idNodo + "[label=\" idNodo: " + tmp.idNodo + " \n \\n";
+                    acumNodo += "Nick Opnente: " + tmp.valor.nicknameOponente + " \n \\n";
+                    acumNodo += "Undads Desplegadas: " + tmp.valor.unidadesDesplegadas.ToString() + " \n \\n";
+                    acumNodo += "Undads Sobrevivientes: " + tmp.valor.unidadesSobrevivientes.ToString() + " \n \\n";
+                    acumNodo += "Undads Destruidas " + tmp.valor.unidadesDestruidas.ToString() + " \n \\n";
                     acumNodo += "Gano: " + tmp.valor.gano.ToString() + "\"];\n";
 
-                    acumEnlace += tmp.idNodo + "->" + tmp.siguiente.idNodo + ";\n";
+                    acumEnlace += tmp.idNodo + "->" + tmp.siguiente.idNodo + ";\n ";
 
                     tmp = tmp.siguiente;
                 }
 
-                acumNodo += tmp.idNodo + "[label=\" idNodo: " + tmp.idNodo + " \n";
-                acumNodo += "Nick Opnente: " + tmp.valor.nicknameOponente + " \n";
-                acumNodo += "Undads Desplegadas: " + tmp.valor.unidadesDesplegadas.ToString() + " \n";
-                acumNodo += "Undads Sobrevivientes: " + tmp.valor.unidadesSobrevivientes.ToString() + " \n";
-                acumNodo += "Undads Destruidas " + tmp.valor.unidadesDestruidas.ToString() + " \n";
+                acumNodo += tmp.idNodo + "[label=\" idNodo: " + tmp.idNodo + " \n \\n";
+                acumNodo += "Nick Opnente: " + tmp.valor.nicknameOponente + " \n \\n";
+                acumNodo += "Undads Desplegadas: " + tmp.valor.unidadesDesplegadas.ToString() + " \n \\n";
+                acumNodo += "Undads Sobrevivientes: " + tmp.valor.unidadesSobrevivientes.ToString() + " \n \\n";
+                acumNodo += "Undads Destruidas " + tmp.valor.unidadesDestruidas.ToString() + " \n \\n";
                 acumNodo += "Gano: " + tmp.valor.gano.ToString() + "\"];\n";
 
                 while(tmp.anterior !=null)
@@ -194,6 +195,19 @@ namespace NavalWarsEDD
             }
 
             return acum;
+        }
+
+        public int JuegosGanados()
+        {
+            int partidas = 0;
+            NodoJuego tmp = primero;
+            while(tmp !=null)
+            {
+                if (tmp.valor.gano == 1)
+                    partidas++;
+                tmp = tmp.siguiente;
+            }
+            return partidas;
         }
 
     }

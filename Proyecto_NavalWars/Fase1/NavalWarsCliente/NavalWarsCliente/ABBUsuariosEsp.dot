@@ -1,0 +1,224 @@
+digraph G{
+
+node [shape = record,height=.1];
+structMord86[label="<f0>  | <f1> nickName: Mord86 
+ \nnombre:   
+ \npassword: NPZ44VGE5FD 
+ \nemail: scelerisque.sed@lectusa.com 
+ \nconectado: 1  | <f2> "];
+
+subgraph clusterMord86{
+label = " Lista de Juegos "64923656[label=" idNodo: 64923656 
+ \nNick Opnente: Jado86 
+ \nUndads Desplegadas: 25 
+ \nUndads Sobrevivientes: 1 
+ \nUndads Destruidas 24 
+ \nGano: 0"];
+38509720[label=" idNodo: 38509720 
+ \nNick Opnente: Idin94 
+ \nUndads Desplegadas: 30 
+ \nUndads Sobrevivientes: 29 
+ \nUndads Destruidas 1 
+ \nGano: 1"];
+11404313[label=" idNodo: 11404313 
+ \nNick Opnente: Kaez42 
+ \nUndads Desplegadas: 20 
+ \nUndads Sobrevivientes: 10 
+ \nUndads Destruidas 10 
+ \nGano: 0"];
+45524559[label=" idNodo: 45524559 
+ \nNick Opnente: Avey48 
+ \nUndads Desplegadas: 18 
+ \nUndads Sobrevivientes: 8 
+ \nUndads Destruidas 10 
+ \nGano: 0"];
+60924210[label=" idNodo: 60924210 
+ \nNick Opnente: Taon95 
+ \nUndads Desplegadas: 16 
+ \nUndads Sobrevivientes: 10 
+ \nUndads Destruidas 6 
+ \nGano: 0"];
+21502980[label=" idNodo: 21502980 
+ \nNick Opnente: Imre78 
+ \nUndads Desplegadas: 20 
+ \nUndads Sobrevivientes: 3 
+ \nUndads Destruidas 17 
+ \nGano: 0"];
+21889970[label=" idNodo: 21889970 
+ \nNick Opnente: Asro25 
+ \nUndads Desplegadas: 15 
+ \nUndads Sobrevivientes: 10 
+ \nUndads Destruidas 5 
+ \nGano: 1"];
+62476613[label=" idNodo: 62476613 
+ \nNick Opnente: Stin94 
+ \nUndads Desplegadas: 10 
+ \nUndads Sobrevivientes: 8 
+ \nUndads Destruidas 2 
+ \nGano: 1"];
+64923656->38509720;
+ 38509720->11404313;
+ 11404313->45524559;
+ 45524559->60924210;
+ 60924210->21502980;
+ 21502980->21889970;
+ 21889970->62476613;
+ 62476613->21889970;
+21889970->21502980;
+21502980->60924210;
+60924210->45524559;
+45524559->11404313;
+11404313->38509720;
+38509720->64923656;
+
+}
+structAsro25[label="<f0>  | <f1> nickName: Asro25 
+ \nnombre:   
+ \npassword: PDW92QLF0HC 
+ \nemail: turpis.Aliquam.adipiscing@tincidunt.net 
+ \nconectado: 0  | <f2> "];
+structAmer64[label="<f0>  | <f1> nickName: Amer64 
+ \nnombre:   
+ \npassword: MMU55KUG4GZ 
+ \nemail: sit@eu.org 
+ \nconectado: 0  | <f2> "];
+structAbwn30[label="<f0>  | <f1> nickName: Abwn30 
+ \nnombre:   
+ \npassword: EMX47IQS8EJ 
+ \nemail: imperdiet.non.vestibulum@tellusidnunc.ca 
+ \nconectado: 0  | <f2> "];
+structImre78[label="<f0>  | <f1> nickName: Imre78 
+ \nnombre:   
+ \npassword: MDQ80CXX3XT 
+ \nemail: eget.dictum.placerat@atsem.net 
+ \nconectado: 0  | <f2> "];
+structAvey48[label="<f0>  | <f1> nickName: Avey48 
+ \nnombre:   
+ \npassword: ZEE21HJG3WL 
+ \nemail: Class@orci.net 
+ \nconectado: 0  | <f2> "];
+structIdin94[label="<f0>  | <f1> nickName: Idin94 
+ \nnombre:   
+ \npassword: NMB35GLX6GU 
+ \nemail: tempus.non@nullaDonec.com 
+ \nconectado: 0  | <f2> "];
+structAxon36[label="<f0>  | <f1> nickName: Axon36 
+ \nnombre:   
+ \npassword: XJJ16GWD0XD 
+ \nemail: Pellentesque.ultricies.dignissim@idmagnaet.ca 
+ \nconectado: 0  | <f2> "];
+structFrly47[label="<f0>  | <f1> nickName: Frly47 
+ \nnombre:   
+ \npassword: UBB80CLZ9IE 
+ \nemail: elit.a@aliquamiaculis.ca 
+ \nconectado: 1  | <f2> "];
+structKaez42[label="<f0>  | <f1> nickName: Kaez42 
+ \nnombre:   
+ \npassword: BLH11FPZ6AP 
+ \nemail: consectetuer.cursus.et@semmolestiesodales.co.uk 
+ \nconectado: 0  | <f2> "];
+structJado86[label="<f0>  | <f1> nickName: Jado86 
+ \nnombre:   
+ \npassword: NDG72OCE0BM 
+ \nemail: eu@eleifendvitaeerat.org 
+ \nconectado: 1  | <f2> "];
+structStin94[label="<f0>  | <f1> nickName: Stin94 
+ \nnombre:   
+ \npassword: WAG95DOM2LZ 
+ \nemail: in.tempus@a.com 
+ \nconectado: 1  | <f2> "];
+
+subgraph clusterStin94{
+label = " Lista de Juegos "24800747[label=" idNodo: 24800747 
+ \nNick Opnente: Jado86 
+ \nUndads Desplegadas: 28 
+ \nUndads Sobrevivientes: 5 
+ \nUndads Destruidas 23 
+ \nGano: 1"];
+44624228[label=" idNodo: 44624228 
+ \nNick Opnente: Idin94 
+ \nUndads Desplegadas: 23 
+ \nUndads Sobrevivientes: 3 
+ \nUndads Destruidas 20 
+ \nGano: 1"];
+56035750[label=" idNodo: 56035750 
+ \nNick Opnente: Kaez42 
+ \nUndads Desplegadas: 17 
+ \nUndads Sobrevivientes: 8 
+ \nUndads Destruidas 9 
+ \nGano: 0"];
+4818741[label=" idNodo: 4818741 
+ \nNick Opnente: Avey48 
+ \nUndads Desplegadas: 19 
+ \nUndads Sobrevivientes: 10 
+ \nUndads Destruidas 9 
+ \nGano: 1"];
+35339263[label=" idNodo: 35339263 
+ \nNick Opnente: Taon95 
+ \nUndads Desplegadas: 10 
+ \nUndads Sobrevivientes: 9 
+ \nUndads Destruidas 1 
+ \nGano: 0"];
+61154080[label=" idNodo: 61154080 
+ \nNick Opnente: Imre78 
+ \nUndads Desplegadas: 18 
+ \nUndads Sobrevivientes: 16 
+ \nUndads Destruidas 2 
+ \nGano: 1"];
+39603294[label=" idNodo: 39603294 
+ \nNick Opnente: Asro25 
+ \nUndads Desplegadas: 19 
+ \nUndads Sobrevivientes: 14 
+ \nUndads Destruidas 5 
+ \nGano: 0"];
+62861212[label=" idNodo: 62861212 
+ \nNick Opnente: Mord86 
+ \nUndads Desplegadas: 21 
+ \nUndads Sobrevivientes: 15 
+ \nUndads Destruidas 6 
+ \nGano: 0"];
+24800747->44624228;
+ 44624228->56035750;
+ 56035750->4818741;
+ 4818741->35339263;
+ 35339263->61154080;
+ 61154080->39603294;
+ 39603294->62861212;
+ 62861212->39603294;
+39603294->61154080;
+61154080->35339263;
+35339263->4818741;
+4818741->56035750;
+56035750->44624228;
+44624228->24800747;
+
+}
+structRoan78[label="<f0>  | <f1> nickName: Roan78 
+ \nnombre:   
+ \npassword: FOA51PLE0LG 
+ \nemail: odio@Etiambibendumfermentum.edu 
+ \nconectado: 1  | <f2> "];
+structTaon95[label="<f0>  | <f1> nickName: Taon95 
+ \nnombre:   
+ \npassword: USW07EIK1AC 
+ \nemail: parturient@Nulla.co.uk 
+ \nconectado: 0  | <f2> "];
+
+"structMord86":f1 -> 64923656;
+"structMord86":f0 -> "structStin94":f1;
+"structMord86":f2 -> "structAsro25":f1;
+"structAsro25":f0 -> "structImre78":f1;
+"structAsro25":f2 -> "structAmer64":f1;
+"structAmer64":f2 -> "structAbwn30":f1;
+"structImre78":f0 -> "structKaez42":f1;
+"structImre78":f2 -> "structAvey48":f1;
+"structAvey48":f0 -> "structIdin94":f1;
+"structIdin94":f2 -> "structAxon36":f1;
+"structAxon36":f0 -> "structFrly47":f1;
+"structKaez42":f2 -> "structJado86":f1;
+"structStin94":f1 -> 24800747;
+"structStin94":f0 -> "structTaon95":f1;
+"structStin94":f2 -> "structRoan78":f1;
+
+}
+

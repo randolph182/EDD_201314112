@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -72,6 +73,13 @@ namespace NavalWarsCliente
         protected void btnMostrarArbolGeneral_Click(object sender, EventArgs e)
         {
             ClaseGlobal.servidorPrincipal.generarArbol();
+           // Bitmap imagen  = new Bitmap
+            //int tamanio = 50;
+            //byte[] imagenOriginal = new byte[];
+            //Bitmap imagenOriginalBinaria = new Bitmap()
+
+            MultiView1.ActiveViewIndex = 4;
+            Image1.ImageUrl = "ABBUsuarios.png";
         }
 
         protected void btnModificarUsuario_Click(object sender, EventArgs e)
@@ -122,6 +130,20 @@ namespace NavalWarsCliente
         protected void btnRergresarPrincipalAdmin_Click(object sender, EventArgs e)
         {
             Response.Redirect("Administrador.aspx");
+        }
+
+        protected void btnMostrarArbolEspejo_Click(object sender, EventArgs e)
+        {
+            ClaseGlobal.servidorPrincipal.generarArbolEspejo();
+            MultiView1.ActiveViewIndex = 4;
+            Image1.ImageUrl = "ABBUsuariosEsp.png";
+        }
+
+        protected void btnMostrarTopJuegos_Click(object sender, EventArgs e)
+        {
+            ClaseGlobal.servidorPrincipal.generarTopJuegos();
+            MultiView1.ActiveViewIndex = 4;
+            Image1.ImageUrl = "topJuegos.png";
         }
         
         

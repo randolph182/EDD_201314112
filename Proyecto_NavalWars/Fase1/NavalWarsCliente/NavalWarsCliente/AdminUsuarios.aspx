@@ -18,9 +18,6 @@
         .auto-style7 {
             width: 85px;
         }
-        .auto-style12 {
-            width: 271px;
-        }
         .auto-style13 {
             width: 126px;
         }
@@ -32,6 +29,9 @@
         }
         .auto-style16 {
             width: 152px;
+        }
+        .auto-style18 {
+            width: 228px;
         }
     </style>
 </head>
@@ -57,6 +57,12 @@
                 <br />
                 <br />
                 <asp:Button ID="btnMostrarArbolGeneral" runat="server" Text="Mostrar Arbol" OnClick="btnMostrarArbolGeneral_Click" Width="167px" />
+                <br />
+                <br />
+                <asp:Button ID="btnMostrarArbolEspejo" runat="server" Text="Mostrar Arbol Espejo" OnClick="btnMostrarArbolEspejo_Click" />
+                <br />
+                <br />
+                <asp:Button ID="btnMostrarTopJuegos" runat="server" Text="Mostrar Top 10 Juegos" OnClick="btnMostrarTopJuegos_Click" />
                 <br />
                 <br />
                 <asp:Button ID="btnRergresarPrincipalAdmin" runat="server" Text="Rergresar Principal" OnClick="btnRergresarPrincipalAdmin_Click" />
@@ -285,6 +291,37 @@
                         <td>&nbsp;</td>
                     </tr>
 
+                </table>
+                <br />
+            </asp:View>
+            <br />
+            <asp:View ID="View5" runat="server">
+                <br />
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Image ID="Image1" runat="server" Height="644px" ImageUrl="C:\GrafoEDD\ABBUsuarios.png" Width="1405px" />
+                <br />
+                <br />
+                <br />
+                <table style="width:100%;">
+                    <tr>
+                        <td class="auto-style18">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style18">
+                            <asp:Button ID="Button1" runat="server" Text="Button" />
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style18">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
                 </table>
                 <br />
             </asp:View>

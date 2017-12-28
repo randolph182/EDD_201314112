@@ -32,6 +32,9 @@ namespace NavalWarsEDD
         public string password;
         public string email;
         public int conectado;
+        public int partidadGanadas;
+        public int unidadesDestruidas;
+
         public Usuario(string nombre, string nickName, string password, string email, int conectado)
         {
             this.nombre = nombre;
@@ -39,11 +42,14 @@ namespace NavalWarsEDD
             this.password = password;
             this.email = email;
             this.conectado = conectado;
+            this.partidadGanadas = 0;
+            this.unidadesDestruidas = 0;
         }
     }
     public class ABBUsuario
     {
         public NodoUsuario raiz;
+        public int size = 0;
         public ABBUsuario()
         {
             this.raiz = null;
@@ -57,6 +63,7 @@ namespace NavalWarsEDD
             if(actual == null)
             {
                 actual = new NodoUsuario(ref usuario);
+                size++;
                 return true;
             }
             else if(usuario.nickName.CompareTo(actual.informacion.nickName) <0)
@@ -122,11 +129,13 @@ namespace NavalWarsEDD
                 if (tmp.izquierda == null)
                 {
                     actual = tmp.derecha;
+                    size--;
                     return true;
                 }                    
                 else if (tmp.derecha == null)
                 {
                     actual = tmp.izquierda;
+                    size--;
                     return true;
                 }   
                 /*-------------- termina la parte donde pregunta si era hoja o tenia 1 hijo, por lo tanto si tiene hijos*/ 
@@ -144,6 +153,7 @@ namespace NavalWarsEDD
                     else
                         tmp.derecha = tmp2.izquierda;
 
+                    size--;
                     return true;
                 }
             }
@@ -180,6 +190,61 @@ namespace NavalWarsEDD
             }
         }
 
+
+        public int nivelArbol(NodoUsuario actual)
+        {
+            int izq = 0;
+                int der =0;
+            if(actual.izquierda == null && actual.derecha ==null) //comprbando si es un nodo hoja
+            {
+                return 1;
+            }
+            else
+            {
+                if(actual.izquierda !=null)
+                {
+                    izq = nivelArbol(actual.izquierda);
+                }
+                if( actual.derecha != null)
+                {
+                   
+                    der = nivelArbol(actual.derecha);
+                }
+
+                if (izq < der)
+                    return der + 1;
+                else
+                    return izq + 1;
+            }
+        }
+
+
+        public void generarTopJuegosGanados()
+        {
+            if(raiz !=null)
+            {
+                Top newTop = new Top();
+                recorrerPreordenTopJuegos(ref raiz, ref newTop);
+                newTop.ordenarJuegos();
+                Grafo g = new Grafo();
+                g.generarTopJuegos(newTop);
+            }
+        }
+
+        public void recorrerPreordenTopJuegos(ref NodoUsuario actual, ref Top top)
+        {
+            if(actual != null)
+            {
+                if(actual.lstJuegos.primero!=null)
+                {
+                    int partidas = actual.lstJuegos.JuegosGanados();
+                    actual.informacion.partidadGanadas = partidas;
+                    top.agregar(actual.informacion);
+                }
+                recorrerPreordenTopJuegos( ref actual.izquierda,ref top);
+                recorrerPreordenTopJuegos( ref actual.derecha, ref top);
+            }
+        }
 
     }
 }

@@ -36,6 +36,12 @@
       <s:element name="generarArbolResponse">
         <s:complexType />
       </s:element>
+      <s:element name="generarArbolEspejo">
+        <s:complexType />
+      </s:element>
+      <s:element name="generarArbolEspejoResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="buscarUsuario">
         <s:complexType>
           <s:sequence>
@@ -186,6 +192,12 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="generarTopJuegos">
+        <s:complexType />
+      </s:element>
+      <s:element name="generarTopJuegosResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -205,6 +217,12 @@
   </wsdl:message>
   <wsdl:message name="generarArbolSoapOut">
     <wsdl:part name="parameters" element="tns:generarArbolResponse" />
+  </wsdl:message>
+  <wsdl:message name="generarArbolEspejoSoapIn">
+    <wsdl:part name="parameters" element="tns:generarArbolEspejo" />
+  </wsdl:message>
+  <wsdl:message name="generarArbolEspejoSoapOut">
+    <wsdl:part name="parameters" element="tns:generarArbolEspejoResponse" />
   </wsdl:message>
   <wsdl:message name="buscarUsuarioSoapIn">
     <wsdl:part name="parameters" element="tns:buscarUsuario" />
@@ -260,6 +278,12 @@
   <wsdl:message name="obtenerInfoJuegosUsuarioSoapOut">
     <wsdl:part name="parameters" element="tns:obtenerInfoJuegosUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="generarTopJuegosSoapIn">
+    <wsdl:part name="parameters" element="tns:generarTopJuegos" />
+  </wsdl:message>
+  <wsdl:message name="generarTopJuegosSoapOut">
+    <wsdl:part name="parameters" element="tns:generarTopJuegosResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -272,6 +296,10 @@
     <wsdl:operation name="generarArbol">
       <wsdl:input message="tns:generarArbolSoapIn" />
       <wsdl:output message="tns:generarArbolSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="generarArbolEspejo">
+      <wsdl:input message="tns:generarArbolEspejoSoapIn" />
+      <wsdl:output message="tns:generarArbolEspejoSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="buscarUsuario">
       <wsdl:input message="tns:buscarUsuarioSoapIn" />
@@ -309,6 +337,10 @@
       <wsdl:input message="tns:obtenerInfoJuegosUsuarioSoapIn" />
       <wsdl:output message="tns:obtenerInfoJuegosUsuarioSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="generarTopJuegos">
+      <wsdl:input message="tns:generarTopJuegosSoapIn" />
+      <wsdl:output message="tns:generarTopJuegosSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -332,6 +364,15 @@
     </wsdl:operation>
     <wsdl:operation name="generarArbol">
       <soap:operation soapAction="http://tempuri.org/generarArbol" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarArbolEspejo">
+      <soap:operation soapAction="http://tempuri.org/generarArbolEspejo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -420,6 +461,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="generarTopJuegos">
+      <soap:operation soapAction="http://tempuri.org/generarTopJuegos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -443,6 +493,15 @@
     </wsdl:operation>
     <wsdl:operation name="generarArbol">
       <soap12:operation soapAction="http://tempuri.org/generarArbol" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarArbolEspejo">
+      <soap12:operation soapAction="http://tempuri.org/generarArbolEspejo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -524,6 +583,15 @@
     </wsdl:operation>
     <wsdl:operation name="obtenerInfoJuegosUsuario">
       <soap12:operation soapAction="http://tempuri.org/obtenerInfoJuegosUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarTopJuegos">
+      <soap12:operation soapAction="http://tempuri.org/generarTopJuegos" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

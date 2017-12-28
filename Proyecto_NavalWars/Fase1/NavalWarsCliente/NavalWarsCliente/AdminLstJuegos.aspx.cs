@@ -31,8 +31,8 @@ namespace NavalWarsCliente
 
         protected void btnAddJuegos_Click(object sender, EventArgs e)
         {
-            if(banderaEstausuario)
-            {
+           // if(banderaEstausuario)
+           // {
                 string nickUsuario = txtNickUsuarioAddJuegos.Text;
                 string nickOp = txtNickOponeteAddJuegos.Text;
                 int uniDesple = Convert.ToInt16(txtUniDesplegAddJuegos.Text);
@@ -43,7 +43,7 @@ namespace NavalWarsCliente
                 ClaseGlobal.servidorPrincipal.addjuegosUsuario(nickUsuario, nickOp, uniDesple, uniSobrev, uniDestru, gano);
                 lblMnsjAddJugos.Text = "Informacion Agregada al usuario " + nickUsuario;
                 //banderaEstausuario = false;
-            }
+          //  }
             MultiView1.ActiveViewIndex = 1;
         }
 

@@ -21,13 +21,22 @@ namespace WindowsFormsApplication1
             Matriz nuevo = new Matriz();
             Unidad u1 = new Unidad(0, 0);
             Unidad u2 = new Unidad(1, 1);
-            Unidad u3 = new Unidad(2, 3);
-            Unidad u4 = new Unidad(3, 6);
+            Unidad u3 = new Unidad(1, 3);
+            Unidad u4 = new Unidad(0, 0);
+            Unidad u5 = new Unidad(2, 1);
+            Unidad u6 = new Unidad(3, 1);
+            Unidad u7 = new Unidad(2, 1);
 
             nuevo.insertar(1, "A", ref u1);
             nuevo.insertar(1, "B", ref u2);
             nuevo.insertar(1, "A", ref u3);
-            nuevo.insertar(1, "D", ref u4);
+            nuevo.insertar(1, "B", ref u4);
+            nuevo.insertar(1, "A", ref u5);
+            nuevo.insertar(1, "B", ref u6);
+            nuevo.insertar(1, "B", ref u7);
+
+      //      nuevo.insertar(1, "B", ref u2);
+            //nuevo.insertar(1, "B", ref u4);
 
 
             //Unidad u5 = new Unidad(0, 0);

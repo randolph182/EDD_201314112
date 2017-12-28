@@ -35,6 +35,9 @@ namespace NavalWarsCliente.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/generarArbol", ReplyAction="*")]
         void generarArbol();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/generarArbolEspejo", ReplyAction="*")]
+        void generarArbolEspejo();
+        
         // CODEGEN: Generating message contract since element name nickname from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/buscarUsuario", ReplyAction="*")]
         NavalWarsCliente.ServiceReference1.buscarUsuarioResponse buscarUsuario(NavalWarsCliente.ServiceReference1.buscarUsuarioRequest request);
@@ -70,6 +73,9 @@ namespace NavalWarsCliente.ServiceReference1 {
         // CODEGEN: Generating message contract since element name nickname from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerInfoJuegosUsuario", ReplyAction="*")]
         NavalWarsCliente.ServiceReference1.obtenerInfoJuegosUsuarioResponse obtenerInfoJuegosUsuario(NavalWarsCliente.ServiceReference1.obtenerInfoJuegosUsuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/generarTopJuegos", ReplyAction="*")]
+        void generarTopJuegos();
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -965,6 +971,10 @@ namespace NavalWarsCliente.ServiceReference1 {
             base.Channel.generarArbol();
         }
         
+        public void generarArbolEspejo() {
+            base.Channel.generarArbolEspejo();
+        }
+        
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         NavalWarsCliente.ServiceReference1.buscarUsuarioResponse NavalWarsCliente.ServiceReference1.Service1Soap.buscarUsuario(NavalWarsCliente.ServiceReference1.buscarUsuarioRequest request) {
             return base.Channel.buscarUsuario(request);
@@ -1099,6 +1109,10 @@ namespace NavalWarsCliente.ServiceReference1 {
             inValue.Body.idJuego = idJuego;
             NavalWarsCliente.ServiceReference1.obtenerInfoJuegosUsuarioResponse retVal = ((NavalWarsCliente.ServiceReference1.Service1Soap)(this)).obtenerInfoJuegosUsuario(inValue);
             return retVal.Body.obtenerInfoJuegosUsuarioResult;
+        }
+        
+        public void generarTopJuegos() {
+            base.Channel.generarTopJuegos();
         }
     }
 }

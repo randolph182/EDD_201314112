@@ -35,7 +35,13 @@ namespace NavalWarsEDD
         [WebMethod]
         public void generarArbol()
         {
-            g.generarABBUsuario(ref usuarioABB.raiz);
+            g.generarABBUsuario(ref usuarioABB);
+        }
+
+        [WebMethod]
+        public void generarArbolEspejo()
+        {
+            g.generarABBEspejo(ref usuarioABB.raiz);
         }
 
         [WebMethod]
@@ -165,6 +171,14 @@ namespace NavalWarsEDD
                 }
             }
             return listaJuegos;
+        }
+
+        /*--------------------------------- parte de los Tops -------------------------------------*/
+        [WebMethod]
+
+        public void generarTopJuegos()
+        {
+            usuarioABB.generarTopJuegosGanados();
         }
     }
 }

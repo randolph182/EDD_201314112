@@ -33,27 +33,58 @@ namespace NavalWarsCliente
 
         protected void btnSubirUsuarios_Click(object sender, EventArgs e)
         {
-            string direccion = Path.GetFullPath(FileUpload1.FileName);
-            var path = Server.MapPath(@""+ FileUpload1.FileName);
+           // string direccion = Path.GetFullPath(FileUpload1.FileName);
+            string direccion = Server.MapPath(FileUpload1.FileName);
+            
             if(direccion != "")
             {
-                StreamReader file = new StreamReader(path,true);
-               // System.IO.StreamWriter file = new System.IO.StreamWriter(path, true);
                 int contador = 0;
                 string linea;
-                while((linea = file.ReadLine())!=null)
+                using (StreamReader sr = File.OpenText(direccion)) 
                 {
-                    if(contador != 0)
+                    //linea  = sr.ReadLine();
+                    while ((linea = sr.ReadLine()) != null)
                     {
-                        foreach(string info in linea.ToString().Split(','))
+                        if (contador != 0)
                         {
-                            Response.Write("<script LANGUAGE='JavaScript' >alert('"+ info +"')</script>");
+                            string[] iu = linea.Split(',');
+                            ClaseGlobal.servidorPrincipal.insertarUsuario(iu[0], " ", iu[1], iu[2], Convert.ToInt32(iu[3]));
                         }
+                        contador++;
                     }
-                    contador++;
+                    sr.Close();
                 }
-                file.Close();
+                               
             }
+            MultiView1.ActiveViewIndex = 1;
+        }
+
+        protected void subierArchivoJuegos_Click(object sender, EventArgs e)
+        {
+            string direccion = Server.MapPath(FileUpload2.FileName);
+
+            if (direccion != "")
+            {
+                int contador = 0;
+                string linea;
+                using (StreamReader sr = File.OpenText(direccion))
+                {
+                    //linea  = sr.ReadLine();
+                    while ((linea = sr.ReadLine()) != null)
+                    {
+                        if (contador != 0)
+                        {
+                            string[] ij = linea.Split(',');
+                            ClaseGlobal.servidorPrincipal.addjuegosUsuario(ij[0], ij[1], Convert.ToInt32(ij[2]), Convert.ToInt32(ij[3]), Convert.ToInt32(ij[4]), Convert.ToInt32(ij[5]));
+                            
+                        }
+                        contador++;
+                    }
+                    sr.Close();
+                }
+
+            }
+            MultiView1.ActiveViewIndex = 1;
         }
     }
 }
