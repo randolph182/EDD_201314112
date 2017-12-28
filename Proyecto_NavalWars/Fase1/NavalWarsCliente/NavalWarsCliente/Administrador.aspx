@@ -5,6 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 523px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -23,13 +28,57 @@
                 <asp:Button ID="btnJuegos" runat="server" Text="Administrar Lista de Juegos" OnClick="btnJuegos_Click" />
                 <br />
                 <br />
-                <asp:Button ID="btnRegrsa" runat="server" Text="Button" Width="235px" />
+                <asp:Button ID="btnCargaMasiva" runat="server" Text="Carga Masiva" Width="235px" OnClick="btnCargaMasiva_Click" />
                 <br />
                 <br />
             </asp:View>
             <br />
             <br />
             <asp:View ID="View2" runat="server">
+                <br />
+                <br />
+                <asp:Label ID="Label2" runat="server" Font-Size="30pt" Text="Carga Masiva"></asp:Label>
+                <br />
+                <br />
+                <table style="width:100%;">
+                    <tr>
+                        <td class="auto-style1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:Button ID="btnSubirUsuarios" runat="server" Text="subirArchivoUsuarios" OnClick="btnSubirUsuarios_Click" />
+                        </td>
+                        <td>
+                            <asp:FileUpload ID="FileUpload1" runat="server" />
+                        </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                                        <tr>
+                        <td class="auto-style1">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                                        <tr>
+                        <td class="auto-style1">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                                        <tr>
+                        <td class="auto-style1">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+                <br />
+                <br />
+                <br />
             </asp:View>
             <br />
         </asp:MultiView>
