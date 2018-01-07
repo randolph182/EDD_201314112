@@ -1,0 +1,18 @@
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsEDD\NavalWarsEDD\bin\NavalWarsEDD.dll.config
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsEDD\NavalWarsEDD\bin\NavalWarsEDD.dll
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsEDD\NavalWarsEDD\bin\NavalWarsEDD.pdb
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsEDD\NavalWarsEDD\obj\Debug\NavalWarsEDD.csprojResolveAssemblyReference.cache
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsEDD\NavalWarsEDD\obj\Debug\NavalWarsEDD.dll
+c:\users\rando\documents\visual studio 2013\Projects\NavalWarsEDD\NavalWarsEDD\obj\Debug\NavalWarsEDD.pdb
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase1\NavalWarsEDD\NavalWarsEDD\bin\NavalWarsEDD.dll.config
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase1\NavalWarsEDD\NavalWarsEDD\bin\NavalWarsEDD.dll
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase1\NavalWarsEDD\NavalWarsEDD\bin\NavalWarsEDD.pdb
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase1\NavalWarsEDD\NavalWarsEDD\obj\Debug\NavalWarsEDD.csprojResolveAssemblyReference.cache
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase1\NavalWarsEDD\NavalWarsEDD\obj\Debug\NavalWarsEDD.dll
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase1\NavalWarsEDD\NavalWarsEDD\obj\Debug\NavalWarsEDD.pdb
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsEDD\NavalWarsEDD\bin\NavalWarsEDD.dll.config
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsEDD\NavalWarsEDD\bin\NavalWarsEDD.dll
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsEDD\NavalWarsEDD\bin\NavalWarsEDD.pdb
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsEDD\NavalWarsEDD\obj\Debug\NavalWarsEDD.csprojResolveAssemblyReference.cache
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsEDD\NavalWarsEDD\obj\Debug\NavalWarsEDD.dll
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsEDD\NavalWarsEDD\obj\Debug\NavalWarsEDD.pdb
