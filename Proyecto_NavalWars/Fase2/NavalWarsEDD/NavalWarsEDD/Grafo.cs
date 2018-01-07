@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.IO;
 using System.Diagnostics;
+using System.Collections;
+
 
 namespace NavalWarsEDD
 {
@@ -162,6 +164,63 @@ namespace NavalWarsEDD
             w.Close();
             generarImagen("C:\\GrafoEDD\\AVL.dot", "C:\\GrafoEDD\\AVL.png");
         }
+
+        public void generarGrafoArbolB(ref Pagina raiz)
+        {
+            string acum = "digraph G\n" +
+                            "{\n node	[shape = record,height=.1];\n";
+           
+            if(raiz != null)
+            {
+                string acumEnlace = "";
+                int contNodo = 0;
+                int contAux = 0;
+                Queue cola = new Queue();
+                cola.Enqueue(raiz);
+                while(cola.Count != 0)
+                {
+                    Pagina tmp = (Pagina)cola.Peek();
+                    cola.Dequeue();
+                    imprimir(ref tmp, ref acum, ref acumEnlace);
+                    for (int i = 0; i <= tmp.cuenta; ++i)
+                    {
+                        if (tmp.ramas[i] != null)
+                            cola.Enqueue(tmp.ramas[i]);
+                    }
+                }
+                acum += "\n" + acumEnlace;
+            }
+            acum += "}\n";
+            const string f = "C:\\GrafoEDD\\ArbolB.dot";
+            StreamWriter w = new StreamWriter(f);
+            w.WriteLine(acum);
+            w.Close();
+            generarImagen("C:\\GrafoEDD\\ArbolB.dot", "C:\\GrafoEDD\\ArbolB.png");
+        }
+        
+        public void imprimir(ref Pagina actual, ref string acum ,ref string enlace)
+        {
+            acum += actual.GetHashCode().ToString() + "[label=\"";
+            acum += "<r0>";
+            if(actual.ramas[0] != null)
+            {
+                enlace += "\""+actual.GetHashCode().ToString()+ "\":r0 ->";
+                enlace += "\""+actual.ramas[0].GetHashCode().ToString() + "\"\n";
+            }
+            for (int i = 1; i <= actual.cuenta; i++)
+            {
+                acum += "|";
+                acum += "<c"+i.ToString()+"> " + actual.claves[i].idAtaque.ToString();
+                acum += "|<r" + i.ToString() + ">";
+                if(actual.ramas[i] != null)
+                {
+                    enlace += "\""+actual.GetHashCode().ToString() + "\":r" + i.ToString() + " -> ";
+                    enlace += "\"" + actual.ramas[i].GetHashCode().ToString() + "\"\n";
+                }
+            }
+            acum += "\"];\n";
+        }
+        
 
         public void generarImagen(string nombArchivo,string nombImagen)
         {

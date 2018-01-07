@@ -18,6 +18,7 @@ namespace NavalWarsEDD
     {
         public static ABBUsuario usuarioABB = new ABBUsuario();
         public static ArbolAVL avlContactos = new ArbolAVL();
+        public static ArbolB arbolB = new ArbolB(5);
         Grafo g = new Grafo();
 
         [WebMethod]
@@ -201,6 +202,15 @@ namespace NavalWarsEDD
         public void modificarAVL(string nickname,string nickMod, string password, string email)
         {
             avlContactos.modificar(nickname,nickMod, password, email, ref avlContactos.raiz);
+        }
+
+        /*-------------------------------- <Arbol B>------------------------------------------------------*/
+        [WebMethod]
+        public void insertarArbol(int coordX,int coordY,string idUnidadAtacante,int resultDanio,string idUnidadAtacada,string idEmisor, string idReceptor,string fecha,string tiempo,int idAtaque)
+        {
+            HistorialMov nuevo = new HistorialMov(coordX, coordY, idUnidadAtacante, resultDanio, idUnidadAtacada, idEmisor, idReceptor, fecha, tiempo, idAtaque);
+            arbolB.insertar(nuevo);
+            g.generarGrafoArbolB(ref arbolB.raiz);
         }
     }
 }

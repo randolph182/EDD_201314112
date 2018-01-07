@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="ABBUsuario.cs" />
     <Compile Include="ArbolAVL.cs" />
+    <Compile Include="ArbolB.cs" />
     <Compile Include="Grafo.cs" />
     <Compile Include="Juegos.cs" />
     <Compile Include="Service1.asmx.cs">
