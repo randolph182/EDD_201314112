@@ -61,12 +61,15 @@
     <Compile Include="ArbolB.cs" />
     <Compile Include="Grafo.cs" />
     <Compile Include="Juegos.cs" />
+    <Compile Include="Matriz.cs" />
     <Compile Include="Service1.asmx.cs">
       <DependentUpon>Service1.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TablaHash.cs" />
     <Compile Include="Top.cs" />
+    <Compile Include="Unidad.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

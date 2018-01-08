@@ -10,3 +10,9 @@ C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase1\NavalWars
 C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase1\NavalWarsCliente\NavalWarsCliente\obj\Debug\NavalWarsCliente.csprojResolveAssemblyReference.cache
 C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase1\NavalWarsCliente\NavalWarsCliente\obj\Debug\NavalWarsCliente.dll
 C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase1\NavalWarsCliente\NavalWarsCliente\obj\Debug\NavalWarsCliente.pdb
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsCliente\NavalWarsCliente\bin\NavalWarsCliente.dll.config
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsCliente\NavalWarsCliente\bin\NavalWarsCliente.dll
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsCliente\NavalWarsCliente\bin\NavalWarsCliente.pdb
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsCliente\NavalWarsCliente\obj\Debug\NavalWarsCliente.csprojResolveAssemblyReference.cache
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsCliente\NavalWarsCliente\obj\Debug\NavalWarsCliente.dll
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsCliente\NavalWarsCliente\obj\Debug\NavalWarsCliente.pdb

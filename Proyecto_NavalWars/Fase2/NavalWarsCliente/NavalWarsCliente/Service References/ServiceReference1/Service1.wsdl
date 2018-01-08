@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:element name="HelloWorld">
@@ -198,6 +198,72 @@
       <s:element name="generarTopJuegosResponse">
         <s:complexType />
       </s:element>
+      <s:element name="insertarAVL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarAVLResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="graficarAVL">
+        <s:complexType />
+      </s:element>
+      <s:element name="graficarAVLResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="eliminarNodoAVL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminarNodoAVLResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="modificarAVL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nickMod" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="modificarAVLResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="insertarArbolB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="coordX" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="coordY" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="idUnidadAtacante" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="resultDanio" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="idUnidadAtacada" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idEmisor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idReceptor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fecha" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tiempo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idAtaque" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarArbolBResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="insertarHash">
+        <s:complexType />
+      </s:element>
+      <s:element name="insertarHashResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -284,6 +350,42 @@
   <wsdl:message name="generarTopJuegosSoapOut">
     <wsdl:part name="parameters" element="tns:generarTopJuegosResponse" />
   </wsdl:message>
+  <wsdl:message name="insertarAVLSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarAVL" />
+  </wsdl:message>
+  <wsdl:message name="insertarAVLSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarAVLResponse" />
+  </wsdl:message>
+  <wsdl:message name="graficarAVLSoapIn">
+    <wsdl:part name="parameters" element="tns:graficarAVL" />
+  </wsdl:message>
+  <wsdl:message name="graficarAVLSoapOut">
+    <wsdl:part name="parameters" element="tns:graficarAVLResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminarNodoAVLSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminarNodoAVL" />
+  </wsdl:message>
+  <wsdl:message name="eliminarNodoAVLSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminarNodoAVLResponse" />
+  </wsdl:message>
+  <wsdl:message name="modificarAVLSoapIn">
+    <wsdl:part name="parameters" element="tns:modificarAVL" />
+  </wsdl:message>
+  <wsdl:message name="modificarAVLSoapOut">
+    <wsdl:part name="parameters" element="tns:modificarAVLResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertarArbolBSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarArbolB" />
+  </wsdl:message>
+  <wsdl:message name="insertarArbolBSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarArbolBResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertarHashSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarHash" />
+  </wsdl:message>
+  <wsdl:message name="insertarHashSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarHashResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -340,6 +442,30 @@
     <wsdl:operation name="generarTopJuegos">
       <wsdl:input message="tns:generarTopJuegosSoapIn" />
       <wsdl:output message="tns:generarTopJuegosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarAVL">
+      <wsdl:input message="tns:insertarAVLSoapIn" />
+      <wsdl:output message="tns:insertarAVLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="graficarAVL">
+      <wsdl:input message="tns:graficarAVLSoapIn" />
+      <wsdl:output message="tns:graficarAVLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarNodoAVL">
+      <wsdl:input message="tns:eliminarNodoAVLSoapIn" />
+      <wsdl:output message="tns:eliminarNodoAVLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarAVL">
+      <wsdl:input message="tns:modificarAVLSoapIn" />
+      <wsdl:output message="tns:modificarAVLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarArbolB">
+      <wsdl:input message="tns:insertarArbolBSoapIn" />
+      <wsdl:output message="tns:insertarArbolBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarHash">
+      <wsdl:input message="tns:insertarHashSoapIn" />
+      <wsdl:output message="tns:insertarHashSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -463,6 +589,60 @@
     </wsdl:operation>
     <wsdl:operation name="generarTopJuegos">
       <soap:operation soapAction="http://tempuri.org/generarTopJuegos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarAVL">
+      <soap:operation soapAction="http://tempuri.org/insertarAVL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="graficarAVL">
+      <soap:operation soapAction="http://tempuri.org/graficarAVL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarNodoAVL">
+      <soap:operation soapAction="http://tempuri.org/eliminarNodoAVL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarAVL">
+      <soap:operation soapAction="http://tempuri.org/modificarAVL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarArbolB">
+      <soap:operation soapAction="http://tempuri.org/insertarArbolB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarHash">
+      <soap:operation soapAction="http://tempuri.org/insertarHash" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -599,13 +779,67 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="insertarAVL">
+      <soap12:operation soapAction="http://tempuri.org/insertarAVL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="graficarAVL">
+      <soap12:operation soapAction="http://tempuri.org/graficarAVL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarNodoAVL">
+      <soap12:operation soapAction="http://tempuri.org/eliminarNodoAVL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarAVL">
+      <soap12:operation soapAction="http://tempuri.org/modificarAVL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarArbolB">
+      <soap12:operation soapAction="http://tempuri.org/insertarArbolB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarHash">
+      <soap12:operation soapAction="http://tempuri.org/insertarHash" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service1">
     <wsdl:port name="Service1Soap" binding="tns:Service1Soap">
-      <soap:address location="http://localhost/NavalWars/Service1.asmx" />
+      <soap:address location="http://localhost:8544/Service1.asmx" />
     </wsdl:port>
     <wsdl:port name="Service1Soap12" binding="tns:Service1Soap12">
-      <soap12:address location="http://localhost/NavalWars/Service1.asmx" />
+      <soap12:address location="http://localhost:8544/Service1.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

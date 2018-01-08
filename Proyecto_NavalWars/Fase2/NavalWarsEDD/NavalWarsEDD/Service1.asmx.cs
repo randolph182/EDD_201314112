@@ -19,6 +19,9 @@ namespace NavalWarsEDD
         public static ABBUsuario usuarioABB = new ABBUsuario();
         public static ArbolAVL avlContactos = new ArbolAVL();
         public static ArbolB arbolB = new ArbolB(5);
+        public static TablaHash tablaHash = new TablaHash(43);
+        public static Matriz cubo = new Matriz();
+
         Grafo g = new Grafo();
 
         [WebMethod]
@@ -206,11 +209,30 @@ namespace NavalWarsEDD
 
         /*-------------------------------- <Arbol B>------------------------------------------------------*/
         [WebMethod]
-        public void insertarArbol(int coordX,int coordY,string idUnidadAtacante,int resultDanio,string idUnidadAtacada,string idEmisor, string idReceptor,string fecha,string tiempo,int idAtaque)
+        public void insertarArbolB(int coordX,int coordY,string idUnidadAtacante,int resultDanio,string idUnidadAtacada,string idEmisor, string idReceptor,string fecha,string tiempo,int idAtaque)
         {
             HistorialMov nuevo = new HistorialMov(coordX, coordY, idUnidadAtacante, resultDanio, idUnidadAtacada, idEmisor, idReceptor, fecha, tiempo, idAtaque);
             arbolB.insertar(nuevo);
             g.generarGrafoArbolB(ref arbolB.raiz);
+        }
+
+        /*-------------------------------- <Arbol B>------------------------------------------------------*/
+        [WebMethod]
+        public void insertarHash()
+        {
+            tablaHash.insertarFromABB(ref usuarioABB.raiz);
+            g.generarGrafoTablaHash(tablaHash);
+        }
+        
+        [WebMethod]
+        public void insertarUnidadMatriz(int fila,string columna,int nivel,int tipoUnidad,string idUnidad)
+        {
+            Unidad nueva = new Unidad(nivel, tipoUnidad, idUnidad);
+            cubo.insertar(fila, columna, ref nueva);
+            g.generarMatriz(cubo, 0);
+            g.generarMatriz(cubo, 1);
+            g.generarMatriz(cubo, 2);
+            g.generarMatriz(cubo, 3);
         }
     }
 }

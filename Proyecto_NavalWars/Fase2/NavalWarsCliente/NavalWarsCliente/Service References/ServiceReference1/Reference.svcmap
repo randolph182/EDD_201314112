@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="217a4d9f-8e1b-4fb6-8e25-ed4736fc0c80" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0e29d6d4-dbe9-48c7-bb50-be83ee2ae8d1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -18,11 +18,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/NavalWars/Service1.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8544/Service1.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="b24b4d86-9b1e-4c7e-bc5a-2e79b0b33f27" SourceId="1" SourceUrl="http://localhost/NavalWars/Service1.asmx?disco" />
-    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="7a52e2dd-79bc-4c6a-b027-04e195efc969" SourceId="1" SourceUrl="http://localhost/NavalWars/Service1.asmx?wsdl" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="6aa07e4b-096f-444a-a82c-4819d14b681d" SourceId="1" SourceUrl="http://localhost:8544/Service1.asmx?disco" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="bf7c64d6-155e-4e6f-816e-7669ab4e66b7" SourceId="1" SourceUrl="http://localhost:8544/Service1.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

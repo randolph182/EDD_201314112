@@ -65,13 +65,13 @@ namespace NavalWarsEDD
 
             estructuraDot += "\n"+ cabecera +"\n"+ acum + "\n\n "+info+"\n}\n";
             //const string f = "C:\\GrafoEDD\\ABBUsuarios.dot";
-            const string f = "C:\\Users\\rando\\Documents\\GitHub\\EDD_201314112\\Proyecto_NavalWars\\Fase1\\NavalWarsCliente\\NavalWarsCliente\\ABBUsuarios.dot";
+            const string f = "C:\\Users\\rando\\Documents\\GitHub\\EDD_201314112\\Proyecto_NavalWars\\Fase2\\NavalWarsCliente\\NavalWarsCliente\\ABBUsuarios.dot";
             StreamWriter w = new StreamWriter(f);
             w.WriteLine(estructuraDot);
             w.Close();
             //generarImagen("C:\\GrafoEDD\\ABBUsuarios.dot" , "C:\\GrafoEDD\\ABBUsuarios.png");
-            string archDot = "C:\\Users\\rando\\Documents\\GitHub\\EDD_201314112\\Proyecto_NavalWars\\Fase1\\NavalWarsCliente\\NavalWarsCliente\\ABBUsuarios.dot";
-            string archImg = "C:\\Users\\rando\\Documents\\GitHub\\EDD_201314112\\Proyecto_NavalWars\\Fase1\\NavalWarsCliente\\NavalWarsCliente\\ABBUsuarios.png";
+            string archDot = "C:\\Users\\rando\\Documents\\GitHub\\EDD_201314112\\Proyecto_NavalWars\\Fase2\\NavalWarsCliente\\NavalWarsCliente\\ABBUsuarios.dot";
+            string archImg = "C:\\Users\\rando\\Documents\\GitHub\\EDD_201314112\\Proyecto_NavalWars\\Fase2\\NavalWarsCliente\\NavalWarsCliente\\ABBUsuarios.png";
             generarImagen(archDot, archImg);
         }
 
@@ -181,8 +181,8 @@ namespace NavalWarsEDD
                 {
                     Pagina tmp = (Pagina)cola.Peek();
                     cola.Dequeue();
-                    imprimir(ref tmp, ref acum, ref acumEnlace);
-                    for (int i = 0; i <= tmp.cuenta; ++i)
+                    imprimir(tmp, ref acum, ref acumEnlace);
+                    for (int i = 0; i <= tmp.cuenta; i++)
                     {
                         if (tmp.ramas[i] != null)
                             cola.Enqueue(tmp.ramas[i]);
@@ -198,7 +198,7 @@ namespace NavalWarsEDD
             generarImagen("C:\\GrafoEDD\\ArbolB.dot", "C:\\GrafoEDD\\ArbolB.png");
         }
         
-        public void imprimir(ref Pagina actual, ref string acum ,ref string enlace)
+        public void imprimir( Pagina actual, ref string acum ,ref string enlace)
         {
             acum += actual.GetHashCode().ToString() + "[label=\"";
             acum += "<r0>";
@@ -221,6 +221,314 @@ namespace NavalWarsEDD
             acum += "\"];\n";
         }
         
+        public void generarGrafoTablaHash( TablaHash th)
+        {
+            string acum = "digraph G { \n nodesep=.05; \n rankdir=LR; \n node [shape=record,width=.1,height=.1]; \n";
+            th.getAcumGrafo(ref acum);
+            acum += "\n } \n";
+            const string f = "C:\\GrafoEDD\\TablaHash.dot";
+            StreamWriter w = new StreamWriter(f);
+            w.WriteLine(acum);
+            w.Close();
+            generarImagen("C:\\GrafoEDD\\TablaHash.dot", "C:\\GrafoEDD\\TablaHash.png");
+        }
+
+        public void generarMatriz(Matriz matriz, int nivel)
+        {
+            string acumInfo = "digraph G{ \n " +
+                                "node[shape=box, style=filled, color=deepskyblue3];\n " +
+                                "edge[color=black]; \n " +
+                                "rankdir=UD; \n";
+
+            string idCabeceraFila = "";
+            string cabeceraFila = "";
+            string idCabeceraCol = "";
+            string cabeceraCol = "";
+            string alineacionCol = "{rank=min;Matriz;";
+            string acumOrtogonales = "";
+
+            NodoOrtogonal accesoCol = null;
+            string cabeceraOrtogonalCol = "";
+            string acumEnlaceCol = "";
+            bool accesoColEncontrada = false;
+
+
+            NodoOrtogonal accesoFila = null;
+            string cabeceraOrtogonalFila = "";
+            string acumEnlaceFila = "";
+            bool accesoFilaEncontrada = false;
+            string ranksame = "";
+            string alineacionFilas = "";
+
+            Encabezado eFila = matriz.ncbzdoFilas.primero;
+            Encabezado eCol = matriz.ncbzdoColumnas.primero;
+
+            if (eFila != null)
+            {
+                cabeceraFila += "Matriz -> " + eFila.GetHashCode().ToString() + ";\n";
+
+                while (eFila.siguiente != null)
+                {
+                    idCabeceraFila += eFila.GetHashCode().ToString() + "[label = \"" + eFila.id.ToString() + "\"];\n";
+                    cabeceraFila += eFila.GetHashCode().ToString() + " -> " + eFila.siguiente.GetHashCode().ToString() + "[rankdir=UD];\n";
+                    ranksame = "";
+                    ranksame += "{rank=same;" + eFila.GetHashCode().ToString() + ";";
+                    obtenerNodosOrtogonalesFila(ref eFila, ref eFila.accesoNodo, ref acumEnlaceFila, ref cabeceraOrtogonalFila, ref ranksame, ref accesoFila, nivel, ref accesoFilaEncontrada);
+                    if (accesoFila != null)
+                    {
+                        acumOrtogonales += cabeceraOrtogonalFila + "\n";
+                        acumOrtogonales += accesoFila.GetHashCode().ToString() + "[label=\"" + accesoFila.unidad.idUnidad + "\"];\n";
+                        acumOrtogonales += eFila.GetHashCode().ToString() + " -> " + accesoFila.GetHashCode().ToString() + "[constraint=false];\n";
+                        acumOrtogonales += acumEnlaceFila + "[constraint=false];\n";
+
+                        ranksame += "};\n";
+                        alineacionFilas += ranksame;
+
+                    }
+                    ranksame = "";
+                    cabeceraOrtogonalFila = "";
+                    acumEnlaceFila = "";
+                    accesoFila = null;
+                    accesoFilaEncontrada = false;
+
+                    eFila = eFila.siguiente;
+                }
+                if (eFila.siguiente == null)
+                {
+                    cabeceraOrtogonalFila = "";
+                    acumEnlaceFila = "";
+                    accesoFila = null;
+                    accesoFilaEncontrada = false;
+                    ranksame = "";
+                    idCabeceraFila += eFila.GetHashCode().ToString() + "[label = \"" + eFila.id.ToString() + "\"];\n";
+                    ranksame += "{rank=same;" + eFila.GetHashCode().ToString() + ";";
+                    obtenerNodosOrtogonalesFila(ref eFila, ref eFila.accesoNodo, ref acumEnlaceFila, ref cabeceraOrtogonalFila, ref ranksame, ref accesoFila, nivel, ref accesoFilaEncontrada);
+                    if (accesoFila != null)
+                    {
+                        acumOrtogonales += cabeceraOrtogonalFila + "\n";
+                        acumOrtogonales += accesoFila.GetHashCode().ToString() + "[label=\"" + accesoFila.unidad.idUnidad + "\"];\n";
+                        acumOrtogonales += eFila.GetHashCode().ToString() + " -> " + accesoFila.GetHashCode().ToString() + ";\n";
+                        acumOrtogonales += acumEnlaceFila + ";\n";
+
+                        ranksame += "};\n";
+                        alineacionFilas += ranksame;
+                        ranksame = "";
+                    }
+
+                }
+
+                while (eFila.anterior != null)
+                {
+                    cabeceraFila += eFila.GetHashCode().ToString() + " -> " + eFila.anterior.GetHashCode().ToString() + ";\n";
+                    eFila = eFila.anterior;
+                }
+            }
+            if (eCol != null)
+            {
+                cabeceraCol += "Matriz ->" + eCol.GetHashCode().ToString() + ";\n";
+                while (eCol.siguiente != null)
+                {
+                    string conversion = Convert.ToChar(eCol.id).ToString();
+                    alineacionCol += eCol.GetHashCode().ToString() + ";";
+                    idCabeceraCol += eCol.GetHashCode().ToString() + "[label=\"" + conversion + "\"];\n";
+                    cabeceraCol += eCol.GetHashCode().ToString() + " -> " + eCol.siguiente.GetHashCode().ToString() + ";\n";
+                    obtenerNodosOrtogonalesCol(ref eCol, ref eCol.accesoNodo, ref acumEnlaceCol, ref cabeceraOrtogonalCol, ref accesoCol, nivel, ref accesoColEncontrada);
+                    if (accesoCol != null)
+                    {
+                        acumOrtogonales += cabeceraOrtogonalCol + "\n";
+                        acumOrtogonales += eCol.GetHashCode().ToString() + " -> " + accesoCol.GetHashCode().ToString() + ";\n";
+                        acumOrtogonales += acumEnlaceCol + ";\n";
+                    }
+                    cabeceraOrtogonalCol = "";
+                    acumEnlaceCol = "";
+                    accesoColEncontrada = false;
+                    accesoCol = null;
+
+                    eCol = eCol.siguiente;
+                }
+                if (eCol.siguiente == null)
+                {
+                    string conv = Convert.ToChar(eCol.id).ToString();
+                    cabeceraOrtogonalCol = "";
+                    acumEnlaceCol = "";
+                    accesoColEncontrada = false;
+                    accesoCol = null;
+                    obtenerNodosOrtogonalesCol(ref eCol, ref eCol.accesoNodo, ref acumEnlaceCol, ref cabeceraOrtogonalCol, ref accesoCol, nivel, ref accesoColEncontrada);
+                    if (accesoCol != null)
+                    {
+                        acumOrtogonales += cabeceraOrtogonalCol + "\n";
+                        // acumOrtogonales += accesoCol.GetHashCode().ToString() + "[label=\"" + accesoCol.unidad.idUnidad + "\"];\n";
+                        acumOrtogonales += eCol.GetHashCode().ToString() + " -> " + accesoCol.GetHashCode().ToString() + ";\n";
+                        acumOrtogonales += acumEnlaceCol + ";\n";
+                    }
+                    alineacionCol += eCol.GetHashCode().ToString() + ";";
+                    idCabeceraCol += eCol.GetHashCode().ToString() + "[label=\"" + conv + "\"];\n";
+                }
+
+                while (eCol.anterior != null)
+                {
+                    cabeceraCol += eCol.GetHashCode().ToString() + " -> " + eCol.anterior.GetHashCode().ToString() + ";\n";
+                    eCol = eCol.anterior;
+                }
+            }
+            alineacionCol += "};\n\n";
+            acumInfo += alineacionCol + alineacionFilas + idCabeceraCol + idCabeceraFila + cabeceraCol + cabeceraFila + "\n\n" + acumOrtogonales + "\n}\n";
+
+            string idGrafo = "C:\\GrafoEDD\\matriz" + nivel.ToString() + ".dot";
+            //const string f = idGrafo.ToString();
+            StreamWriter w = new StreamWriter(idGrafo);
+            w.WriteLine(acumInfo);
+            w.Close();
+            generarImagen("C:\\GrafoEDD\\matriz" + nivel.ToString() + ".dot", "C:\\GrafoEDD\\matriz" + nivel.ToString() + ".png");
+        }
+
+        public void obtenerNodosOrtogonalesCol(ref Encabezado eCol, ref NodoOrtogonal actual, ref string acumEnlace, ref string cabecera, ref NodoOrtogonal acceso, int nivel, ref bool accesoEncontrado)
+        {
+            if (actual != null)
+            {
+
+                if (actual.atras != null && actual.atras.unidad.nivel == nivel)
+                {
+                    if (!accesoEncontrado)
+                    {
+                        accesoEncontrado = true;
+                        acceso = actual.atras;// actual.GetHashCode().ToString() + "[label=\"" + actual.atras.unidad.idUnidad + "\"];\n";
+                        acumEnlace += actual.atras.GetHashCode().ToString() + " ";
+                    }
+                    else
+                    {
+                        cabecera += actual.atras.GetHashCode().ToString() + "[label=\"" + actual.atras.unidad.idUnidad + "\"];\n";
+                        acumEnlace += " -> " + actual.atras.GetHashCode().ToString() + " ";
+                    }
+                }
+                else if (actual != null && actual.unidad.nivel == nivel)
+                {
+                    if (!accesoEncontrado)
+                    {
+                        accesoEncontrado = true;
+                        acceso = actual;
+                        acumEnlace += actual.GetHashCode().ToString() + " ";
+                    }
+                    else
+                    {
+                        cabecera += actual.GetHashCode().ToString() + "[label=\"" + actual.unidad.idUnidad + "\"];\n";
+                        acumEnlace += " -> " + actual.GetHashCode().ToString() + " ";
+                    }
+                }
+                else if (actual.adelante != null && actual.adelante.unidad.nivel == nivel)
+                {
+                    if (!accesoEncontrado)
+                    {
+                        accesoEncontrado = true;
+                        acceso = actual.adelante;
+                        acumEnlace += actual.adelante.GetHashCode().ToString() + " ";
+                    }
+                    else
+                    {
+                        cabecera += actual.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.unidad.idUnidad + "\"];\n";
+                        acumEnlace += " -> " + actual.adelante.GetHashCode().ToString() + " ";
+                    }
+                }
+                else if (actual.adelante != null)
+                {
+                    if (actual.adelante.adelante != null && actual.adelante.adelante.unidad.nivel == nivel)
+                    {
+                        if (!accesoEncontrado)
+                        {
+                            accesoEncontrado = true;
+                            acceso = actual.adelante.adelante;
+                            acumEnlace += actual.adelante.adelante.GetHashCode().ToString() + " ";
+                        }
+                        else
+                        {
+                            cabecera += actual.adelante.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.adelante.unidad.idUnidad + "\"];\n";
+                            acumEnlace += " -> " + actual.adelante.adelante.GetHashCode().ToString() + " ";
+                        }
+
+                    }
+                }
+
+                obtenerNodosOrtogonalesCol(ref eCol, ref actual.abajo, ref acumEnlace, ref cabecera, ref acceso, nivel, ref  accesoEncontrado);
+            }
+        }
+
+        public void obtenerNodosOrtogonalesFila(ref Encabezado eFila, ref NodoOrtogonal actual, ref string acumEnlace, ref string cabecera, ref string rankSame, ref NodoOrtogonal acceso, int nivel, ref bool accesoEncontrado)
+        {
+            if (actual != null)
+            {
+
+                if (actual.atras != null && actual.atras.unidad.nivel == nivel)
+                {
+                    if (!accesoEncontrado)
+                    {
+                        accesoEncontrado = true;
+                        acceso = actual.atras;// actual.GetHashCode().ToString() + "[label=\"" + actual.atras.unidad.idUnidad + "\"];\n";
+                        acumEnlace += actual.atras.GetHashCode().ToString() + " ";
+                        rankSame += actual.atras.GetHashCode().ToString() + ";";
+                    }
+                    else
+                    {
+                        cabecera += actual.atras.GetHashCode().ToString() + "[label=\"" + actual.atras.unidad.idUnidad + "\"];\n";
+                        acumEnlace += " -> " + actual.atras.GetHashCode().ToString() + " ";
+                        rankSame += actual.atras.GetHashCode().ToString() + ";";
+                    }
+                }
+                else if (actual != null && actual.unidad.nivel == nivel)
+                {
+                    if (!accesoEncontrado)
+                    {
+                        accesoEncontrado = true;
+                        acceso = actual;
+                        acumEnlace += actual.GetHashCode().ToString() + " ";
+                        rankSame += actual.GetHashCode().ToString() + ";";
+                    }
+                    else
+                    {
+                        cabecera += actual.GetHashCode().ToString() + "[label=\"" + actual.unidad.idUnidad + "\"];\n";
+                        acumEnlace += " -> " + actual.GetHashCode().ToString() + " ";
+                        rankSame += actual.GetHashCode().ToString() + ";";
+                    }
+                }
+                else if (actual.adelante != null && actual.adelante.unidad.nivel == nivel)
+                {
+                    if (!accesoEncontrado)
+                    {
+                        accesoEncontrado = true;
+                        acceso = actual.adelante;
+                        acumEnlace += actual.adelante.GetHashCode().ToString() + " ";
+                        rankSame += actual.adelante.GetHashCode().ToString() + ";";
+                    }
+                    else
+                    {
+                        cabecera += actual.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.unidad.idUnidad + "\"];\n";
+                        acumEnlace += " -> " + actual.adelante.GetHashCode().ToString() + " ";
+                        rankSame += actual.adelante.GetHashCode().ToString() + ";";
+                    }
+                }
+                else if (actual.adelante != null)
+                {
+                    if (actual.adelante.adelante != null && actual.adelante.adelante.unidad.nivel == nivel)
+                    {
+                        if (!accesoEncontrado)
+                        {
+                            accesoEncontrado = true;
+                            acceso = actual.adelante.adelante;
+                            acumEnlace += actual.adelante.adelante.GetHashCode().ToString() + " ";
+                            rankSame += actual.adelante.adelante.GetHashCode().ToString() + ";";
+                        }
+                        else
+                        {
+                            cabecera += actual.adelante.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.adelante.unidad.idUnidad + "\"];\n";
+                            acumEnlace += " -> " + actual.adelante.adelante.GetHashCode().ToString() + " ";
+                            rankSame += actual.adelante.adelante.GetHashCode().ToString() + ";";
+                        }
+
+                    }
+                }
+
+                obtenerNodosOrtogonalesFila(ref eFila, ref actual.derecha, ref acumEnlace, ref cabecera, ref rankSame, ref acceso, nivel, ref  accesoEncontrado);
+            }
+        }
 
         public void generarImagen(string nombArchivo,string nombImagen)
         {
@@ -232,7 +540,5 @@ namespace NavalWarsEDD
             a.Start();
             a.WaitForExit();
         }
-
-
     }
 }
