@@ -17,7 +17,7 @@ namespace NavalWarsEDD
     public class Service1 : System.Web.Services.WebService
     {
         public static ABBUsuario usuarioABB = new ABBUsuario();
-        public static ArbolAVL avlContactos = new ArbolAVL();
+       // public static ArbolAVL avlContactos = new ArbolAVL();
         public static ArbolB arbolB = new ArbolB(5);
         public static TablaHash tablaHash = new TablaHash(43);
         public static Matriz cubo = new Matriz();
@@ -85,6 +85,13 @@ namespace NavalWarsEDD
             }
 
             return listaInfo;
+        }
+        [WebMethod]
+        public List<string> obtenerNicknamesUsuarios()
+        {
+            List<string> listaNick = new List<string>();
+            usuarioABB.getNickUsuarios(usuarioABB.raiz, ref listaNick);
+            return listaNick;
         }
 
         [WebMethod]
@@ -187,24 +194,72 @@ namespace NavalWarsEDD
 
         /*-------------------------------- <AVL>------------------------------------------------------*/
         [WebMethod]
-        public void insertarAVL(string nickname, string password, string email)
+        public void insertarAVL(string nickUsuario,string nickname, string password, string email)
         {
-            avlContactos.insertar(nickname, password, email);
+          //  avlContactos.insertar(nickname, password, email);
+            NodoUsuario nUsuario = usuarioABB.buscar(nickUsuario);
+            if(nUsuario != null)
+            {
+                nUsuario.lstContactos.insertar(nickname, password, email);
+            }
+            //usuarioABB
         }
         [WebMethod]
-        public void graficarAVL()
+        public void insertarRefAVL(string nickUsuario,string nickContacto)
         {
-            g.generarGrafoAVL(ref avlContactos);
+            NodoUsuario usuario = usuarioABB.buscar(nickUsuario);
+            NodoUsuario usuarioContacto = usuarioABB.buscar(nickContacto);
+            if(usuario!=null && usuarioContacto != null)
+            {
+                usuario.lstContactos.insertarRef(ref usuarioContacto);
+            }
         }
         [WebMethod]
-        public void eliminarNodoAVL(string nickname)
+        public void graficarAVL(string nickUsuario)
         {
-            avlContactos.eliminar(nickname);
+            NodoUsuario usuario = usuarioABB.buscar(nickUsuario);
+            if(usuario != null)
+            {
+                g.generarGrafoAVL(ref usuario.lstContactos);
+            }
+            
         }
         [WebMethod]
-        public void modificarAVL(string nickname,string nickMod, string password, string email)
+        public bool eliminarNodoAVL(string nickUsuario, string nickContacto)
         {
-            avlContactos.modificar(nickname,nickMod, password, email, ref avlContactos.raiz);
+            NodoUsuario usuario = usuarioABB.buscar(nickUsuario);
+            if(usuario!=null)
+            {
+                bool eliminado =usuario.lstContactos.eliminar(nickContacto);
+                if (eliminado)
+                    return true;
+            }
+            return false;
+         //   avlContactos.eliminar(nickname);
+        }
+        [WebMethod]
+        public bool modificarAVL(string nickUsuario,string nickContacto,string nickMod, string password, string email)
+        {
+            NodoUsuario usuario = usuarioABB.buscar(nickUsuario);
+            if(usuario != null)
+            {
+                bool modificado = usuario.lstContactos.modificar(nickContacto, nickMod, password, email,ref  usuario.lstContactos.raiz);
+                if(modificado)
+                    return true;
+            }
+            return false;
+          //  avlContactos.modificar(nickname,nickMod, password, email, ref avlContactos.raiz);
+        }
+        [WebMethod]
+        public List<string> getListaContactosUsuario(string nickUsuario)
+        {
+            NodoUsuario usuario = usuarioABB.buscar(nickUsuario);
+            List<string> listaContactos = new List<string>();
+            if(usuario!=null)
+            {
+                usuario.lstContactos.getNickContacto(usuario.lstContactos.raiz, ref listaContactos);
+            }
+            return listaContactos;
         }
 
         /*-------------------------------- <Arbol B>------------------------------------------------------*/

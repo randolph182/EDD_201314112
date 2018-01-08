@@ -86,5 +86,10 @@ namespace NavalWarsCliente
             }
             MultiView1.ActiveViewIndex = 1;
         }
+
+        protected void btnAdminContacUsuarios_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminContactosUsuarios.aspx");
+        }
     }
 }

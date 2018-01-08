@@ -90,6 +90,16 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="obtenerNicknamesUsuarios">
+        <s:complexType />
+      </s:element>
+      <s:element name="obtenerNicknamesUsuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obtenerNicknamesUsuariosResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="modificarUsuario">
         <s:complexType>
           <s:sequence>
@@ -201,6 +211,7 @@
       <s:element name="insertarAVL">
         <s:complexType>
           <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickUsuario" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
@@ -210,8 +221,23 @@
       <s:element name="insertarAVLResponse">
         <s:complexType />
       </s:element>
-      <s:element name="graficarAVL">
+      <s:element name="insertarRefAVL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickUsuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nickContacto" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarRefAVLResponse">
         <s:complexType />
+      </s:element>
+      <s:element name="graficarAVL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickUsuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="graficarAVLResponse">
         <s:complexType />
@@ -219,17 +245,23 @@
       <s:element name="eliminarNodoAVL">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nickUsuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nickContacto" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="eliminarNodoAVLResponse">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eliminarNodoAVLResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="modificarAVL">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nickUsuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nickContacto" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="nickMod" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
@@ -237,7 +269,25 @@
         </s:complexType>
       </s:element>
       <s:element name="modificarAVLResponse">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="modificarAVLResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListaContactosUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickUsuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListaContactosUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getListaContactosUsuarioResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="insertarArbolB">
         <s:complexType>
@@ -262,6 +312,20 @@
         <s:complexType />
       </s:element>
       <s:element name="insertarHashResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="insertarUnidadMatriz">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fila" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="columna" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="nivel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="tipoUnidad" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="idUnidad" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarUnidadMatrizResponse">
         <s:complexType />
       </s:element>
     </s:schema>
@@ -307,6 +371,12 @@
   </wsdl:message>
   <wsdl:message name="obtenerInfoUsuarioSoapOut">
     <wsdl:part name="parameters" element="tns:obtenerInfoUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtenerNicknamesUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerNicknamesUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="obtenerNicknamesUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerNicknamesUsuariosResponse" />
   </wsdl:message>
   <wsdl:message name="modificarUsuarioSoapIn">
     <wsdl:part name="parameters" element="tns:modificarUsuario" />
@@ -356,6 +426,12 @@
   <wsdl:message name="insertarAVLSoapOut">
     <wsdl:part name="parameters" element="tns:insertarAVLResponse" />
   </wsdl:message>
+  <wsdl:message name="insertarRefAVLSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarRefAVL" />
+  </wsdl:message>
+  <wsdl:message name="insertarRefAVLSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarRefAVLResponse" />
+  </wsdl:message>
   <wsdl:message name="graficarAVLSoapIn">
     <wsdl:part name="parameters" element="tns:graficarAVL" />
   </wsdl:message>
@@ -374,6 +450,12 @@
   <wsdl:message name="modificarAVLSoapOut">
     <wsdl:part name="parameters" element="tns:modificarAVLResponse" />
   </wsdl:message>
+  <wsdl:message name="getListaContactosUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:getListaContactosUsuario" />
+  </wsdl:message>
+  <wsdl:message name="getListaContactosUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:getListaContactosUsuarioResponse" />
+  </wsdl:message>
   <wsdl:message name="insertarArbolBSoapIn">
     <wsdl:part name="parameters" element="tns:insertarArbolB" />
   </wsdl:message>
@@ -385,6 +467,12 @@
   </wsdl:message>
   <wsdl:message name="insertarHashSoapOut">
     <wsdl:part name="parameters" element="tns:insertarHashResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertarUnidadMatrizSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarUnidadMatriz" />
+  </wsdl:message>
+  <wsdl:message name="insertarUnidadMatrizSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarUnidadMatrizResponse" />
   </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="HelloWorld">
@@ -414,6 +502,10 @@
     <wsdl:operation name="obtenerInfoUsuario">
       <wsdl:input message="tns:obtenerInfoUsuarioSoapIn" />
       <wsdl:output message="tns:obtenerInfoUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerNicknamesUsuarios">
+      <wsdl:input message="tns:obtenerNicknamesUsuariosSoapIn" />
+      <wsdl:output message="tns:obtenerNicknamesUsuariosSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="modificarUsuario">
       <wsdl:input message="tns:modificarUsuarioSoapIn" />
@@ -447,6 +539,10 @@
       <wsdl:input message="tns:insertarAVLSoapIn" />
       <wsdl:output message="tns:insertarAVLSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="insertarRefAVL">
+      <wsdl:input message="tns:insertarRefAVLSoapIn" />
+      <wsdl:output message="tns:insertarRefAVLSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="graficarAVL">
       <wsdl:input message="tns:graficarAVLSoapIn" />
       <wsdl:output message="tns:graficarAVLSoapOut" />
@@ -459,6 +555,10 @@
       <wsdl:input message="tns:modificarAVLSoapIn" />
       <wsdl:output message="tns:modificarAVLSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="getListaContactosUsuario">
+      <wsdl:input message="tns:getListaContactosUsuarioSoapIn" />
+      <wsdl:output message="tns:getListaContactosUsuarioSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="insertarArbolB">
       <wsdl:input message="tns:insertarArbolBSoapIn" />
       <wsdl:output message="tns:insertarArbolBSoapOut" />
@@ -466,6 +566,10 @@
     <wsdl:operation name="insertarHash">
       <wsdl:input message="tns:insertarHashSoapIn" />
       <wsdl:output message="tns:insertarHashSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarUnidadMatriz">
+      <wsdl:input message="tns:insertarUnidadMatrizSoapIn" />
+      <wsdl:output message="tns:insertarUnidadMatrizSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -526,6 +630,15 @@
     </wsdl:operation>
     <wsdl:operation name="obtenerInfoUsuario">
       <soap:operation soapAction="http://tempuri.org/obtenerInfoUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerNicknamesUsuarios">
+      <soap:operation soapAction="http://tempuri.org/obtenerNicknamesUsuarios" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -605,6 +718,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="insertarRefAVL">
+      <soap:operation soapAction="http://tempuri.org/insertarRefAVL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="graficarAVL">
       <soap:operation soapAction="http://tempuri.org/graficarAVL" style="document" />
       <wsdl:input>
@@ -632,6 +754,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getListaContactosUsuario">
+      <soap:operation soapAction="http://tempuri.org/getListaContactosUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="insertarArbolB">
       <soap:operation soapAction="http://tempuri.org/insertarArbolB" style="document" />
       <wsdl:input>
@@ -643,6 +774,15 @@
     </wsdl:operation>
     <wsdl:operation name="insertarHash">
       <soap:operation soapAction="http://tempuri.org/insertarHash" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarUnidadMatriz">
+      <soap:operation soapAction="http://tempuri.org/insertarUnidadMatriz" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -709,6 +849,15 @@
     </wsdl:operation>
     <wsdl:operation name="obtenerInfoUsuario">
       <soap12:operation soapAction="http://tempuri.org/obtenerInfoUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerNicknamesUsuarios">
+      <soap12:operation soapAction="http://tempuri.org/obtenerNicknamesUsuarios" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -788,6 +937,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="insertarRefAVL">
+      <soap12:operation soapAction="http://tempuri.org/insertarRefAVL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="graficarAVL">
       <soap12:operation soapAction="http://tempuri.org/graficarAVL" style="document" />
       <wsdl:input>
@@ -815,6 +973,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getListaContactosUsuario">
+      <soap12:operation soapAction="http://tempuri.org/getListaContactosUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="insertarArbolB">
       <soap12:operation soapAction="http://tempuri.org/insertarArbolB" style="document" />
       <wsdl:input>
@@ -826,6 +993,15 @@
     </wsdl:operation>
     <wsdl:operation name="insertarHash">
       <soap12:operation soapAction="http://tempuri.org/insertarHash" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarUnidadMatriz">
+      <soap12:operation soapAction="http://tempuri.org/insertarUnidadMatriz" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -33,6 +34,11 @@ namespace NavalWarsCliente
         protected void btnMostrarArbol_Click(object sender, EventArgs e)
         {
             ClaseGlobal.servidorPrincipal.generarArbol();
+            string path = "C:/GrafoEDD/ABBUsuarios.png";
+            byte[] imageByteData = System.IO.File.ReadAllBytes(path);
+            string imageBase64Data = Convert.ToBase64String(imageByteData);
+            string imageDataURL = string.Format("data:image/png;base64,{0}", imageBase64Data);
+            Image1.ImageUrl = imageDataURL;
             MultiView1.ActiveViewIndex = 1;
         }
 
@@ -73,13 +79,8 @@ namespace NavalWarsCliente
         protected void btnMostrarArbolGeneral_Click(object sender, EventArgs e)
         {
             ClaseGlobal.servidorPrincipal.generarArbol();
-           // Bitmap imagen  = new Bitmap
-            //int tamanio = 50;
-            //byte[] imagenOriginal = new byte[];
-            //Bitmap imagenOriginalBinaria = new Bitmap()
-
+            mostrarImagen("ABBUsuarios.png");
             MultiView1.ActiveViewIndex = 4;
-            Image1.ImageUrl = "ABBUsuarios.png";
         }
 
         protected void btnModificarUsuario_Click(object sender, EventArgs e)
@@ -135,18 +136,47 @@ namespace NavalWarsCliente
         protected void btnMostrarArbolEspejo_Click(object sender, EventArgs e)
         {
             ClaseGlobal.servidorPrincipal.generarArbolEspejo();
+            mostrarImagen("ABBUsuariosEsp.png");
             MultiView1.ActiveViewIndex = 4;
-            Image1.ImageUrl = "ABBUsuariosEsp.png";
         }
 
         protected void btnMostrarTopJuegos_Click(object sender, EventArgs e)
         {
             ClaseGlobal.servidorPrincipal.generarTopJuegos();
+            mostrarImagen("topJuegos.png");
             MultiView1.ActiveViewIndex = 4;
-            Image1.ImageUrl = "topJuegos.png";
+        }
+
+        protected void btnMostrarArbolModUsuario_Click(object sender, EventArgs e)
+        {
+            ClaseGlobal.servidorPrincipal.generarArbol();
+            mostrarImagen("ABBUsuarios.png");
+            MultiView1.ActiveViewIndex = 4;
+        }
+        protected void btnMostrarArbolElimUsuaio_Click(object sender, EventArgs e)
+        {
+            ClaseGlobal.servidorPrincipal.generarArbol();
+            mostrarImagen("ABBUsuarios.png");
+            MultiView1.ActiveViewIndex = 4;
         }
         
-        
+        protected void mostrarImagen(string nombreArchivo)
+        {
+            try
+            {
+                string path = "C:/GrafoEDD/" + nombreArchivo;
+                byte[] imageByteData = System.IO.File.ReadAllBytes(path);
+                string imageBase64Data = Convert.ToBase64String(imageByteData);
+                string imageDataURL = string.Format("data:image/png;base64,{0}", imageBase64Data);
+                Image1.ImageUrl = imageDataURL;
+            }
+            catch (Exception)
+            {
+                Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "Alert", "alert('No se pudo mostrar el Arbol')", true);
+            }
+        }
+
+   
 
     }
 }

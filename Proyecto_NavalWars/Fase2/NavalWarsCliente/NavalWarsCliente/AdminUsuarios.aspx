@@ -33,6 +33,17 @@
         .auto-style18 {
             width: 228px;
         }
+        .auto-style19 {
+            width: 421px;
+            height: 30px;
+        }
+        .auto-style20 {
+            width: 76px;
+            height: 30px;
+        }
+        .auto-style21 {
+            height: 30px;
+        }
     </style>
 </head>
 <body>
@@ -232,7 +243,7 @@
                         <td class="auto-style15">&nbsp;</td>
                         <td class="auto-style16">&nbsp;</td>
                         <td class="auto-style14">
-                            <asp:Button ID="btnRegresarUMod" runat="server" Text="Regresar" OnClick="btnRegresarUMod_Click" />
+                            <asp:Button ID="btnMostrarArbolModUsuario" runat="server" Text="Mostrar Arbol" Width="110px" style="margin-top: 0px" OnClick="btnMostrarArbolModUsuario_Click" />
                         </td>
                         <td class="auto-style7">&nbsp;</td>
                         <td class="auto-style13">&nbsp;</td>
@@ -242,7 +253,9 @@
                     <tr>
                         <td class="auto-style15">&nbsp;</td>
                         <td class="auto-style16">&nbsp;</td>
-                        <td class="auto-style14">&nbsp;</td>
+                        <td class="auto-style14">
+                            <asp:Button ID="btnRegresarUMod" runat="server" OnClick="btnRegresarUMod_Click" Text="Regresar" />
+                        </td>
                         <td class="auto-style7">&nbsp;</td>
                         <td class="auto-style13">&nbsp;</td>
                         <td>&nbsp;</td>
@@ -284,24 +297,25 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style5">&nbsp;</td>
-                        <td class="auto-style4">
+                        <td class="auto-style19"></td>
+                        <td class="auto-style20">
+                            &nbsp;</td>
+                        <td class="auto-style21">
+                            <asp:Button ID="btnMostrarArbolElimUsuaio" runat="server" Text="MostrarArbol" Width="124px" OnClick="btnMostrarArbolElimUsuaio_Click" />
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td class="auto-style19"></td>
+                        <td class="auto-style20">
                             <asp:Button ID="btnRegresarElimU" runat="server" Text="Regresar" OnClick="btnRegresarElimU_Click" />
                         </td>
-                        <td>&nbsp;</td>
+                        <td class="auto-style21"></td>
                     </tr>
-
                 </table>
                 <br />
             </asp:View>
             <br />
             <asp:View ID="View5" runat="server">
-                <br />
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Image ID="Image1" runat="server" Height="644px" ImageUrl="C:\GrafoEDD\ABBUsuarios.png" Width="1405px" />
-                <br />
-                <br />
                 <br />
                 <table style="width:100%;">
                     <tr>
@@ -311,7 +325,7 @@
                     </tr>
                     <tr>
                         <td class="auto-style18">
-                            <asp:Button ID="Button1" runat="server" Text="Button" />
+                            <asp:Button ID="Button1" runat="server" Text="Regresar" />
                         </td>
                         <td>
                             &nbsp;</td>
@@ -323,6 +337,13 @@
                         <td>&nbsp;</td>
                     </tr>
                 </table>
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <br />
+                <br />
+                <asp:Image ID=
+                    "Image1" runat="server" />
+                <br />
                 <br />
             </asp:View>
             <br />

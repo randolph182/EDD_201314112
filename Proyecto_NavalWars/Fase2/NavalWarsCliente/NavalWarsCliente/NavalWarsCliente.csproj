@@ -55,6 +55,7 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminContactosUsuarios.aspx" />
     <Content Include="Administrador.aspx" />
     <Content Include="AdminLstJuegos.aspx" />
     <Content Include="AdminUsuarios.aspx" />
@@ -76,6 +77,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminContactosUsuarios.aspx.cs">
+      <DependentUpon>AdminContactosUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminContactosUsuarios.aspx.designer.cs">
+      <DependentUpon>AdminContactosUsuarios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administrador.aspx.cs">
       <DependentUpon>Administrador.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

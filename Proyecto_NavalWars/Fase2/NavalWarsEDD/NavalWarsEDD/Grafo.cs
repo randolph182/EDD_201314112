@@ -38,14 +38,12 @@ namespace NavalWarsEDD
                    }            }
 
             estructuraDot += cabecera + acum + "\n}\n";
-            const string f = "C:\\Users\\rando\\Documents\\GitHub\\EDD_201314112\\Proyecto_NavalWars\\Fase1\\NavalWarsCliente\\NavalWarsCliente\\topJuegos.dot";
+            const string f = "C:\\GrafoEDD\\topJuegos.dot";
             StreamWriter w = new StreamWriter(f);
             w.WriteLine(estructuraDot);
             w.Close();
             //generarImagen("C:\\GrafoEDD\\ABBUsuarios.dot" , "C:\\GrafoEDD\\ABBUsuarios.png");
-            string archDot = "C:\\Users\\rando\\Documents\\GitHub\\EDD_201314112\\Proyecto_NavalWars\\Fase1\\NavalWarsCliente\\NavalWarsCliente\\topJuegos.dot";
-            string archImg = "C:\\Users\\rando\\Documents\\GitHub\\EDD_201314112\\Proyecto_NavalWars\\Fase1\\NavalWarsCliente\\NavalWarsCliente\\topJuegos.png";
-            generarImagen(archDot, archImg);
+            generarImagen("C:\\GrafoEDD\\topJuegos.dot", "C:\\GrafoEDD\\topJuegos.png");
         }
 
         public void generarABBUsuario(ref ABBUsuario arbol)
@@ -65,14 +63,11 @@ namespace NavalWarsEDD
 
             estructuraDot += "\n"+ cabecera +"\n"+ acum + "\n\n "+info+"\n}\n";
             //const string f = "C:\\GrafoEDD\\ABBUsuarios.dot";
-            const string f = "C:\\Users\\rando\\Documents\\GitHub\\EDD_201314112\\Proyecto_NavalWars\\Fase2\\NavalWarsCliente\\NavalWarsCliente\\ABBUsuarios.dot";
+            const string f = "C:\\GrafoEDD\\ABBUsuarios.dot";
             StreamWriter w = new StreamWriter(f);
             w.WriteLine(estructuraDot);
             w.Close();
-            //generarImagen("C:\\GrafoEDD\\ABBUsuarios.dot" , "C:\\GrafoEDD\\ABBUsuarios.png");
-            string archDot = "C:\\Users\\rando\\Documents\\GitHub\\EDD_201314112\\Proyecto_NavalWars\\Fase2\\NavalWarsCliente\\NavalWarsCliente\\ABBUsuarios.dot";
-            string archImg = "C:\\Users\\rando\\Documents\\GitHub\\EDD_201314112\\Proyecto_NavalWars\\Fase2\\NavalWarsCliente\\NavalWarsCliente\\ABBUsuarios.png";
-            generarImagen(archDot, archImg);
+            generarImagen("C:\\GrafoEDD\\ABBUsuarios.dot" , "C:\\GrafoEDD\\ABBUsuarios.png");
         }
 
         public void generarABBEspejo(ref NodoUsuario raiz)
@@ -86,14 +81,12 @@ namespace NavalWarsEDD
             }
             estructuraDot += "\n" + cabecera + "\n" + acum + "\n}\n";
             //const string f = "C:\\GrafoEDD\\ABBUsuarios.dot";
-            const string f = "C:\\Users\\rando\\Documents\\GitHub\\EDD_201314112\\Proyecto_NavalWars\\Fase1\\NavalWarsCliente\\NavalWarsCliente\\ABBUsuariosEsp.dot";
+            const string f = "C:\\GrafoEDD\\ABBUsuariosEsp.dot";
             StreamWriter w = new StreamWriter(f);
             w.WriteLine(estructuraDot);
             w.Close();
             //generarImagen("C:\\GrafoEDD\\ABBUsuarios.dot" , "C:\\GrafoEDD\\ABBUsuarios.png");
-            string archDot = "C:\\Users\\rando\\Documents\\GitHub\\EDD_201314112\\Proyecto_NavalWars\\Fase1\\NavalWarsCliente\\NavalWarsCliente\\ABBUsuariosEsp.dot";
-            string archImg = "C:\\Users\\rando\\Documents\\GitHub\\EDD_201314112\\Proyecto_NavalWars\\Fase1\\NavalWarsCliente\\NavalWarsCliente\\ABBUsuariosEsp.png";
-            generarImagen(archDot, archImg);
+            generarImagen("C:\\GrafoEDD\\ABBUsuariosEsp.dot", "C:\\GrafoEDD\\ABBUsuariosEsp.png");
         }
         public void recorrerABBEspejo(ref NodoUsuario actual,ref string acum,ref string cabecera)
         {

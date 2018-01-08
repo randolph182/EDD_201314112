@@ -6,72 +6,6 @@ structMord86[label="<f0>  | <f1> nickName: Mord86
  \npassword: NPZ44VGE5FD 
  \nemail: scelerisque.sed@lectusa.com 
  \nconectado: 1  | <f2> "];
-
-subgraph clusterMord86{
-label = " Lista de Juegos "49381416[label=" idNodo: 49381416 
- \nNick Opnente: Jado86 
- \nUndads Desplegadas: 25 
- \nUndads Sobrevivientes: 1 
- \nUndads Destruidas 24 
- \nGano: 0"];
-11404313[label=" idNodo: 11404313 
- \nNick Opnente: Idin94 
- \nUndads Desplegadas: 30 
- \nUndads Sobrevivientes: 29 
- \nUndads Destruidas 1 
- \nGano: 1"];
-10959202[label=" idNodo: 10959202 
- \nNick Opnente: Kaez42 
- \nUndads Desplegadas: 20 
- \nUndads Sobrevivientes: 10 
- \nUndads Destruidas 10 
- \nGano: 0"];
-17594982[label=" idNodo: 17594982 
- \nNick Opnente: Avey48 
- \nUndads Desplegadas: 18 
- \nUndads Sobrevivientes: 8 
- \nUndads Destruidas 10 
- \nGano: 0"];
-62476613[label=" idNodo: 62476613 
- \nNick Opnente: Taon95 
- \nUndads Desplegadas: 16 
- \nUndads Sobrevivientes: 10 
- \nUndads Destruidas 6 
- \nGano: 0"];
-33070812[label=" idNodo: 33070812 
- \nNick Opnente: Imre78 
- \nUndads Desplegadas: 20 
- \nUndads Sobrevivientes: 3 
- \nUndads Destruidas 17 
- \nGano: 0"];
-12036987[label=" idNodo: 12036987 
- \nNick Opnente: Asro25 
- \nUndads Desplegadas: 15 
- \nUndads Sobrevivientes: 10 
- \nUndads Destruidas 5 
- \nGano: 1"];
-58230372[label=" idNodo: 58230372 
- \nNick Opnente: Stin94 
- \nUndads Desplegadas: 10 
- \nUndads Sobrevivientes: 8 
- \nUndads Destruidas 2 
- \nGano: 1"];
-49381416->11404313;
- 11404313->10959202;
- 10959202->17594982;
- 17594982->62476613;
- 62476613->33070812;
- 33070812->12036987;
- 12036987->58230372;
- 58230372->12036987;
-12036987->33070812;
-33070812->62476613;
-62476613->17594982;
-17594982->10959202;
-10959202->11404313;
-11404313->49381416;
-
-}
 structAsro25[label="<f0>  | <f1> nickName: Asro25 
  \nnombre:   
  \npassword: PDW92QLF0HC 
@@ -127,72 +61,6 @@ structStin94[label="<f0>  | <f1> nickName: Stin94
  \npassword: WAG95DOM2LZ 
  \nemail: in.tempus@a.com 
  \nconectado: 1  | <f2> "];
-
-subgraph clusterStin94{
-label = " Lista de Juegos "43763521[label=" idNodo: 43763521 
- \nNick Opnente: Jado86 
- \nUndads Desplegadas: 28 
- \nUndads Sobrevivientes: 5 
- \nUndads Destruidas 23 
- \nGano: 1"];
-27705120[label=" idNodo: 27705120 
- \nNick Opnente: Idin94 
- \nUndads Desplegadas: 23 
- \nUndads Sobrevivientes: 3 
- \nUndads Destruidas 20 
- \nGano: 1"];
-36963566[label=" idNodo: 36963566 
- \nNick Opnente: Kaez42 
- \nUndads Desplegadas: 17 
- \nUndads Sobrevivientes: 8 
- \nUndads Destruidas 9 
- \nGano: 0"];
-56493719[label=" idNodo: 56493719 
- \nNick Opnente: Avey48 
- \nUndads Desplegadas: 19 
- \nUndads Sobrevivientes: 10 
- \nUndads Destruidas 9 
- \nGano: 1"];
-44624228[label=" idNodo: 44624228 
- \nNick Opnente: Taon95 
- \nUndads Desplegadas: 10 
- \nUndads Sobrevivientes: 9 
- \nUndads Destruidas 1 
- \nGano: 0"];
-22774948[label=" idNodo: 22774948 
- \nNick Opnente: Imre78 
- \nUndads Desplegadas: 18 
- \nUndads Sobrevivientes: 16 
- \nUndads Destruidas 2 
- \nGano: 1"];
-42715336[label=" idNodo: 42715336 
- \nNick Opnente: Asro25 
- \nUndads Desplegadas: 19 
- \nUndads Sobrevivientes: 14 
- \nUndads Destruidas 5 
- \nGano: 0"];
-64923656[label=" idNodo: 64923656 
- \nNick Opnente: Mord86 
- \nUndads Desplegadas: 21 
- \nUndads Sobrevivientes: 15 
- \nUndads Destruidas 6 
- \nGano: 0"];
-43763521->27705120;
- 27705120->36963566;
- 36963566->56493719;
- 56493719->44624228;
- 44624228->22774948;
- 22774948->42715336;
- 42715336->64923656;
- 64923656->42715336;
-42715336->22774948;
-22774948->44624228;
-44624228->56493719;
-56493719->36963566;
-36963566->27705120;
-27705120->43763521;
-
-}
 structRoan78[label="<f0>  | <f1> nickName: Roan78 
  \nnombre:   
  \npassword: FOA51PLE0LG 
@@ -204,7 +72,6 @@ structTaon95[label="<f0>  | <f1> nickName: Taon95
  \nemail: parturient@Nulla.co.uk 
  \nconectado: 0  | <f2> "];
 
-"structMord86":f1 -> 49381416;
 "structMord86":f0 -> "structStin94":f1;
 "structMord86":f2 -> "structAsro25":f1;
 "structAsro25":f0 -> "structImre78":f1;
@@ -216,7 +83,6 @@ structTaon95[label="<f0>  | <f1> nickName: Taon95
 "structIdin94":f2 -> "structAxon36":f1;
 "structAxon36":f0 -> "structFrly47":f1;
 "structKaez42":f2 -> "structJado86":f1;
-"structStin94":f1 -> 43763521;
 "structStin94":f0 -> "structTaon95":f1;
 "structStin94":f2 -> "structRoan78":f1;
 

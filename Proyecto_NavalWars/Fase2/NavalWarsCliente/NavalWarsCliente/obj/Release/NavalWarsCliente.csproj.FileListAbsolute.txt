@@ -1,0 +1,5 @@
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsCliente\NavalWarsCliente\bin\NavalWarsCliente.dll.config
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsCliente\NavalWarsCliente\bin\NavalWarsCliente.dll
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsCliente\NavalWarsCliente\bin\NavalWarsCliente.pdb
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsCliente\NavalWarsCliente\obj\Release\NavalWarsCliente.dll
+C:\Users\rando\Documents\GitHub\EDD_201314112\Proyecto_NavalWars\Fase2\NavalWarsCliente\NavalWarsCliente\obj\Release\NavalWarsCliente.pdb

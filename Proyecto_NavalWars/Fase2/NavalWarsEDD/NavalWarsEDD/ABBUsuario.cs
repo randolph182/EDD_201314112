@@ -11,10 +11,12 @@ namespace NavalWarsEDD
         public NodoUsuario izquierda;
         public NodoUsuario derecha;
         public Juegos lstJuegos;
+        public ArbolAVL lstContactos;
         public int altura; 
         public NodoUsuario()
         {
             lstJuegos = new Juegos();
+            lstContactos = new ArbolAVL();
             izquierda = null;
             derecha = null;
             altura = 0;
@@ -22,6 +24,7 @@ namespace NavalWarsEDD
         public NodoUsuario(ref Usuario info)
         {
             lstJuegos = new Juegos();
+            lstContactos = new ArbolAVL();
             this.informacion = info;
             izquierda = null;
             derecha = null;
@@ -221,6 +224,16 @@ namespace NavalWarsEDD
             }
         }
 
+
+        public void getNickUsuarios(NodoUsuario actual,ref List<string> nick)
+        {
+            if(actual != null)
+            {
+                nick.Add(actual.informacion.nickName);
+                getNickUsuarios(actual.izquierda, ref nick);
+                getNickUsuarios(actual.derecha, ref nick);
+            }
+        }
 
         public void generarTopJuegosGanados()
         {

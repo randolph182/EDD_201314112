@@ -321,11 +321,20 @@ namespace NavalWarsEDD
             return 0;
         }
 
+        public void getNickContacto(NodoAVL actual, ref List<string> acum)
+        {
+            if(actual!=null)
+            {
+                acum.Add(actual.nickname);
+                getNickContacto(actual.izquierda,ref acum);
+                getNickContacto(actual.derecha,ref acum);
+            }
+        }
         public void preOrden(ref NodoAVL tmp, ref string acum, ref string cabecera)
         {
             if(tmp != null)
             {
-                cabecera += "struct" + tmp.GetHashCode().ToString() + "[label=\"<f0> | <f1> " + tmp.nickname + " \n \\n" + tmp.email + "\n \\n |<f2>\"];\n";
+                cabecera += "struct" + tmp.GetHashCode().ToString() + "[label=\"<f0> | <f1> " + tmp.nickname +"\\n"+tmp.password +" \\n" + tmp.email + "\\n |<f2>\"];\n";
                 if(tmp.izquierda != null)
                     acum += "\"struct" + tmp.GetHashCode().ToString() + "\":f0 -> \"struct" + tmp.izquierda.GetHashCode().ToString() + "\":f1;\n";
                 if(tmp.derecha != null)
