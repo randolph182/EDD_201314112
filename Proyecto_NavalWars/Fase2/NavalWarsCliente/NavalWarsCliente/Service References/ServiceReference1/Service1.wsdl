@@ -289,6 +289,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getInfoContacto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickUsuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nickContacto" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoContactoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInfoContactoResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="insertarArbolB">
         <s:complexType>
           <s:sequence>
@@ -456,6 +471,12 @@
   <wsdl:message name="getListaContactosUsuarioSoapOut">
     <wsdl:part name="parameters" element="tns:getListaContactosUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="getInfoContactoSoapIn">
+    <wsdl:part name="parameters" element="tns:getInfoContacto" />
+  </wsdl:message>
+  <wsdl:message name="getInfoContactoSoapOut">
+    <wsdl:part name="parameters" element="tns:getInfoContactoResponse" />
+  </wsdl:message>
   <wsdl:message name="insertarArbolBSoapIn">
     <wsdl:part name="parameters" element="tns:insertarArbolB" />
   </wsdl:message>
@@ -558,6 +579,10 @@
     <wsdl:operation name="getListaContactosUsuario">
       <wsdl:input message="tns:getListaContactosUsuarioSoapIn" />
       <wsdl:output message="tns:getListaContactosUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInfoContacto">
+      <wsdl:input message="tns:getInfoContactoSoapIn" />
+      <wsdl:output message="tns:getInfoContactoSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="insertarArbolB">
       <wsdl:input message="tns:insertarArbolBSoapIn" />
@@ -756,6 +781,15 @@
     </wsdl:operation>
     <wsdl:operation name="getListaContactosUsuario">
       <soap:operation soapAction="http://tempuri.org/getListaContactosUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoContacto">
+      <soap:operation soapAction="http://tempuri.org/getInfoContacto" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -975,6 +1009,15 @@
     </wsdl:operation>
     <wsdl:operation name="getListaContactosUsuario">
       <soap12:operation soapAction="http://tempuri.org/getListaContactosUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoContacto">
+      <soap12:operation soapAction="http://tempuri.org/getInfoContacto" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

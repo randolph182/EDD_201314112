@@ -262,6 +262,34 @@ namespace NavalWarsEDD
             return listaContactos;
         }
 
+        [WebMethod]
+        public List<string> getInfoContacto(string nickUsuario,string nickContacto)
+        {
+            List<string> infoContacto = new List<string>();
+            NodoUsuario usuario = usuarioABB.buscar(nickUsuario);
+            if(usuario !=null)
+            {
+                NodoAVL contacto = usuario.lstContactos.getContacto(usuario.lstContactos.raiz, nickContacto);
+                if(contacto != null)
+                {
+
+                    if(contacto.referenciaUsurio != null)
+                    {
+                        infoContacto.Add(contacto.referenciaUsurio.informacion.nickName);
+                        infoContacto.Add(contacto.referenciaUsurio.informacion.password);
+                        infoContacto.Add(contacto.referenciaUsurio.informacion.email);
+                    }
+                    else
+                    {
+                        infoContacto.Add(contacto.nickname);
+                        infoContacto.Add(contacto.password);
+                        infoContacto.Add(contacto.email);
+                    }
+                }
+            }
+            return infoContacto;
+        }
+
         /*-------------------------------- <Arbol B>------------------------------------------------------*/
         [WebMethod]
         public void insertarArbolB(int coordX,int coordY,string idUnidadAtacante,int resultDanio,string idUnidadAtacada,string idEmisor, string idReceptor,string fecha,string tiempo,int idAtaque)

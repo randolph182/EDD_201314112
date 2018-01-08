@@ -105,6 +105,10 @@ namespace NavalWarsCliente.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getListaContactosUsuario", ReplyAction="*")]
         NavalWarsCliente.ServiceReference1.getListaContactosUsuarioResponse getListaContactosUsuario(NavalWarsCliente.ServiceReference1.getListaContactosUsuarioRequest request);
         
+        // CODEGEN: Generating message contract since element name nickUsuario from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getInfoContacto", ReplyAction="*")]
+        NavalWarsCliente.ServiceReference1.getInfoContactoResponse getInfoContacto(NavalWarsCliente.ServiceReference1.getInfoContactoRequest request);
+        
         // CODEGEN: Generating message contract since element name idUnidadAtacante from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/insertarArbolB", ReplyAction="*")]
         NavalWarsCliente.ServiceReference1.insertarArbolBResponse insertarArbolB(NavalWarsCliente.ServiceReference1.insertarArbolBRequest request);
@@ -1438,6 +1442,78 @@ namespace NavalWarsCliente.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getInfoContactoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getInfoContacto", Namespace="http://tempuri.org/", Order=0)]
+        public NavalWarsCliente.ServiceReference1.getInfoContactoRequestBody Body;
+        
+        public getInfoContactoRequest() {
+        }
+        
+        public getInfoContactoRequest(NavalWarsCliente.ServiceReference1.getInfoContactoRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getInfoContactoRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string nickUsuario;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string nickContacto;
+        
+        public getInfoContactoRequestBody() {
+        }
+        
+        public getInfoContactoRequestBody(string nickUsuario, string nickContacto) {
+            this.nickUsuario = nickUsuario;
+            this.nickContacto = nickContacto;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getInfoContactoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getInfoContactoResponse", Namespace="http://tempuri.org/", Order=0)]
+        public NavalWarsCliente.ServiceReference1.getInfoContactoResponseBody Body;
+        
+        public getInfoContactoResponse() {
+        }
+        
+        public getInfoContactoResponse(NavalWarsCliente.ServiceReference1.getInfoContactoResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getInfoContactoResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public NavalWarsCliente.ServiceReference1.ArrayOfString getInfoContactoResult;
+        
+        public getInfoContactoResponseBody() {
+        }
+        
+        public getInfoContactoResponseBody(NavalWarsCliente.ServiceReference1.ArrayOfString getInfoContactoResult) {
+            this.getInfoContactoResult = getInfoContactoResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class insertarArbolBRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="insertarArbolB", Namespace="http://tempuri.org/", Order=0)]
@@ -1906,6 +1982,20 @@ namespace NavalWarsCliente.ServiceReference1 {
             inValue.Body.nickUsuario = nickUsuario;
             NavalWarsCliente.ServiceReference1.getListaContactosUsuarioResponse retVal = ((NavalWarsCliente.ServiceReference1.Service1Soap)(this)).getListaContactosUsuario(inValue);
             return retVal.Body.getListaContactosUsuarioResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NavalWarsCliente.ServiceReference1.getInfoContactoResponse NavalWarsCliente.ServiceReference1.Service1Soap.getInfoContacto(NavalWarsCliente.ServiceReference1.getInfoContactoRequest request) {
+            return base.Channel.getInfoContacto(request);
+        }
+        
+        public NavalWarsCliente.ServiceReference1.ArrayOfString getInfoContacto(string nickUsuario, string nickContacto) {
+            NavalWarsCliente.ServiceReference1.getInfoContactoRequest inValue = new NavalWarsCliente.ServiceReference1.getInfoContactoRequest();
+            inValue.Body = new NavalWarsCliente.ServiceReference1.getInfoContactoRequestBody();
+            inValue.Body.nickUsuario = nickUsuario;
+            inValue.Body.nickContacto = nickContacto;
+            NavalWarsCliente.ServiceReference1.getInfoContactoResponse retVal = ((NavalWarsCliente.ServiceReference1.Service1Soap)(this)).getInfoContacto(inValue);
+            return retVal.Body.getInfoContactoResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

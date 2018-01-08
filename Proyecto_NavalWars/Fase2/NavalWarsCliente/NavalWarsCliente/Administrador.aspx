@@ -9,9 +9,6 @@
         .auto-style1 {
             width: 523px;
         }
-        .auto-style2 {
-            width: 344px;
-        }
         .auto-style3 {
             width: 270px;
         }
@@ -19,12 +16,15 @@
             height: 49px;
         }
         .auto-style5 {
-            width: 344px;
+            width: 173px;
             height: 49px;
         }
         .auto-style6 {
             width: 270px;
             height: 49px;
+        }
+        .auto-style8 {
+            width: 173px;
         }
     </style>
 </head>
@@ -36,6 +36,7 @@
             <asp:MultiView ID="MultiView1" runat="server">
                 <br />
                 <asp:View ID="View1" runat="server">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Label ID="Label1" runat="server" Text="Administrador" Font-Size="30pt"></asp:Label>
                     <br />
                     <br />
@@ -45,7 +46,7 @@
                             <td class="auto-style4"></td>
                             <td class="auto-style5"></td>
                             <td class="auto-style6">
-                                <asp:Button ID="btnAdminUsuarios" runat="server" OnClick="btnAdminUsuarios_Click" Text="Administrar Usuarios" Width="240px" />
+                                <asp:Button ID="btnAdminUsuarios" runat="server" OnClick="btnAdminUsuarios_Click" Text="Administrar Usuarios" Width="253px" />
                                 <br />
                             </td>
                             <td class="auto-style4"></td>
@@ -54,9 +55,9 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td class="auto-style2">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
                             <td class="auto-style3">
-                                <asp:Button ID="btnJuegos" runat="server" OnClick="btnJuegos_Click" Text="Administrar Lista de Juegos" />
+                                <asp:Button ID="btnJuegos" runat="server" OnClick="btnJuegos_Click" Text="Administrar Lista de Juegos" Width="253px" />
                                 <br />
                                 <br />
                             </td>
@@ -66,9 +67,9 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td class="auto-style2">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
                             <td class="auto-style3">
-                                <asp:Button ID="btnAdminContacUsuarios" runat="server" Text="Administrar Contactos Ususarios" Width="240px" OnClick="btnAdminContacUsuarios_Click" />
+                                <asp:Button ID="btnAdminContacUsuarios" runat="server" Text="Administrar Contactos Ususarios" Width="255px" OnClick="btnAdminContacUsuarios_Click" />
                                 <br />
                                 <br />
                             </td>
@@ -78,7 +79,7 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td class="auto-style2">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
                             <td class="auto-style3">&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
@@ -86,7 +87,7 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td class="auto-style2">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
                             <td class="auto-style3">&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
@@ -94,9 +95,9 @@
                                                 <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td class="auto-style2">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
                             <td class="auto-style3">
-                                <asp:Button ID="btnCargaMasiva" runat="server" OnClick="btnCargaMasiva_Click" Text="Carga Masiva" Width="235px" />
+                                <asp:Button ID="btnCargaMasiva" runat="server" OnClick="btnCargaMasiva_Click" Text="Carga Masiva" Width="251px" Height="26px" />
                                                     </td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
@@ -104,7 +105,7 @@
                                                 <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td class="auto-style2">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
                             <td class="auto-style3">&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>

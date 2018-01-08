@@ -330,6 +330,19 @@ namespace NavalWarsEDD
                 getNickContacto(actual.derecha,ref acum);
             }
         }
+        public NodoAVL getContacto(NodoAVL actual,string nickContacto)
+        {
+            if(actual!= null)
+            {
+                if (actual.nickname == nickContacto)
+                    return actual;
+                else if (nickContacto.CompareTo(actual.nickname) < 0)
+                    return getContacto(actual.izquierda, nickContacto);
+                else if (nickContacto.CompareTo(actual.nickname) > 0)
+                    return getContacto(actual.derecha, nickContacto);
+            }
+            return null;
+        }
         public void preOrden(ref NodoAVL tmp, ref string acum, ref string cabecera)
         {
             if(tmp != null)
