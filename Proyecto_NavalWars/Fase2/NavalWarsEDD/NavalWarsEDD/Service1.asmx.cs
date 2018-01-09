@@ -19,7 +19,7 @@ namespace NavalWarsEDD
         public static ABBUsuario usuarioABB = new ABBUsuario();
        // public static ArbolAVL avlContactos = new ArbolAVL();
         public static ArbolB arbolB = new ArbolB(5);
-        public static TablaHash tablaHash = new TablaHash(43);
+        
         public static Matriz cubo = new Matriz();
 
         Grafo g = new Grafo();
@@ -299,10 +299,11 @@ namespace NavalWarsEDD
             g.generarGrafoArbolB(ref arbolB.raiz);
         }
 
-        /*-------------------------------- <Arbol B>------------------------------------------------------*/
+        /*-------------------------------- <Tabla hash>------------------------------------------------------*/
         [WebMethod]
         public void insertarHash()
         {
+              TablaHash tablaHash = new TablaHash(43);
             tablaHash.insertarFromABB(ref usuarioABB.raiz);
             g.generarGrafoTablaHash(tablaHash);
         }

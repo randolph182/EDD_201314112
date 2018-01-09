@@ -91,5 +91,34 @@ namespace NavalWarsCliente
         {
             Response.Redirect("AdminContactosUsuarios.aspx");
         }
+
+        protected void btnCargaMasivaContactos_Click(object sender, EventArgs e)
+        {
+            string direccion = Server.MapPath(FileUpload3.FileName);
+            if(direccion !="")
+            {
+                int contador = 0;
+                string linea = "";
+                using (StreamReader sr =File.OpenText(direccion))
+                {
+                    while((linea = sr.ReadLine()) != null)
+                    {
+                        if(contador !=0)
+                        {
+                            string[] info = linea.Split(',');
+                            string nickUsuario = info[0];
+                            string nickContacto = info[1];
+                            string contra = info[2];
+                            string email = info[3];
+                            ClaseGlobal.servidorPrincipal.insertarAVL(nickUsuario, nickContacto, contra, email);
+                        
+                        }
+                        contador++;
+                    }
+                    sr.Close();
+                }
+            }
+            MultiView1.ActiveViewIndex = 1;
+        }
     }
 }

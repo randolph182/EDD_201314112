@@ -166,7 +166,8 @@ namespace NavalWarsEDD
 
     public class Matriz
     {
-                public ListaEncabezado ncbzdoFilas;
+       // public int 
+        public ListaEncabezado ncbzdoFilas;
         public ListaEncabezado ncbzdoColumnas;
         public Matriz()
         {
@@ -258,7 +259,7 @@ namespace NavalWarsEDD
 
                         if (posicionOcupada.columna == nuevoNodo.columna && posicionOcupada.unidad.nivel == nuevoNodo.unidad.nivel)
                         {
-                           // MessageBox.Show("La posicion ya existe");
+                            // MessageBox.Show("La posicion ya existe");
                             return;
                         }
                         if (!banderaEnlace)
@@ -298,7 +299,7 @@ namespace NavalWarsEDD
 
                             if (posicionOcupada.columna == nuevoNodo.columna && posicionOcupada.unidad.nivel == nuevoNodo.unidad.nivel)
                             {
-                               // MessageBox.Show("La posicion ya existe");
+                                // MessageBox.Show("La posicion ya existe");
                                 return;
                             }
                             if (!banderaEnlace)
@@ -475,7 +476,7 @@ namespace NavalWarsEDD
                 }
             }
         }
-         public void buscar_enlazarNodoCandidatoCol(ref NodoOrtogonal nuevoNodo)
+        public void buscar_enlazarNodoCandidatoCol(ref NodoOrtogonal nuevoNodo)
         {
             /*abajo*/
             NodoOrtogonal NodoCandidato = null;
@@ -492,7 +493,7 @@ namespace NavalWarsEDD
                 if (NodoCandidato.arriba != null)
                     if (NodoCandidato.arriba == nuevoNodo)
                         bandera = false;
-                if(bandera)
+                if (bandera)
                 {
                     romperEnlaceNodoCol(ref NodoCandidato, ref nuevoNodo); //quita los enlaces de sus laterales Izq o Der para enlazarse sin problemas con el nuevo
                     nuevoNodo.abajo = NodoCandidato;
@@ -515,7 +516,7 @@ namespace NavalWarsEDD
                 if (NodoCandidatoAba.arriba != null)
                     if (NodoCandidatoAba.arriba == nuevoNodo)
                         bandera = false;
-                if(bandera)
+                if (bandera)
                 {
                     romperEnlaceNodoCol(ref NodoCandidatoAba, ref nuevoNodo);
                     nuevoNodo.arriba = NodoCandidatoAba;
@@ -540,7 +541,7 @@ namespace NavalWarsEDD
                 if (NodoCandidato.derecha != null)
                     if (NodoCandidato.derecha == nuevoNodo)
                         banderaDer = false;
-                if(banderaDer)
+                if (banderaDer)
                 {
                     romperEnlacesNodoFila(ref NodoCandidato, ref nuevoNodo); //quita los enlaces de sus laterales Izq o Der para enlazarse sin problemas con el nuevo
                     nuevoNodo.derecha = NodoCandidato;
@@ -550,20 +551,20 @@ namespace NavalWarsEDD
             }
             /*Izquierda*/
             NodoOrtogonal NodoCandidatoIzq = null;
-            NodoCandidatoIzq = buscarNodoCandidatoFilas(ref nuevoNodo.adelante, ref nuevoNodo, 0 , 1);
+            NodoCandidatoIzq = buscarNodoCandidatoFilas(ref nuevoNodo.adelante, ref nuevoNodo, 0, 1);
             if (NodoCandidatoIzq == null)
                 NodoCandidatoIzq = buscarNodoCandidatoFilas(ref nuevoNodo.atras, ref nuevoNodo, 1, 1);
             //NodoOrtogonal NodoCandidatoIzq = buscarNodoProximo(ref posicionOcupada.izquierda, ref nuevoNodo, ref posicionOcupada);
             if (NodoCandidatoIzq != null)
             {
                 bool banderaIzq = true;
-                if(NodoCandidatoIzq.izquierda != null)
+                if (NodoCandidatoIzq.izquierda != null)
                     if (NodoCandidatoIzq.izquierda == nuevoNodo)
                         banderaIzq = false;
                 if (NodoCandidatoIzq.derecha != null)
                     if (NodoCandidatoIzq.derecha == nuevoNodo)
                         banderaIzq = false;
-                if(banderaIzq)
+                if (banderaIzq)
                 {
                     romperEnlacesNodoFila(ref NodoCandidatoIzq, ref nuevoNodo);
                     nuevoNodo.izquierda = NodoCandidatoIzq;
@@ -578,12 +579,12 @@ namespace NavalWarsEDD
             if (posicionOcupada.arriba != null && posicionOcupada.abajo != null)
                 if (posicionOcupada.arriba.unidad.nivel == nuevoNodo.unidad.nivel || posicionOcupada.abajo.unidad.nivel == nuevoNodo.unidad.nivel)
                     accionar = true;
-            else if (posicionOcupada.arriba != null)
-                if (posicionOcupada.arriba.unidad.nivel == nuevoNodo.unidad.nivel)
-                    accionar = true;
-            else if (posicionOcupada.abajo != null)
-                if (posicionOcupada.abajo.unidad.nivel == nuevoNodo.unidad.nivel)
-                    accionar = true;
+                else if (posicionOcupada.arriba != null)
+                    if (posicionOcupada.arriba.unidad.nivel == nuevoNodo.unidad.nivel)
+                        accionar = true;
+                    else if (posicionOcupada.abajo != null)
+                        if (posicionOcupada.abajo.unidad.nivel == nuevoNodo.unidad.nivel)
+                            accionar = true;
             if (accionar)
             {
                 Unidad nueva = new Unidad(posicionOcupada.unidad.nivel, posicionOcupada.unidad.tipoUnidad, posicionOcupada.unidad.idUnidad);
@@ -600,17 +601,17 @@ namespace NavalWarsEDD
         }
         public bool reenlazarPosicionOcupadaFilas(ref NodoOrtogonal posicionOcupada, ref NodoOrtogonal nuevoNodo)
         {
-            bool accionar = false  ;
-            if(posicionOcupada.izquierda != null && posicionOcupada.derecha != null)
+            bool accionar = false;
+            if (posicionOcupada.izquierda != null && posicionOcupada.derecha != null)
                 if (posicionOcupada.izquierda.unidad.nivel == nuevoNodo.unidad.nivel || posicionOcupada.derecha.unidad.nivel == nuevoNodo.unidad.nivel)
                     accionar = true;
-            else if (posicionOcupada.izquierda != null)
-                if (posicionOcupada.izquierda.unidad.nivel == nuevoNodo.unidad.nivel)
-                    accionar = true;
-            else if(posicionOcupada.derecha != null)
-                if (posicionOcupada.derecha.unidad.nivel == nuevoNodo.unidad.nivel)
-                    accionar = true;
-            if(accionar)
+                else if (posicionOcupada.izquierda != null)
+                    if (posicionOcupada.izquierda.unidad.nivel == nuevoNodo.unidad.nivel)
+                        accionar = true;
+                    else if (posicionOcupada.derecha != null)
+                        if (posicionOcupada.derecha.unidad.nivel == nuevoNodo.unidad.nivel)
+                            accionar = true;
+            if (accionar)
             {
                 Unidad nueva = new Unidad(posicionOcupada.unidad.nivel, posicionOcupada.unidad.tipoUnidad, posicionOcupada.unidad.idUnidad);
                 int f = posicionOcupada.fila;
@@ -655,7 +656,7 @@ namespace NavalWarsEDD
                 }
                 else if (ladoZ == 2) //estan en el mismo nivel
                 {
-                    if(nuevo.arriba != actual)
+                    if (nuevo.arriba != actual)
                     {
                         nuevo.arriba.abajo = null;
                         nuevo.arriba = null;
@@ -671,7 +672,7 @@ namespace NavalWarsEDD
                     {
                         if (nodoUltimo.unidad.nivel < nuevo.arriba.unidad.nivel)
                         {
-                            if(nuevo.arriba != actual)
+                            if (nuevo.arriba != actual)
                             {
                                 /* rompemos sus enlaces para poder ser re-insertado nuevamente*/
                                 nuevo.arriba.abajo = null;
@@ -691,9 +692,9 @@ namespace NavalWarsEDD
             return false;
         }
 
-        public bool encontrarEnlaceAjo(ref NodoOrtogonal actual, ref NodoOrtogonal nuevo,ref NodoOrtogonal nodoAnterior)
+        public bool encontrarEnlaceAjo(ref NodoOrtogonal actual, ref NodoOrtogonal nuevo, ref NodoOrtogonal nodoAnterior)
         {
-            if(actual != null)
+            if (actual != null)
             {
                 int ladoZ = verificarLadoNivel(ref actual, ref nuevo);
                 int ladoY = verificarLadoArribaAbajo(ref actual, ref nuevo);
@@ -714,7 +715,7 @@ namespace NavalWarsEDD
                 }
                 else if (ladoZ == 2) //estan en el mismo nivel
                 {
-                    if(nuevo.abajo != actual)
+                    if (nuevo.abajo != actual)
                     {
                         nuevo.abajo.arriba = null;
                         nuevo.abajo = null;
@@ -731,7 +732,7 @@ namespace NavalWarsEDD
                         if (nodoUltimo.unidad.nivel < nuevo.abajo.unidad.nivel)
                         {
                             /* rompemos sus enlaces para poder ser re-insertado nuevamente*/
-                            if(nuevo.abajo != actual)
+                            if (nuevo.abajo != actual)
                             {
                                 nuevo.abajo.arriba = null;
                                 nuevo.abajo = null;
@@ -749,55 +750,55 @@ namespace NavalWarsEDD
             return false;
         }
 
-        public bool encontrarEnlaceIzq(ref NodoOrtogonal actual,ref NodoOrtogonal nuevo, ref NodoOrtogonal nodoAnterior)
+        public bool encontrarEnlaceIzq(ref NodoOrtogonal actual, ref NodoOrtogonal nuevo, ref NodoOrtogonal nodoAnterior)
         {
-            if(actual != null)
+            if (actual != null)
             {
                 int ladoZ = verificarLadoNivel(ref actual, ref nuevo);
                 int ladoX = verificarLadoIzqDer(ref actual, ref nuevo);
                 NodoOrtogonal nodoUltimo = null;
                 if (ladoZ == 0) //el nuevo esta hacia abajo
                 {
-                    if(actual.atras == null  && actual.unidad.nivel != nodoAnterior.unidad.nivel) //por sinose mueve sobre elmismo nivel
+                    if (actual.atras == null && actual.unidad.nivel != nodoAnterior.unidad.nivel) //por sinose mueve sobre elmismo nivel
                         nodoUltimo = actual;
-                    else if(actual.atras != nodoAnterior)
+                    else if (actual.atras != nodoAnterior)
                     {
-                        bool encontro = encontrarEnlaceIzq(ref actual.atras,ref nuevo, ref actual);
-                        if(encontro)
+                        bool encontro = encontrarEnlaceIzq(ref actual.atras, ref nuevo, ref actual);
+                        if (encontro)
                             return true;
                     }
                 }
-                else if(ladoZ == 1) //el nuevo esta hacia arriba
+                else if (ladoZ == 1) //el nuevo esta hacia arriba
                 {
                     if (actual.adelante == null && actual.unidad.nivel != nodoAnterior.unidad.nivel) //por sinose mueve sobre elmismo nivel
                         nodoUltimo = actual;
-                    else if(actual.adelante != nodoAnterior)
+                    else if (actual.adelante != nodoAnterior)
                     {
                         bool encontro = encontrarEnlaceIzq(ref actual.adelante, ref nuevo, ref actual);
                         if (encontro)
                             return true;
                     }
                 }
-                else if(ladoZ == 2) //estan en el mismo nivel
+                else if (ladoZ == 2) //estan en el mismo nivel
                 {
-                    if(nuevo.izquierda != actual)
+                    if (nuevo.izquierda != actual)
                     {
                         nuevo.izquierda.derecha = null;
                         nuevo.izquierda = null;
                         if (enlazarIzqDer(ref actual, ref nuevo))
                             return true;
                     }
-                     return false;
+                    return false;
                 }
 
-                if(nodoUltimo != null)
+                if (nodoUltimo != null)
                 {
                     if (nuevo.izquierda != null)
                     {
                         if (nodoUltimo.unidad.nivel < nuevo.izquierda.unidad.nivel)
                         {
                             /* rompemos sus enlaces para poder ser re-insertado nuevamente*/
-                            if(actual.izquierda != actual)
+                            if (actual.izquierda != actual)
                             {
                                 nuevo.izquierda.derecha = null;
                                 nuevo.izquierda = null;
@@ -838,7 +839,7 @@ namespace NavalWarsEDD
                 }
                 else if (ladoZ == 2) //estan en el mismo nivel
                 {
-                    if(nuevo.derecha != actual)
+                    if (nuevo.derecha != actual)
                     {
                         nuevo.derecha.izquierda = null;
                         nuevo.derecha = null;
@@ -855,7 +856,7 @@ namespace NavalWarsEDD
                         if (nodoUltimo.unidad.nivel < nuevo.derecha.unidad.nivel)
                         {
                             /* rompemos sus enlaces para poder ser re-insertado nuevamente*/
-                            if(nuevo.derecha != actual)
+                            if (nuevo.derecha != actual)
                             {
                                 nuevo.derecha.izquierda = null;
                                 nuevo.derecha = null;
@@ -872,7 +873,7 @@ namespace NavalWarsEDD
             }
             return false;
         }
-        
+
         public bool enlazarArribaAbajo(ref NodoOrtogonal actual, ref NodoOrtogonal nuevo)
         {
             int ladoY = verificarLadoArribaAbajo(ref actual, ref nuevo);
@@ -887,7 +888,7 @@ namespace NavalWarsEDD
                         tmpAjo.abajo.arriba = nuevo;
                         tmpAjo.abajo = nuevo;
                         nuevo.arriba = tmpAjo;
-                        return  true;
+                        return true;
                     }
                     tmpAjo = tmpAjo.abajo;
                 }
@@ -922,18 +923,18 @@ namespace NavalWarsEDD
             }
             return false;
         }
-        public NodoOrtogonal verificarExistenciaPosNodoCol(ref NodoOrtogonal actual, ref NodoOrtogonal nuevo, ref NodoOrtogonal nodoAnterior,ref int ladoYanterior,ref int contadorY )
+        public NodoOrtogonal verificarExistenciaPosNodoCol(ref NodoOrtogonal actual, ref NodoOrtogonal nuevo, ref NodoOrtogonal nodoAnterior, ref int ladoYanterior, ref int contadorY)
         {
-            if(actual != null)
+            if (actual != null)
             {
                 if (contadorY == 6)
                     return null;
                 int ladoY = verificarLadoArribaAbajo(ref actual, ref nuevo);
                 if (ladoY != ladoYanterior)
                     contadorY++;
-                if(actual.adelante != null && actual.adelante != nodoAnterior)
+                if (actual.adelante != null && actual.adelante != nodoAnterior)
                 {
-                    NodoOrtogonal posNodo = verificarExistenciaPosNodoCol(ref actual.adelante, ref nuevo, ref actual,ref ladoY,ref contadorY);
+                    NodoOrtogonal posNodo = verificarExistenciaPosNodoCol(ref actual.adelante, ref nuevo, ref actual, ref ladoY, ref contadorY);
                     if (posNodo != null)
                         return posNodo;
                 }
@@ -958,7 +959,7 @@ namespace NavalWarsEDD
                 else if (ladoY == 2) //esta en la misma fila
                     return actual;
 
-                if(actual.atras != null && actual.atras != nodoAnterior)
+                if (actual.atras != null && actual.atras != nodoAnterior)
                 {
                     NodoOrtogonal posNodo = verificarExistenciaPosNodoCol(ref actual.atras, ref nuevo, ref actual, ref ladoY, ref contadorY);
                     if (posNodo != null)
@@ -988,15 +989,15 @@ namespace NavalWarsEDD
             }
         }
 
-        public NodoOrtogonal buscarNodoCandidatoCol(ref NodoOrtogonal actual, ref NodoOrtogonal nuevo,   int ladoZ,  int ladoY)
+        public NodoOrtogonal buscarNodoCandidatoCol(ref NodoOrtogonal actual, ref NodoOrtogonal nuevo, int ladoZ, int ladoY)
         {
-            if(actual != null)
+            if (actual != null)
             {
                 NodoOrtogonal candidato = null;
                 int contadorZ = 0;
                 if (ladoY == 0) //hacia abajo
                 {
-                    candidato = buscarNodoProximoCol(ref actual.abajo, ref nuevo, ref actual,ref ladoZ, ref contadorZ);
+                    candidato = buscarNodoProximoCol(ref actual.abajo, ref nuevo, ref actual, ref ladoZ, ref contadorZ);
                     if (candidato != null)
                         return candidato;
                 }
@@ -1031,26 +1032,26 @@ namespace NavalWarsEDD
                 {
                     if (ladoY == 0) //movimiento hacia abajo
                     {
-                        if(actual.abajo != null && actual.abajo.fila > nuevo.columna)
+                        if (actual.abajo != null && actual.abajo.fila > nuevo.columna)
                         {
                             nuevo.abajo = actual.abajo;
                             actual.abajo.arriba = nuevo;
                             actual.abajo = nuevo;
                             nuevo.arriba = actual;
-                            return actual;    
+                            return actual;
                         }
                         if (actual.abajo != null && actual.abajo.fila != nuevo.fila)
                         {
                             if (actual.abajo.unidad.nivel != nuevo.unidad.nivel)
                                 return actual;
                             else
-                                return buscarNodoProximoCol(ref actual.abajo, ref nuevo, ref actual,ref ladoNivel, ref contadorZ);
+                                return buscarNodoProximoCol(ref actual.abajo, ref nuevo, ref actual, ref ladoNivel, ref contadorZ);
                         }
                         return actual;
                     }
                     else if (ladoY == 1) //movimiento hacia arriba
                     {
-                        if(actual.arriba != null && actual.arriba.fila < nuevo.fila)
+                        if (actual.arriba != null && actual.arriba.fila < nuevo.fila)
                         {
                             nuevo.arriba = actual.arriba;
                             actual.arriba.abajo = nuevo;
@@ -1084,7 +1085,7 @@ namespace NavalWarsEDD
                         }
                     }
                     /*--------------------------------------- <COMPARACION NIVELES > ----------------------------*/
-                    if(ladoNivel == 0)
+                    if (ladoNivel == 0)
                     {
                         if (actual.atras != null)
                         {
@@ -1096,7 +1097,7 @@ namespace NavalWarsEDD
                             }
                         }
                     }
-                    else if(ladoNivel == 1)
+                    else if (ladoNivel == 1)
                     {
                         if (actual.adelante != null)
                         {
@@ -1182,12 +1183,12 @@ namespace NavalWarsEDD
             *  si retorna 0 debe recorrer hacia la abajo
             *  si  retorna 2 significa que estan en el mismo nivel
             */
-                if (nuevo.fila < actual.fila)
-                    return 1;
-                else if (nuevo.fila > actual.fila)
-                    return 0;
-                else
-                    return 2;
+            if (nuevo.fila < actual.fila)
+                return 1;
+            else if (nuevo.fila > actual.fila)
+                return 0;
+            else
+                return 2;
 
 
         }
@@ -1306,9 +1307,9 @@ namespace NavalWarsEDD
             return false;
         }
 
-        public NodoOrtogonal verificarExistenciaPosNodoFila(ref NodoOrtogonal actual, ref NodoOrtogonal nuevo,ref NodoOrtogonal nodoAnterior,ref  int ladoXanterior, ref int contadorX)
+        public NodoOrtogonal verificarExistenciaPosNodoFila(ref NodoOrtogonal actual, ref NodoOrtogonal nuevo, ref NodoOrtogonal nodoAnterior, ref  int ladoXanterior, ref int contadorX)
         {
-            if(actual  != null)
+            if (actual != null)
             {
                 if (contadorX == 7)
                     return null;
@@ -1322,7 +1323,7 @@ namespace NavalWarsEDD
                     if (posNodo != null)
                         return posNodo;
                 }
-                if(ladoX == 0) //derecha
+                if (ladoX == 0) //derecha
                 {
                     if (actual.derecha != null && actual.derecha != nodoAnterior)
                     {
@@ -1331,7 +1332,7 @@ namespace NavalWarsEDD
                             return posNodo;
                     }
                 }
-                else if(ladoX ==1) //ladoIzquierda
+                else if (ladoX == 1) //ladoIzquierda
                 {
                     if (actual.izquierda != null && actual.izquierda != nodoAnterior)
                     {
@@ -1340,10 +1341,10 @@ namespace NavalWarsEDD
                             return posNodo;
                     }
                 }
-                else if(ladoX ==2) //estan en la misma columna
+                else if (ladoX == 2) //estan en la misma columna
                     return actual;
-                    
-                if(actual.atras != null && actual.atras != nodoAnterior)
+
+                if (actual.atras != null && actual.atras != nodoAnterior)
                 {
                     NodoOrtogonal posNodo = verificarExistenciaPosNodoFila(ref actual.atras, ref nuevo, ref actual, ref ladoX, ref contadorX);
                     if (posNodo != null)
@@ -1375,48 +1376,48 @@ namespace NavalWarsEDD
         }
 
 
-        public NodoOrtogonal buscarNodoCandidatoFilas(ref NodoOrtogonal actual, ref NodoOrtogonal nuevo,int ladoZ,int ladoX)
+        public NodoOrtogonal buscarNodoCandidatoFilas(ref NodoOrtogonal actual, ref NodoOrtogonal nuevo, int ladoZ, int ladoX)
         {
-            if(actual != null)
+            if (actual != null)
             {
                 NodoOrtogonal candidato = null;
                 int contadorZ = 0;
                 if (ladoX == 0) //hacia la derecha
                 {
-                    candidato = buscarNodoProximo(ref actual.derecha, ref nuevo, ref actual,ref ladoZ,ref contadorZ);
+                    candidato = buscarNodoProximo(ref actual.derecha, ref nuevo, ref actual, ref ladoZ, ref contadorZ);
                     if (candidato != null)
                         return candidato;
                 }
                 else if (ladoX == 1) //hacia la izquierda
                 {
-                    candidato = buscarNodoProximo(ref actual.izquierda, ref nuevo, ref actual,ref ladoZ,ref contadorZ);
+                    candidato = buscarNodoProximo(ref actual.izquierda, ref nuevo, ref actual, ref ladoZ, ref contadorZ);
                     if (candidato != null)
                         return candidato;
                 }
                 if (ladoZ == 0) //el  nuevo elemento esta hacia atras pero debo moverme hacia adelante
-                    return buscarNodoCandidatoFilas(ref actual.adelante, ref nuevo, ladoZ,ladoX);
+                    return buscarNodoCandidatoFilas(ref actual.adelante, ref nuevo, ladoZ, ladoX);
                 else if (ladoZ == 1) //el nuevo elemento esta hacia adleante pero debo moverme hacia atras
-                    return buscarNodoCandidatoFilas(ref actual.atras, ref nuevo, ladoZ,ladoX);
+                    return buscarNodoCandidatoFilas(ref actual.atras, ref nuevo, ladoZ, ladoX);
             }
             return null;
         }
 
 
         /*Aplicacable sono cuando se hacen enlaces entreNiles pero de columnas*/
-        public NodoOrtogonal buscarNodoProximo(ref NodoOrtogonal actual, ref NodoOrtogonal nuevo, ref NodoOrtogonal nodoAnterior, ref int ladoZAnterior,ref int contadorZ)
+        public NodoOrtogonal buscarNodoProximo(ref NodoOrtogonal actual, ref NodoOrtogonal nuevo, ref NodoOrtogonal nodoAnterior, ref int ladoZAnterior, ref int contadorZ)
         {
             if (actual != null)
             {
                 if (contadorZ == 5) //si hay cambios  de parte de Z romper porque puede que sea un ciclo
                     return null;
-                 int ladoZ = verificarLadoNivel(ref actual, ref nuevo);
-                 int ladoX = verificarLadoIzqDer(ref actual, ref nuevo);
-                 if (ladoZ != ladoZAnterior)
-                     contadorZ++;
+                int ladoZ = verificarLadoNivel(ref actual, ref nuevo);
+                int ladoX = verificarLadoIzqDer(ref actual, ref nuevo);
+                if (ladoZ != ladoZAnterior)
+                    contadorZ++;
 
-                 ladoX = verificarLadoIzqDer(ref actual, ref nuevo);
+                ladoX = verificarLadoIzqDer(ref actual, ref nuevo);
 
-                if (ladoZ == 2 ) //estan sobre el mismo nivel
+                if (ladoZ == 2) //estan sobre el mismo nivel
                 {
                     //ladoX = verificarLadoIzqDer(ref actual, ref nuevo);
                     if (ladoX == 0) //devo moverme hacia la derecha
@@ -1434,7 +1435,7 @@ namespace NavalWarsEDD
                             if (actual.derecha.unidad.nivel != nuevo.unidad.nivel) //si el nodo candidato der es distinto que el nivel que debe ser
                                 return actual;
                             else
-                                return buscarNodoProximo(ref actual.derecha, ref nuevo, ref actual,ref ladoZ,ref contadorZ);
+                                return buscarNodoProximo(ref actual.derecha, ref nuevo, ref actual, ref ladoZ, ref contadorZ);
                         else
                             return actual;
                     }
@@ -1453,7 +1454,7 @@ namespace NavalWarsEDD
                             if (actual.izquierda.unidad.nivel != nuevo.unidad.nivel) //si el nodo candidato Izq es distinto que el nivel que debe ser
                                 return actual;
                             else
-                                return buscarNodoProximo(ref actual.izquierda, ref nuevo, ref actual, ref ladoZ,ref  contadorZ);
+                                return buscarNodoProximo(ref actual.izquierda, ref nuevo, ref actual, ref ladoZ, ref  contadorZ);
                         }
                         else
                             return actual;
@@ -1468,7 +1469,7 @@ namespace NavalWarsEDD
                     {
                         if (actual.izquierda != nodoAnterior)
                         {
-                            NodoOrtogonal tmpIzq = buscarNodoProximo(ref actual.izquierda, ref nuevo, ref actual,ref ladoZ,ref contadorZ);
+                            NodoOrtogonal tmpIzq = buscarNodoProximo(ref actual.izquierda, ref nuevo, ref actual, ref ladoZ, ref contadorZ);
                             if (tmpIzq != null)
                                 return tmpIzq;
                         }
@@ -1504,7 +1505,7 @@ namespace NavalWarsEDD
                         NodoOrtogonal tmpDer = null;
                         if (actual.derecha != nodoAnterior)
                         {
-                            tmpDer = buscarNodoProximo(ref actual.derecha, ref nuevo, ref actual ,ref ladoZ,ref contadorZ);
+                            tmpDer = buscarNodoProximo(ref actual.derecha, ref nuevo, ref actual, ref ladoZ, ref contadorZ);
                             if (tmpDer != null)
                                 return tmpDer;
                         }
@@ -1529,7 +1530,7 @@ namespace NavalWarsEDD
                         {
                             if (actual.atras.unidad.nivel != nodoAnterior.unidad.nivel)
                             {
-                                NodoOrtogonal tmpAtras = buscarNodoProximo(ref actual.atras, ref nuevo, ref actual, ref ladoZ,ref contadorZ);
+                                NodoOrtogonal tmpAtras = buscarNodoProximo(ref actual.atras, ref nuevo, ref actual, ref ladoZ, ref contadorZ);
                                 if (tmpAtras != null)
                                     return tmpAtras;
                             }
@@ -1541,7 +1542,7 @@ namespace NavalWarsEDD
                         {
                             if (actual.adelante.unidad.nivel != nodoAnterior.unidad.nivel)
                             {
-                                NodoOrtogonal tmpAdelante = buscarNodoProximo(ref actual.adelante, ref nuevo, ref actual,ref ladoZ,ref contadorZ);
+                                NodoOrtogonal tmpAdelante = buscarNodoProximo(ref actual.adelante, ref nuevo, ref actual, ref ladoZ, ref contadorZ);
                                 if (tmpAdelante != null)
                                     return tmpAdelante;
                             }
@@ -1843,141 +1844,142 @@ namespace NavalWarsEDD
             Encabezado eFila = ncbzdoFilas.buscarEncabezado(fila);
             Encabezado eCol = ncbzdoColumnas.buscarEncabezado(col);
 
-            if(eFila != null && eCol != null)
+            if (eFila != null && eCol != null)
             {
                 NodoOrtogonal nodoFila = buscarNodoFila(ref eFila.accesoNodo, ref eFila.accesoNodo, col, nivel);
                 NodoOrtogonal nodoColumna = buscarNodoCol(ref eCol.accesoNodo, ref eCol.accesoNodo, fila, nivel);
 
-                if(nodoFila != null && nodoColumna != null)
+                if (nodoFila != null && nodoColumna != null)
                 {
-                    if(nodoFila == nodoColumna)
+                    if (nodoFila == nodoColumna)
                     {
                         if (eFila.accesoNodo == nodoFila) //eliminacion al pricipio
                         {
-                           if(nodoFila.atras != null)
-                               eFila.accesoNodo = nodoFila.atras;
-                           else if(nodoFila.adelante != null)
-                               eFila.accesoNodo = nodoFila.adelante;
-                           else if(nodoFila.derecha != null)
-                               eFila.accesoNodo = nodoFila.derecha;
-                           else
-                           {
-                              bool elimino = ncbzdoFilas.eliminar(fila);
-                               if(!elimino)
-                                   return false;
-                           }
-                                
+                            if (nodoFila.atras != null)
+                                eFila.accesoNodo = nodoFila.atras;
+                            else if (nodoFila.adelante != null)
+                                eFila.accesoNodo = nodoFila.adelante;
+                            else if (nodoFila.derecha != null)
+                                eFila.accesoNodo = nodoFila.derecha;
+                            else
+                            {
+                                bool elimino = ncbzdoFilas.eliminar(fila);
+                                if (!elimino)
+                                    return false;
+                            }
+
                         }
-                        if(eCol.accesoNodo == nodoColumna)
+                        if (eCol.accesoNodo == nodoColumna)
                         {
-                            if(nodoColumna.atras != null)
+                            if (nodoColumna.atras != null)
                                 eCol.accesoNodo = nodoColumna.atras;
-                            else if(nodoColumna.adelante != null)
+                            else if (nodoColumna.adelante != null)
                                 eCol.accesoNodo = nodoColumna.derecha;
-                            else if(nodoColumna.abajo != null)
+                            else if (nodoColumna.abajo != null)
                                 eCol.accesoNodo = nodoColumna.abajo;
                             else
                             {
                                 bool eliminado = ncbzdoColumnas.eliminar(col);
-                                    if(!eliminado)
-                                        return false;
+                                if (!eliminado)
+                                    return false;
                             }
                         }
 
-                        if(nodoFila.derecha != null && nodoFila.izquierda != null)
+                        if (nodoFila.derecha != null && nodoFila.izquierda != null)
                         {
                             nodoFila.derecha.izquierda = nodoFila.derecha;
                             nodoFila.izquierda.derecha = nodoFila.izquierda;
                             nodoFila.derecha = null;
                             nodoFila.izquierda = null;
                         }
-                        else if(nodoFila.derecha != null)
+                        else if (nodoFila.derecha != null)
                         {
                             nodoFila.derecha.izquierda = null;
                             nodoFila.derecha = null;
                         }
-                        else if(nodoFila.izquierda != null)
+                        else if (nodoFila.izquierda != null)
                         {
                             nodoFila.izquierda.derecha = null;
                             nodoFila.izquierda = null;
                         }
-                        if(nodoFila.adelante != null && nodoFila.atras != null)
+                        if (nodoFila.adelante != null && nodoFila.atras != null)
                         {
                             nodoFila.adelante.atras = nodoFila.atras;
                             nodoFila.atras.adelante = nodoFila.adelante;
                             nodoFila.atras = null;
                             nodoFila.adelante = null;
                         }
-                        else if(nodoFila.adelante != null)
+                        else if (nodoFila.adelante != null)
                         {
                             nodoFila.adelante.atras = null;
                             nodoFila.adelante = null;
                         }
-                        else if(nodoFila.atras != null)
+                        else if (nodoFila.atras != null)
                         {
                             nodoFila.atras.adelante = null;
                             nodoFila.atras = null;
                         }
-                        if(nodoColumna.arriba != null && nodoColumna.abajo != null)
+                        if (nodoColumna.arriba != null && nodoColumna.abajo != null)
                         {
                             nodoColumna.arriba.abajo = nodoColumna.abajo;
                             nodoColumna.abajo.arriba = nodoColumna.arriba;
                             nodoColumna.arriba = null;
                             nodoColumna.abajo = null;
                         }
-                        else if(nodoColumna.arriba != null)
+                        else if (nodoColumna.arriba != null)
                         {
                             nodoColumna.arriba.abajo = null;
                             nodoColumna.arriba = null;
                         }
-                        else if(nodoColumna.abajo != null)
-                        {    nodoColumna.abajo.arriba = null;
+                        else if (nodoColumna.abajo != null)
+                        {
+                            nodoColumna.abajo.arriba = null;
                             nodoColumna.abajo = null;
                         }
                         return true;
                     }
 
                 }
-                
+
             }
             return false;
         }
 
-        public NodoOrtogonal buscarNodoFila(ref NodoOrtogonal actual, ref NodoOrtogonal anterior, int col,int nivel)
+        public NodoOrtogonal buscarNodoFila(ref NodoOrtogonal actual, ref NodoOrtogonal anterior, int col, int nivel)
         {
-            if(actual != null)
+            if (actual != null)
             {
-                if(actual.unidad.nivel == nivel && actual.columna == col)
+                if (actual.unidad.nivel == nivel && actual.columna == col)
                     return actual;
-                if(actual.adelante != null && actual.adelante != anterior)
+                if (actual.adelante != null && actual.adelante != anterior)
                 {
-                    NodoOrtogonal encontrado = buscarNodoFila(ref actual.adelante, ref actual,  col,  nivel);
-                    if(encontrado != null)
+                    NodoOrtogonal encontrado = buscarNodoFila(ref actual.adelante, ref actual, col, nivel);
+                    if (encontrado != null)
                         return actual;
                 }
-                if(actual.atras != null && actual.atras != anterior)
+                if (actual.atras != null && actual.atras != anterior)
                 {
-                    NodoOrtogonal encontrado = buscarNodoFila(ref actual.atras, ref actual,  col,  nivel);
-                    if(encontrado != null)
+                    NodoOrtogonal encontrado = buscarNodoFila(ref actual.atras, ref actual, col, nivel);
+                    if (encontrado != null)
                         return actual;
                 }
                 return buscarNodoFila(ref actual.derecha, ref actual, col, nivel);
             }
             return null;
         }
-        public NodoOrtogonal buscarNodoCol( ref NodoOrtogonal actual, ref NodoOrtogonal anterior, int fila, int nivel)
+        public NodoOrtogonal buscarNodoCol(ref NodoOrtogonal actual, ref NodoOrtogonal anterior, int fila, int nivel)
         {
-            if(actual != null)
+            if (actual != null)
             {
                 if (actual.unidad.nivel == nivel && actual.fila == fila)
                     return actual;
-                if(actual.adelante != null && actual.adelante != anterior)
+                if (actual.adelante != null && actual.adelante != anterior)
                 {
                     NodoOrtogonal encontrado = buscarNodoCol(ref actual.adelante, ref actual, fila, nivel);
                     if (encontrado != null)
                         return encontrado;
                 }
-                if(actual.atras != null && actual.atras != anterior)
+                if (actual.atras != null && actual.atras != anterior)
                 {
                     NodoOrtogonal encontrado = buscarNodoCol(ref actual.atras, ref actual, fila, nivel);
                     if (encontrado != null)

@@ -176,6 +176,21 @@ namespace NavalWarsCliente
             }
         }
 
+        protected void bntGrafoTablaHash_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ClaseGlobal.servidorPrincipal.insertarHash();
+                mostrarImagen("TablaHash.png");
+            }
+            catch (Exception)
+            {
+                
+               Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "Alert", "alert('No se pudo mostrar la Table')", true);
+            }
+            MultiView1.ActiveViewIndex = 4;
+        }
+
    
 
     }
