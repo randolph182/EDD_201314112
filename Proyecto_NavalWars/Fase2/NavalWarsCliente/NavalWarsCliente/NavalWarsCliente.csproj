@@ -59,6 +59,7 @@
     <Content Include="Administrador.aspx" />
     <Content Include="AdminLstJuegos.aspx" />
     <Content Include="AdminUsuarios.aspx" />
+    <Content Include="ConfiguarcionInicialUsuario.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="PrincipalUsuario.aspx" />
@@ -108,6 +109,13 @@
       <DependentUpon>AdminUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="ClaseGlobal.cs" />
+    <Compile Include="ConfiguarcionInicialUsuario.aspx.cs">
+      <DependentUpon>ConfiguarcionInicialUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfiguarcionInicialUsuario.aspx.designer.cs">
+      <DependentUpon>ConfiguarcionInicialUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>

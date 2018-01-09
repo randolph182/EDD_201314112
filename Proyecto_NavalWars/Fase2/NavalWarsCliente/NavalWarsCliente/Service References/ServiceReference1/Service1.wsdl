@@ -338,8 +338,11 @@
             <s:element minOccurs="1" maxOccurs="1" name="n1" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="n2" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="n3" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="noFilas" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="noCols" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="tipoJuego" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="tiempo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ordenB" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>

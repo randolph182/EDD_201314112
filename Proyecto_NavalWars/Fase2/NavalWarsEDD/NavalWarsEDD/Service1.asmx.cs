@@ -24,6 +24,7 @@ namespace NavalWarsEDD
        // public static Matriz cubo = new Matriz();
         public static Matriz cuboTmp = new Matriz();
         public static ListaMatriz listaJuegos = new ListaMatriz();
+
         Grafo g = new Grafo();
 
         [WebMethod]
@@ -321,9 +322,10 @@ namespace NavalWarsEDD
         //    g.generarMatriz(cubo, 3);
         //}
         [WebMethod]
-        public void insertarListaJuegos(string nickOp1,string nickOp2,int n0,int n1,int n2, int n3,int tipoJuego,string tiempo)
+        public void insertarListaJuegos(string nickOp1,string nickOp2,int n0,int n1,int n2, int n3,int noFilas,int noCols,int tipoJuego,string tiempo,int ordenB)
         {
-
+            //listaJuegos.insertar(nickOp1, nickOp2, n0, n1, n2, n3, tipoJuego, tiempo, ordenB);
+            listaJuegos.insertar(nickOp1, nickOp2, n0, n1, n2, n3,noFilas,noCols, tipoJuego, tiempo, ordenB);
         }
 
         [WebMethod]

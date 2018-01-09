@@ -9,20 +9,25 @@
         .auto-style1 {
             width: 523px;
         }
+
         .auto-style3 {
             width: 270px;
         }
+
         .auto-style4 {
             height: 49px;
         }
+
         .auto-style5 {
             width: 125px;
             height: 49px;
         }
+
         .auto-style6 {
             width: 270px;
             height: 49px;
         }
+
         .auto-style9 {
             width: 125px;
         }
@@ -81,7 +86,7 @@
                             <td>&nbsp;</td>
                             <td class="auto-style9">&nbsp;</td>
                             <td class="auto-style3">
-                                <asp:Button ID="btnMostrarTablero" runat="server" Text="MostrarTableroConfigurado" Width="251px" OnClick="btnMostrarTablero_Click" />
+                                <asp:Button ID="Button2" runat="server" Text="Configurar Tablero Juego" Width="253px" />
                             </td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
@@ -94,21 +99,42 @@
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
-                                                <tr>
+                        <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td class="auto-style9">&nbsp;</td>
                             <td class="auto-style3">
-                                <asp:Button ID="btnCargaMasiva" runat="server" OnClick="btnCargaMasiva_Click" Text="Carga Masiva" Width="251px" Height="26px" />
-                                                    </td>
+                                <asp:Button ID="btnMostrarTablero" runat="server" OnClick="btnMostrarTablero_Click" Text="MostrarTableroConfigurado" Width="254px" />
+                            </td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
-                                                <tr>
+                        <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td class="auto-style9">&nbsp;</td>
-                            <td class="auto-style3">&nbsp;</td>
+                            <td class="auto-style3">
+                                &nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="auto-style9">&nbsp;</td>
+                            <td class="auto-style3">
+                                <asp:Button ID="btnCargaMasiva" runat="server" Height="26px" OnClick="btnCargaMasiva_Click" Text="Carga Masiva" Width="254px" />
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="auto-style9">&nbsp;</td>
+                            <td class="auto-style3">
+                                &nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
@@ -166,8 +192,7 @@
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
-                            <td class="auto-style1">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            <td class="auto-style1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:Button ID="btnCargaMasivaContactos" runat="server" Text="Subir Archivo Contactos" OnClick="btnCargaMasivaContactos_Click" Width="188px" />
                             </td>
                             <td>
@@ -180,30 +205,31 @@
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
-                                                <tr>
-                            <td class="auto-style1">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btnCargaMasivaTablero" runat="server" Text="Cargar Unidades al Tablero" OnClick="btnCargaMasivaTablero_Click" Width="188px" />
-                                                    </td>
+                        <tr>
+                            <td class="auto-style1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:Button ID="btnCargaMasivaTablero" runat="server" Text="Cargar Unidades al Tablero" OnClick="btnCargaMasivaTablero_Click" Width="192px" />
+                            </td>
                             <td>
                                 <asp:FileUpload ID="FileUpload4" runat="server" />
-                                                    </td>
+                            </td>
                             <td>&nbsp;</td>
                         </tr>
-                                                <tr>
+                        <tr>
                             <td class="auto-style1">&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
-                                                <tr>
-                            <td class="auto-style1">&nbsp;</td>
-                            <td>&nbsp;</td>
+                        <tr>
+                            <td class="auto-style1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Button ID="btnCargarParametrosJuego" runat="server" Text="Cargar Parametros de Juego" style="margin-bottom: 0px" Width="197px" OnClick="btnCargarParametrosJuego_Click" />
+                            </td>
+                            <td>
+                                <asp:FileUpload ID="FileUpload5" runat="server" />
+                            </td>
                             <td>&nbsp;</td>
                         </tr>
-                                                <tr>
+                        <tr>
                             <td class="auto-style1">
                                 <asp:Button ID="Button1" runat="server" Text="Button" />
-                                                    </td>
+                            </td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>

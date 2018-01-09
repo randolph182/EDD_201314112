@@ -198,5 +198,39 @@ namespace NavalWarsCliente
         {
             Response.Redirect("TableroConfiguado.aspx");
         }
+
+        protected void btnCargarParametrosJuego_Click(object sender, EventArgs e)
+        {
+            string direccion = Server.MapPath(FileUpload5.FileName);
+            if (direccion != "")
+            {
+                int contador = 0;
+                string linea;
+                using (StreamReader sr = File.OpenText(direccion))
+                {
+                    while ((linea = sr.ReadLine()) != null)
+                    {
+                        if (contador != 0)
+                        {
+                            string[] info = linea.Split(',');
+                            string nickOp1 = info[0];
+                            string nickOp2 = info[1];
+                            int navesN0 = Convert.ToInt32(info[2]);
+                            int navesN1 = Convert.ToInt32(info[3]);
+                            int navesN2 = Convert.ToInt32(info[4]);
+                            int navesN3 = Convert.ToInt32(info[5]);
+                            int NoFilas = Convert.ToInt32(info[6]);
+                            int NoColumnas = Convert.ToInt32(info[7]);
+                            int tipoJuego = Convert.ToInt32(info[8]);
+                            string tiempo = info[9];
+                            ClaseGlobal.servidorPrincipal.insertarListaJuegos(nickOp1, nickOp2, navesN0, navesN1, navesN2, navesN3, NoFilas, NoColumnas, tipoJuego, tiempo, 0);
+                        }
+                        contador++;
+                    }
+                    sr.Close();
+                }
+            }
+            MultiView1.ActiveViewIndex = 1;
+        }
     }
 }

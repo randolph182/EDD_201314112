@@ -1659,23 +1659,35 @@ namespace NavalWarsCliente.ServiceReference1 {
         public int n3;
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+        public int noFilas;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+        public int noCols;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=8)]
         public int tipoJuego;
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=9)]
         public string tiempo;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=10)]
+        public int ordenB;
         
         public insertarListaJuegosRequestBody() {
         }
         
-        public insertarListaJuegosRequestBody(string nickOp1, string nickOp2, int n0, int n1, int n2, int n3, int tipoJuego, string tiempo) {
+        public insertarListaJuegosRequestBody(string nickOp1, string nickOp2, int n0, int n1, int n2, int n3, int noFilas, int noCols, int tipoJuego, string tiempo, int ordenB) {
             this.nickOp1 = nickOp1;
             this.nickOp2 = nickOp2;
             this.n0 = n0;
             this.n1 = n1;
             this.n2 = n2;
             this.n3 = n3;
+            this.noFilas = noFilas;
+            this.noCols = noCols;
             this.tipoJuego = tipoJuego;
             this.tiempo = tiempo;
+            this.ordenB = ordenB;
         }
     }
     
@@ -2135,7 +2147,7 @@ namespace NavalWarsCliente.ServiceReference1 {
             return base.Channel.insertarListaJuegos(request);
         }
         
-        public void insertarListaJuegos(string nickOp1, string nickOp2, int n0, int n1, int n2, int n3, int tipoJuego, string tiempo) {
+        public void insertarListaJuegos(string nickOp1, string nickOp2, int n0, int n1, int n2, int n3, int noFilas, int noCols, int tipoJuego, string tiempo, int ordenB) {
             NavalWarsCliente.ServiceReference1.insertarListaJuegosRequest inValue = new NavalWarsCliente.ServiceReference1.insertarListaJuegosRequest();
             inValue.Body = new NavalWarsCliente.ServiceReference1.insertarListaJuegosRequestBody();
             inValue.Body.nickOp1 = nickOp1;
@@ -2144,8 +2156,11 @@ namespace NavalWarsCliente.ServiceReference1 {
             inValue.Body.n1 = n1;
             inValue.Body.n2 = n2;
             inValue.Body.n3 = n3;
+            inValue.Body.noFilas = noFilas;
+            inValue.Body.noCols = noCols;
             inValue.Body.tipoJuego = tipoJuego;
             inValue.Body.tiempo = tiempo;
+            inValue.Body.ordenB = ordenB;
             NavalWarsCliente.ServiceReference1.insertarListaJuegosResponse retVal = ((NavalWarsCliente.ServiceReference1.Service1Soap)(this)).insertarListaJuegos(inValue);
         }
         
