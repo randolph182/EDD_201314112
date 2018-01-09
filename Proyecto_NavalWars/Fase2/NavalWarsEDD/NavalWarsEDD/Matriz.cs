@@ -1311,12 +1311,13 @@ namespace NavalWarsEDD
         {
             if (actual != null)
             {
-                if (contadorX == 7)
+                if (contadorX == 5)
                     return null;
                 int ladoX = verificarLadoIzqDer(ref actual, ref nuevo);
                 if (ladoX != ladoXanterior)
                     contadorX++;
-
+                if (contadorX == 5)
+                    return null;
                 if (actual.adelante != null && actual.adelante != nodoAnterior)
                 {
                     NodoOrtogonal posNodo = verificarExistenciaPosNodoFila(ref actual.adelante, ref nuevo, ref actual, ref ladoX, ref contadorX);

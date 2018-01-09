@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,30 +12,36 @@ namespace NavalWarsCliente
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            MultiView1.ActiveViewIndex = 0;
+            if(!IsPostBack)
+            {
+                MultiView1.ActiveViewIndex = 0;
+            }
+            
         }
 
         protected void btnConfigurarJuego_Click(object sender, EventArgs e)
         {
-            try
-            {
-                List<string> nicknames = ClaseGlobal.servidorPrincipal.obtenerNicknamesUsuarios();
 
-                ddLstNickOp1.Items.Clear();
-                ddLstNickOp2.Items.Clear();
-                for (int i = 0; i < nicknames.Count; i++)
+                try
                 {
-                    ListItem item = new ListItem(nicknames[i], i.ToString());
-                    ddLstNickOp1.Items.Add(item);
-                    ddLstNickOp2.Items.Add(item);
-                }
-                MultiView1.ActiveViewIndex = 1;
-            }
-            catch (Exception)
-            {
-                Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "Alert", "alert('No se pudieron obtener los nicknames de los usuarios \n debe estar vacia las lista de usuairos')", true);
+                    List<string> nicknames = ClaseGlobal.servidorPrincipal.obtenerNicknamesUsuarios();
 
-            }
+                    ddLstNickOp1.Items.Clear();
+                    ddLstNickOp2.Items.Clear();
+                    for (int i = 0; i < nicknames.Count; i++)
+                    {
+                        ListItem item = new ListItem(nicknames[i], i.ToString());
+                        ddLstNickOp1.Items.Add(item);
+                        ddLstNickOp2.Items.Add(item);
+                    }
+                    
+                }
+                catch (Exception)
+                {
+                    Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "Alert", "alert('No se pudieron obtener los nicknames de los usuarios \n debe estar vacia las lista de usuairos')", true);
+
+                }
+            MultiView1.ActiveViewIndex = 1;
         }
 
         protected void BtnConfigurar2_Click(object sender, EventArgs e)
@@ -57,7 +64,7 @@ namespace NavalWarsCliente
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Administrado.aspx");
+            Response.Redirect("~/Administrador.aspx");
         }
 
         protected void btnCargaDatosArbolB_Click(object sender, EventArgs e)
@@ -67,7 +74,104 @@ namespace NavalWarsCliente
 
         protected void btnSubirArchivoArbolB_Click(object sender, EventArgs e)
         {
+            string direccion = Server.MapPath(FileUpload1.FileName);
 
+            if (direccion != "")
+            {
+                int contador = 0;
+                string linea;
+                using (StreamReader sr = File.OpenText(direccion))
+                {
+                    //linea  = sr.ReadLine();
+                    while ((linea = sr.ReadLine()) != null)
+                    {
+                        if (contador != 0)
+                        {
+                            string[] info = linea.Split(',');
+                            int cordX = Convert.ToInt32(info[0]);
+                            int cordY = Convert.ToInt32(info[1]);
+                            string uniAtacante = info[2];
+                            int golpe = Convert.ToInt32(info[3]);
+                            string uniAtacada = info[4].Trim();
+                            string emisor = info[5].Trim();
+                            string receptor = info[6].Trim();
+                            string fecha = info[7].Trim();
+                            string tiempo = info[8].Trim();
+                            int numeroAtaque = Convert.ToInt32(info[9]);
+                            ClaseGlobal.servidorPrincipal.insertarArbolB(cordX, cordY, uniAtacante, golpe, uniAtacada, emisor, receptor, fecha, tiempo, numeroAtaque);
+                            
+                        }
+                        contador++;
+                    }
+                    sr.Close();
+                }
+
+            }
+            MultiView1.ActiveViewIndex = 2;
+        }
+
+        protected void btnBack3_Click(object sender, EventArgs e)
+        {
+            MultiView1.ActiveViewIndex = 0;
+        }
+
+        protected void MostrarArbolB_Click(object sender, EventArgs e)
+        {
+
+                try
+                {
+                    List<string> nicknames = ClaseGlobal.servidorPrincipal.obtenerNicknamesUsuarios();
+
+                    ddLstGrafoOp1.Items.Clear();
+                    ddLstGrafoOp2.Items.Clear();
+                    for (int i = 0; i < nicknames.Count; i++)
+                    {
+                        ListItem item = new ListItem(nicknames[i], i.ToString());
+                        ddLstGrafoOp1.Items.Add(item);
+                        ddLstGrafoOp2.Items.Add(item);
+                    }
+                   
+                }
+                catch (Exception)
+                {
+                    Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "Alert", "alert('No se pudieron obtener los nicknames de los usuarios \n debe estar vacia las lista de usuairos')", true);
+
+                }
+   
+            MultiView1.ActiveViewIndex = 3;
+
+        }
+
+        protected void btnBack4_Click(object sender, EventArgs e)
+        {
+            MultiView1.ActiveViewIndex = 0;
+        }
+
+        protected void btnGraficarB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string op1 = ddLstGrafoOp1.SelectedItem.Text;
+                string op2 = ddLstGrafoOp2.SelectedItem.Text;
+                ClaseGlobal.servidorPrincipal.graficarArbolB(op1, op2);
+                string path = "C:/GrafoEDD/ArbolB.png";
+                byte[] imageByteData = System.IO.File.ReadAllBytes(path);
+                string imageBase64Data = Convert.ToBase64String(imageByteData);
+                string imageDataURL = string.Format("data:image/png;base64,{0}", imageBase64Data);
+                Image1.ImageUrl = imageDataURL;
+            }
+            catch (Exception)
+            {
+                Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "Alert", "alert('No se pudo mostrar el Arbol')", true);
+            }
+
+            MultiView1.ActiveViewIndex = 3;
+        }
+
+        protected void btnBack2_Click(object sender, EventArgs e)
+        {
+
+            MultiView1.ActiveViewIndex = 0;
         }
 
 

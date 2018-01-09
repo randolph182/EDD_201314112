@@ -302,6 +302,7 @@ namespace NavalWarsEDD
             if(cubo != null)
             {
                 HistorialMov nuevo = new HistorialMov(coordX, coordY, idUnidadAtacante, resultDanio, idUnidadAtacada, idEmisor, idReceptor, fecha, tiempo, idAtaque);
+                cubo.historial.insertar(nuevo);
             }
 
             
