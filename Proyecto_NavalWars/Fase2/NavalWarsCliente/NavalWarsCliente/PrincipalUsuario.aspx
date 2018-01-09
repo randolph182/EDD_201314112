@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PrincipalUsuario.aspx.cs" Inherits="NavalWarsCliente.PrincipalUsuario" %>
+﻿+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PrincipalUsuario.aspx.cs" Inherits="NavalWarsCliente.PrincipalUsuario" %>
 
 <!DOCTYPE html>
 

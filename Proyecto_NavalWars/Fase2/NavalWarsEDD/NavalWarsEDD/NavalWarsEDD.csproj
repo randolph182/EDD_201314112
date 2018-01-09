@@ -61,6 +61,7 @@
     <Compile Include="ArbolB.cs" />
     <Compile Include="Grafo.cs" />
     <Compile Include="Juegos.cs" />
+    <Compile Include="ListaMatriz.cs" />
     <Compile Include="Matriz.cs" />
     <Compile Include="Service1.asmx.cs">
       <DependentUpon>Service1.asmx</DependentUpon>

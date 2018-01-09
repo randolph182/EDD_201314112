@@ -30,7 +30,7 @@ namespace NavalWarsEDD
         public int fila;
         public int columna;
         public string idUnidad;
-
+        public int destruida;
 
         public Unidad(int nivel, int tipoUnidad, string idUnidad)
         {

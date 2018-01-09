@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Services;
 
@@ -20,8 +21,9 @@ namespace NavalWarsEDD
        // public static ArbolAVL avlContactos = new ArbolAVL();
         public static ArbolB arbolB = new ArbolB(5);
         
-        public static Matriz cubo = new Matriz();
-
+       // public static Matriz cubo = new Matriz();
+        public static Matriz cuboTmp = new Matriz();
+        public static ListaMatriz listaJuegos = new ListaMatriz();
         Grafo g = new Grafo();
 
         [WebMethod]
@@ -307,16 +309,38 @@ namespace NavalWarsEDD
             tablaHash.insertarFromABB(ref usuarioABB.raiz);
             g.generarGrafoTablaHash(tablaHash);
         }
-        
+        /*-------------------------------- <Matriz>------------------------------------------------------*/
+        //[WebMethod]
+        //public void insertarUnidadMatriz(int fila,string columna,int nivel,int tipoUnidad,string idUnidad)
+        //{
+        //    Unidad nueva = new Unidad(nivel, tipoUnidad, idUnidad);
+        //    cubo.insertar(fila, columna, ref nueva);
+        //    g.generarMatriz(cubo, 0);
+        //    g.generarMatriz(cubo, 1);
+        //    g.generarMatriz(cubo, 2);
+        //    g.generarMatriz(cubo, 3);
+        //}
         [WebMethod]
-        public void insertarUnidadMatriz(int fila,string columna,int nivel,int tipoUnidad,string idUnidad)
+        public void insertarListaJuegos(string nickOp1,string nickOp2,int n0,int n1,int n2, int n3,int tipoJuego,string tiempo)
         {
+
+        }
+
+        [WebMethod]
+        public void insertarCuboTmp(string nickJugador,int fila, string columna,string idUnidad,int nivel,int tipoUnidad,int destruida)
+        {
+            int col = Encoding.ASCII.GetBytes(columna)[0]; 
             Unidad nueva = new Unidad(nivel, tipoUnidad, idUnidad);
-            cubo.insertar(fila, columna, ref nueva);
-            g.generarMatriz(cubo, 0);
-            g.generarMatriz(cubo, 1);
-            g.generarMatriz(cubo, 2);
-            g.generarMatriz(cubo, 3);
+            nueva.fila = fila;
+            nueva.columna = col;
+            nueva.destruida = destruida;
+            cuboTmp.insertar(fila, columna, ref nueva);
+        }
+
+        [WebMethod]
+        public void graficarMatrizPerNivel(int nivel)
+        {
+            g.generarMatriz(cuboTmp, nivel);
         }
     }
 }

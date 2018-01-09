@@ -116,9 +116,16 @@ namespace NavalWarsCliente.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/insertarHash", ReplyAction="*")]
         void insertarHash();
         
-        // CODEGEN: Generating message contract since element name columna from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/insertarUnidadMatriz", ReplyAction="*")]
-        NavalWarsCliente.ServiceReference1.insertarUnidadMatrizResponse insertarUnidadMatriz(NavalWarsCliente.ServiceReference1.insertarUnidadMatrizRequest request);
+        // CODEGEN: Generating message contract since element name nickOp1 from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/insertarListaJuegos", ReplyAction="*")]
+        NavalWarsCliente.ServiceReference1.insertarListaJuegosResponse insertarListaJuegos(NavalWarsCliente.ServiceReference1.insertarListaJuegosRequest request);
+        
+        // CODEGEN: Generating message contract since element name nickJugador from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/insertarCuboTmp", ReplyAction="*")]
+        NavalWarsCliente.ServiceReference1.insertarCuboTmpResponse insertarCuboTmp(NavalWarsCliente.ServiceReference1.insertarCuboTmpRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/graficarMatrizPerNivel", ReplyAction="*")]
+        void graficarMatrizPerNivel(int nivel);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1611,15 +1618,15 @@ namespace NavalWarsCliente.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class insertarUnidadMatrizRequest {
+    public partial class insertarListaJuegosRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertarUnidadMatriz", Namespace="http://tempuri.org/", Order=0)]
-        public NavalWarsCliente.ServiceReference1.insertarUnidadMatrizRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertarListaJuegos", Namespace="http://tempuri.org/", Order=0)]
+        public NavalWarsCliente.ServiceReference1.insertarListaJuegosRequestBody Body;
         
-        public insertarUnidadMatrizRequest() {
+        public insertarListaJuegosRequest() {
         }
         
-        public insertarUnidadMatrizRequest(NavalWarsCliente.ServiceReference1.insertarUnidadMatrizRequestBody Body) {
+        public insertarListaJuegosRequest(NavalWarsCliente.ServiceReference1.insertarListaJuegosRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -1628,32 +1635,44 @@ namespace NavalWarsCliente.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class insertarUnidadMatrizRequestBody {
+    public partial class insertarListaJuegosRequestBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public int fila;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string nickOp1;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string columna;
+        public string nickOp2;
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public int nivel;
+        public int n0;
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-        public int tipoUnidad;
+        public int n1;
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string idUnidad;
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public int n2;
         
-        public insertarUnidadMatrizRequestBody() {
+        [System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+        public int n3;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+        public int tipoJuego;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        public string tiempo;
+        
+        public insertarListaJuegosRequestBody() {
         }
         
-        public insertarUnidadMatrizRequestBody(int fila, string columna, int nivel, int tipoUnidad, string idUnidad) {
-            this.fila = fila;
-            this.columna = columna;
-            this.nivel = nivel;
-            this.tipoUnidad = tipoUnidad;
-            this.idUnidad = idUnidad;
+        public insertarListaJuegosRequestBody(string nickOp1, string nickOp2, int n0, int n1, int n2, int n3, int tipoJuego, string tiempo) {
+            this.nickOp1 = nickOp1;
+            this.nickOp2 = nickOp2;
+            this.n0 = n0;
+            this.n1 = n1;
+            this.n2 = n2;
+            this.n3 = n3;
+            this.tipoJuego = tipoJuego;
+            this.tiempo = tiempo;
         }
     }
     
@@ -1661,15 +1680,15 @@ namespace NavalWarsCliente.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class insertarUnidadMatrizResponse {
+    public partial class insertarListaJuegosResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertarUnidadMatrizResponse", Namespace="http://tempuri.org/", Order=0)]
-        public NavalWarsCliente.ServiceReference1.insertarUnidadMatrizResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertarListaJuegosResponse", Namespace="http://tempuri.org/", Order=0)]
+        public NavalWarsCliente.ServiceReference1.insertarListaJuegosResponseBody Body;
         
-        public insertarUnidadMatrizResponse() {
+        public insertarListaJuegosResponse() {
         }
         
-        public insertarUnidadMatrizResponse(NavalWarsCliente.ServiceReference1.insertarUnidadMatrizResponseBody Body) {
+        public insertarListaJuegosResponse(NavalWarsCliente.ServiceReference1.insertarListaJuegosResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -1678,9 +1697,94 @@ namespace NavalWarsCliente.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class insertarUnidadMatrizResponseBody {
+    public partial class insertarListaJuegosResponseBody {
         
-        public insertarUnidadMatrizResponseBody() {
+        public insertarListaJuegosResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class insertarCuboTmpRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertarCuboTmp", Namespace="http://tempuri.org/", Order=0)]
+        public NavalWarsCliente.ServiceReference1.insertarCuboTmpRequestBody Body;
+        
+        public insertarCuboTmpRequest() {
+        }
+        
+        public insertarCuboTmpRequest(NavalWarsCliente.ServiceReference1.insertarCuboTmpRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class insertarCuboTmpRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string nickJugador;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public int fila;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string columna;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string idUnidad;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public int nivel;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+        public int tipoUnidad;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+        public int destruida;
+        
+        public insertarCuboTmpRequestBody() {
+        }
+        
+        public insertarCuboTmpRequestBody(string nickJugador, int fila, string columna, string idUnidad, int nivel, int tipoUnidad, int destruida) {
+            this.nickJugador = nickJugador;
+            this.fila = fila;
+            this.columna = columna;
+            this.idUnidad = idUnidad;
+            this.nivel = nivel;
+            this.tipoUnidad = tipoUnidad;
+            this.destruida = destruida;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class insertarCuboTmpResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertarCuboTmpResponse", Namespace="http://tempuri.org/", Order=0)]
+        public NavalWarsCliente.ServiceReference1.insertarCuboTmpResponseBody Body;
+        
+        public insertarCuboTmpResponse() {
+        }
+        
+        public insertarCuboTmpResponse(NavalWarsCliente.ServiceReference1.insertarCuboTmpResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class insertarCuboTmpResponseBody {
+        
+        public insertarCuboTmpResponseBody() {
         }
     }
     
@@ -2024,19 +2128,44 @@ namespace NavalWarsCliente.ServiceReference1 {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        NavalWarsCliente.ServiceReference1.insertarUnidadMatrizResponse NavalWarsCliente.ServiceReference1.Service1Soap.insertarUnidadMatriz(NavalWarsCliente.ServiceReference1.insertarUnidadMatrizRequest request) {
-            return base.Channel.insertarUnidadMatriz(request);
+        NavalWarsCliente.ServiceReference1.insertarListaJuegosResponse NavalWarsCliente.ServiceReference1.Service1Soap.insertarListaJuegos(NavalWarsCliente.ServiceReference1.insertarListaJuegosRequest request) {
+            return base.Channel.insertarListaJuegos(request);
         }
         
-        public void insertarUnidadMatriz(int fila, string columna, int nivel, int tipoUnidad, string idUnidad) {
-            NavalWarsCliente.ServiceReference1.insertarUnidadMatrizRequest inValue = new NavalWarsCliente.ServiceReference1.insertarUnidadMatrizRequest();
-            inValue.Body = new NavalWarsCliente.ServiceReference1.insertarUnidadMatrizRequestBody();
+        public void insertarListaJuegos(string nickOp1, string nickOp2, int n0, int n1, int n2, int n3, int tipoJuego, string tiempo) {
+            NavalWarsCliente.ServiceReference1.insertarListaJuegosRequest inValue = new NavalWarsCliente.ServiceReference1.insertarListaJuegosRequest();
+            inValue.Body = new NavalWarsCliente.ServiceReference1.insertarListaJuegosRequestBody();
+            inValue.Body.nickOp1 = nickOp1;
+            inValue.Body.nickOp2 = nickOp2;
+            inValue.Body.n0 = n0;
+            inValue.Body.n1 = n1;
+            inValue.Body.n2 = n2;
+            inValue.Body.n3 = n3;
+            inValue.Body.tipoJuego = tipoJuego;
+            inValue.Body.tiempo = tiempo;
+            NavalWarsCliente.ServiceReference1.insertarListaJuegosResponse retVal = ((NavalWarsCliente.ServiceReference1.Service1Soap)(this)).insertarListaJuegos(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NavalWarsCliente.ServiceReference1.insertarCuboTmpResponse NavalWarsCliente.ServiceReference1.Service1Soap.insertarCuboTmp(NavalWarsCliente.ServiceReference1.insertarCuboTmpRequest request) {
+            return base.Channel.insertarCuboTmp(request);
+        }
+        
+        public void insertarCuboTmp(string nickJugador, int fila, string columna, string idUnidad, int nivel, int tipoUnidad, int destruida) {
+            NavalWarsCliente.ServiceReference1.insertarCuboTmpRequest inValue = new NavalWarsCliente.ServiceReference1.insertarCuboTmpRequest();
+            inValue.Body = new NavalWarsCliente.ServiceReference1.insertarCuboTmpRequestBody();
+            inValue.Body.nickJugador = nickJugador;
             inValue.Body.fila = fila;
             inValue.Body.columna = columna;
+            inValue.Body.idUnidad = idUnidad;
             inValue.Body.nivel = nivel;
             inValue.Body.tipoUnidad = tipoUnidad;
-            inValue.Body.idUnidad = idUnidad;
-            NavalWarsCliente.ServiceReference1.insertarUnidadMatrizResponse retVal = ((NavalWarsCliente.ServiceReference1.Service1Soap)(this)).insertarUnidadMatriz(inValue);
+            inValue.Body.destruida = destruida;
+            NavalWarsCliente.ServiceReference1.insertarCuboTmpResponse retVal = ((NavalWarsCliente.ServiceReference1.Service1Soap)(this)).insertarCuboTmp(inValue);
+        }
+        
+        public void graficarMatrizPerNivel(int nivel) {
+            base.Channel.graficarMatrizPerNivel(nivel);
         }
     }
 }

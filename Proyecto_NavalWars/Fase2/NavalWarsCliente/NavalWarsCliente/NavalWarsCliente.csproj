@@ -61,6 +61,7 @@
     <Content Include="AdminUsuarios.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="PrincipalUsuario.aspx" />
     <Content Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -74,6 +75,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="TableroConfiguado.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -120,11 +122,25 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PrincipalUsuario.aspx.cs">
+      <DependentUpon>PrincipalUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrincipalUsuario.aspx.designer.cs">
+      <DependentUpon>PrincipalUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="TableroConfiguado.aspx.cs">
+      <DependentUpon>TableroConfiguado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TableroConfiguado.aspx.designer.cs">
+      <DependentUpon>TableroConfiguado.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

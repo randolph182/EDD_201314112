@@ -80,7 +80,9 @@
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td class="auto-style9">&nbsp;</td>
-                            <td class="auto-style3">&nbsp;</td>
+                            <td class="auto-style3">
+                                <asp:Button ID="btnMostrarTablero" runat="server" Text="MostrarTableroConfigurado" Width="251px" OnClick="btnMostrarTablero_Click" />
+                            </td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
@@ -179,8 +181,13 @@
                             <td>&nbsp;</td>
                         </tr>
                                                 <tr>
-                            <td class="auto-style1">&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td class="auto-style1">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:Button ID="btnCargaMasivaTablero" runat="server" Text="Cargar Unidades al Tablero" OnClick="btnCargaMasivaTablero_Click" Width="188px" />
+                                                    </td>
+                            <td>
+                                <asp:FileUpload ID="FileUpload4" runat="server" />
+                                                    </td>
                             <td>&nbsp;</td>
                         </tr>
                                                 <tr>
