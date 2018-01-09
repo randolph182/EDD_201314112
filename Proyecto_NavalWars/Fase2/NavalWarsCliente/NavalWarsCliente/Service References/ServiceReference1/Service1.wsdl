@@ -372,6 +372,17 @@
       <s:element name="graficarMatrizPerNivelResponse">
         <s:complexType />
       </s:element>
+      <s:element name="graficarMatrizPerUnidadDetuida">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nivel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="destruida" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="graficarMatrizPerUnidadDetuidaResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -536,6 +547,12 @@
   <wsdl:message name="graficarMatrizPerNivelSoapOut">
     <wsdl:part name="parameters" element="tns:graficarMatrizPerNivelResponse" />
   </wsdl:message>
+  <wsdl:message name="graficarMatrizPerUnidadDetuidaSoapIn">
+    <wsdl:part name="parameters" element="tns:graficarMatrizPerUnidadDetuida" />
+  </wsdl:message>
+  <wsdl:message name="graficarMatrizPerUnidadDetuidaSoapOut">
+    <wsdl:part name="parameters" element="tns:graficarMatrizPerUnidadDetuidaResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -644,6 +661,10 @@
     <wsdl:operation name="graficarMatrizPerNivel">
       <wsdl:input message="tns:graficarMatrizPerNivelSoapIn" />
       <wsdl:output message="tns:graficarMatrizPerNivelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="graficarMatrizPerUnidadDetuida">
+      <wsdl:input message="tns:graficarMatrizPerUnidadDetuidaSoapIn" />
+      <wsdl:output message="tns:graficarMatrizPerUnidadDetuidaSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -891,6 +912,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="graficarMatrizPerUnidadDetuida">
+      <soap:operation soapAction="http://tempuri.org/graficarMatrizPerUnidadDetuida" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1130,6 +1160,15 @@
     </wsdl:operation>
     <wsdl:operation name="graficarMatrizPerNivel">
       <soap12:operation soapAction="http://tempuri.org/graficarMatrizPerNivel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="graficarMatrizPerUnidadDetuida">
+      <soap12:operation soapAction="http://tempuri.org/graficarMatrizPerUnidadDetuida" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

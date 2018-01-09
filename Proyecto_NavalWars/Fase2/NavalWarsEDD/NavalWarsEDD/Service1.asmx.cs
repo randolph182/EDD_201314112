@@ -342,5 +342,10 @@ namespace NavalWarsEDD
         {
             g.generarMatriz(cuboTmp, nivel);
         }
+        [WebMethod]
+        public void graficarMatrizPerUnidadDetuida(int nivel, int destruida)
+        {
+            g.generarMatrizUnidadDestruida(cuboTmp, nivel, destruida);
+        }
     }
 }

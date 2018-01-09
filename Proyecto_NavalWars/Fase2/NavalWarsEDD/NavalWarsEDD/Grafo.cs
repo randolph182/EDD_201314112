@@ -375,6 +375,156 @@ namespace NavalWarsEDD
             generarImagen("C:\\GrafoEDD\\matriz" + nivel.ToString() + ".dot", "C:\\GrafoEDD\\matriz" + nivel.ToString() + ".png");
         }
 
+        public void generarMatrizUnidadDestruida(Matriz matriz, int nivel,int destruida)
+        {
+            string acumInfo = "digraph G{ \n " +
+                                "node[shape=box, style=filled, color=deepskyblue3];\n " +
+                                "edge[color=black]; \n " +
+                                "rankdir=UD; \n";
+
+            string idCabeceraFila = "";
+            string cabeceraFila = "";
+            string idCabeceraCol = "";
+            string cabeceraCol = "";
+            string alineacionCol = "{rank=min;Matriz;";
+            string acumOrtogonales = "";
+
+            NodoOrtogonal accesoCol = null;
+            string cabeceraOrtogonalCol = "";
+            string acumEnlaceCol = "";
+            bool accesoColEncontrada = false;
+
+
+            NodoOrtogonal accesoFila = null;
+            string cabeceraOrtogonalFila = "";
+            string acumEnlaceFila = "";
+            bool accesoFilaEncontrada = false;
+            string ranksame = "";
+            string alineacionFilas = "";
+
+            Encabezado eFila = matriz.ncbzdoFilas.primero;
+            Encabezado eCol = matriz.ncbzdoColumnas.primero;
+
+            if (eFila != null)
+            {
+                cabeceraFila += "Matriz -> " + eFila.GetHashCode().ToString() + ";\n";
+
+                while (eFila.siguiente != null)
+                {
+                    idCabeceraFila += eFila.GetHashCode().ToString() + "[label = \"" + eFila.id.ToString() + "\"];\n";
+                    cabeceraFila += eFila.GetHashCode().ToString() + " -> " + eFila.siguiente.GetHashCode().ToString() + "[rankdir=UD];\n";
+                    ranksame = "";
+                    ranksame += "{rank=same;" + eFila.GetHashCode().ToString() + ";";
+                    obtenerNodosOrtogonalesFilaUnidadDestuida(ref eFila, ref eFila.accesoNodo, ref acumEnlaceFila, ref cabeceraOrtogonalFila, ref ranksame, ref accesoFila, nivel,destruida ,ref accesoFilaEncontrada);
+                    if (accesoFila != null)
+                    {
+                        acumOrtogonales += cabeceraOrtogonalFila + "\n";
+                        acumOrtogonales += accesoFila.GetHashCode().ToString() + "[label=\"" + accesoFila.unidad.idUnidad + "\"];\n";
+                        acumOrtogonales += eFila.GetHashCode().ToString() + " -> " + accesoFila.GetHashCode().ToString() + "[constraint=false];\n";
+                        acumOrtogonales += acumEnlaceFila + "[constraint=false];\n";
+
+                        ranksame += "};\n";
+                        alineacionFilas += ranksame;
+
+                    }
+                    ranksame = "";
+                    cabeceraOrtogonalFila = "";
+                    acumEnlaceFila = "";
+                    accesoFila = null;
+                    accesoFilaEncontrada = false;
+
+                    eFila = eFila.siguiente;
+                }
+                if (eFila.siguiente == null)
+                {
+                    cabeceraOrtogonalFila = "";
+                    acumEnlaceFila = "";
+                    accesoFila = null;
+                    accesoFilaEncontrada = false;
+                    ranksame = "";
+                    idCabeceraFila += eFila.GetHashCode().ToString() + "[label = \"" + eFila.id.ToString() + "\"];\n";
+                    ranksame += "{rank=same;" + eFila.GetHashCode().ToString() + ";";
+                    obtenerNodosOrtogonalesFilaUnidadDestuida(ref eFila, ref eFila.accesoNodo, ref acumEnlaceFila, ref cabeceraOrtogonalFila, ref ranksame, ref accesoFila, nivel,destruida, ref accesoFilaEncontrada);
+                    if (accesoFila != null)
+                    {
+                        acumOrtogonales += cabeceraOrtogonalFila + "\n";
+                        acumOrtogonales += accesoFila.GetHashCode().ToString() + "[label=\"" + accesoFila.unidad.idUnidad + "\"];\n";
+                        acumOrtogonales += eFila.GetHashCode().ToString() + " -> " + accesoFila.GetHashCode().ToString() + ";\n";
+                        acumOrtogonales += acumEnlaceFila + ";\n";
+
+                        ranksame += "};\n";
+                        alineacionFilas += ranksame;
+                        ranksame = "";
+                    }
+
+                }
+
+                while (eFila.anterior != null)
+                {
+                    cabeceraFila += eFila.GetHashCode().ToString() + " -> " + eFila.anterior.GetHashCode().ToString() + ";\n";
+                    eFila = eFila.anterior;
+                }
+            }
+            if (eCol != null)
+            {
+                cabeceraCol += "Matriz ->" + eCol.GetHashCode().ToString() + ";\n";
+                while (eCol.siguiente != null)
+                {
+                    string conversion = Convert.ToChar(eCol.id).ToString();
+                    alineacionCol += eCol.GetHashCode().ToString() + ";";
+                    idCabeceraCol += eCol.GetHashCode().ToString() + "[label=\"" + conversion + "\"];\n";
+                    cabeceraCol += eCol.GetHashCode().ToString() + " -> " + eCol.siguiente.GetHashCode().ToString() + ";\n";
+                    obtenerNodosOrtogonalesColUnidadDestruida(ref eCol, ref eCol.accesoNodo, ref acumEnlaceCol, ref cabeceraOrtogonalCol, ref accesoCol, nivel,destruida, ref accesoColEncontrada);
+                    if (accesoCol != null)
+                    {
+                        acumOrtogonales += cabeceraOrtogonalCol + "\n";
+                        acumOrtogonales += eCol.GetHashCode().ToString() + " -> " + accesoCol.GetHashCode().ToString() + ";\n";
+                        acumOrtogonales += acumEnlaceCol + ";\n";
+                    }
+                    cabeceraOrtogonalCol = "";
+                    acumEnlaceCol = "";
+                    accesoColEncontrada = false;
+                    accesoCol = null;
+
+                    eCol = eCol.siguiente;
+                }
+                if (eCol.siguiente == null)
+                {
+                    string conv = Convert.ToChar(eCol.id).ToString();
+                    cabeceraOrtogonalCol = "";
+                    acumEnlaceCol = "";
+                    accesoColEncontrada = false;
+                    accesoCol = null;
+                    obtenerNodosOrtogonalesColUnidadDestruida(ref eCol, ref eCol.accesoNodo, ref acumEnlaceCol, ref cabeceraOrtogonalCol, ref accesoCol, nivel,destruida, ref accesoColEncontrada);
+                    if (accesoCol != null)
+                    {
+                        acumOrtogonales += cabeceraOrtogonalCol + "\n";
+                        // acumOrtogonales += accesoCol.GetHashCode().ToString() + "[label=\"" + accesoCol.unidad.idUnidad + "\"];\n";
+                        acumOrtogonales += eCol.GetHashCode().ToString() + " -> " + accesoCol.GetHashCode().ToString() + ";\n";
+                        acumOrtogonales += acumEnlaceCol + ";\n";
+                    }
+                    alineacionCol += eCol.GetHashCode().ToString() + ";";
+                    idCabeceraCol += eCol.GetHashCode().ToString() + "[label=\"" + conv + "\"];\n";
+                }
+
+                while (eCol.anterior != null)
+                {
+                    cabeceraCol += eCol.GetHashCode().ToString() + " -> " + eCol.anterior.GetHashCode().ToString() + ";\n";
+                    eCol = eCol.anterior;
+                }
+            }
+            alineacionCol += "};\n\n";
+            acumInfo += alineacionCol + alineacionFilas + idCabeceraCol + idCabeceraFila + cabeceraCol + cabeceraFila + "\n\n" + acumOrtogonales + "\n}\n";
+
+            string idGrafo = "C:\\GrafoEDD\\matriz" + nivel.ToString() + ".dot";
+            //const string f = idGrafo.ToString();
+            StreamWriter w = new StreamWriter(idGrafo);
+            w.WriteLine(acumInfo);
+            w.Close();
+            generarImagen("C:\\GrafoEDD\\matriz" + nivel.ToString() + ".dot", "C:\\GrafoEDD\\matriz" + nivel.ToString() + ".png");
+        }
+        
+
         public void obtenerNodosOrtogonalesCol(ref Encabezado eCol, ref NodoOrtogonal actual, ref string acumEnlace, ref string cabecera, ref NodoOrtogonal acceso, int nivel, ref bool accesoEncontrado)
         {
             if (actual != null)
@@ -520,6 +670,154 @@ namespace NavalWarsEDD
                 }
 
                 obtenerNodosOrtogonalesFila(ref eFila, ref actual.derecha, ref acumEnlace, ref cabecera, ref rankSame, ref acceso, nivel, ref  accesoEncontrado);
+            }
+        }
+
+        public void obtenerNodosOrtogonalesColUnidadDestruida(ref Encabezado eCol, ref NodoOrtogonal actual, ref string acumEnlace, ref string cabecera, ref NodoOrtogonal acceso, int nivel,int destruida, ref bool accesoEncontrado)
+        {
+            if (actual != null)
+            {
+
+                if (actual.atras != null && actual.atras.unidad.nivel == nivel && actual.atras.unidad.destruida == destruida)
+                {
+                    if (!accesoEncontrado)
+                    {
+                        accesoEncontrado = true;
+                        acceso = actual.atras;// actual.GetHashCode().ToString() + "[label=\"" + actual.atras.unidad.idUnidad + "\"];\n";
+                        acumEnlace += actual.atras.GetHashCode().ToString() + " ";
+                    }
+                    else
+                    {
+                        cabecera += actual.atras.GetHashCode().ToString() + "[label=\"" + actual.atras.unidad.idUnidad + "\"];\n";
+                        acumEnlace += " -> " + actual.atras.GetHashCode().ToString() + " ";
+                    }
+                }
+                else if (actual != null && actual.unidad.nivel == nivel && actual.unidad.destruida == destruida)
+                {
+                    if (!accesoEncontrado)
+                    {
+                        accesoEncontrado = true;
+                        acceso = actual;
+                        acumEnlace += actual.GetHashCode().ToString() + " ";
+                    }
+                    else
+                    {
+                        cabecera += actual.GetHashCode().ToString() + "[label=\"" + actual.unidad.idUnidad + "\"];\n";
+                        acumEnlace += " -> " + actual.GetHashCode().ToString() + " ";
+                    }
+                }
+                else if (actual.adelante != null && actual.adelante.unidad.nivel == nivel && actual.adelante.unidad.destruida == destruida)
+                {
+                    if (!accesoEncontrado)
+                    {
+                        accesoEncontrado = true;
+                        acceso = actual.adelante;
+                        acumEnlace += actual.adelante.GetHashCode().ToString() + " ";
+                    }
+                    else
+                    {
+                        cabecera += actual.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.unidad.idUnidad + "\"];\n";
+                        acumEnlace += " -> " + actual.adelante.GetHashCode().ToString() + " ";
+                    }
+                }
+                else if (actual.adelante != null)
+                {
+                    if (actual.adelante.adelante != null && actual.adelante.adelante.unidad.nivel == nivel && actual.adelante.adelante.unidad.destruida == destruida)
+                    {
+                        if (!accesoEncontrado)
+                        {
+                            accesoEncontrado = true;
+                            acceso = actual.adelante.adelante;
+                            acumEnlace += actual.adelante.adelante.GetHashCode().ToString() + " ";
+                        }
+                        else
+                        {
+                            cabecera += actual.adelante.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.adelante.unidad.idUnidad + "\"];\n";
+                            acumEnlace += " -> " + actual.adelante.adelante.GetHashCode().ToString() + " ";
+                        }
+
+                    }
+                }
+
+                obtenerNodosOrtogonalesColUnidadDestruida(ref eCol, ref actual.abajo, ref acumEnlace, ref cabecera, ref acceso, nivel, destruida, ref  accesoEncontrado);
+            }
+        }
+
+        public void obtenerNodosOrtogonalesFilaUnidadDestuida(ref Encabezado eFila, ref NodoOrtogonal actual, ref string acumEnlace, ref string cabecera, ref string rankSame, ref NodoOrtogonal acceso, int nivel,int destruida, ref bool accesoEncontrado)
+        {
+            if (actual != null)
+            {
+
+                if (actual.atras != null && actual.atras.unidad.nivel == nivel && actual.atras.unidad.destruida == destruida)
+                {
+                    if (!accesoEncontrado)
+                    {
+                        accesoEncontrado = true;
+                        acceso = actual.atras;// actual.GetHashCode().ToString() + "[label=\"" + actual.atras.unidad.idUnidad + "\"];\n";
+                        acumEnlace += actual.atras.GetHashCode().ToString() + " ";
+                        rankSame += actual.atras.GetHashCode().ToString() + ";";
+                    }
+                    else
+                    {
+                        cabecera += actual.atras.GetHashCode().ToString() + "[label=\"" + actual.atras.unidad.idUnidad + "\"];\n";
+                        acumEnlace += " -> " + actual.atras.GetHashCode().ToString() + " ";
+                        rankSame += actual.atras.GetHashCode().ToString() + ";";
+                    }
+                }
+                else if (actual != null && actual.unidad.nivel == nivel && actual.unidad.destruida == destruida)
+                {
+                    if (!accesoEncontrado)
+                    {
+                        accesoEncontrado = true;
+                        acceso = actual;
+                        acumEnlace += actual.GetHashCode().ToString() + " ";
+                        rankSame += actual.GetHashCode().ToString() + ";";
+                    }
+                    else
+                    {
+                        cabecera += actual.GetHashCode().ToString() + "[label=\"" + actual.unidad.idUnidad + "\"];\n";
+                        acumEnlace += " -> " + actual.GetHashCode().ToString() + " ";
+                        rankSame += actual.GetHashCode().ToString() + ";";
+                    }
+                }
+                else if (actual.adelante != null && actual.adelante.unidad.nivel == nivel && actual.adelante.unidad.destruida == destruida)
+                {
+                    if (!accesoEncontrado)
+                    {
+                        accesoEncontrado = true;
+                        acceso = actual.adelante;
+                        acumEnlace += actual.adelante.GetHashCode().ToString() + " ";
+                        rankSame += actual.adelante.GetHashCode().ToString() + ";";
+                    }
+                    else
+                    {
+                        cabecera += actual.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.unidad.idUnidad + "\"];\n";
+                        acumEnlace += " -> " + actual.adelante.GetHashCode().ToString() + " ";
+                        rankSame += actual.adelante.GetHashCode().ToString() + ";";
+                    }
+                }
+                else if (actual.adelante != null)
+                {
+                    if (actual.adelante.adelante != null && actual.adelante.adelante.unidad.nivel == nivel && actual.adelante.adelante.unidad.destruida == destruida)
+                    {
+                        if (!accesoEncontrado)
+                        {
+                            accesoEncontrado = true;
+                            acceso = actual.adelante.adelante;
+                            acumEnlace += actual.adelante.adelante.GetHashCode().ToString() + " ";
+                            rankSame += actual.adelante.adelante.GetHashCode().ToString() + ";";
+                        }
+                        else
+                        {
+                            cabecera += actual.adelante.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.adelante.unidad.idUnidad + "\"];\n";
+                            acumEnlace += " -> " + actual.adelante.adelante.GetHashCode().ToString() + " ";
+                            rankSame += actual.adelante.adelante.GetHashCode().ToString() + ";";
+                        }
+
+                    }
+                }
+
+                obtenerNodosOrtogonalesFilaUnidadDestuida(ref eFila, ref actual.derecha, ref acumEnlace, ref cabecera, ref rankSame, ref acceso, nivel,destruida,ref  accesoEncontrado);
             }
         }
 

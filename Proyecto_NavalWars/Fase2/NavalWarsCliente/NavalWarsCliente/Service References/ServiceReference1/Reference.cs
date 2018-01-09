@@ -126,6 +126,9 @@ namespace NavalWarsCliente.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/graficarMatrizPerNivel", ReplyAction="*")]
         void graficarMatrizPerNivel(int nivel);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/graficarMatrizPerUnidadDetuida", ReplyAction="*")]
+        void graficarMatrizPerUnidadDetuida(int nivel, int destruida);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2166,6 +2169,10 @@ namespace NavalWarsCliente.ServiceReference1 {
         
         public void graficarMatrizPerNivel(int nivel) {
             base.Channel.graficarMatrizPerNivel(nivel);
+        }
+        
+        public void graficarMatrizPerUnidadDetuida(int nivel, int destruida) {
+            base.Channel.graficarMatrizPerUnidadDetuida(nivel, destruida);
         }
     }
 }
