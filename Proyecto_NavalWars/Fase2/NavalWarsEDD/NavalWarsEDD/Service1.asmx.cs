@@ -17,6 +17,7 @@ namespace NavalWarsEDD
     // [System.Web.Script.Services.ScriptService]
     public class Service1 : System.Web.Services.WebService
     {
+        public static Dictionary<string, Matriz> matricesTemporales = new Dictionary<string, Matriz>();
         public static ABBUsuario usuarioABB = new ABBUsuario();
        // public static ArbolAVL avlContactos = new ArbolAVL();
         public static ArbolB arbolB = new ArbolB(5);
@@ -327,6 +328,25 @@ namespace NavalWarsEDD
             //listaJuegos.insertar(nickOp1, nickOp2, n0, n1, n2, n3, tipoJuego, tiempo, ordenB);
             listaJuegos.insertar(nickOp1, nickOp2, n0, n1, n2, n3,noFilas,noCols, tipoJuego, tiempo, ordenB);
         }
+        [WebMethod]
+        public List<string> buscarInfoPorOponente(string nickname)
+        {
+            NodoMatriz juegoActual = listaJuegos.buscarPorOponente(nickname);
+            List<string> parametrosJuego = new List<string>();
+            if(juegoActual != null)
+            {
+                parametrosJuego.Add(juegoActual.No_Naves_Nivel0.ToString());
+                parametrosJuego.Add(juegoActual.No_Naves_Nivel1.ToString());
+                parametrosJuego.Add(juegoActual.No_Naves_Nivel2.ToString());
+                parametrosJuego.Add(juegoActual.No_Naves_Nivel3.ToString());
+                parametrosJuego.Add(juegoActual.No_Filas.ToString());
+                parametrosJuego.Add(juegoActual.No_Columnas.ToString());
+                parametrosJuego.Add(juegoActual.nickOponente1);
+                parametrosJuego.Add(juegoActual.nickOponente2);
+            }
+            return parametrosJuego;
+        }
+
 
         [WebMethod]
         public void insertarCuboTmp(string nickJugador,int fila, string columna,string idUnidad,int nivel,int tipoUnidad,int destruida)
@@ -338,7 +358,21 @@ namespace NavalWarsEDD
             nueva.destruida = destruida;
             cuboTmp.insertar(fila, columna, ref nueva);
         }
-
+        [WebMethod]
+        public void insertarTableroPrincipa(string nickUsu,string nickOp,int fila,string columna,int nivel,int tipoUnidad,int NoUnidad)
+        {
+            NodoMatriz tableroPrincipal = listaJuegos.buscar(nickUsu, nickOp);
+            if (tableroPrincipal != null)
+            {
+                int col = Encoding.ASCII.GetBytes(columna)[0]; 
+                Unidad nueva = new Unidad(nivel, tipoUnidad, "");
+                nueva.fila = fila;
+                nueva.columna = col;
+                nueva.idUsurio = nickUsu;
+                nueva.idUnidad += NoUnidad.ToString();
+                tableroPrincipal.tablero.insertar(fila, columna, ref nueva);
+            }
+        }
         [WebMethod]
         public void graficarMatrizPerNivel(int nivel)
         {

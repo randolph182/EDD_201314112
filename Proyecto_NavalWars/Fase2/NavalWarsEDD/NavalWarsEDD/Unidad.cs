@@ -31,7 +31,8 @@ namespace NavalWarsEDD
         public int columna;
         public string idUnidad;
         public int destruida =0;
-        string idUsurios = "";
+        public string idUsurio = "";
+        
 
         public Unidad(int nivel, int tipoUnidad, string idUnidad)
         {
@@ -40,79 +41,116 @@ namespace NavalWarsEDD
                 case 0: //submarinos
                     this.nivel = nivel;
                     this.tipoUnidad = 0;
-                    this.idUnidad = idUnidad;
+                    
                     this.movimiento = 5;
                     this.alcanceInicial = 0;
                     this.alcanceFinal = 1;
                     this.danio = 2;
                     this.vida = 10;
+                    if(idUnidad == "")
+                    {
+                        idUnidad = "Submarino";
+                    }
+                    else
+                        this.idUnidad = idUnidad;
                     break;
 
                 case 1: // Barco tipo Crucero
                     this.nivel = nivel;
                     this.tipoUnidad = 1;
-                    this.idUnidad = idUnidad;
                     this.movimiento = 6;
                     this.alcanceInicial = 0;
                     this.alcanceFinal = 1;
                     this.danio = 3;
                     this.vida = 15;
+                    if (idUnidad == "")
+                    {
+                        idUnidad = "Crucero";
+                    }
+                    else
+                        this.idUnidad = idUnidad;
                     break;
 
                 case 2: // Barco tipo Fragata
                     this.nivel = nivel;
                     this.tipoUnidad = 2;
-                    this.idUnidad = idUnidad;
                     this.movimiento = 5;
                     this.alcanceInicial = 2;
                     this.alcanceFinal = 6;
                     this.danio = 3;
                     this.vida = 10;
+                    this.idUnidad = idUnidad;
+                    if (idUnidad == "")
+                    {
+                        idUnidad = "Fragata";
+                    }
+                    else
+                        this.idUnidad = idUnidad;
                     break;
 
                 case 3: // Avion tipoi Helicomptero de Combate
                     this.nivel = nivel;
                     this.tipoUnidad = 3;
-                    this.idUnidad = idUnidad;
                     this.movimiento = 9;
                     this.alcanceInicial = 0;
                     this.alcanceFinal = 1;
                     this.danio = 3;
                     this.vida = 15;
+                    if (idUnidad == "")
+                    {
+                        idUnidad = "HelicopteroCombate";
+                    }
+                    else
+                        this.idUnidad = idUnidad;
                     break;
 
                 case 4: // Avion tipo Caza
                     this.nivel = nivel;
                     this.tipoUnidad = 4;
-                    this.idUnidad = idUnidad;
                     this.movimiento = 9;
                     this.alcanceInicial = 0;
                     this.alcanceFinal = 1;
                     this.danio = 2;
                     this.vida = 20;
+                    if (idUnidad == "")
+                    {
+                        idUnidad = "Caza";
+                    }
+                    else
+                        this.idUnidad = idUnidad;
                     break;
 
 
                 case 5: // Avion tipo Bombardero
                     this.nivel = nivel;
                     this.tipoUnidad = 5;
-                    this.idUnidad = idUnidad;
                     this.movimiento = 7;
                     this.alcanceInicial = 0;
                     this.alcanceFinal = 0;
                     this.danio = 5;
                     this.vida = 10;
+                    if (idUnidad == "")
+                    {
+                        idUnidad = "Bombardero";
+                    }
+                    else
+                        this.idUnidad = idUnidad;
                     break;
 
                 case 6: // NeoSatelite
                     this.nivel = nivel;
                     this.tipoUnidad = 6;
-                    this.idUnidad = idUnidad;
                     this.movimiento = 6;
                     this.alcanceInicial = 0;
                     this.alcanceFinal = 0;
                     this.danio = 2;
                     this.vida = 10;
+                    if (idUnidad == "")
+                    {
+                        idUnidad = "NeoSatelite";
+                    }
+                    else
+                        this.idUnidad = idUnidad;
                     break;
 
                 default:
@@ -218,7 +256,5 @@ namespace NavalWarsEDD
                     break;
             }
         }
-
-
     }
 }

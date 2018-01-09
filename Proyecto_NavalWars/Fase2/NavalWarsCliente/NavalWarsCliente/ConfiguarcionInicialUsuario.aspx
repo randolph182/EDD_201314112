@@ -157,7 +157,7 @@
                                     <asp:Label ID="Label4" runat="server" Text="Cantidad Unidades: " CssClass="auto-style29"></asp:Label>
                                 </td>
                                 <td class="auto-style22">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtCantidadSubmarinos" runat="server" Width="38px"></asp:TextBox>
+                        <asp:TextBox ID="txtCantidadSubmarinos" runat="server" Width="38px" Enabled="False"></asp:TextBox>
                                 </td>
                                 <td class="auto-style13">&nbsp;</td>
 
@@ -182,8 +182,9 @@
                                 </span>
                                     <asp:Label ID="Label7" runat="server" Text="Fila :" CssClass="auto-style29"></asp:Label>
                                 </td>
-                                <td class="auto-style23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtFilaSubmarinos" runat="server" Width="38px"></asp:TextBox>
+                                <td class="auto-style23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <asp:DropDownList ID="ddLstFilasSubmarinos" runat="server">
+                                    </asp:DropDownList>
                                 </td>
                                 <td class="auto-style14"></td>
 
@@ -195,8 +196,8 @@
                                 </span>
                                     <asp:Label ID="Label8" runat="server" Text="Columna: " CssClass="auto-style29"></asp:Label>
                                 </td>
-                                <td class="auto-style22">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtColumnaSubmarinos" runat="server" Width="37px"></asp:TextBox>
+                                <td class="auto-style22">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="ddLstColumnaSubmarinos" runat="server">
+                                    </asp:DropDownList>
                                 </td>
                                 <td class="auto-style13">&nbsp;</td>
 
@@ -206,7 +207,7 @@
                                 <td class="auto-style26">&nbsp;</td>
                                 <td class="auto-style28">&nbsp;</td>
                                 <td class="auto-style22">&nbsp;&nbsp;
-                        <asp:Button ID="btnInsertarSubmarino" runat="server" Text="insertar" Width="109px" />
+                        <asp:Button ID="btnInsertarSubmarino" runat="server" Text="insertar" Width="109px" OnClick="btnInsertarSubmarino_Click" />
                                 </td>
                                 <td class="auto-style13">&nbsp;</td>
 
@@ -256,7 +257,7 @@
                                     <asp:Label ID="Label10" runat="server" Text="Cantidad de Unidades: "></asp:Label>
                                 </td>
                                 <td class="auto-style32">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtCantidadUnidadesBarcos" runat="server" Width="44px"></asp:TextBox>
+                        <asp:TextBox ID="txtCantidadUnidadesBarcos" runat="server" Width="44px" Enabled="False"></asp:TextBox>
                                 </td>
                                 <td>&nbsp;</td>
                             </tr>
@@ -288,8 +289,9 @@
                                 <td class="auto-style31">
                                     <asp:Label ID="Label15" runat="server" Text="Fila"></asp:Label>
                                     :</td>
-                                <td class="auto-style32">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtFilaBarcos" runat="server" Width="39px"></asp:TextBox>
+                                <td class="auto-style32">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <asp:DropDownList ID="ddLstFilaBarcos" runat="server">
+                                    </asp:DropDownList>
                                 </td>
                                 <td>&nbsp;</td>
                             </tr>
@@ -298,8 +300,8 @@
                                 <td class="auto-style31">
                                     <asp:Label ID="Label16" runat="server" Text="Columna:"></asp:Label>
                                 </td>
-                                <td class="auto-style32">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtColumnaBarcos" runat="server" Width="40px"></asp:TextBox>
+                                <td class="auto-style32">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="ddLstColumnaBarcos" runat="server">
+                                    </asp:DropDownList>
                                 </td>
                                 <td>&nbsp;</td>
                             </tr>
@@ -355,7 +357,7 @@
                                     <asp:Label ID="Label18" runat="server" Text="Cantidad de Unidades: "></asp:Label>
                                 </td>
                                 <td class="auto-style32">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtCantidadUnidadesAviones" runat="server" Width="44px"></asp:TextBox>
+                        <asp:TextBox ID="txtCantidadUnidadesAviones" runat="server" Width="44px" Enabled="False"></asp:TextBox>
                                 </td>
                                 <td>&nbsp;</td>
                             </tr>
@@ -376,6 +378,9 @@
                                 </td>
                                 <td class="auto-style35">
                                     <asp:DropDownList ID="ddLstUnidadAviones" runat="server" Height="21px" Width="147px">
+                                        <asp:ListItem>HelicopteroCombate</asp:ListItem>
+                                        <asp:ListItem>Caza</asp:ListItem>
+                                        <asp:ListItem>Bombardero</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
                                 <td class="auto-style36"></td>
@@ -385,8 +390,8 @@
                                 <td class="auto-style31">
                                     <asp:Label ID="Label22" runat="server" Text="Fila"></asp:Label>
                                     :</td>
-                                <td class="auto-style32">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtFilaAvion" runat="server" Width="42px"></asp:TextBox>
+                                <td class="auto-style32">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="ddLstFilaAviones" runat="server">
+                                    </asp:DropDownList>
                                 </td>
                                 <td>&nbsp;</td>
                             </tr>
@@ -395,8 +400,9 @@
                                 <td class="auto-style31">
                                     <asp:Label ID="Label23" runat="server" Text="Columna:"></asp:Label>
                                 </td>
-                                <td class="auto-style32">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtColumnaAvion" runat="server" Width="40px"></asp:TextBox>
+                                <td class="auto-style32">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="ddLstColumnaAviones" runat="server">
+                                    </asp:DropDownList>
+                                    &nbsp;
                                 </td>
                                 <td>&nbsp;</td>
                             </tr>
@@ -451,7 +457,7 @@
                                     <asp:Label ID="Label25" runat="server" Text="Cantidad de Unidades: "></asp:Label>
                                 </td>
                                 <td class="auto-style32">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtCantidadUnidadesSatelites" runat="server" Width="44px"></asp:TextBox>
+                        <asp:TextBox ID="txtCantidadUnidadesSatelites" runat="server" Width="44px" Enabled="False"></asp:TextBox>
                                 </td>
                                 <td>&nbsp;</td>
                             </tr>
@@ -471,8 +477,9 @@
                                     <asp:Label ID="Label29" runat="server" Text="Fila"></asp:Label>
                                 </td>
                                 <td class="auto-style35">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtFilaSatelites" runat="server" Width="35px"></asp:TextBox>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="ddLstFilaSatelites" runat="server">
+                                    </asp:DropDownList>
+                                    &nbsp;&nbsp;&nbsp;
                                 </td>
                                 <td class="auto-style36"></td>
                             </tr>
@@ -481,8 +488,9 @@
                                 <td class="auto-style31">
                                     <asp:Label ID="Label30" runat="server" Text="Columna:"></asp:Label>
                                 </td>
-                                <td class="auto-style32">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtColumnaSatelites" runat="server" Width="40px" Height="22px"></asp:TextBox>
+                                <td class="auto-style32">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:DropDownList ID="ddLstColumnaSatelites" runat="server">
+                                    </asp:DropDownList>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 </td>
                                 <td>&nbsp;</td>
                             </tr>

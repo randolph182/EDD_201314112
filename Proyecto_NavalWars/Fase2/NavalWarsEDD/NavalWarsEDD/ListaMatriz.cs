@@ -54,12 +54,29 @@ namespace NavalWarsEDD
             if(primero == null)
             {
                 primero = nuevo;
+                size++;
             }
             else
             {
                 nuevo.siguiente = primero;
                 primero = nuevo;
+                size++;
             }
+        }
+
+        public NodoMatriz buscarPorOponente(string nickOp)
+        {
+            NodoMatriz tmp = primero;
+            if(tmp!=null)
+            {
+                while(tmp != null)
+                {
+                    if (tmp.nickOponente1 == nickOp || tmp.nickOponente1 == nickOp || tmp.nickOponente2 == nickOp || tmp.nickOponente2 == nickOp)
+                        return tmp;
+                    tmp = tmp.siguiente;
+                }
+            }
+            return null;
         }
 
         public NodoMatriz buscar(string op1,string op2)
@@ -67,11 +84,11 @@ namespace NavalWarsEDD
             NodoMatriz tmp = primero;
             if(tmp!=null)
             {
-                while(primero!=null)
+                while(tmp!=null)
                 {
-                    if(tmp.nickOponente1 == op1 && tmp.nickOponente2 ==op2)
+                    if (tmp.nickOponente1 == op1 && tmp.nickOponente2 == op2 || tmp.nickOponente1 == op2 && tmp.nickOponente2 == op1)
                         return tmp;
-                    primero = primero.siguiente;
+                    tmp = tmp.siguiente;
                 }
             }
             return null;

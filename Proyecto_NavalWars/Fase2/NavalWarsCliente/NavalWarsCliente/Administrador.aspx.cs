@@ -75,7 +75,7 @@ namespace NavalWarsCliente
                         if (contador != 0)
                         {
                             string[] ij = linea.Split(',');
-                            ClaseGlobal.servidorPrincipal.addjuegosUsuario(ij[0], ij[1], Convert.ToInt32(ij[2]), Convert.ToInt32(ij[3]), Convert.ToInt32(ij[4]), Convert.ToInt32(ij[5]));
+                            ClaseGlobal.servidorPrincipal.addjuegosUsuario(ij[0].Trim(), ij[1].Trim(), Convert.ToInt32(ij[2]), Convert.ToInt32(ij[3]), Convert.ToInt32(ij[4]), Convert.ToInt32(ij[5]));
                             
                         }
                         contador++;
@@ -106,10 +106,10 @@ namespace NavalWarsCliente
                         if(contador !=0)
                         {
                             string[] info = linea.Split(',');
-                            string nickUsuario = info[0];
-                            string nickContacto = info[1];
-                            string contra = info[2];
-                            string email = info[3];
+                            string nickUsuario = info[0].Trim();
+                            string nickContacto = info[1].Trim();
+                            string contra = info[2].Trim();
+                            string email = info[3].Trim();
                             ClaseGlobal.servidorPrincipal.insertarAVL(nickUsuario, nickContacto, contra, email);
                         
                         }
@@ -135,10 +135,10 @@ namespace NavalWarsCliente
                         if (contador != 0)
                         {
                             string[] info = linea.Split(',');
-                            string nickUsuario = info[0];
-                            string columna = info[1];
+                            string nickUsuario = info[0].Trim();
+                            string columna = info[1].Trim();
                             int fila = Convert.ToInt32(info[2]);
-                            string idUnidad = info[3];
+                            string idUnidad = info[3].Trim();
                             int unidadDestuida = Convert.ToInt32(info[4]);
                             
                             int nivel = 0;
@@ -213,8 +213,8 @@ namespace NavalWarsCliente
                         if (contador != 0)
                         {
                             string[] info = linea.Split(',');
-                            string nickOp1 = info[0];
-                            string nickOp2 = info[1];
+                            string nickOp1 = info[0].Trim();
+                            string nickOp2 = info[1].Trim();
                             int navesN0 = Convert.ToInt32(info[2]);
                             int navesN1 = Convert.ToInt32(info[3]);
                             int navesN2 = Convert.ToInt32(info[4]);
@@ -222,7 +222,7 @@ namespace NavalWarsCliente
                             int NoFilas = Convert.ToInt32(info[6]);
                             int NoColumnas = Convert.ToInt32(info[7]);
                             int tipoJuego = Convert.ToInt32(info[8]);
-                            string tiempo = info[9];
+                            string tiempo = info[9].Trim();
                             ClaseGlobal.servidorPrincipal.insertarListaJuegos(nickOp1, nickOp2, navesN0, navesN1, navesN2, navesN3, NoFilas, NoColumnas, tipoJuego, tiempo, 0);
                         }
                         contador++;

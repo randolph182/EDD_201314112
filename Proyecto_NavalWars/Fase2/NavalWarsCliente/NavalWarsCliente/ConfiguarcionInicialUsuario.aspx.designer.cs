@@ -103,13 +103,13 @@ namespace NavalWarsCliente {
         protected global::System.Web.UI.WebControls.Label Label7;
         
         /// <summary>
-        /// txtFilaSubmarinos control.
+        /// ddLstFilasSubmarinos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFilaSubmarinos;
+        protected global::System.Web.UI.WebControls.DropDownList ddLstFilasSubmarinos;
         
         /// <summary>
         /// Label8 control.
@@ -121,13 +121,13 @@ namespace NavalWarsCliente {
         protected global::System.Web.UI.WebControls.Label Label8;
         
         /// <summary>
-        /// txtColumnaSubmarinos control.
+        /// ddLstColumnaSubmarinos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtColumnaSubmarinos;
+        protected global::System.Web.UI.WebControls.DropDownList ddLstColumnaSubmarinos;
         
         /// <summary>
         /// btnInsertarSubmarino control.
@@ -220,13 +220,13 @@ namespace NavalWarsCliente {
         protected global::System.Web.UI.WebControls.Label Label15;
         
         /// <summary>
-        /// txtFilaBarcos control.
+        /// ddLstFilaBarcos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFilaBarcos;
+        protected global::System.Web.UI.WebControls.DropDownList ddLstFilaBarcos;
         
         /// <summary>
         /// Label16 control.
@@ -238,13 +238,13 @@ namespace NavalWarsCliente {
         protected global::System.Web.UI.WebControls.Label Label16;
         
         /// <summary>
-        /// txtColumnaBarcos control.
+        /// ddLstColumnaBarcos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtColumnaBarcos;
+        protected global::System.Web.UI.WebControls.DropDownList ddLstColumnaBarcos;
         
         /// <summary>
         /// btnInsertarBarcos control.
@@ -337,13 +337,13 @@ namespace NavalWarsCliente {
         protected global::System.Web.UI.WebControls.Label Label22;
         
         /// <summary>
-        /// txtFilaAvion control.
+        /// ddLstFilaAviones control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFilaAvion;
+        protected global::System.Web.UI.WebControls.DropDownList ddLstFilaAviones;
         
         /// <summary>
         /// Label23 control.
@@ -355,13 +355,13 @@ namespace NavalWarsCliente {
         protected global::System.Web.UI.WebControls.Label Label23;
         
         /// <summary>
-        /// txtColumnaAvion control.
+        /// ddLstColumnaAviones control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtColumnaAvion;
+        protected global::System.Web.UI.WebControls.DropDownList ddLstColumnaAviones;
         
         /// <summary>
         /// bntInsertarAviones control.
@@ -436,13 +436,13 @@ namespace NavalWarsCliente {
         protected global::System.Web.UI.WebControls.Label Label29;
         
         /// <summary>
-        /// txtFilaSatelites control.
+        /// ddLstFilaSatelites control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFilaSatelites;
+        protected global::System.Web.UI.WebControls.DropDownList ddLstFilaSatelites;
         
         /// <summary>
         /// Label30 control.
@@ -454,13 +454,13 @@ namespace NavalWarsCliente {
         protected global::System.Web.UI.WebControls.Label Label30;
         
         /// <summary>
-        /// txtColumnaSatelites control.
+        /// ddLstColumnaSatelites control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtColumnaSatelites;
+        protected global::System.Web.UI.WebControls.DropDownList ddLstColumnaSatelites;
         
         /// <summary>
         /// btnInsertarSatelites control.

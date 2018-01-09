@@ -32,6 +32,8 @@ namespace NavalWarsCliente
                     bool encontrado = ClaseGlobal.servidorPrincipal.buscarUsuario(txtNicknameLogin.Text, txtPasswordLogin.Text);
                         if(encontrado)
                         {
+                            Session["sesion"] = txtNicknameLogin.Text;
+                            Response.Redirect("~/ConfiguarcionInicialUsuario.aspx");
                             lblMensajeLogin.Text = "El usuario si esta";
                         }
                         else
