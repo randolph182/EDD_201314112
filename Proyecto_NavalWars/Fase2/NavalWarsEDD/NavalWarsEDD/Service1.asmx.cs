@@ -20,7 +20,7 @@ namespace NavalWarsEDD
         public static Dictionary<string, Matriz> matricesTemporales = new Dictionary<string, Matriz>();
         public static ABBUsuario usuarioABB = new ABBUsuario();
        // public static ArbolAVL avlContactos = new ArbolAVL();
-        public static ArbolB arbolB = new ArbolB(5);
+      //  public static ArbolB arbolB = new ArbolB(5);
         
        // public static Matriz cubo = new Matriz();
         public static Matriz cuboTmp = new Matriz();
@@ -298,9 +298,27 @@ namespace NavalWarsEDD
         [WebMethod]
         public void insertarArbolB(int coordX,int coordY,string idUnidadAtacante,int resultDanio,string idUnidadAtacada,string idEmisor, string idReceptor,string fecha,string tiempo,int idAtaque)
         {
-            HistorialMov nuevo = new HistorialMov(coordX, coordY, idUnidadAtacante, resultDanio, idUnidadAtacada, idEmisor, idReceptor, fecha, tiempo, idAtaque);
-            arbolB.insertar(nuevo);
-            g.generarGrafoArbolB(ref arbolB.raiz);
+            NodoMatriz  cubo = listaJuegos.buscar(idEmisor, idReceptor);
+            if(cubo != null)
+            {
+                HistorialMov nuevo = new HistorialMov(coordX, coordY, idUnidadAtacante, resultDanio, idUnidadAtacada, idEmisor, idReceptor, fecha, tiempo, idAtaque);
+            }
+
+            
+            //arbolB.insertar(nuevo);
+            //g.generarGrafoArbolB(ref arbolB.raiz);
+            
+        }
+
+        [WebMethod]
+        public void graficarArbolB(string nickOp1,string nickOp2)
+        {
+            NodoMatriz cubo = listaJuegos.buscar(nickOp1,nickOp2);
+            if(cubo!= null)
+            {
+                g.generarGrafoArbolB(ref cubo.historial.raiz);
+            }
+            
         }
 
         /*-------------------------------- <Tabla hash>------------------------------------------------------*/
@@ -312,16 +330,6 @@ namespace NavalWarsEDD
             g.generarGrafoTablaHash(tablaHash);
         }
         /*-------------------------------- <Matriz>------------------------------------------------------*/
-        //[WebMethod]
-        //public void insertarUnidadMatriz(int fila,string columna,int nivel,int tipoUnidad,string idUnidad)
-        //{
-        //    Unidad nueva = new Unidad(nivel, tipoUnidad, idUnidad);
-        //    cubo.insertar(fila, columna, ref nueva);
-        //    g.generarMatriz(cubo, 0);
-        //    g.generarMatriz(cubo, 1);
-        //    g.generarMatriz(cubo, 2);
-        //    g.generarMatriz(cubo, 3);
-        //}
         [WebMethod]
         public void insertarListaJuegos(string nickOp1,string nickOp2,int n0,int n1,int n2, int n3,int noFilas,int noCols,int tipoJuego,string tiempo,int ordenB)
         {
@@ -372,6 +380,21 @@ namespace NavalWarsEDD
                 nueva.idUnidad += NoUnidad.ToString();
                 tableroPrincipal.tablero.insertar(fila, columna, ref nueva);
             }
+        }
+
+        [WebMethod]
+        public void graficarMatriz(string nickOp1, string nickOp2)
+        {
+            NodoMatriz tablero = listaJuegos.buscar(nickOp1, nickOp2);
+
+            if(tablero !=null)
+            {
+                g.generarMatriz(tablero.tablero, 0);
+                g.generarMatriz(tablero.tablero, 1);
+                g.generarMatriz(tablero.tablero, 2);
+                g.generarMatriz(tablero.tablero, 3);
+            }
+            
         }
         [WebMethod]
         public void graficarMatrizPerNivel(int nivel)

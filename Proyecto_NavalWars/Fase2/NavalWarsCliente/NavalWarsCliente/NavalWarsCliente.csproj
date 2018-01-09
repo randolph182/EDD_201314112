@@ -58,6 +58,7 @@
     <Content Include="AdminContactosUsuarios.aspx" />
     <Content Include="Administrador.aspx" />
     <Content Include="AdminLstJuegos.aspx" />
+    <Content Include="AdminTablero.aspx" />
     <Content Include="AdminUsuarios.aspx" />
     <Content Include="ConfiguarcionInicialUsuario.aspx" />
     <Content Include="Default.aspx" />
@@ -100,6 +101,13 @@
     </Compile>
     <Compile Include="AdminLstJuegos.aspx.designer.cs">
       <DependentUpon>AdminLstJuegos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminTablero.aspx.cs">
+      <DependentUpon>AdminTablero.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminTablero.aspx.designer.cs">
+      <DependentUpon>AdminTablero.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminUsuarios.aspx.cs">
       <DependentUpon>AdminUsuarios.aspx</DependentUpon>

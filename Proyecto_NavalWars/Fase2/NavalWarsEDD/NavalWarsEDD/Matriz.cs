@@ -687,7 +687,7 @@ namespace NavalWarsEDD
                     else return false;
                 }
                 if (ladoY == 0) //el nuevo esta hacia la abajo
-                    encontrarEnlaceIzq(ref actual.arriba, ref nuevo, ref actual);
+                    encontrarEnlaceAba(ref actual.arriba, ref nuevo, ref actual);
             }
             return false;
         }
@@ -745,7 +745,7 @@ namespace NavalWarsEDD
                     else return false;
                 }
                 if (ladoY == 1) //el nuevo esta hacia la arriba
-                    return encontrarEnlaceDer(ref actual.abajo, ref nuevo, ref actual);
+                    return encontrarEnlaceAjo(ref actual.abajo, ref nuevo, ref actual);
             }
             return false;
         }

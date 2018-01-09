@@ -323,6 +323,17 @@
       <s:element name="insertarArbolBResponse">
         <s:complexType />
       </s:element>
+      <s:element name="graficarArbolB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickOp1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nickOp2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="graficarArbolBResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="insertarHash">
         <s:complexType />
       </s:element>
@@ -393,6 +404,17 @@
         </s:complexType>
       </s:element>
       <s:element name="insertarTableroPrincipaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="graficarMatriz">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickOp1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nickOp2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="graficarMatrizResponse">
         <s:complexType />
       </s:element>
       <s:element name="graficarMatrizPerNivel">
@@ -556,6 +578,12 @@
   <wsdl:message name="insertarArbolBSoapOut">
     <wsdl:part name="parameters" element="tns:insertarArbolBResponse" />
   </wsdl:message>
+  <wsdl:message name="graficarArbolBSoapIn">
+    <wsdl:part name="parameters" element="tns:graficarArbolB" />
+  </wsdl:message>
+  <wsdl:message name="graficarArbolBSoapOut">
+    <wsdl:part name="parameters" element="tns:graficarArbolBResponse" />
+  </wsdl:message>
   <wsdl:message name="insertarHashSoapIn">
     <wsdl:part name="parameters" element="tns:insertarHash" />
   </wsdl:message>
@@ -585,6 +613,12 @@
   </wsdl:message>
   <wsdl:message name="insertarTableroPrincipaSoapOut">
     <wsdl:part name="parameters" element="tns:insertarTableroPrincipaResponse" />
+  </wsdl:message>
+  <wsdl:message name="graficarMatrizSoapIn">
+    <wsdl:part name="parameters" element="tns:graficarMatriz" />
+  </wsdl:message>
+  <wsdl:message name="graficarMatrizSoapOut">
+    <wsdl:part name="parameters" element="tns:graficarMatrizResponse" />
   </wsdl:message>
   <wsdl:message name="graficarMatrizPerNivelSoapIn">
     <wsdl:part name="parameters" element="tns:graficarMatrizPerNivel" />
@@ -691,6 +725,10 @@
       <wsdl:input message="tns:insertarArbolBSoapIn" />
       <wsdl:output message="tns:insertarArbolBSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="graficarArbolB">
+      <wsdl:input message="tns:graficarArbolBSoapIn" />
+      <wsdl:output message="tns:graficarArbolBSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="insertarHash">
       <wsdl:input message="tns:insertarHashSoapIn" />
       <wsdl:output message="tns:insertarHashSoapOut" />
@@ -710,6 +748,10 @@
     <wsdl:operation name="insertarTableroPrincipa">
       <wsdl:input message="tns:insertarTableroPrincipaSoapIn" />
       <wsdl:output message="tns:insertarTableroPrincipaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="graficarMatriz">
+      <wsdl:input message="tns:graficarMatrizSoapIn" />
+      <wsdl:output message="tns:graficarMatrizSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="graficarMatrizPerNivel">
       <wsdl:input message="tns:graficarMatrizPerNivelSoapIn" />
@@ -929,6 +971,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="graficarArbolB">
+      <soap:operation soapAction="http://tempuri.org/graficarArbolB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="insertarHash">
       <soap:operation soapAction="http://tempuri.org/insertarHash" style="document" />
       <wsdl:input>
@@ -967,6 +1018,15 @@
     </wsdl:operation>
     <wsdl:operation name="insertarTableroPrincipa">
       <soap:operation soapAction="http://tempuri.org/insertarTableroPrincipa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="graficarMatriz">
+      <soap:operation soapAction="http://tempuri.org/graficarMatriz" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1202,6 +1262,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="graficarArbolB">
+      <soap12:operation soapAction="http://tempuri.org/graficarArbolB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="insertarHash">
       <soap12:operation soapAction="http://tempuri.org/insertarHash" style="document" />
       <wsdl:input>
@@ -1240,6 +1309,15 @@
     </wsdl:operation>
     <wsdl:operation name="insertarTableroPrincipa">
       <soap12:operation soapAction="http://tempuri.org/insertarTableroPrincipa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="graficarMatriz">
+      <soap12:operation soapAction="http://tempuri.org/graficarMatriz" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

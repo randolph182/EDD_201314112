@@ -232,5 +232,10 @@ namespace NavalWarsCliente
             }
             MultiView1.ActiveViewIndex = 1;
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AdminTablero.aspx");
+        }
     }
 }

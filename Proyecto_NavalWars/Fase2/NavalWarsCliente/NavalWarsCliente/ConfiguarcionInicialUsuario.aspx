@@ -105,6 +105,15 @@
         .auto-style36 {
             height: 26px;
         }
+        .auto-style37 {
+            height: 58px;
+        }
+        .auto-style38 {
+            height: 57px;
+        }
+        .auto-style39 {
+            height: 40px;
+        }
     </style>
 </head>
 <body>
@@ -225,14 +234,14 @@
 
                     </td>
                     <td>&nbsp;
-                        <asp:Image ID="imgSubmarinos" runat="server" Height="291px" Width="459px" />
+                        <asp:Image ID="imgSubmarinos" runat="server" Height="291px" Width="542px" />
                     </td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td>&nbsp;</td>
-                    <td></td>
+                    <td class="auto-style37"></td>
+                    <td class="auto-style37"></td>
+                    <td class="auto-style37"></td>
+                    <td class="auto-style37"></td>
                 </tr>
                 <tr>
                     <td>
@@ -311,7 +320,7 @@
                                 <td class="auto-style32">
                                     <br />
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="btnInsertarBarcos" runat="server" Text="Insertar " Width="114px" />
+                        <asp:Button ID="btnInsertarBarcos" runat="server" Text="Insertar " Width="114px" OnClick="btnInsertarBarcos_Click" />
                                 </td>
                                 <td>&nbsp;</td>
                             </tr>
@@ -324,15 +333,15 @@
                         </table>
                     </td>
                     <td>
-                        <asp:Image ID="imgBarcos" runat="server" Height="291px" Width="459px" />
+                        <asp:Image ID="imgBarcos" runat="server" Height="291px" Width="555px" />
                     </td>
                     <td>&nbsp;</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td>&nbsp;</td>
-                    <td></td>
+                    <td class="auto-style39"></td>
+                    <td class="auto-style39"></td>
+                    <td class="auto-style39"></td>
                 </tr>
                                 <tr>
                     <td>
@@ -412,7 +421,7 @@
                                 <td class="auto-style32">
                                     <br />
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="bntInsertarAviones" runat="server" Text="Insertar" Width="114px" />
+                        <asp:Button ID="bntInsertarAviones" runat="server" Text="Insertar" Width="114px" OnClick="bntInsertarAviones_Click" />
                                 </td>
                                 <td>&nbsp;</td>
                             </tr>
@@ -425,14 +434,14 @@
                         </table>
                                     </td>
                     <td>
-                        <asp:Image ID="imgAviones" runat="server" Height="291px" Width="459px" />
+                        <asp:Image ID="imgAviones" runat="server" Height="291px" Width="552px" />
                                     </td>
                     <td></td>
                 </tr>
                                 <tr>
-                    <td></td>
-                    <td>&nbsp;</td>
-                    <td></td>
+                    <td class="auto-style38"></td>
+                    <td class="auto-style38"></td>
+                    <td class="auto-style38"></td>
                 </tr>
                                 <tr>
                     <td>
@@ -507,7 +516,7 @@
                                 <td class="auto-style31">&nbsp;</td>
                                 <td class="auto-style32">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="btnInsertarSatelites" runat="server" Text="Insertar" Width="114px" />
+                        <asp:Button ID="btnInsertarSatelites" runat="server" Text="Insertar" Width="114px" OnClick="btnInsertarSatelites_Click" />
                                     <br />
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                 </td>
@@ -522,7 +531,7 @@
                         </table>
                                     </td>
                     <td>
-                        <asp:Image ID="imgSatelites" runat="server" Height="291px" Width="459px" />
+                        <asp:Image ID="imgSatelites" runat="server" Height="291px" Width="554px" />
                                     </td>
                     <td></td>
                 </tr>

@@ -113,6 +113,10 @@ namespace NavalWarsCliente.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/insertarArbolB", ReplyAction="*")]
         NavalWarsCliente.ServiceReference1.insertarArbolBResponse insertarArbolB(NavalWarsCliente.ServiceReference1.insertarArbolBRequest request);
         
+        // CODEGEN: Generating message contract since element name nickOp1 from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/graficarArbolB", ReplyAction="*")]
+        NavalWarsCliente.ServiceReference1.graficarArbolBResponse graficarArbolB(NavalWarsCliente.ServiceReference1.graficarArbolBRequest request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/insertarHash", ReplyAction="*")]
         void insertarHash();
         
@@ -131,6 +135,10 @@ namespace NavalWarsCliente.ServiceReference1 {
         // CODEGEN: Generating message contract since element name nickUsu from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/insertarTableroPrincipa", ReplyAction="*")]
         NavalWarsCliente.ServiceReference1.insertarTableroPrincipaResponse insertarTableroPrincipa(NavalWarsCliente.ServiceReference1.insertarTableroPrincipaRequest request);
+        
+        // CODEGEN: Generating message contract since element name nickOp1 from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/graficarMatriz", ReplyAction="*")]
+        NavalWarsCliente.ServiceReference1.graficarMatrizResponse graficarMatriz(NavalWarsCliente.ServiceReference1.graficarMatrizRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/graficarMatrizPerNivel", ReplyAction="*")]
         void graficarMatrizPerNivel(int nivel);
@@ -1629,6 +1637,71 @@ namespace NavalWarsCliente.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class graficarArbolBRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="graficarArbolB", Namespace="http://tempuri.org/", Order=0)]
+        public NavalWarsCliente.ServiceReference1.graficarArbolBRequestBody Body;
+        
+        public graficarArbolBRequest() {
+        }
+        
+        public graficarArbolBRequest(NavalWarsCliente.ServiceReference1.graficarArbolBRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class graficarArbolBRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string nickOp1;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string nickOp2;
+        
+        public graficarArbolBRequestBody() {
+        }
+        
+        public graficarArbolBRequestBody(string nickOp1, string nickOp2) {
+            this.nickOp1 = nickOp1;
+            this.nickOp2 = nickOp2;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class graficarArbolBResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="graficarArbolBResponse", Namespace="http://tempuri.org/", Order=0)]
+        public NavalWarsCliente.ServiceReference1.graficarArbolBResponseBody Body;
+        
+        public graficarArbolBResponse() {
+        }
+        
+        public graficarArbolBResponse(NavalWarsCliente.ServiceReference1.graficarArbolBResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class graficarArbolBResponseBody {
+        
+        public graficarArbolBResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class insertarListaJuegosRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="insertarListaJuegos", Namespace="http://tempuri.org/", Order=0)]
@@ -1961,6 +2034,71 @@ namespace NavalWarsCliente.ServiceReference1 {
     public partial class insertarTableroPrincipaResponseBody {
         
         public insertarTableroPrincipaResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class graficarMatrizRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="graficarMatriz", Namespace="http://tempuri.org/", Order=0)]
+        public NavalWarsCliente.ServiceReference1.graficarMatrizRequestBody Body;
+        
+        public graficarMatrizRequest() {
+        }
+        
+        public graficarMatrizRequest(NavalWarsCliente.ServiceReference1.graficarMatrizRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class graficarMatrizRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string nickOp1;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string nickOp2;
+        
+        public graficarMatrizRequestBody() {
+        }
+        
+        public graficarMatrizRequestBody(string nickOp1, string nickOp2) {
+            this.nickOp1 = nickOp1;
+            this.nickOp2 = nickOp2;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class graficarMatrizResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="graficarMatrizResponse", Namespace="http://tempuri.org/", Order=0)]
+        public NavalWarsCliente.ServiceReference1.graficarMatrizResponseBody Body;
+        
+        public graficarMatrizResponse() {
+        }
+        
+        public graficarMatrizResponse(NavalWarsCliente.ServiceReference1.graficarMatrizResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class graficarMatrizResponseBody {
+        
+        public graficarMatrizResponseBody() {
         }
     }
     
@@ -2299,6 +2437,19 @@ namespace NavalWarsCliente.ServiceReference1 {
             NavalWarsCliente.ServiceReference1.insertarArbolBResponse retVal = ((NavalWarsCliente.ServiceReference1.Service1Soap)(this)).insertarArbolB(inValue);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NavalWarsCliente.ServiceReference1.graficarArbolBResponse NavalWarsCliente.ServiceReference1.Service1Soap.graficarArbolB(NavalWarsCliente.ServiceReference1.graficarArbolBRequest request) {
+            return base.Channel.graficarArbolB(request);
+        }
+        
+        public void graficarArbolB(string nickOp1, string nickOp2) {
+            NavalWarsCliente.ServiceReference1.graficarArbolBRequest inValue = new NavalWarsCliente.ServiceReference1.graficarArbolBRequest();
+            inValue.Body = new NavalWarsCliente.ServiceReference1.graficarArbolBRequestBody();
+            inValue.Body.nickOp1 = nickOp1;
+            inValue.Body.nickOp2 = nickOp2;
+            NavalWarsCliente.ServiceReference1.graficarArbolBResponse retVal = ((NavalWarsCliente.ServiceReference1.Service1Soap)(this)).graficarArbolB(inValue);
+        }
+        
         public void insertarHash() {
             base.Channel.insertarHash();
         }
@@ -2372,6 +2523,19 @@ namespace NavalWarsCliente.ServiceReference1 {
             inValue.Body.tipoUnidad = tipoUnidad;
             inValue.Body.NoUnidad = NoUnidad;
             NavalWarsCliente.ServiceReference1.insertarTableroPrincipaResponse retVal = ((NavalWarsCliente.ServiceReference1.Service1Soap)(this)).insertarTableroPrincipa(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NavalWarsCliente.ServiceReference1.graficarMatrizResponse NavalWarsCliente.ServiceReference1.Service1Soap.graficarMatriz(NavalWarsCliente.ServiceReference1.graficarMatrizRequest request) {
+            return base.Channel.graficarMatriz(request);
+        }
+        
+        public void graficarMatriz(string nickOp1, string nickOp2) {
+            NavalWarsCliente.ServiceReference1.graficarMatrizRequest inValue = new NavalWarsCliente.ServiceReference1.graficarMatrizRequest();
+            inValue.Body = new NavalWarsCliente.ServiceReference1.graficarMatrizRequestBody();
+            inValue.Body.nickOp1 = nickOp1;
+            inValue.Body.nickOp2 = nickOp2;
+            NavalWarsCliente.ServiceReference1.graficarMatrizResponse retVal = ((NavalWarsCliente.ServiceReference1.Service1Soap)(this)).graficarMatriz(inValue);
         }
         
         public void graficarMatrizPerNivel(int nivel) {

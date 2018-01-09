@@ -49,7 +49,7 @@ namespace NavalWarsEDD
                     this.vida = 10;
                     if(idUnidad == "")
                     {
-                        idUnidad = "Submarino";
+                        this.idUnidad = "Submarino";
                     }
                     else
                         this.idUnidad = idUnidad;
@@ -65,7 +65,7 @@ namespace NavalWarsEDD
                     this.vida = 15;
                     if (idUnidad == "")
                     {
-                        idUnidad = "Crucero";
+                        this.idUnidad = "Crucero";
                     }
                     else
                         this.idUnidad = idUnidad;
@@ -82,7 +82,7 @@ namespace NavalWarsEDD
                     this.idUnidad = idUnidad;
                     if (idUnidad == "")
                     {
-                        idUnidad = "Fragata";
+                        this.idUnidad = "Fragata";
                     }
                     else
                         this.idUnidad = idUnidad;
@@ -98,7 +98,7 @@ namespace NavalWarsEDD
                     this.vida = 15;
                     if (idUnidad == "")
                     {
-                        idUnidad = "HelicopteroCombate";
+                        this.idUnidad = "HelicopteroCombate";
                     }
                     else
                         this.idUnidad = idUnidad;
@@ -114,7 +114,7 @@ namespace NavalWarsEDD
                     this.vida = 20;
                     if (idUnidad == "")
                     {
-                        idUnidad = "Caza";
+                        this.idUnidad = "Caza";
                     }
                     else
                         this.idUnidad = idUnidad;
@@ -131,7 +131,7 @@ namespace NavalWarsEDD
                     this.vida = 10;
                     if (idUnidad == "")
                     {
-                        idUnidad = "Bombardero";
+                        this.idUnidad = "Bombardero";
                     }
                     else
                         this.idUnidad = idUnidad;
@@ -147,7 +147,7 @@ namespace NavalWarsEDD
                     this.vida = 10;
                     if (idUnidad == "")
                     {
-                        idUnidad = "NeoSatelite";
+                        this.idUnidad = "NeoSatelite";
                     }
                     else
                         this.idUnidad = idUnidad;

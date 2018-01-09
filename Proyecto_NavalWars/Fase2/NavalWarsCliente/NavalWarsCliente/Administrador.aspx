@@ -86,7 +86,7 @@
                             <td>&nbsp;</td>
                             <td class="auto-style9">&nbsp;</td>
                             <td class="auto-style3">
-                                <asp:Button ID="Button2" runat="server" Text="Configurar Tablero Juego" Width="253px" />
+                                <asp:Button ID="Button2" runat="server" Text="Configurar Tablero Juego" Width="253px" OnClick="Button2_Click" />
                             </td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
