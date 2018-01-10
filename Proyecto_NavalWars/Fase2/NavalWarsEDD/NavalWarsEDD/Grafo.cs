@@ -17,25 +17,26 @@ namespace NavalWarsEDD
             string cabecera = "";
             string acum = "";
 
-            if(lista.primero != null)
+            if (lista.primero != null)
             {
                 NodoTop tmp = lista.primero;
                 int contador = 0;
-                    while(contador != 11 && tmp.siguiete !=null)
-                    {
-                       
-                        cabecera += tmp.GetHashCode().ToString() + "[label=\"" + tmp.user.nickName + "\n \\n" +
-                                    tmp.user.partidadGanadas.ToString() + "\"];\n";
-                        acum += tmp.GetHashCode().ToString() + " -> " + tmp.siguiete.GetHashCode().ToString() + ";\n";
-                        contador++;
-                        tmp = tmp.siguiete;
-                    }
+                while (contador != 11 && tmp.siguiete != null)
+                {
 
-                   if(contador != 11)
-                   {
-                       cabecera += tmp.GetHashCode().ToString() + "[label=\"" + tmp.user.nickName + "\n \\n" +
-                                    tmp.user.partidadGanadas.ToString() + "\"];\n";
-                   }            }
+                    cabecera += tmp.GetHashCode().ToString() + "[label=\"" + tmp.user.nickName + "\n \\n" +
+                                tmp.user.partidadGanadas.ToString() + "\"];\n";
+                    acum += tmp.GetHashCode().ToString() + " -> " + tmp.siguiete.GetHashCode().ToString() + ";\n";
+                    contador++;
+                    tmp = tmp.siguiete;
+                }
+
+                if (contador != 11)
+                {
+                    cabecera += tmp.GetHashCode().ToString() + "[label=\"" + tmp.user.nickName + "\n \\n" +
+                                 tmp.user.partidadGanadas.ToString() + "\"];\n";
+                }
+            }
 
             estructuraDot += cabecera + acum + "\n}\n";
             const string f = "C:\\GrafoEDD\\topJuegos.dot";
@@ -51,23 +52,23 @@ namespace NavalWarsEDD
             string estructuraDot = "digraph G{\n";
             string acum = "";
             string cabecera = "node [shape = record,height=.1];\n";
-            if(arbol.raiz !=null)
+            if (arbol.raiz != null)
             {
-                recorrerABB(ref arbol.raiz, ref acum,ref cabecera);
+                recorrerABB(ref arbol.raiz, ref acum, ref cabecera);
             }
 
             int altura = arbol.nivelArbol(arbol.raiz);
             int nivel = altura - 1;
-            string info = "info[label=\""+"numero de Nodos = " + arbol.size.ToString() + " \n \\n numero de ramas = " + (arbol.size - 1).ToString() 
-                + "\n \\n Nivel: "+ nivel.ToString()+ "\n \\n Altura:"+altura.ToString()+"\"];\n";
+            string info = "info[label=\"" + "numero de Nodos = " + arbol.size.ToString() + " \n \\n numero de ramas = " + (arbol.size - 1).ToString()
+                + "\n \\n Nivel: " + nivel.ToString() + "\n \\n Altura:" + altura.ToString() + "\"];\n";
 
-            estructuraDot += "\n"+ cabecera +"\n"+ acum + "\n\n "+info+"\n}\n";
+            estructuraDot += "\n" + cabecera + "\n" + acum + "\n\n " + info + "\n}\n";
             //const string f = "C:\\GrafoEDD\\ABBUsuarios.dot";
             const string f = "C:\\GrafoEDD\\ABBUsuarios.dot";
             StreamWriter w = new StreamWriter(f);
             w.WriteLine(estructuraDot);
             w.Close();
-            generarImagen("C:\\GrafoEDD\\ABBUsuarios.dot" , "C:\\GrafoEDD\\ABBUsuarios.png");
+            generarImagen("C:\\GrafoEDD\\ABBUsuarios.dot", "C:\\GrafoEDD\\ABBUsuarios.png");
         }
 
         public void generarABBEspejo(ref NodoUsuario raiz)
@@ -88,7 +89,7 @@ namespace NavalWarsEDD
             //generarImagen("C:\\GrafoEDD\\ABBUsuarios.dot" , "C:\\GrafoEDD\\ABBUsuarios.png");
             generarImagen("C:\\GrafoEDD\\ABBUsuariosEsp.dot", "C:\\GrafoEDD\\ABBUsuariosEsp.png");
         }
-        public void recorrerABBEspejo(ref NodoUsuario actual,ref string acum,ref string cabecera)
+        public void recorrerABBEspejo(ref NodoUsuario actual, ref string acum, ref string cabecera)
         {
             if (actual != null)
             {
@@ -105,42 +106,42 @@ namespace NavalWarsEDD
                 if (actual.derecha != null)
                 {
                     acum += "\"struct" + actual.informacion.nickName + "\":f0 -> \"struct" + actual.derecha.informacion.nickName + "\":f1;\n";
-                    
+
                 }
 
                 if (actual.izquierda != null)
                 {
 
                     acum += "\"struct" + actual.informacion.nickName + "\":f2 -> \"struct" + actual.izquierda.informacion.nickName + "\":f1;\n";
-                    
+
                 }
-                
+
                 recorrerABBEspejo(ref actual.izquierda, ref acum, ref cabecera);
                 recorrerABBEspejo(ref actual.derecha, ref acum, ref cabecera);
             }
         }
-        public void recorrerABB(ref NodoUsuario actual,ref string acum,ref string cabecera)
+        public void recorrerABB(ref NodoUsuario actual, ref string acum, ref string cabecera)
         {
-            if(actual !=null)
+            if (actual != null)
             {
                 cabecera += "struct" + actual.informacion.nickName + "[label=\"<f0>  | <f1> nickName: " + actual.informacion.nickName + " \n \\n" +
                                                     "nombre: " + actual.informacion.nombre + " \n \\n" +
                                                     "password: " + actual.informacion.password + " \n \\n" +
                                                     "email: " + actual.informacion.email + " \n \\n" +
-                                                    "conectado: " + actual.informacion.conectado.ToString() + "  | <f2> \"];\n"; 
-                if(actual.lstJuegos.primero !=null)
+                                                    "conectado: " + actual.informacion.conectado.ToString() + "  | <f2> \"];\n";
+                if (actual.lstJuegos.primero != null)
                 {
                     cabecera += "\n" + actual.lstJuegos.listaJuegos(actual.informacion.nickName);
                     acum += "\"struct" + actual.informacion.nickName + "\":f1 -> " + actual.lstJuegos.primero.idNodo + ";\n";
                 }
-                if(actual.izquierda !=null)
+                if (actual.izquierda != null)
                     acum += "\"struct" + actual.informacion.nickName + "\":f0 -> \"struct" + actual.izquierda.informacion.nickName + "\":f1;\n";
-                if(actual.derecha  != null)
+                if (actual.derecha != null)
                     acum += "\"struct" + actual.informacion.nickName + "\":f2 -> \"struct" + actual.derecha.informacion.nickName + "\":f1;\n";
 
-                recorrerABB(ref actual.izquierda, ref acum,ref cabecera);
+                recorrerABB(ref actual.izquierda, ref acum, ref cabecera);
                 recorrerABB(ref actual.derecha, ref acum, ref cabecera);
-                
+
             }
         }
 
@@ -162,15 +163,15 @@ namespace NavalWarsEDD
         {
             string acum = "digraph G\n" +
                             "{\n node	[shape = record,height=.1];\n";
-           
-            if(raiz != null)
+
+            if (raiz != null)
             {
                 string acumEnlace = "";
                 int contNodo = 0;
                 int contAux = 0;
                 Queue cola = new Queue();
                 cola.Enqueue(raiz);
-                while(cola.Count != 0)
+                while (cola.Count != 0)
                 {
                     Pagina tmp = (Pagina)cola.Peek();
                     cola.Dequeue();
@@ -190,31 +191,31 @@ namespace NavalWarsEDD
             w.Close();
             generarImagen("C:\\GrafoEDD\\ArbolB.dot", "C:\\GrafoEDD\\ArbolB.png");
         }
-        
-        public void imprimir( Pagina actual, ref string acum ,ref string enlace)
+
+        public void imprimir(Pagina actual, ref string acum, ref string enlace)
         {
             acum += actual.GetHashCode().ToString() + "[label=\"";
             acum += "<r0>";
-            if(actual.ramas[0] != null)
+            if (actual.ramas[0] != null)
             {
-                enlace += "\""+actual.GetHashCode().ToString()+ "\":r0 ->";
-                enlace += "\""+actual.ramas[0].GetHashCode().ToString() + "\"\n";
+                enlace += "\"" + actual.GetHashCode().ToString() + "\":r0 ->";
+                enlace += "\"" + actual.ramas[0].GetHashCode().ToString() + "\"\n";
             }
             for (int i = 1; i <= actual.cuenta; i++)
             {
                 acum += "|";
-                acum += "<c"+i.ToString()+"> " + actual.claves[i].idAtaque.ToString();
+                acum += "<c" + i.ToString() + "> " + actual.claves[i].idAtaque.ToString();
                 acum += "|<r" + i.ToString() + ">";
-                if(actual.ramas[i] != null)
+                if (actual.ramas[i] != null)
                 {
-                    enlace += "\""+actual.GetHashCode().ToString() + "\":r" + i.ToString() + " -> ";
+                    enlace += "\"" + actual.GetHashCode().ToString() + "\":r" + i.ToString() + " -> ";
                     enlace += "\"" + actual.ramas[i].GetHashCode().ToString() + "\"\n";
                 }
             }
             acum += "\"];\n";
         }
-        
-        public void generarGrafoTablaHash( TablaHash th)
+
+        public void generarGrafoTablaHash(TablaHash th)
         {
             string acum = "digraph G { \n nodesep=.05; \n rankdir=LR; \n node [shape=record,width=.1,height=.1]; \n";
             th.getAcumGrafo(ref acum);
@@ -375,7 +376,7 @@ namespace NavalWarsEDD
             generarImagen("C:\\GrafoEDD\\matriz" + nivel.ToString() + ".dot", "C:\\GrafoEDD\\matriz" + nivel.ToString() + ".png");
         }
 
-        public void generarMatrizUnidadDestruida(Matriz matriz, int nivel,int destruida)
+        public void generarMatrizUnidadDestruida(Matriz matriz, int nivel, int destruida)
         {
             string acumInfo = "digraph G{ \n " +
                                 "node[shape=box, style=filled, color=deepskyblue3];\n " +
@@ -415,7 +416,7 @@ namespace NavalWarsEDD
                     cabeceraFila += eFila.GetHashCode().ToString() + " -> " + eFila.siguiente.GetHashCode().ToString() + "[rankdir=UD];\n";
                     ranksame = "";
                     ranksame += "{rank=same;" + eFila.GetHashCode().ToString() + ";";
-                    obtenerNodosOrtogonalesFilaUnidadDestuida(ref eFila, ref eFila.accesoNodo, ref acumEnlaceFila, ref cabeceraOrtogonalFila, ref ranksame, ref accesoFila, nivel,destruida ,ref accesoFilaEncontrada);
+                    obtenerNodosOrtogonalesFilaUnidadDestuida(ref eFila, ref eFila.accesoNodo, ref acumEnlaceFila, ref cabeceraOrtogonalFila, ref ranksame, ref accesoFila, nivel, destruida, ref accesoFilaEncontrada);
                     if (accesoFila != null)
                     {
                         acumOrtogonales += cabeceraOrtogonalFila + "\n";
@@ -444,7 +445,7 @@ namespace NavalWarsEDD
                     ranksame = "";
                     idCabeceraFila += eFila.GetHashCode().ToString() + "[label = \"" + eFila.id.ToString() + "\"];\n";
                     ranksame += "{rank=same;" + eFila.GetHashCode().ToString() + ";";
-                    obtenerNodosOrtogonalesFilaUnidadDestuida(ref eFila, ref eFila.accesoNodo, ref acumEnlaceFila, ref cabeceraOrtogonalFila, ref ranksame, ref accesoFila, nivel,destruida, ref accesoFilaEncontrada);
+                    obtenerNodosOrtogonalesFilaUnidadDestuida(ref eFila, ref eFila.accesoNodo, ref acumEnlaceFila, ref cabeceraOrtogonalFila, ref ranksame, ref accesoFila, nivel, destruida, ref accesoFilaEncontrada);
                     if (accesoFila != null)
                     {
                         acumOrtogonales += cabeceraOrtogonalFila + "\n";
@@ -474,7 +475,7 @@ namespace NavalWarsEDD
                     alineacionCol += eCol.GetHashCode().ToString() + ";";
                     idCabeceraCol += eCol.GetHashCode().ToString() + "[label=\"" + conversion + "\"];\n";
                     cabeceraCol += eCol.GetHashCode().ToString() + " -> " + eCol.siguiente.GetHashCode().ToString() + ";\n";
-                    obtenerNodosOrtogonalesColUnidadDestruida(ref eCol, ref eCol.accesoNodo, ref acumEnlaceCol, ref cabeceraOrtogonalCol, ref accesoCol, nivel,destruida, ref accesoColEncontrada);
+                    obtenerNodosOrtogonalesColUnidadDestruida(ref eCol, ref eCol.accesoNodo, ref acumEnlaceCol, ref cabeceraOrtogonalCol, ref accesoCol, nivel, destruida, ref accesoColEncontrada);
                     if (accesoCol != null)
                     {
                         acumOrtogonales += cabeceraOrtogonalCol + "\n";
@@ -495,7 +496,7 @@ namespace NavalWarsEDD
                     acumEnlaceCol = "";
                     accesoColEncontrada = false;
                     accesoCol = null;
-                    obtenerNodosOrtogonalesColUnidadDestruida(ref eCol, ref eCol.accesoNodo, ref acumEnlaceCol, ref cabeceraOrtogonalCol, ref accesoCol, nivel,destruida, ref accesoColEncontrada);
+                    obtenerNodosOrtogonalesColUnidadDestruida(ref eCol, ref eCol.accesoNodo, ref acumEnlaceCol, ref cabeceraOrtogonalCol, ref accesoCol, nivel, destruida, ref accesoColEncontrada);
                     if (accesoCol != null)
                     {
                         acumOrtogonales += cabeceraOrtogonalCol + "\n";
@@ -523,7 +524,7 @@ namespace NavalWarsEDD
             w.Close();
             generarImagen("C:\\GrafoEDD\\matriz" + nivel.ToString() + ".dot", "C:\\GrafoEDD\\matriz" + nivel.ToString() + ".png");
         }
-        
+
 
         public void obtenerNodosOrtogonalesCol(ref Encabezado eCol, ref NodoOrtogonal actual, ref string acumEnlace, ref string cabecera, ref NodoOrtogonal acceso, int nivel, ref bool accesoEncontrado)
         {
@@ -540,9 +541,14 @@ namespace NavalWarsEDD
                     }
                     else
                     {
-                        cabecera += actual.atras.GetHashCode().ToString() + "[label=\"" + actual.atras.unidad.idUnidad + "\"];\n";
-                        acumEnlace += " -> " + actual.atras.GetHashCode().ToString() + " ";
+                        if(actual.atras != acceso)
+                        {
+                            cabecera += actual.atras.GetHashCode().ToString() + "[label=\"" + actual.atras.unidad.idUnidad + "\"];\n";
+                            acumEnlace += " -> " + actual.atras.GetHashCode().ToString() + " ";
+                        }
+
                     }
+                    obtenerNodosOrtogonalesCol(ref eCol, ref actual.atras, ref acumEnlace, ref cabecera, ref acceso, nivel, ref  accesoEncontrado);
                 }
                 else if (actual != null && actual.unidad.nivel == nivel)
                 {
@@ -554,9 +560,14 @@ namespace NavalWarsEDD
                     }
                     else
                     {
-                        cabecera += actual.GetHashCode().ToString() + "[label=\"" + actual.unidad.idUnidad + "\"];\n";
-                        acumEnlace += " -> " + actual.GetHashCode().ToString() + " ";
+                        if (actual != acceso)
+                        {
+                            cabecera += actual.GetHashCode().ToString() + "[label=\"" + actual.unidad.idUnidad + "\"];\n";
+                            acumEnlace += " -> " + actual.GetHashCode().ToString() + " ";
+                        }
+
                     }
+                    obtenerNodosOrtogonalesCol(ref eCol, ref actual.abajo, ref acumEnlace, ref cabecera, ref acceso, nivel, ref  accesoEncontrado);
                 }
                 else if (actual.adelante != null && actual.adelante.unidad.nivel == nivel)
                 {
@@ -568,9 +579,14 @@ namespace NavalWarsEDD
                     }
                     else
                     {
-                        cabecera += actual.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.unidad.idUnidad + "\"];\n";
-                        acumEnlace += " -> " + actual.adelante.GetHashCode().ToString() + " ";
+                        if(actual.adelante != acceso)
+                        {
+                            cabecera += actual.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.unidad.idUnidad + "\"];\n";
+                            acumEnlace += " -> " + actual.adelante.GetHashCode().ToString() + " ";
+                        }
+
                     }
+                    obtenerNodosOrtogonalesCol(ref eCol, ref actual.adelante, ref acumEnlace, ref cabecera, ref acceso, nivel, ref  accesoEncontrado);
                 }
                 else if (actual.adelante != null)
                 {
@@ -584,14 +600,18 @@ namespace NavalWarsEDD
                         }
                         else
                         {
-                            cabecera += actual.adelante.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.adelante.unidad.idUnidad + "\"];\n";
-                            acumEnlace += " -> " + actual.adelante.adelante.GetHashCode().ToString() + " ";
-                        }
+                            if(actual.adelante.adelante != acceso)
+                            {
+                                cabecera += actual.adelante.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.adelante.unidad.idUnidad + "\"];\n";
+                                acumEnlace += " -> " + actual.adelante.adelante.GetHashCode().ToString() + " ";
+                            }
 
+                        }
+                        obtenerNodosOrtogonalesCol(ref eCol, ref actual.adelante.adelante, ref acumEnlace, ref cabecera, ref acceso, nivel, ref  accesoEncontrado);
                     }
                 }
 
-                obtenerNodosOrtogonalesCol(ref eCol, ref actual.abajo, ref acumEnlace, ref cabecera, ref acceso, nivel, ref  accesoEncontrado);
+                /**/
             }
         }
 
@@ -611,10 +631,15 @@ namespace NavalWarsEDD
                     }
                     else
                     {
-                        cabecera += actual.atras.GetHashCode().ToString() + "[label=\"" + actual.atras.unidad.idUnidad + "\"];\n";
-                        acumEnlace += " -> " + actual.atras.GetHashCode().ToString() + " ";
-                        rankSame += actual.atras.GetHashCode().ToString() + ";";
+                        if(acceso.atras != acceso)
+                        {
+                            cabecera += actual.atras.GetHashCode().ToString() + "[label=\"" + actual.atras.unidad.idUnidad + "\"];\n";
+                            acumEnlace += " -> " + actual.atras.GetHashCode().ToString() + " ";
+                            rankSame += actual.atras.GetHashCode().ToString() + ";";
+                        }
+
                     }
+                    obtenerNodosOrtogonalesFila(ref eFila, ref actual.atras, ref acumEnlace, ref cabecera, ref rankSame, ref acceso, nivel, ref  accesoEncontrado);
                 }
                 else if (actual != null && actual.unidad.nivel == nivel)
                 {
@@ -627,10 +652,14 @@ namespace NavalWarsEDD
                     }
                     else
                     {
-                        cabecera += actual.GetHashCode().ToString() + "[label=\"" + actual.unidad.idUnidad + "\"];\n";
-                        acumEnlace += " -> " + actual.GetHashCode().ToString() + " ";
-                        rankSame += actual.GetHashCode().ToString() + ";";
+                        if (actual != acceso)
+                        {
+                            cabecera += actual.GetHashCode().ToString() + "[label=\"" + actual.unidad.idUnidad + "\"];\n";
+                            acumEnlace += " -> " + actual.GetHashCode().ToString() + " ";
+                            rankSame += actual.GetHashCode().ToString() + ";";
+                        }
                     }
+                    obtenerNodosOrtogonalesFila(ref eFila, ref actual.derecha, ref acumEnlace, ref cabecera, ref rankSame, ref acceso, nivel, ref  accesoEncontrado);
                 }
                 else if (actual.adelante != null && actual.adelante.unidad.nivel == nivel)
                 {
@@ -643,10 +672,15 @@ namespace NavalWarsEDD
                     }
                     else
                     {
-                        cabecera += actual.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.unidad.idUnidad + "\"];\n";
-                        acumEnlace += " -> " + actual.adelante.GetHashCode().ToString() + " ";
-                        rankSame += actual.adelante.GetHashCode().ToString() + ";";
+                        if(actual.adelante != acceso)
+                        {
+                            cabecera += actual.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.unidad.idUnidad + "\"];\n";
+                            acumEnlace += " -> " + actual.adelante.GetHashCode().ToString() + " ";
+                            rankSame += actual.adelante.GetHashCode().ToString() + ";";
+                        }
+
                     }
+                    obtenerNodosOrtogonalesFila(ref eFila, ref actual.adelante, ref acumEnlace, ref cabecera, ref rankSame, ref acceso, nivel, ref  accesoEncontrado);
                 }
                 else if (actual.adelante != null)
                 {
@@ -661,19 +695,23 @@ namespace NavalWarsEDD
                         }
                         else
                         {
-                            cabecera += actual.adelante.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.adelante.unidad.idUnidad + "\"];\n";
-                            acumEnlace += " -> " + actual.adelante.adelante.GetHashCode().ToString() + " ";
-                            rankSame += actual.adelante.adelante.GetHashCode().ToString() + ";";
-                        }
+                            if(actual.adelante.adelante != acceso)
+                            {
+                                cabecera += actual.adelante.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.adelante.unidad.idUnidad + "\"];\n";
+                                acumEnlace += " -> " + actual.adelante.adelante.GetHashCode().ToString() + " ";
+                                rankSame += actual.adelante.adelante.GetHashCode().ToString() + ";";
+                            }
 
+                        }
+                        obtenerNodosOrtogonalesFila(ref eFila, ref actual.adelante.adelante, ref acumEnlace, ref cabecera, ref rankSame, ref acceso, nivel, ref  accesoEncontrado);
                     }
                 }
 
-                obtenerNodosOrtogonalesFila(ref eFila, ref actual.derecha, ref acumEnlace, ref cabecera, ref rankSame, ref acceso, nivel, ref  accesoEncontrado);
+                /**/
             }
         }
 
-        public void obtenerNodosOrtogonalesColUnidadDestruida(ref Encabezado eCol, ref NodoOrtogonal actual, ref string acumEnlace, ref string cabecera, ref NodoOrtogonal acceso, int nivel,int destruida, ref bool accesoEncontrado)
+        public void obtenerNodosOrtogonalesColUnidadDestruida(ref Encabezado eCol, ref NodoOrtogonal actual, ref string acumEnlace, ref string cabecera, ref NodoOrtogonal acceso, int nivel, int destruida, ref bool accesoEncontrado)
         {
             if (actual != null)
             {
@@ -688,9 +726,14 @@ namespace NavalWarsEDD
                     }
                     else
                     {
-                        cabecera += actual.atras.GetHashCode().ToString() + "[label=\"" + actual.atras.unidad.idUnidad + "\"];\n";
-                        acumEnlace += " -> " + actual.atras.GetHashCode().ToString() + " ";
+                        if(actual.atras != acceso)
+                        {
+                            cabecera += actual.atras.GetHashCode().ToString() + "[label=\"" + actual.atras.unidad.idUnidad + "\"];\n";
+                            acumEnlace += " -> " + actual.atras.GetHashCode().ToString() + " ";
+                        }
+
                     }
+                    obtenerNodosOrtogonalesColUnidadDestruida(ref eCol, ref actual.atras, ref acumEnlace, ref cabecera, ref acceso, nivel, destruida, ref  accesoEncontrado);
                 }
                 else if (actual != null && actual.unidad.nivel == nivel && actual.unidad.destruida == destruida)
                 {
@@ -702,9 +745,13 @@ namespace NavalWarsEDD
                     }
                     else
                     {
-                        cabecera += actual.GetHashCode().ToString() + "[label=\"" + actual.unidad.idUnidad + "\"];\n";
-                        acumEnlace += " -> " + actual.GetHashCode().ToString() + " ";
+                        if (actual != acceso)
+                        {
+                            cabecera += actual.GetHashCode().ToString() + "[label=\"" + actual.unidad.idUnidad + "\"];\n";
+                            acumEnlace += " -> " + actual.GetHashCode().ToString() + " ";
+                        }
                     }
+                    obtenerNodosOrtogonalesColUnidadDestruida(ref eCol, ref actual.abajo, ref acumEnlace, ref cabecera, ref acceso, nivel, destruida, ref  accesoEncontrado);
                 }
                 else if (actual.adelante != null && actual.adelante.unidad.nivel == nivel && actual.adelante.unidad.destruida == destruida)
                 {
@@ -716,9 +763,14 @@ namespace NavalWarsEDD
                     }
                     else
                     {
-                        cabecera += actual.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.unidad.idUnidad + "\"];\n";
-                        acumEnlace += " -> " + actual.adelante.GetHashCode().ToString() + " ";
+                        if(actual.adelante != acceso)
+                        {
+                            cabecera += actual.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.unidad.idUnidad + "\"];\n";
+                            acumEnlace += " -> " + actual.adelante.GetHashCode().ToString() + " ";
+                        }
+
                     }
+                    obtenerNodosOrtogonalesColUnidadDestruida(ref eCol, ref actual.adelante, ref acumEnlace, ref cabecera, ref acceso, nivel, destruida, ref  accesoEncontrado);
                 }
                 else if (actual.adelante != null)
                 {
@@ -732,18 +784,22 @@ namespace NavalWarsEDD
                         }
                         else
                         {
-                            cabecera += actual.adelante.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.adelante.unidad.idUnidad + "\"];\n";
-                            acumEnlace += " -> " + actual.adelante.adelante.GetHashCode().ToString() + " ";
-                        }
+                            if(actual.adelante.adelante != acceso)
+                            {
+                                cabecera += actual.adelante.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.adelante.unidad.idUnidad + "\"];\n";
+                                acumEnlace += " -> " + actual.adelante.adelante.GetHashCode().ToString() + " ";
+                            }
 
+                        }
+                        obtenerNodosOrtogonalesColUnidadDestruida(ref eCol, ref actual.adelante.adelante, ref acumEnlace, ref cabecera, ref acceso, nivel, destruida, ref  accesoEncontrado);
                     }
                 }
 
-                obtenerNodosOrtogonalesColUnidadDestruida(ref eCol, ref actual.abajo, ref acumEnlace, ref cabecera, ref acceso, nivel, destruida, ref  accesoEncontrado);
+                /**/
             }
         }
 
-        public void obtenerNodosOrtogonalesFilaUnidadDestuida(ref Encabezado eFila, ref NodoOrtogonal actual, ref string acumEnlace, ref string cabecera, ref string rankSame, ref NodoOrtogonal acceso, int nivel,int destruida, ref bool accesoEncontrado)
+        public void obtenerNodosOrtogonalesFilaUnidadDestuida(ref Encabezado eFila, ref NodoOrtogonal actual, ref string acumEnlace, ref string cabecera, ref string rankSame, ref NodoOrtogonal acceso, int nivel, int destruida, ref bool accesoEncontrado)
         {
             if (actual != null)
             {
@@ -759,10 +815,15 @@ namespace NavalWarsEDD
                     }
                     else
                     {
-                        cabecera += actual.atras.GetHashCode().ToString() + "[label=\"" + actual.atras.unidad.idUnidad + "\"];\n";
-                        acumEnlace += " -> " + actual.atras.GetHashCode().ToString() + " ";
-                        rankSame += actual.atras.GetHashCode().ToString() + ";";
+                        if(actual.atras != acceso)
+                        {
+                            cabecera += actual.atras.GetHashCode().ToString() + "[label=\"" + actual.atras.unidad.idUnidad + "\"];\n";
+                            acumEnlace += " -> " + actual.atras.GetHashCode().ToString() + " ";
+                            rankSame += actual.atras.GetHashCode().ToString() + ";";
+                        }
+
                     }
+                    obtenerNodosOrtogonalesFilaUnidadDestuida(ref eFila, ref actual.atras, ref acumEnlace, ref cabecera, ref rankSame, ref acceso, nivel, destruida, ref  accesoEncontrado);
                 }
                 else if (actual != null && actual.unidad.nivel == nivel && actual.unidad.destruida == destruida)
                 {
@@ -775,10 +836,14 @@ namespace NavalWarsEDD
                     }
                     else
                     {
-                        cabecera += actual.GetHashCode().ToString() + "[label=\"" + actual.unidad.idUnidad + "\"];\n";
-                        acumEnlace += " -> " + actual.GetHashCode().ToString() + " ";
-                        rankSame += actual.GetHashCode().ToString() + ";";
+                        if (actual != acceso)
+                        {
+                            cabecera += actual.GetHashCode().ToString() + "[label=\"" + actual.unidad.idUnidad + "\"];\n";
+                            acumEnlace += " -> " + actual.GetHashCode().ToString() + " ";
+                            rankSame += actual.GetHashCode().ToString() + ";";
+                        }
                     }
+                    obtenerNodosOrtogonalesFilaUnidadDestuida(ref eFila, ref actual.derecha, ref acumEnlace, ref cabecera, ref rankSame, ref acceso, nivel, destruida, ref  accesoEncontrado);
                 }
                 else if (actual.adelante != null && actual.adelante.unidad.nivel == nivel && actual.adelante.unidad.destruida == destruida)
                 {
@@ -791,10 +856,15 @@ namespace NavalWarsEDD
                     }
                     else
                     {
-                        cabecera += actual.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.unidad.idUnidad + "\"];\n";
-                        acumEnlace += " -> " + actual.adelante.GetHashCode().ToString() + " ";
-                        rankSame += actual.adelante.GetHashCode().ToString() + ";";
+                        if(actual.adelante != acceso)
+                        {
+                            cabecera += actual.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.unidad.idUnidad + "\"];\n";
+                            acumEnlace += " -> " + actual.adelante.GetHashCode().ToString() + " ";
+                            rankSame += actual.adelante.GetHashCode().ToString() + ";";
+                        }
+
                     }
+                    obtenerNodosOrtogonalesFilaUnidadDestuida(ref eFila, ref actual.adelante, ref acumEnlace, ref cabecera, ref rankSame, ref acceso, nivel, destruida, ref  accesoEncontrado);
                 }
                 else if (actual.adelante != null)
                 {
@@ -809,19 +879,24 @@ namespace NavalWarsEDD
                         }
                         else
                         {
-                            cabecera += actual.adelante.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.adelante.unidad.idUnidad + "\"];\n";
-                            acumEnlace += " -> " + actual.adelante.adelante.GetHashCode().ToString() + " ";
-                            rankSame += actual.adelante.adelante.GetHashCode().ToString() + ";";
+                            if(actual.adelante.adelante != acceso)
+                            {
+                                cabecera += actual.adelante.adelante.GetHashCode().ToString() + "[label=\"" + actual.adelante.adelante.unidad.idUnidad + "\"];\n";
+                                acumEnlace += " -> " + actual.adelante.adelante.GetHashCode().ToString() + " ";
+                                rankSame += actual.adelante.adelante.GetHashCode().ToString() + ";";
+                            }
+
                         }
 
                     }
+                    obtenerNodosOrtogonalesFilaUnidadDestuida(ref eFila, ref actual.adelante.adelante, ref acumEnlace, ref cabecera, ref rankSame, ref acceso, nivel, destruida, ref  accesoEncontrado);
                 }
 
-                obtenerNodosOrtogonalesFilaUnidadDestuida(ref eFila, ref actual.derecha, ref acumEnlace, ref cabecera, ref rankSame, ref acceso, nivel,destruida,ref  accesoEncontrado);
+                
             }
         }
 
-        public void generarImagen(string nombArchivo,string nombImagen)
+        public void generarImagen(string nombArchivo, string nombImagen)
         {
             Process a = new Process();
             a.StartInfo.FileName = "\"C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe\"";
