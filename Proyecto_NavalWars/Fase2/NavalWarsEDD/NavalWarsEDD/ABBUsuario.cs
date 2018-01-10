@@ -314,8 +314,8 @@ namespace NavalWarsEDD
                     actual.informacion.ContUnidadesDestruidas = partidas;
                     top.agregar(actual.informacion);
                 }
-                recorrerPreordenTopJuegos(ref actual.izquierda, ref top);
-                recorrerPreordenTopJuegos(ref actual.derecha, ref top);
+                recorrerUnidadesDestruidas(ref actual.izquierda, ref top);
+                recorrerUnidadesDestruidas(ref actual.derecha, ref top);
             }
         }
 
