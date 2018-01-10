@@ -210,6 +210,18 @@ namespace NavalWarsEDD
             return partidas;
         }
 
+        public int unidadesDestruidas()
+        {
+            int unidades = 0;
+            NodoJuego tmp = primero;
+            while (tmp != null)
+            {
+                unidades += tmp.valor.unidadesDesplegadas;
+                tmp = tmp.siguiente;
+            }
+            return unidades;
+        }
+
     }
 
     public class Juego

@@ -214,6 +214,12 @@
       <s:element name="generarTopContactosResponse">
         <s:complexType />
       </s:element>
+      <s:element name="generarTopUnidDestruida">
+        <s:complexType />
+      </s:element>
+      <s:element name="generarTopUnidDestruidaResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="insertarAVL">
         <s:complexType>
           <s:sequence>
@@ -542,6 +548,12 @@
   <wsdl:message name="generarTopContactosSoapOut">
     <wsdl:part name="parameters" element="tns:generarTopContactosResponse" />
   </wsdl:message>
+  <wsdl:message name="generarTopUnidDestruidaSoapIn">
+    <wsdl:part name="parameters" element="tns:generarTopUnidDestruida" />
+  </wsdl:message>
+  <wsdl:message name="generarTopUnidDestruidaSoapOut">
+    <wsdl:part name="parameters" element="tns:generarTopUnidDestruidaResponse" />
+  </wsdl:message>
   <wsdl:message name="insertarAVLSoapIn">
     <wsdl:part name="parameters" element="tns:insertarAVL" />
   </wsdl:message>
@@ -708,6 +720,10 @@
     <wsdl:operation name="generarTopContactos">
       <wsdl:input message="tns:generarTopContactosSoapIn" />
       <wsdl:output message="tns:generarTopContactosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="generarTopUnidDestruida">
+      <wsdl:input message="tns:generarTopUnidDestruidaSoapIn" />
+      <wsdl:output message="tns:generarTopUnidDestruidaSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="insertarAVL">
       <wsdl:input message="tns:insertarAVLSoapIn" />
@@ -917,6 +933,15 @@
     </wsdl:operation>
     <wsdl:operation name="generarTopContactos">
       <soap:operation soapAction="http://tempuri.org/generarTopContactos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarTopUnidDestruida">
+      <soap:operation soapAction="http://tempuri.org/generarTopUnidDestruida" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1217,6 +1242,15 @@
     </wsdl:operation>
     <wsdl:operation name="generarTopContactos">
       <soap12:operation soapAction="http://tempuri.org/generarTopContactos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarTopUnidDestruida">
+      <soap12:operation soapAction="http://tempuri.org/generarTopUnidDestruida" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

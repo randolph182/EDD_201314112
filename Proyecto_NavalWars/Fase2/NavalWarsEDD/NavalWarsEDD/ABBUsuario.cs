@@ -41,6 +41,7 @@ namespace NavalWarsEDD
         public int partidadGanadas;
         public int unidadesDestruidas;
         public int NoContactos =0;
+        public int ContUnidadesDestruidas = 0;
 
         public Usuario(string nombre, string nickName, string password, string email, int conectado)
         {
@@ -259,6 +260,18 @@ namespace NavalWarsEDD
             }
         }
 
+        public void generartopUnidadesDestruidas()
+        {
+            if (raiz != null)
+            {
+                Top newTop = new Top();
+                
+                recorrerUnidadesDestruidas(ref raiz, ref newTop);
+                newTop.ordenarUniDestru();
+                Grafo g = new Grafo();
+                g.generarTopUniDestru(newTop);
+            }
+        }
 
         public void recorrerTopContactos(NodoUsuario actual,ref Top top)
         {
@@ -288,6 +301,21 @@ namespace NavalWarsEDD
                 }
                 recorrerPreordenTopJuegos( ref actual.izquierda,ref top);
                 recorrerPreordenTopJuegos( ref actual.derecha, ref top);
+            }
+        }
+
+        public void recorrerUnidadesDestruidas(ref NodoUsuario actual, ref Top top)
+        {
+            if (actual != null)
+            {
+                if (actual.lstJuegos.primero != null)
+                {
+                    int partidas = actual.lstJuegos.unidadesDestruidas();
+                    actual.informacion.ContUnidadesDestruidas = partidas;
+                    top.agregar(actual.informacion);
+                }
+                recorrerPreordenTopJuegos(ref actual.izquierda, ref top);
+                recorrerPreordenTopJuegos(ref actual.derecha, ref top);
             }
         }
 

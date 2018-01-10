@@ -23,7 +23,7 @@ namespace NavalWarsCliente
 
         protected void btnAgregarNuevoUsuario_Click(object sender, EventArgs e)
         {
-            bool correcto = ClaseGlobal.servidorPrincipal.insertarUsuario(txtNicknameNU.Text, txtNombreNU.Text,txtPasswordNU.Text, txtEmailNU.Text, 0);
+            bool correcto = ClaseGlobal.servidorPrincipal.insertarUsuario(txtNicknameNU.Text, txtNombreNU.Text, txtPasswordNU.Text, txtEmailNU.Text, 0);
             if (correcto)
                 lblMensajeAddUsuario.Text = "Se agrego Correctamente. ";
             else
@@ -90,10 +90,10 @@ namespace NavalWarsCliente
 
         protected void btnModificarUM_Click(object sender, EventArgs e)
         {
-            if(txtNickNameUMod.Text == txtNickNameNuevoUMod.Text)
+            if (txtNickNameUMod.Text == txtNickNameNuevoUMod.Text)
             {
                 bool modificado = ClaseGlobal.servidorPrincipal.modificarUsuario(txtNickNameUMod.Text, "", txtNombreUMod.Text, txtPasswordUMod.Text, txtEmailUMod.Text, Convert.ToInt16(txtConectadoUMod.Text));
-                if(modificado)
+                if (modificado)
                 {
                     lblMensajeUModificado.Text = "Se modifico Correctamente";
                 }
@@ -108,9 +108,9 @@ namespace NavalWarsCliente
 
         protected void btnBuscarNickUMod_Click(object sender, EventArgs e)
         {
-             List<string> info = ClaseGlobal.servidorPrincipal.obtenerInfoUsuario(txtNickNameUMod.Text);
+            List<string> info = ClaseGlobal.servidorPrincipal.obtenerInfoUsuario(txtNickNameUMod.Text);
 
-            if(info.Count != 0) //signifia que si contiene informacioin 
+            if (info.Count != 0) //signifia que si contiene informacioin 
             {
                 txtNickNameNuevoUMod.Text = info[0];
                 txtNombreUMod.Text = info[1];
@@ -159,7 +159,7 @@ namespace NavalWarsCliente
             mostrarImagen("ABBUsuarios.png");
             MultiView1.ActiveViewIndex = 4;
         }
-        
+
         protected void mostrarImagen(string nombreArchivo)
         {
             try
@@ -185,8 +185,8 @@ namespace NavalWarsCliente
             }
             catch (Exception)
             {
-                
-               Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "Alert", "alert('No se pudo mostrar la Table')", true);
+
+                Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "Alert", "alert('No se pudo mostrar la Table')", true);
             }
             MultiView1.ActiveViewIndex = 4;
         }
@@ -198,7 +198,15 @@ namespace NavalWarsCliente
             MultiView1.ActiveViewIndex = 4;
         }
 
-   
+        protected void btnTopUniDestuidas_Click(object sender, EventArgs e)
+        {
+
+            ClaseGlobal.servidorPrincipal.generarTopUnidDestruida();
+            mostrarImagen("topUniDestru.png");
+            MultiView1.ActiveViewIndex = 4;
+        }
+
+
 
     }
 }

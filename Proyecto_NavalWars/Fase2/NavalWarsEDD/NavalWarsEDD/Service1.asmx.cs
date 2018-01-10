@@ -202,7 +202,11 @@ namespace NavalWarsEDD
             usuarioABB.generartopMasContactos();
         }
 
-
+        [WebMethod]
+        public void generarTopUnidDestruida()
+        {
+            usuarioABB.generartopUnidadesDestruidas();
+        }
 
         /*-------------------------------- <AVL>------------------------------------------------------*/
         [WebMethod]

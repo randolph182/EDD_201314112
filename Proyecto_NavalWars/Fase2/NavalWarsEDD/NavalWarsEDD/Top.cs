@@ -65,6 +65,30 @@ namespace NavalWarsEDD
             }
         }
 
+        public void ordenarUniDestru()
+        {
+            if (primero != null)
+            {
+                Usuario aux;
+                NodoTop tmp = primero;
+                while (tmp.siguiete != null)
+                {
+                    NodoTop tmp2 = tmp.siguiete;
+                    while (tmp2 != null)
+                    {
+                        if (tmp.user.ContUnidadesDestruidas < tmp2.user.ContUnidadesDestruidas)
+                        {
+                            aux = tmp.user;
+                            tmp.user = tmp2.user;
+                            tmp2.user = aux;
+                        }
+                        tmp2 = tmp2.siguiete;
+                    }
+                    tmp = tmp.siguiete;
+                }
+            }
+        }
+
         public void ordenarContactos()
         {
             if(primero != null)

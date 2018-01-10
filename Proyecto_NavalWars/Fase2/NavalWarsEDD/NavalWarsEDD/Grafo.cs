@@ -11,6 +11,40 @@ namespace NavalWarsEDD
 {
     public class Grafo
     {
+        public void generarTopUniDestru(Top lista)
+        {
+            string estructuraDot = "digraph G{\n";
+            string cabecera = "";
+            string acum = "";
+
+            if (lista.primero != null)
+            {
+                NodoTop tmp = lista.primero;
+                int contador = 0;
+                while (contador != 11 && tmp.siguiete != null)
+                {
+
+                    cabecera += tmp.GetHashCode().ToString() + "[label=\"" + tmp.user.nickName + "\n \\n" +
+                                tmp.user.ContUnidadesDestruidas.ToString() + "\"];\n";
+                    acum += tmp.GetHashCode().ToString() + " -> " + tmp.siguiete.GetHashCode().ToString() + ";\n";
+                    contador++;
+                    tmp = tmp.siguiete;
+                }
+
+                if (contador != 11)
+                {
+                    cabecera += tmp.GetHashCode().ToString() + "[label=\"" + tmp.user.nickName + "\n \\n" +
+                                 tmp.user.ContUnidadesDestruidas.ToString() + "\"];\n";
+                }
+            }
+            estructuraDot += cabecera + acum + "\n}\n";
+            const string f = "C:\\GrafoEDD\\topUniDestru.dot";
+            StreamWriter w = new StreamWriter(f);
+            w.WriteLine(estructuraDot);
+            w.Close();
+            //generarImagen("C:\\GrafoEDD\\ABBUsuarios.dot" , "C:\\GrafoEDD\\ABBUsuarios.png");
+            generarImagen("C:\\GrafoEDD\\topUniDestru.dot", "C:\\GrafoEDD\\topUniDestru.png");
+        }
 
         public void generarTopContactos(Top lista)
         {
@@ -243,7 +277,7 @@ namespace NavalWarsEDD
             for (int i = 1; i <= actual.cuenta; i++)
             {
                 acum += "|";
-                acum += "<c" + i.ToString() + "> " + actual.claves[i].idAtaque.ToString();
+                acum += "<c" + i.ToString() + "> " + actual.claves[i].idAtaque.ToString() + "\\n emisor: " + actual.claves[i].idEmisor + "\\n receptor: " +actual.claves[i].idReceptor+"\\n CordX"+actual.claves[i].coordenadaX.ToString()+"\\n CordY"+actual.claves[i].coordenadaY.ToString();
                 acum += "|<r" + i.ToString() + ">";
                 if (actual.ramas[i] != null)
                 {
