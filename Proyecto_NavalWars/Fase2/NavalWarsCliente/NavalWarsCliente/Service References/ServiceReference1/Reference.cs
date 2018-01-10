@@ -81,6 +81,9 @@ namespace NavalWarsCliente.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/generarTopJuegos", ReplyAction="*")]
         void generarTopJuegos();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/generarTopContactos", ReplyAction="*")]
+        void generarTopContactos();
+        
         // CODEGEN: Generating message contract since element name nickUsuario from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/insertarAVL", ReplyAction="*")]
         NavalWarsCliente.ServiceReference1.insertarAVLResponse insertarAVL(NavalWarsCliente.ServiceReference1.insertarAVLRequest request);
@@ -2316,6 +2319,10 @@ namespace NavalWarsCliente.ServiceReference1 {
         
         public void generarTopJuegos() {
             base.Channel.generarTopJuegos();
+        }
+        
+        public void generarTopContactos() {
+            base.Channel.generarTopContactos();
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

@@ -208,6 +208,12 @@
       <s:element name="generarTopJuegosResponse">
         <s:complexType />
       </s:element>
+      <s:element name="generarTopContactos">
+        <s:complexType />
+      </s:element>
+      <s:element name="generarTopContactosResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="insertarAVL">
         <s:complexType>
           <s:sequence>
@@ -530,6 +536,12 @@
   <wsdl:message name="generarTopJuegosSoapOut">
     <wsdl:part name="parameters" element="tns:generarTopJuegosResponse" />
   </wsdl:message>
+  <wsdl:message name="generarTopContactosSoapIn">
+    <wsdl:part name="parameters" element="tns:generarTopContactos" />
+  </wsdl:message>
+  <wsdl:message name="generarTopContactosSoapOut">
+    <wsdl:part name="parameters" element="tns:generarTopContactosResponse" />
+  </wsdl:message>
   <wsdl:message name="insertarAVLSoapIn">
     <wsdl:part name="parameters" element="tns:insertarAVL" />
   </wsdl:message>
@@ -692,6 +704,10 @@
     <wsdl:operation name="generarTopJuegos">
       <wsdl:input message="tns:generarTopJuegosSoapIn" />
       <wsdl:output message="tns:generarTopJuegosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="generarTopContactos">
+      <wsdl:input message="tns:generarTopContactosSoapIn" />
+      <wsdl:output message="tns:generarTopContactosSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="insertarAVL">
       <wsdl:input message="tns:insertarAVLSoapIn" />
@@ -892,6 +908,15 @@
     </wsdl:operation>
     <wsdl:operation name="generarTopJuegos">
       <soap:operation soapAction="http://tempuri.org/generarTopJuegos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarTopContactos">
+      <soap:operation soapAction="http://tempuri.org/generarTopContactos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1183,6 +1208,15 @@
     </wsdl:operation>
     <wsdl:operation name="generarTopJuegos">
       <soap12:operation soapAction="http://tempuri.org/generarTopJuegos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarTopContactos">
+      <soap12:operation soapAction="http://tempuri.org/generarTopContactos" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

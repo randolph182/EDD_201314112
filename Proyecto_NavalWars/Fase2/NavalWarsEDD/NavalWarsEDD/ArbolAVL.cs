@@ -296,7 +296,7 @@ namespace NavalWarsEDD
         }
         public NodoAVL dobleRotacionizq(ref NodoAVL actual)
         {
-            raiz.izquierda = simpleRotacionIzq(ref actual.izquierda);
+            actual.izquierda = simpleRotacionIzq(ref actual.izquierda);
             return simpleRotacionDer(ref actual);
         }
         public int calcularAltura(ref NodoAVL actual)
@@ -354,6 +354,20 @@ namespace NavalWarsEDD
                     acum += "\"struct" + tmp.GetHashCode().ToString() + "\":f2 -> \"struct" + tmp.derecha.GetHashCode().ToString() + "\":f1;\n";
                 preOrden(ref tmp.izquierda, ref acum, ref cabecera);
                 preOrden(ref tmp.derecha, ref acum, ref cabecera);
+            }
+        }
+
+        public void contadorContactos( ref int cont)
+        {
+            contadorContactos( this.raiz, ref  cont);
+        }
+        public void contadorContactos( NodoAVL actual, ref int cont)
+        {
+            if(actual != null)
+            {
+                cont++;
+                contadorContactos(actual.izquierda, ref  cont);
+                contadorContactos(actual.derecha, ref cont);
             }
         }
     }

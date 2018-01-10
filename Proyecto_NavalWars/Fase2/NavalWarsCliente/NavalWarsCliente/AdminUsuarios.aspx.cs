@@ -191,6 +191,13 @@ namespace NavalWarsCliente
             MultiView1.ActiveViewIndex = 4;
         }
 
+        protected void btnTopMascontactos_Click(object sender, EventArgs e)
+        {
+            ClaseGlobal.servidorPrincipal.generarTopContactos();
+            mostrarImagen("topContactos.png");
+            MultiView1.ActiveViewIndex = 4;
+        }
+
    
 
     }

@@ -11,6 +11,42 @@ namespace NavalWarsEDD
 {
     public class Grafo
     {
+
+        public void generarTopContactos(Top lista)
+        {
+            string estructuraDot = "digraph G{\n";
+            string cabecera = "";
+            string acum = "";
+
+            if (lista.primero != null)
+            {
+                NodoTop tmp = lista.primero;
+                int contador = 0;
+                while (contador != 11 && tmp.siguiete != null)
+                {
+
+                    cabecera += tmp.GetHashCode().ToString() + "[label=\"" + tmp.user.nickName + "\n \\n" +
+                                tmp.user.NoContactos.ToString() + "\"];\n";
+                    acum += tmp.GetHashCode().ToString() + " -> " + tmp.siguiete.GetHashCode().ToString() + ";\n";
+                    contador++;
+                    tmp = tmp.siguiete;
+                }
+
+                if (contador != 11)
+                {
+                    cabecera += tmp.GetHashCode().ToString() + "[label=\"" + tmp.user.nickName + "\n \\n" +
+                                 tmp.user.NoContactos.ToString() + "\"];\n";
+                }
+            }
+
+            estructuraDot += cabecera + acum + "\n}\n";
+            const string f = "C:\\GrafoEDD\\topContactos.dot";
+            StreamWriter w = new StreamWriter(f);
+            w.WriteLine(estructuraDot);
+            w.Close();
+            //generarImagen("C:\\GrafoEDD\\ABBUsuarios.dot" , "C:\\GrafoEDD\\ABBUsuarios.png");
+            generarImagen("C:\\GrafoEDD\\topContactos.dot", "C:\\GrafoEDD\\topContactos.png");
+        }
         public void generarTopJuegos(Top lista)
         {
             string estructuraDot = "digraph G{\n";
@@ -46,6 +82,9 @@ namespace NavalWarsEDD
             //generarImagen("C:\\GrafoEDD\\ABBUsuarios.dot" , "C:\\GrafoEDD\\ABBUsuarios.png");
             generarImagen("C:\\GrafoEDD\\topJuegos.dot", "C:\\GrafoEDD\\topJuegos.png");
         }
+
+
+
 
         public void generarABBUsuario(ref ABBUsuario arbol)
         {

@@ -40,6 +40,7 @@ namespace NavalWarsEDD
         public int conectado;
         public int partidadGanadas;
         public int unidadesDestruidas;
+        public int NoContactos =0;
 
         public Usuario(string nombre, string nickName, string password, string email, int conectado)
         {
@@ -244,6 +245,34 @@ namespace NavalWarsEDD
                 newTop.ordenarJuegos();
                 Grafo g = new Grafo();
                 g.generarTopJuegos(newTop);
+            }
+        }
+        public void generartopMasContactos()
+        {
+            if(raiz != null)
+            {
+                Top newTop = new Top();
+                recorrerTopContactos(raiz,ref newTop);
+                newTop.ordenarContactos();
+                Grafo g = new Grafo();
+                g.generarTopContactos(newTop);
+            }
+        }
+
+
+        public void recorrerTopContactos(NodoUsuario actual,ref Top top)
+        {
+            if(actual != null)
+            {
+                if(actual.lstContactos.raiz != null)
+                {
+                    int noContactos =0;
+                    actual.lstContactos.contadorContactos(ref noContactos);
+                    actual.informacion.NoContactos = noContactos;
+                    top.agregar(actual.informacion);
+                }
+                recorrerTopContactos( actual.izquierda,ref  top);
+                recorrerTopContactos( actual.derecha,ref  top);
             }
         }
 

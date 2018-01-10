@@ -194,7 +194,15 @@ namespace NavalWarsEDD
         public void generarTopJuegos()
         {
             usuarioABB.generarTopJuegosGanados();
+           
         }
+        [WebMethod]
+        public void generarTopContactos()
+        {
+            usuarioABB.generartopMasContactos();
+        }
+
+
 
         /*-------------------------------- <AVL>------------------------------------------------------*/
         [WebMethod]

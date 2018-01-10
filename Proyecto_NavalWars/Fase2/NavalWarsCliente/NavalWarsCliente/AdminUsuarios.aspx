@@ -161,7 +161,7 @@
                             <td>&nbsp;</td>
                             <td class="auto-style26">&nbsp;</td>
                             <td class="auto-style27">
-                                <asp:Button ID="bntGrafoTablaHash" runat="server" Text="Mostrar Tabla Hash " Width="212px" OnClick="bntGrafoTablaHash_Click" />
+                                <asp:Button ID="btnTopMascontactos" runat="server" Text="Mostrar Top 10 Mas Contactos" Width="215px" OnClick="btnTopMascontactos_Click" />
                             </td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
@@ -176,6 +176,17 @@
                         </tr>
                         <tr>
                             <td class="auto-style28">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="auto-style26">&nbsp;</td>
+                            <td class="auto-style27">
+                                <asp:Button ID="bntGrafoTablaHash" runat="server" OnClick="bntGrafoTablaHash_Click" Text="Mostrar Tabla Hash " Width="212px" />
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style28">
+                                &nbsp;</td>
                             <td>&nbsp;</td>
                             <td class="auto-style26">&nbsp;</td>
                             <td class="auto-style27">&nbsp;</td>
@@ -186,14 +197,6 @@
                             <td class="auto-style28">
                                 <asp:Button ID="btnRergresarPrincipalAdmin" runat="server" OnClick="btnRergresarPrincipalAdmin_Click" Text="Rergresar Principal" />
                             </td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style26">&nbsp;</td>
-                            <td class="auto-style27">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style28">&nbsp;</td>
                             <td>&nbsp;</td>
                             <td class="auto-style26">&nbsp;</td>
                             <td class="auto-style27">&nbsp;</td>
